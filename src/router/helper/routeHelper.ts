@@ -61,7 +61,11 @@ function asyncImportRoute(routes: AppRouteRecordRaw[] | undefined) {
     let tenantId = getTenantId();
     // URL支持{{ window.xxx }}占位符变量
     //update-begin---author:wangshuai ---date:20220711  for：[VUEN-1638]菜单tenantId需要动态生成------------
+    try {
     item.component = (item.component || '').replace(/{{([^}}]+)?}}/g, (s1, s2) => _eval(s2)).replace('${token}', token).replace('${tenantId}', tenantId);
+    } catch (e) {
+      console.log(e);
+    }
     //update-end---author:wangshuai ---date:20220711  for：[VUEN-1638]菜单tenantId需要动态生成------------
     // 适配 iframe
     if (/^\/?http(s)?/.test(item.component as string)) {
