@@ -2,18 +2,17 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">新增</a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">{{ btnAddText }}</a-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                {{ btnDeleteText }}
               </a-menu-item>
             </a-menu>
           </template>
-          <a-button
-            >批量操作
+          <a-button>{{ btnBatchOpsText }}
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
@@ -23,7 +22,7 @@
           @click="handleInvitation"
           style="margin-right: 5px"
           :disabled="selectedRowKeys.length === 0"
-          >邀请用户加入</a-button
+          >{{ btnUserAddText }}</a-button
         >
         <a-button
           preIcon="ant-design:plus-outlined"
@@ -31,9 +30,9 @@
           @click="handlePack"
           style="margin-right: 5px"
           :disabled="selectedRowKeys.length === 0"
-          >套餐</a-button
+          >{{ btnPackageText }}</a-button
         >
-        <a-button type="primary" @click="recycleBinClick" preIcon="ant-design:hdd-outlined">回收站</a-button>
+        <a-button type="primary" @click="recycleBinClick" preIcon="ant-design:hdd-outlined">{{ btnRecycleText }}</a-button>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getActions(record)" />
@@ -61,13 +60,22 @@
   import TenantUserModal from './components/TenantUserList.vue';
   import TenantPackList from './pack/TenantPackList.vue';
   import TenantRecycleBinModal from './components/TenantRecycleBinModal.vue';
+  import { useI18n } from '/@/hooks/web/useI18n';
 
   const { createMessage } = useMessage();
+  const { t } = useI18n();
   const [registerModal, { openModal }] = useModal();
   const [registerSelUserModal, { openModal: userOpenModal }] = useModal();
   const [registerTenUserModal, { openModal: tenUserOpenModal }] = useModal();
   const [registerPackModal, { openModal: packModal }] = useModal();
   const [registerRecycleBinModal, { openModal: recycleBinModal }] = useModal();
+
+  const btnAddText = t('component.tenant.btnNewText');
+  const btnDeleteText = t('component.tenant.btnDeleteText');
+  const btnBatchOpsText = t('component.tenant.btnBatchOpsText');
+  const btnUserAddText = t('component.tenant.btnUserAddText');
+  const btnPackageText = t('component.tenant.btnPackageText');
+  const btnRecycleText = t('component.tenant.btnRecycleText');
 
   // 列表页面公共参数、方法
   const { prefixCls, tableContext } = useListPage({

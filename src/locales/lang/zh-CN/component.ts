@@ -131,4 +131,19 @@ export default {
     dragText: '请按住滑块拖动',
     successText: '验证通过',
   },
+  header: {
+    noDataSelected: '未选中任何数据',
+    recordText: '条记录',
+    accrossPageText: '(可跨页)',
+  },
+
+  tenant: {
+    btnNewText: '新增',
+    btnDeleteText: '删除',
+    btnBatchOpsText: '批量操作',
+    btnUserAddText: '邀请用户加入',
+    btnPackageText: '套餐',
+    btnRecycleText: '回收站'
+  }
+
 };

@@ -30,14 +30,14 @@
             <template v-if="selectRowKeys.length > 0">
               <span>
                 <span>已选中 {{ selectRowKeys.length }} 条记录</span>
-                <span v-if="isAcrossPage">(可跨页)</span>
+                <span v-if="isAcrossPage">{{ accrossPageText }}</span>
               </span>
               <a-divider type="vertical" />
               <a @click="setSelectedRowKeys([])">清空</a>
               <slot name="alertAfter" />
             </template>
             <template v-else>
-              <span>未选中任何数据</span>
+              <span>{{ noDataSelected }}</span>
             </template>
           </template>
         </a-alert>
@@ -55,6 +55,8 @@
   import TableTitle from './TableTitle.vue';
   import { useDesign } from '/@/hooks/web/useDesign';
   import { useTableContext } from '../hooks/useTableContext';
+
+  import { useI18n } from '/@/hooks/web/useI18n';
 
   export default defineComponent({
     name: 'BasicTableHeader',
@@ -81,6 +83,7 @@
     emits: ['columns-change'],
     setup(_, { emit }) {
       const { prefixCls } = useDesign('basic-table-header');
+      const { t } = useI18n();
 
       function handleColumnChange(data: ColumnChangeParam[]) {
         emit('columns-change', data);
@@ -89,10 +92,23 @@
       const { getSelectRowKeys, setSelectedRowKeys, getRowSelection } = useTableContext();
       const selectRowKeys = computed(() => getSelectRowKeys());
       const openRowSelection = computed(() => getRowSelection());
+      const noDataSelected = t('component.header.noDataSelected');
+      const accrossPageText = t('component.header.accrossPageText');
+      const recordText = t('component.header.recordText');
+      const selectedWithValueText = t('component.header.selectedWithValueText', { total: selectRowKeys.length })
       // 是否允许跨页选择
       const isAcrossPage = computed(() => openRowSelection.value?.preserveSelectedRowKeys === true);
 
-      return { prefixCls, handleColumnChange, selectRowKeys, setSelectedRowKeys, openRowSelection, isAcrossPage };
+      return { prefixCls,
+         handleColumnChange,
+         selectRowKeys,
+         setSelectedRowKeys,
+         openRowSelection,
+         noDataSelected,
+         accrossPageText,
+         recordText,
+         selectedWithValueText,
+         isAcrossPage };
     },
   });
 </script>

@@ -126,4 +126,16 @@ export default {
     dragText: 'Hold down the slider and drag',
     successText: 'Verified',
   },
+  header: {
+    noDataSelected: 'No data selected',
+    selectedWithValueText: 'Selected {total} records ',
+    accrossPageText: '(across pages)',
+  },
+  tenant: {
+    btnNewText: 'New',
+    btnDeleteText: 'Delete',
+    btnBatchOpsText: 'Batch operation',
+    btnUserAddText: 'Invite users to join',
+    btnPackageText: 'Package',
+    btnRecycleText: 'Recycle Bin'  }
 };

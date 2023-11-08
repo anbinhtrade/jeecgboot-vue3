@@ -23,6 +23,7 @@ export default {
     lockScreenBtn: '锁定',
 
     home: '首页',
+    greetingText: '欢迎进入,', // greeting text
   },
   multipleTab: {
     reload: '重新加载',

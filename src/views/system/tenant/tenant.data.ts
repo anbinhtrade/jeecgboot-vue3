@@ -5,17 +5,17 @@ import { rules } from "/@/utils/helper/validator";
 
 export const columns: BasicColumn[] = [
   {
-    title: '租户名称',
+    title: 'Tenant name',
     dataIndex: 'name',
     width: 200,
     align: 'left',
   },
   {
-    title: '租户编号(ID)',
+    title: 'Tenant ID',
     dataIndex: 'id',
     width: 180,
   },{
-    title: '组织LOGO',
+    title: 'Organization LOGO',
     dataIndex: 'companyLogo',
     width: 100,
     customRender: ({ text }) => {
@@ -27,32 +27,32 @@ export const columns: BasicColumn[] = [
   },
   {
     dataIndex: 'trade_dictText',
-    title: '所属行业',
+    title: 'Industry',
     width: 150
   },
   {
     dataIndex: 'companySize_dictText',
-    title: '公司规模',
+    title: 'Company Size',
     width: 100
   },
   {
     dataIndex: 'houseNumber',
-    title: '门牌号',
+    title: 'House Number',
     width: 100,
   },
   {
     dataIndex: 'position_dictText',
-    title: '职级',
+    title: 'Rank',
     width: 150
   },
   {
     dataIndex: 'department_dictText',
-    title: '部门',
+    title: 'Department',
     width: 150
   },
   {
     dataIndex: 'createBy_dictText',
-    title: '创建者(拥有者)',
+    title: 'Creator (Owner)',
     width: 150
   },
 /*  {
@@ -68,7 +68,7 @@ export const columns: BasicColumn[] = [
     width: 180,
   },*/
   {
-    title: '状态',
+    title: 'State',
     dataIndex: 'status_dictText',
     width: 100,
   },
@@ -77,7 +77,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: '租户名称',
+    label: 'Tenant name',
     component: 'Input',
     colProps: { span: 8 },
   },

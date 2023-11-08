@@ -22,6 +22,7 @@ export default {
     lockScreenBtn: 'Locking',
 
     home: 'Home',
+    greetingText: 'Welcome,', // greeting text
   },
   multipleTab: {
     reload: 'Refresh current',
