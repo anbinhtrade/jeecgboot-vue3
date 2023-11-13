@@ -33,7 +33,7 @@
     canResize: false,
     actionColumn: {
       width: 100,
-      title: '操作',
+      title: 'Action',
       dataIndex: 'action',
       slots: { customRender: 'action' },
       fixed: undefined,

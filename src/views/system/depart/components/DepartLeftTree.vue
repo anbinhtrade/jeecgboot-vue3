@@ -1,26 +1,26 @@
 <template>
   <a-card :bordered="false" style="height: 100%">
     <div class="j-table-operator" style="width: 100%">
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddDepart">新增</a-button>
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddChildDepart()">添加下级</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddDepart">NEW</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddChildDepart()">Add subordinates</a-button>
       <a-upload name="file" :showUploadList="false" :customRequest="onImportXls">
-        <a-button type="primary" preIcon="ant-design:import-outlined">导入</a-button>
+        <a-button type="primary" preIcon="ant-design:import-outlined">IMPORT</a-button>
       </a-upload>
-      <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls">导出</a-button>
-      <a-button type="primary" preIcon="ant-design:sync-outlined">同步企微?</a-button>
-      <a-button type="primary" preIcon="ant-design:sync-outlined">同步钉钉?</a-button>
+      <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls">EXPORT</a-button>
+      <a-button type="primary" preIcon="ant-design:sync-outlined">Synchronize with the micro enterprise?</a-button>
+      <a-button type="primary" preIcon="ant-design:sync-outlined">Synchronous DingTalk?</a-button>
       <template v-if="checkedKeys.length > 0">
         <a-dropdown>
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="onDeleteBatch">
                 <icon icon="ant-design:delete-outlined" />
-                <span>删除</span>
+                <span>DELETE</span>
               </a-menu-item>
             </a-menu>
           </template>
           <a-button>
-            <span>批量操作 </span>
+            <span>Bulk operations </span>
             <icon icon="akar-icons:chevron-down" />
           </a-button>
         </a-dropdown>
@@ -29,18 +29,18 @@
     <a-alert type="info" show-icon class="alert" style="margin-bottom: 8px">
       <template #message>
         <template v-if="checkedKeys.length > 0">
-          <span>已选中 {{ checkedKeys.length }} 条记录</span>
+          <span>SELECTED {{ checkedKeys.length }} RECORDS</span>
           <a-divider type="vertical" />
-          <a @click="checkedKeys = []">清空</a>
+          <a @click="checkedKeys = []">EMPTY</a>
         </template>
         <template v-else>
-          <span>未选中任何数据</span>
+          <span>No data is selected</span>
         </template>
       </template>
     </a-alert>
     <a-spin :spinning="loading">
-      <a-input-search placeholder="按部门名称搜索…" style="margin-bottom: 10px" @search="onSearch" />
-      <!--组织机构树-->
+      <a-input-search placeholder="Search by department name..." style="margin-bottom: 10px" @search="onSearch" />
+      <!--Organization tree-->
       <template v-if="treeData.length > 0">
         <a-tree
           v-if="!treeReloading"
@@ -59,9 +59,9 @@
             <a-dropdown :trigger="['contextmenu']">
               <Popconfirm
                 :visible="visibleTreeKey === treeKey"
-                title="确定要删除吗？"
-                ok-text="确定"
-                cancel-text="取消"
+                title="Are you sure you want to delete?"
+                ok-text="Are you sure"
+                cancel-text="CANCEL"
                 placement="rightTop"
                 @confirm="onDelete(dataRef)"
                 @visibleChange="onVisibleChange"
@@ -71,9 +71,9 @@
 
               <template #overlay>
                 <a-menu @click="">
-                  <a-menu-item key="1" @click="onAddChildDepart(dataRef)">添加子级</a-menu-item>
+                  <a-menu-item key="1" @click="onAddChildDepart(dataRef)">Add children</a-menu-item>
                   <a-menu-item key="2" @click="visibleTreeKey = treeKey">
-                    <span style="color: red">删除</span>
+                    <span style="color: red">DELETE</span>
                   </a-menu-item>
                 </a-menu>
               </template>
@@ -81,7 +81,7 @@
           </template>
         </a-tree>
       </template>
-      <a-empty v-else description="暂无数据" />
+      <a-empty v-else description="No data yet" />
     </a-spin>
     <DepartFormModal :rootTreeData="treeData" @register="registerModal" @success="loadRootTreeData" />
   </a-card>
@@ -228,7 +228,7 @@
   // 添加子级部门
   function onAddChildDepart(data = currentDepart.value) {
     if (data == null) {
-      createMessage.warning('请先选择一个部门');
+      createMessage.warning('Please select a department first');
       return;
     }
     const record = { parentId: data.id };
@@ -323,7 +323,7 @@
   }
 
   function onExportXls() {
-    handleExportXls('部门信息', Api.exportXlsUrl);
+    handleExportXls('Department Information', Api.exportXlsUrl);
   }
 
   defineExpose({

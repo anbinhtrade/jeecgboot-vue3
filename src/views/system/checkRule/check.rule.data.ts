@@ -2,23 +2,22 @@ import { BasicColumn, FormSchema } from '/@/components/Table';
 import { render } from '/@/utils/common/renderUtils';
 import { duplicateCheck } from '/@/views/system/user/user.api';
 import { validateCheckRule } from '/@/views/system/checkRule/check.rule.api';
-import { array } from 'vue-types';
 
 export const columns: BasicColumn[] = [
   {
-    title: '规则名称',
+    title: 'The name of the rule',
     dataIndex: 'ruleName',
     width: 200,
     align: 'center',
   },
   {
-    title: '规则编码',
+    title: 'Rule encoding',
     dataIndex: 'ruleCode',
     width: 200,
     align: 'center',
   },
   {
-    title: '规则描述',
+    title: 'Rule description',
     dataIndex: 'ruleDescription',
     width: 300,
     align: 'center',
@@ -31,13 +30,13 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'ruleName',
-    label: '规则名称',
+    label: 'The name of the rule',
     component: 'Input',
     colProps: { span: 6 },
   },
   {
     field: 'ruleCode',
-    label: '规则编码',
+    label: 'Rule encoding',
     component: 'Input',
     colProps: { span: 6 },
   },
@@ -52,14 +51,14 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'ruleName',
-    label: '规则名称',
+    label: 'The name of the rule',
     component: 'Input',
     required: true,
     colProps: { span: 24 },
   },
   {
     field: 'ruleCode',
-    label: '规则编码',
+    label: 'Rule encoding',
     component: 'Input',
     colProps: { span: 24 },
     dynamicDisabled: ({ values }) => {
@@ -72,7 +71,7 @@ export const formSchema: FormSchema[] = [
           validator: (_, value) => {
             return new Promise((resolve, reject) => {
               if (!value) {
-                return reject('请输入规则编码！');
+                return reject('Please enter the rule code！');
               }
               let params = {
                 tableName: 'sys_check_rule',
@@ -82,10 +81,10 @@ export const formSchema: FormSchema[] = [
               };
               duplicateCheck(params)
                 .then((res) => {
-                  res.success ? resolve() : reject('规则编码已存在!');
+                  res.success ? resolve() : reject('The rule coding already exists!');
                 })
                 .catch((err) => {
-                  reject(err.message || '校验失败');
+                  reject(err.message || 'The verification failed');
                 });
             });
           },
@@ -95,11 +94,11 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'ruleDescription',
-    label: '规则描述',
+    label: 'Rule description',
     colProps: { span: 24 },
     component: 'InputTextArea',
     componentProps: {
-      placeholder: '请输入规则描述',
+      placeholder: 'Please enter a description of the rule',
       rows: 2,
     },
   },
@@ -114,7 +113,7 @@ export const checkRuleInput: FormSchema[] = [
   },
   {
     field: 'testValue',
-    label: '需要测试的值:',
+    label: 'The value that needs to be tested:',
     component: 'Input',
     componentProps: ({ formModel }) => {
       return {

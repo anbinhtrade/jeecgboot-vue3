@@ -817,7 +817,7 @@ export function usePopBiz(ob, tableRef?) {
       hrefComponent.value.params = {};
     }
     hrefComponent.value.model.visible = true;
-    hrefComponent.value.model.title = '操作';
+    hrefComponent.value.model.title = 'Action';
     hrefComponent.value.is = markRaw(defineAsyncComponent(() => importViewsFile(path)));
   }
 

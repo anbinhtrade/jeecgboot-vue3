@@ -2,21 +2,21 @@
   <div class="p-4">
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> 新增菜单</a-button>
-        <a-button type="primary" preIcon="ic:round-expand" @click="expandAll">展开全部</a-button>
-        <a-button type="primary" preIcon="ic:round-compress" @click="collapseAll">折叠全部</a-button>
+        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> New menu</a-button>
+        <a-button type="primary" preIcon="ic:round-expand" @click="expandAll">Expand All</a-button>
+        <a-button type="primary" preIcon="ic:round-compress" @click="collapseAll">Collapse all</a-button>
 
         <a-dropdown v-if="checkedKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined" />
-                删除
+                DELETE
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Bulk operations
             <Icon icon="ant-design:down-outlined" />
           </a-button>
         </a-dropdown>
@@ -46,7 +46,7 @@
   // 列表页面公共参数、方法
   const { prefixCls, tableContext } = useListPage({
     tableProps: {
-      title: '菜单列表',
+      title: 'Menu list',
       api: list,
       columns: columns,
       size: 'small',
@@ -169,7 +169,7 @@
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
     ];
@@ -181,22 +181,22 @@
   function getDropDownAction(record) {
     return [
       // {
-      //   label: '详情',
+      //   label: 'DETAIL',
       //   onClick: handleDetail.bind(null, record),
       // },
       {
-        label: '添加下级',
+        label: 'Add subordinates',
         onClick: handleAddSub.bind(null, record),
       },
       {
-        label: '数据规则',
+        label: 'Data Rules',
         onClick: handleDataRule.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         color: 'error',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

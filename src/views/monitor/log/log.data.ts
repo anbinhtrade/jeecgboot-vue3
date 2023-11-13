@@ -2,18 +2,18 @@ import { BasicColumn, FormSchema } from '/@/components/Table';
 
 export const columns: BasicColumn[] = [
   {
-    title: '日志内容',
+    title: 'Log content',
     dataIndex: 'logContent',
     width: 100,
     align: 'left',
   },
   {
-    title: '操作人ID',
+    title: 'Operator ID',
     dataIndex: 'userid',
     width: 80,
   },
   {
-    title: '操作人',
+    title: 'Operator',
     dataIndex: 'username',
     width: 80,
   },
@@ -23,30 +23,30 @@ export const columns: BasicColumn[] = [
     width: 80,
   },
   {
-    title: '耗时(毫秒)',
+    title: 'Time Taken (ms)',
     dataIndex: 'costTime',
     width: 80,
   },
   {
-    title: '创建时间',
+    title: 'Creation time',
     dataIndex: 'createTime',
     sorter: true,
     width: 80,
   },
   {
-    title: '日志类型',
+    title: 'Log type',
     dataIndex: 'logType_dictText',
     width: 60,
   },
 ];
 
 /**
- * 操作日志需要操作类型
+ * The operation type is required for the operation log
  */
 export const operationLogColumn: BasicColumn[] = [
   ...columns,
   {
-    title: '操作类型',
+    title: 'The type of operation',
     dataIndex: 'operateType_dictText',
     width: 40,
   },
@@ -55,14 +55,14 @@ export const operationLogColumn: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'keyWord',
-    label: '搜索日志',
+    label: 'Search logs',
     component: 'Input',
     colProps: { span: 8 },
   },
   {
     field: 'fieldTime',
     component: 'RangePicker',
-    label: '创建时间',
+    label: 'Creation time',
     componentProps: {
       valueType: 'Date',
     },

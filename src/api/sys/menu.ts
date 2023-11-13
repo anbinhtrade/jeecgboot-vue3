@@ -15,8 +15,10 @@ export const getMenuList = () => {
     //为了兼容mock和接口数据
     defHttp.get<getMenuListResultModel>({ url: Api.GetMenuList }).then((res) => {
       if (Array.isArray(res)) {
+        console.log('Resource: ', res);
         resolve(res);
       } else {
+        console.log('Resource[menu]: ', res);
         resolve(res['menu']);
       }
     });

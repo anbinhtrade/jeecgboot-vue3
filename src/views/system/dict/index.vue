@@ -3,23 +3,23 @@
   <BasicTable @register="registerTable" :rowSelection="rowSelection">
     <!--插槽:table标题-->
     <template #tableTitle>
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> 新增</a-button>
-      <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
-      <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
-      <a-button type="primary" @click="handlerRefreshCache" preIcon="ant-design:sync-outlined"> 刷新缓存</a-button>
-      <a-button type="primary" @click="openRecycleModal(true)" preIcon="ant-design:hdd-outlined"> 回收站</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
+      <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
+      <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
+      <a-button type="primary" @click="handlerRefreshCache" preIcon="ant-design:sync-outlined"> Refresh the cache</a-button>
+      <a-button type="primary" @click="openRecycleModal(true)" preIcon="ant-design:hdd-outlined"> RECYCLE BIN</a-button>
 
       <a-dropdown v-if="selectedRowKeys.length > 0">
         <template #overlay>
           <a-menu>
             <a-menu-item key="1" @click="batchHandleDelete">
               <Icon icon="ant-design:delete-outlined"></Icon>
-              删除
+              DELETE
             </a-menu-item>
           </a-menu>
         </template>
         <a-button
-          >批量操作
+          >Bulk operations
           <Icon icon="ant-design:down-outlined"></Icon>
         </a-button>
       </a-dropdown>
@@ -67,7 +67,7 @@
   const { prefixCls, tableContext, onExportXls, onImportXls } = useListPage({
     designScope: 'dict-template',
     tableProps: {
-      title: '数据字典',
+      title: 'Data Dictionary',
       api: list,
       columns: columns,
       formConfig: {
@@ -79,7 +79,7 @@
     },
     //update-begin---author:wangshuai ---date:20220616  for：[issues/I5AMDD]导入/导出功能，操作后提示没有传递 export.url/import.url 参数------------
     exportConfig: {
-      name: '数据字典列表',
+      name: 'A list of data dictionaries',
       url: getExportUrl,
     },
     importConfig: {
@@ -124,13 +124,13 @@
     await deleteDict({ id: record.id }, reload);
   }
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   async function batchHandleDelete() {
     await batchDeleteDict({ ids: selectedRowKeys.value }, reload);
   }
   /**
-   * 成功回调
+   * Successful callback
    */
   function handleSuccess({ isUpdate, values }) {
     if (isUpdate) {
@@ -140,7 +140,7 @@
     }
   }
   /**
-   * 刷新缓存
+   * Refresh the cache
    */
   async function handlerRefreshCache() {
     const result = await refreshCache();

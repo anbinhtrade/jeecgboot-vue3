@@ -1,20 +1,20 @@
 <template>
   <BasicTable @register="registerTable">
     <template #tableTitle>
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> 新增</a-button>
-      <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
-      <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
+      <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
+      <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
       <a-dropdown v-if="selectedRowKeys.length > 0">
         <template #overlay>
           <a-menu>
             <a-menu-item key="1" @click="batchHandleDelete">
               <Icon icon="ant-design:delete-outlined"></Icon>
-              删除
+              DELETE
             </a-menu-item>
           </a-menu>
         </template>
         <a-button
-          >批量操作
+          >Bulk operations
           <Icon icon="mdi:chevron-down"></Icon>
         </a-button>
       </a-dropdown>
@@ -59,7 +59,7 @@
   const { prefixCls, tableContext, onImportXls, onExportXls } = useListPage({
     designScope: 'role-template',
     tableProps: {
-      title: '系统角色列表',
+      title: 'List of system roles',
       api: list,
       columns: columns,
       formConfig: {
@@ -80,7 +80,7 @@
       },
     },
     exportConfig: {
-      name: '角色列表',
+      name: 'List of roles',
       url: getExportUrl,
     },
     importConfig: {
@@ -156,11 +156,11 @@
   function getTableAction(record) {
     return [
       {
-        label: '用户',
+        label: 'USER',
         onClick: handleUser.bind(null, record),
       },
       {
-        label: '授权',
+        label: 'AUTHORIZATION',
         onClick: handlePerssion.bind(null, record),
       },
     ];
@@ -172,22 +172,22 @@
   function getDropDownAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '详情',
+        label: 'DETAIL',
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },
       {
-        label: '首页配置',
+        label: 'Home page configuration',
         onClick: handleIndexConfig.bind(null, record.roleCode),
       },
     ];

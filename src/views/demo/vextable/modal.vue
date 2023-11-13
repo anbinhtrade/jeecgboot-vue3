@@ -37,11 +37,11 @@
         <a-tab-pane tab="客户信息" key="1">
           <div>
             <a-row type="flex" style="margin-bottom: 10px" :gutter="16">
-              <a-col :span="5">客户名</a-col>
-              <a-col :span="5">性别</a-col>
-              <a-col :span="6">身份证号码</a-col>
-              <a-col :span="6">手机号</a-col>
-              <a-col :span="2">操作</a-col>
+              <a-col :span="5">Customer Name</a-col>
+              <a-col :span="5">Gender</a-col>
+              <a-col :span="6">Identification number</a-col>
+              <a-col :span="6">Mobile phone number</a-col>
+              <a-col :span="2">Action</a-col>
             </a-row>
             <a-row type="flex" style="margin-bottom: 10px" :gutter="16" v-for="(item, index) in orderMainModel.jeecgOrderCustomerList" :key="index">
               <a-col :span="6" style="display: none">
@@ -51,12 +51,12 @@
               </a-col>
               <a-col :span="5">
                 <a-form-item>
-                  <a-input placeholder="客户名" v-model:value="item.name" />
+                  <a-input placeholder="Customer name" v-model:value="item.name" />
                 </a-form-item>
               </a-col>
               <a-col :span="5">
                 <a-form-item>
-                  <a-select placeholder="性别" v-model:value="item.sex">
+                  <a-select placeholder="GENDER" v-model:value="item.sex">
                     <a-select-option value="1">男</a-select-option>
                     <a-select-option value="2">女</a-select-option>
                   </a-select>
@@ -65,15 +65,15 @@
               <a-col :span="6">
                 <a-form-item
                   :name="['jeecgOrderCustomerList', index, 'idcard']"
-                  :rules="[{ required: true, message: '请输入身份证号', trigger: 'blur' }]"
+                  :rules="[{ required: true, message: 'Please enter your ID number', trigger: 'blur' }]"
                   :key="index"
                 >
-                  <a-input placeholder="身份证号" v-model:value="item.idcard" />
+                  <a-input placeholder="Identification number" v-model:value="item.idcard" />
                 </a-form-item>
               </a-col>
               <a-col :span="6">
                 <a-form-item :name="['jeecgOrderCustomerList', index, 'telphone']">
-                  <a-input placeholder="手机号" v-model:value="item.telphone" />
+                  <a-input placeholder="Mobile phone number" v-model:value="item.telphone" />
                 </a-form-item>
               </a-col>
               <a-col :span="2">
@@ -91,9 +91,9 @@
 
         <a-tab-pane tab="机票信息" key="2" forceRender>
           <a-row type="flex" style="margin-bottom: 10px" :gutter="16">
-            <a-col :span="6">航班号</a-col>
-            <a-col :span="6">航班时间</a-col>
-            <a-col :span="6">操作</a-col>
+            <a-col :span="6">Flight number</a-col>
+            <a-col :span="6">Flight time</a-col>
+            <a-col :span="6">Action</a-col>
           </a-row>
           <a-row type="flex" style="margin-bottom: 10px" :gutter="16" v-for="(item, index) in orderMainModel.jeecgOrderTicketList" :key="index">
             <a-col :span="6" style="display: none">
@@ -104,14 +104,14 @@
             <a-col :span="6">
               <a-form-item
                 :name="['jeecgOrderTicketList', index, 'ticketCode']"
-                :rules="{ required: true, message: '请输入航班号', trigger: 'blur' }"
+                :rules="{ required: true, message: 'Please enter your flight number', trigger: 'blur' }"
               >
-                <a-input placeholder="航班号" v-model:value="item.ticketCode" />
+                <a-input placeholder="Flight number" v-model:value="item.ticketCode" />
               </a-form-item>
             </a-col>
             <a-col :span="6">
               <a-form-item>
-                <a-date-picker placeholder="航班时间" valueFormat="YYYY-MM-DD" v-model:value="item.tickectDate" />
+                <a-date-picker placeholder="Flight time" valueFormat="YYYY-MM-DD" v-model:value="item.tickectDate" />
               </a-form-item>
             </a-col>
             <a-col :span="6">
@@ -122,7 +122,7 @@
           </a-row>
           <a-button type="dashed" style="width: 98%; margin-top: 10px" @click="addRowTicket">
             <Icon icon="ph:plus-bold" />
-            添加机票信息
+            Add your ticket information
           </a-button>
         </a-tab-pane>
       </a-tabs>
@@ -153,7 +153,7 @@
         sm: { span: 16 },
       });
       const validatorRules = {
-        orderCode: [{ required: true, message: '订单号不能为空', trigger: 'blur' }],
+        orderCode: [{ required: true, message: 'The order number cannot be empty', trigger: 'blur' }],
       };
       const orderMainModel = reactive({
         id: null,
@@ -178,7 +178,7 @@
           orderMainModel.jeecgOrderTicketList = ticketList;
         }
       });
-      const getTitle = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+      const getTitle = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
 
       //动态添加行
       function addRowCustom() {
@@ -204,7 +204,7 @@
         orderMainModel.jeecgOrderTicketList.push({});
       }
 
-      //删除机票
+      //Delete the ticket
       function delRowTicket(index) {
         orderMainModel['jeecgOrderTicketList'].splice(index, 1);
         orderMainModel.jeecgOrderTicketList.splice(index, 1);
@@ -256,12 +256,12 @@
     line-height: 0px;
   }
 
-  /** 主表单行间距 */
+  /** Main form row spacing */
   .ant-form .ant-form-item {
     margin-bottom: 10px;
   }
 
-  /** Tab页面行间距 */
+  /** Tab page line spacing */
   .ant-tabs-content .ant-form-item {
     margin-bottom: 0px;
   }

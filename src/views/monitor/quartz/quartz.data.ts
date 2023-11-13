@@ -4,18 +4,18 @@ import { JCronValidator } from '/@/components/Form';
 
 export const columns: BasicColumn[] = [
   {
-    title: '任务类名',
+    title: 'The name of the task class',
     dataIndex: 'jobClassName',
     width: 200,
     align: 'left',
   },
   {
-    title: 'Cron表达式',
+    title: 'Cron expression',
     dataIndex: 'cronExpression',
     width: 200,
   },
   {
-    title: '参数',
+    title: 'PARAMETER',
     dataIndex: 'parameter',
     width: 200,
   },
@@ -38,13 +38,13 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'jobClassName',
-    label: '任务类名',
+    label: 'The name of the task class',
     component: 'Input',
     colProps: { span: 8 },
   },
   {
     field: 'status',
-    label: '任务状态',
+    label: 'Task status',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'quartz_status',
@@ -63,32 +63,32 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'jobClassName',
-    label: '任务类名',
+    label: 'The name of the task class',
     component: 'Input',
     required: true,
   },
   {
     field: 'cronExpression',
-    label: 'Cron表达式',
+    label: 'Cron expression',
     component: 'JEasyCron',
     defaultValue: '* * * * * ? *',
-    rules: [{ required: true, message: '请输入Cron表达式' }, { validator: JCronValidator }],
+    rules: [{ required: true, message: 'Please enter a Cron expression' }, { validator: JCronValidator }],
   },
   {
     field: 'paramterType',
-    label: '参数类型',
+    label: 'Parameter type',
     component: 'Select',
     defaultValue: 'string',
     componentProps: {
       options: [
-        { label: '字符串', value: 'string' },
+        { label: 'STRING', value: 'string' },
         { label: 'JSON对象', value: 'json' },
       ],
     },
   },
   {
     field: 'parameter',
-    label: '参数',
+    label: 'PARAMETER',
     component: 'InputTextArea',
     ifShow: ({ values }) => {
       return values.paramterType == 'string';
@@ -96,16 +96,16 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'parameter',
-    label: '参数',
+    label: 'PARAMETER',
     component: 'JAddInput',
-    helpMessage: '键值对形式填写',
+    helpMessage: 'Enter a key-value pair',
     ifShow: ({ values }) => {
       return values.paramterType == 'json';
     },
   },
   {
     field: 'status',
-    label: '状态',
+    label: 'STATE',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'quartz_status',
@@ -118,7 +118,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'description',
-    label: '描述',
+    label: 'DESCRIPTION',
     component: 'InputTextArea',
   },
 ];

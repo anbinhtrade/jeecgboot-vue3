@@ -11,6 +11,7 @@ import { useUserStore } from '/@/store/modules/user';
 export type RouteLocationRawEx = Omit<RouteLocationRaw, 'path'> & { path: PageEnum };
 
 function handleError(e: Error) {
+  // print stack
   console.error(e);
 }
 

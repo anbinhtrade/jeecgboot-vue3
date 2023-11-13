@@ -265,7 +265,7 @@ export function useListTable(tableProps: TableProps): [
     // 操作列
     actionColumn: {
       width: 120,
-      title: '操作',
+      title: 'Action',
       //是否锁定操作列取值 right ,left,false
       fixed: false,
       dataIndex: 'action',

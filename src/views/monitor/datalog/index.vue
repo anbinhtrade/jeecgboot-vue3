@@ -2,7 +2,7 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleCompare" style="margin-right: 5px">数据比较</a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleCompare" style="margin-right: 5px">Data Comparison</a-button>
       </template>
     </BasicTable>
     <DataLogCompareModal @register="registerModal" @success="reload" />

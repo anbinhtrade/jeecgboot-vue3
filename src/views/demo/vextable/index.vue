@@ -5,16 +5,16 @@
         <a-dropdown>
           <template #overlay>
             <a-menu @click="handleCreate">
-              <a-menu-item :key="1">一对一示例</a-menu-item>
-              <a-menu-item :key="2">一对多示例</a-menu-item>
-              <a-menu-item :key="3">一对多(JVexTable)</a-menu-item>
+              <a-menu-item :key="1">One-to-one example</a-menu-item>
+              <a-menu-item :key="2">One-to-many examples</a-menu-item>
+              <a-menu-item :key="3">One-to-many(JVexTable)</a-menu-item>
             </a-menu>
           </template>
-          <a-button type="primary">新增 <DownOutlined /></a-button>
+          <a-button type="primary">New <DownOutlined /></a-button>
         </a-dropdown>
       </template>
       <template #ctype="{ text }">
-        {{ text === '1' ? '国内订单' : text === '2' ? '国际订单' : text }}
+        {{ text === '1' ? 'Domestic orders' : text === '2' ? 'International Orders' : text }}
       </template>
       <template #action="{ record }">
         <TableAction :actions="getAction(record)" :dropDownActions="getDropDownActions(record)" />
@@ -46,11 +46,11 @@
   const [registerOneToOneModal, { openModal: openOneToOneModal }] = useModal();
   const [registerVexTableModal, { openModal: openVexTableModal }] = useModal();
 
-  //定义表格行操作
+  //Define table row actions
   const getAction = (record) => {
     return [
       {
-        label: '编辑',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
     ];
@@ -59,9 +59,9 @@
   const getDropDownActions = (record) => {
     let arr = [
       {
-        label: '删除',
+        label: 'Delete',
         popConfirm: {
-          title: '是否删除？',
+          title: 'Whether to delete or not？',
           confirm: handleDelete.bind(null, record),
         },
       },
@@ -69,7 +69,7 @@
     return arr;
   };
 
-  // 列表页面公共参数、方法
+  // Common parameters and methods on the list page
   const { tableContext } = useListPage({
     tableProps: {
       api: list,
@@ -77,7 +77,7 @@
       useSearchForm: false,
       actionColumn: {
         width: 160,
-        title: '操作',
+        title: 'Operate',
         dataIndex: 'action',
         slots: { customRender: 'action' },
       },

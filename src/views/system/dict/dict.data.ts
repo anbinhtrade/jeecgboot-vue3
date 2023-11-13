@@ -6,17 +6,17 @@ import { h } from "vue";
 
 export const columns: BasicColumn[] = [
   {
-    title: '字典名称',
+    title: 'Dictionary name',
     dataIndex: 'dictName',
     width: 240,
   },
   {
-    title: '字典编码',
+    title: 'Dictionary encoding',
     dataIndex: 'dictCode',
     width: 240,
   },
   {
-    title: '描述',
+    title: 'DESCRIPTION',
     dataIndex: 'description',
     // width: 120
   },
@@ -24,17 +24,17 @@ export const columns: BasicColumn[] = [
 
 export const recycleBincolumns: BasicColumn[] = [
   {
-    title: '字典名称',
+    title: 'Dictionary name',
     dataIndex: 'dictName',
     width: 120,
   },
   {
-    title: '字典编码',
+    title: 'Dictionary encoding',
     dataIndex: 'dictCode',
     width: 120,
   },
   {
-    title: '描述',
+    title: 'DESCRIPTION',
     dataIndex: 'description',
     width: 120,
   },
@@ -42,13 +42,13 @@ export const recycleBincolumns: BasicColumn[] = [
 
 export const searchFormSchema: FormSchema[] = [
   {
-    label: '字典名称',
+    label: 'Dictionary name',
     field: 'dictName',
     component: 'Input',
     colProps: { span: 6 },
   },
   {
-    label: '字典编码',
+    label: 'Dictionary encoding',
     field: 'dictCode',
     component: 'Input',
     colProps: { span: 6 },
@@ -63,13 +63,13 @@ export const formSchema: FormSchema[] = [
     show: false,
   },
   {
-    label: '字典名称',
+    label: 'Dictionary name',
     field: 'dictName',
     required: true,
     component: 'Input',
   },
   {
-    label: '字典编码',
+    label: 'Dictionary encoding',
     field: 'dictCode',
     component: 'Input',
     dynamicDisabled: ({ values }) => {
@@ -78,7 +78,7 @@ export const formSchema: FormSchema[] = [
     dynamicRules: ({ model, schema }) => rules.duplicateCheckRule('sys_dict', 'dict_code', model, schema, true),
   },
   {
-    label: '描述',
+    label: 'DESCRIPTION',
     field: 'description',
     component: 'Input',
   },
@@ -86,17 +86,17 @@ export const formSchema: FormSchema[] = [
 
 export const dictItemColumns: BasicColumn[] = [
   {
-    title: '名称',
+    title: 'NAME',
     dataIndex: 'itemText',
     width: 80,
   },
   {
-    title: '数据值',
+    title: 'Data values',
     dataIndex: 'itemValue',
     width: 80,
   },
   {
-    title: '字典颜色',
+    title: 'Dictionary color',
     dataIndex: 'itemColor',
     width: 80,
     align:'center',
@@ -110,12 +110,12 @@ export const dictItemColumns: BasicColumn[] = [
 
 export const dictItemSearchFormSchema: FormSchema[] = [
   {
-    label: '名称',
+    label: 'NAME',
     field: 'itemText',
     component: 'Input',
   },
   {
-    label: '状态',
+    label: 'STATE',
     field: 'status',
     component: 'JDictSelectTag',
     componentProps: {
@@ -133,13 +133,13 @@ export const itemFormSchema: FormSchema[] = [
     show: false,
   },
   {
-    label: '名称',
+    label: 'NAME',
     field: 'itemText',
     required: true,
     component: 'Input',
   },
   {
-    label: '数据值',
+    label: 'Data values',
     field: 'itemValue',
     component: 'Input',
     dynamicRules: ({ values, model }) => {
@@ -148,10 +148,10 @@ export const itemFormSchema: FormSchema[] = [
           required: true,
           validator: (_, value) => {
             if (!value) {
-              return Promise.reject('请输入数据值');
+              return Promise.reject('Please enter a data value');
             }
             if (new RegExp("[`~!@#$^&*()=|{}'.<>《》/?！￥（）—【】‘；：”“。，、？]").test(value)) {
-              return Promise.reject('数据值不能包含特殊字符！');
+              return Promise.reject('Data values cannot contain special characters！');
             }
             return new Promise<void>((resolve, reject) => {
               let params = {
@@ -161,10 +161,10 @@ export const itemFormSchema: FormSchema[] = [
               };
               dictItemCheck(params)
                 .then((res) => {
-                  res.success ? resolve() : reject(res.message || '校验失败');
+                  res.success ? resolve() : reject(res.message || 'The verification failed');
                 })
                 .catch((err) => {
-                  reject(err.message || '验证失败');
+                  reject(err.message || 'Validation failed');
                 });
             });
           },
@@ -173,25 +173,25 @@ export const itemFormSchema: FormSchema[] = [
     },
   },
   {
-    label: '颜色值',
+    label: 'Color values',
     field: 'itemColor',
     component: 'Input',
     slot:'itemColor'
   },
   {
-    label: '描述',
+    label: 'DESCRIPTION',
     field: 'description',
     component: 'Input',
   },
   {
     field: 'sortOrder',
-    label: '排序',
+    label: 'SORT',
     component: 'InputNumber',
     defaultValue: 1,
   },
   {
     field: 'status',
-    label: '是否启用',
+    label: 'Whether it is enabled',
     defaultValue: 1,
     component: 'JDictSelectTag',
     componentProps: {

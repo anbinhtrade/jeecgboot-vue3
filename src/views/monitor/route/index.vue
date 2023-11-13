@@ -2,11 +2,11 @@
   <div class="p-4">
     <BasicTable @register="registerTable" :indexColumnProps="indexColumnProps">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">新增</a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">NEW</a-button>
       </template>
       <template #status="{ record, text }">
-        <a-tag color="pink" v-if="text == 0">禁用</a-tag>
-        <a-tag color="#87d068" v-if="text == 1">正常</a-tag>
+        <a-tag color="pink" v-if="text == 0">DISABLE</a-tag>
+        <a-tag color="#87d068" v-if="text == 1">NORMAL</a-tag>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getActions(record)" />
@@ -33,7 +33,7 @@
   const { prefixCls, tableContext } = useListPage({
     designScope: 'router-template',
     tableProps: {
-      title: '路由列表',
+      title: 'Route list',
       api: getRouteList,
       useSearchForm: false,
       columns: columns,
@@ -56,13 +56,13 @@
   function getActions(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },
@@ -70,14 +70,14 @@
   }
 
   /**
-   * 选择事件
+   * Select the event
    */
   function onSelectChange(selectedRowKeys: (string | number)[]) {
     checkedKeys.value = selectedRowKeys;
   }
 
   /**
-   * 新增事件
+   * New events
    */
   function handleAdd() {
     openDrawer(true, {
@@ -86,7 +86,7 @@
   }
 
   /**
-   * 编辑事件
+   * Edit the event
    */
   function handleEdit(record) {
     openDrawer(true, {
@@ -96,7 +96,7 @@
   }
 
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     await deleteRoute({ id: record.id }, reload);

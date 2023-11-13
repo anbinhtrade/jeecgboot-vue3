@@ -1,20 +1,20 @@
 <template>
   <BasicDrawer v-bind="$attrs" @register="registerDrawer" :title="getTitle" width="30%" @ok="handleSubmit" destroyOnClose showFooter>
     <a-form ref="formRef" :label-col="labelCol" :wrapper-col="wrapperCol" :model="router" :rules="validatorRules">
-      <a-form-item label="路由ID" name="routerId">
-        <a-input v-model:value="router.routerId" placeholder="路由唯一ID" />
+      <a-form-item label="Route ID" name="routerId">
+        <a-input v-model:value="router.routerId" placeholder="Route unique ID" />
       </a-form-item>
-      <a-form-item label="路由名称" name="name">
-        <a-input v-model:value="router.name" placeholder="路由名称" />
+      <a-form-item label="Route name" name="name">
+        <a-input v-model:value="router.name" placeholder="Route name" />
       </a-form-item>
-      <a-form-item label="路由URI" name="uri">
-        <a-input v-model:value="router.uri" placeholder="路由URL" />
+      <a-form-item label="Route URI" name="uri">
+        <a-input v-model:value="router.uri" placeholder="Route URLs" />
       </a-form-item>
-      <a-form-item label="路由状态" name="status">
+      <a-form-item label="Route status" name="status">
         <a-switch default-checked :checked-value="1" :un-checked-value="0" v-model:checked="router.status" />
       </a-form-item>
 
-      <a-form-item name="predicates" label="路由条件">
+      <a-form-item name="predicates" label="Routing conditions">
         <div v-for="(item, index) in router.predicates">
           <!--当name在noKeyRouter时不需要指定key-->
           <template v-if="noKeyRouter.includes(item.name)">
@@ -73,15 +73,15 @@
               <template v-for="(value, key) in item.args">
                 <a-row>
                   <a-col :span="5" style="margin-top: 8px">
-                    <span v-if="key == 'header'">Header名称</span>
-                    <span v-if="key == 'regexp'">参数值</span>
-                    <span v-if="key == 'param'">参数名</span>
-                    <span v-if="key == 'name'">参数名</span>
+                    <span v-if="key == 'header'">Header name</span>
+                    <span v-if="key == 'regexp'">Parameter value</span>
+                    <span v-if="key == 'param'">The name of the parameter</span>
+                    <span v-if="key == 'name'">The name of the parameter</span>
                   </a-col>
                   <a-col :span="18">
                     <a-input
                       :defaultValue="value"
-                      placeholder="参数值"
+                      placeholder="Parameter value"
                       style="width: 70%; margin-right: 8px; margin-top: 3px"
                       @change="(e) => valueChange(e, item.args, key)"
                     />
@@ -105,7 +105,7 @@
           </a-dropdown>
         </p>
       </a-form-item>
-      <a-form-item name="predicates" label="过滤器">
+      <a-form-item name="predicates" label="FILTER">
         <div v-for="(item, index) in router.filters">
           <a-divider
             >{{ item.name }}
@@ -114,15 +114,15 @@
           <div v-for="(tag, index) in item.args" :key="tag.key">
             <!-- update-begin---author:wangshuai ---date: 20230829 for：vue3.0后自定义表单重复组件要用a-form-item-rest,否则会警告提醒------------  -->
             <a-form-item-rest>
-              <a-input v-model:value="tag.key" placeholder="参数键" style="width: 45%; margin-right: 8px" />
-              <a-input v-model:value="tag.value" placeholder="参数值" style="width: 40%; margin-right: 8px; margin-top: 3px" />
+              <a-input v-model:value="tag.key" placeholder="Parameter key" style="width: 45%; margin-right: 8px" />
+              <a-input v-model:value="tag.value" placeholder="Parameter value" style="width: 40%; margin-right: 8px; margin-top: 3px" />
             </a-form-item-rest>
             <!-- update-end---author:wangshuai ---date: 20230829 for：vue3.0后自定义表单重复组件要用a-form-item-rest,否则会警告提醒------------  -->
             <CloseOutlined :size="22" @click="removeFilterParams(item, index)" />
           </div>
           <a-button type="dashed" style="margin-left: 28%; width: 37%; margin-top: 5px" size="small" @click="addFilterParams(item)">
             <DownOutlined :size="22" />
-            添加参数
+            Add parameters
           </a-button>
         </div>
         <p class="btn" style="padding-top: 10px">
@@ -240,9 +240,9 @@
     }
   });
   /**
-   * 标题
+   * TITLE
    */
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增路由' : '编辑路由'));
+  const getTitle = computed(() => (!unref(isUpdate) ? 'Routes are added' : 'Edit the route'));
 
   //删除路由条件配置项
   function removeTag(item, removedTag) {

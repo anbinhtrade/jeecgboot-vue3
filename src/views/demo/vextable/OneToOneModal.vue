@@ -126,7 +126,7 @@
           //update-end---author:wangshuai ---date:20220629  for：[VUEN-1484]在一对多示例页面，编辑一行（青岛订单A0001），客户信息无法填入--------------
         }
       });
-      const getTitle = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+      const getTitle = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
 
       function reset() {
         orderMainModel.id = null;

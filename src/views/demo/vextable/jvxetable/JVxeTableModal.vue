@@ -144,8 +144,8 @@
         }
       });
 
-      const validatorRules = { orderCode: [{ required: true, message: '订单号不能为空', trigger: 'blur' }] };
-      const getTitle = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+      const validatorRules = { orderCode: [{ required: true, message: 'The order number cannot be empty', trigger: 'blur' }] };
+      const getTitle = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
 
       function classifyIntoFormData(allValues) {
         let orderMain = Object.assign(orderMainModel, allValues.formValue);

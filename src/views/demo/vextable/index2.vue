@@ -2,7 +2,7 @@
   <div style="padding: 5px">
     <vxe-toolbar>
       <template #buttons>
-        <vxe-button @click="allAlign = 'left'">新增</vxe-button>
+        <vxe-button @click="allAlign = 'left'">NEW</vxe-button>
       </template>
     </vxe-toolbar>
 

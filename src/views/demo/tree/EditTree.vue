@@ -31,16 +31,16 @@
       function getRightMenuList(node: any): ContextMenuItem[] {
         return [
           {
-            label: '新增',
+            label: 'NEW',
             handler: () => {
-              console.log('点击了新增', node);
+              console.log('Click Add New', node);
             },
             icon: 'bi:plus',
           },
           {
-            label: '删除',
+            label: 'DELETE',
             handler: () => {
-              console.log('点击了删除', node);
+              console.log('Clicked Delete', node);
             },
             icon: 'bx:bxs-folder-open',
           },

@@ -1,83 +1,83 @@
 <template>
-  <PageWrapper title="单号：234231029431" contentBackground>
+  <PageWrapper title="NUMBER：234231029431" contentBackground>
     <template #extra>
-      <a-button> 操作一 </a-button>
-      <a-button> 操作二 </a-button>
-      <a-button type="primary"> 主操作 </a-button>
+      <a-button> Operation 1 </a-button>
+      <a-button> Operation two </a-button>
+      <a-button type="primary"> Main operation </a-button>
     </template>
 
     <template #footer>
       <a-tabs default-active-key="1">
-        <a-tab-pane key="1" tab="详情" />
-        <a-tab-pane key="2" tab="规则" />
+        <a-tab-pane key="1" tab="DETAIL" />
+        <a-tab-pane key="2" tab="RULES" />
       </a-tabs>
     </template>
 
     <div class="pt-4 m-4 desc-wrap">
       <a-descriptions size="small" :column="2">
-        <a-descriptions-item label="创建人"> 曲丽丽 </a-descriptions-item>
-        <a-descriptions-item label="订购产品"> XX 服务 </a-descriptions-item>
-        <a-descriptions-item label="创建时间"> 2017-01-10 </a-descriptions-item>
-        <a-descriptions-item label="关联单据">
+        <a-descriptions-item label="Created by"> Qu Lili </a-descriptions-item>
+        <a-descriptions-item label="Order the product"> XX SERVE </a-descriptions-item>
+        <a-descriptions-item label="Creation time"> 2017-01-10 </a-descriptions-item>
+        <a-descriptions-item label="Associated documents">
           <a>12421</a>
         </a-descriptions-item>
         <a-descriptions-item label="生效日期"> 2017-07-07 ~ 2017-08-08 </a-descriptions-item>
         <a-descriptions-item label="备注"> 请于两个工作日内确认 </a-descriptions-item>
       </a-descriptions>
-      <a-card title="流程进度" :bordered="false">
+      <a-card title="Process progress" :bordered="false">
         <a-steps :current="1" progress-dot size="small">
-          <a-step title="创建项目">
+          <a-step title="Create a project">
             <template #description> <div>Jeecg</div> <p>2016-12-12 12:32</p> </template>
           </a-step>
-          <a-step title="部门初审">
+          <a-step title="Preliminary examination of the department">
             <template #description>
               <p>Chad</p>
             </template>
           </a-step>
-          <a-step title="财务复核" />
-          <a-step title="完成" />
+          <a-step title="Financial review" />
+          <a-step title="FINISH" />
         </a-steps>
       </a-card>
 
-      <a-card title="用户信息" :bordered="false" class="mt-5">
+      <a-card title="User Information" :bordered="false" class="mt-5">
         <a-descriptions :column="3">
-          <a-descriptions-item label="用户姓名"> 付小小 </a-descriptions-item>
-          <a-descriptions-item label="会员卡号"> XX 32943898021309809423 </a-descriptions-item>
-          <a-descriptions-item label="身份证"> 3321944288191034921 </a-descriptions-item>
-          <a-descriptions-item label="联系方式"> 18100000000 </a-descriptions-item>
-          <a-descriptions-item label="联系地址" :span="2"> 曲丽丽 18100000000 浙江省杭州市西湖区黄姑山路工专路交叉路口 </a-descriptions-item>
+          <a-descriptions-item label="User name"> ATTACHEDSMALL </a-descriptions-item>
+          <a-descriptions-item label="Membership card number"> XX 32943898021309809423 </a-descriptions-item>
+          <a-descriptions-item label="IDENTITY CARD"> 3321944288191034921 </a-descriptions-item>
+          <a-descriptions-item label="CONTACT"> 18100000000 </a-descriptions-item>
+          <a-descriptions-item label="Contact address" :span="2"> 曲丽丽 18100000000 浙江省杭州市西湖区黄姑山路工专路交叉路口 </a-descriptions-item>
         </a-descriptions>
 
-        <a-descriptions title="信息组" :column="3">
-          <a-descriptions-item label="某某数据"> 111 </a-descriptions-item>
-          <a-descriptions-item label="该数据更新时间"> 2017-08-08 </a-descriptions-item>
-          <a-descriptions-item label="某某数据"> 725 </a-descriptions-item>
-          <a-descriptions-item label="该数据更新时间"> 2017-08-08 </a-descriptions-item>
+        <a-descriptions title="FIELD" :column="3">
+          <a-descriptions-item label="so-and-so data"> 111 </a-descriptions-item>
+          <a-descriptions-item label="The time when the data was updated"> 2017-08-08 </a-descriptions-item>
+          <a-descriptions-item label="so-and-so data"> 725 </a-descriptions-item>
+          <a-descriptions-item label="The time when the data was updated"> 2017-08-08 </a-descriptions-item>
         </a-descriptions>
 
         <h4>信息组</h4>
-        <a-card title="多层级信息组">
-          <a-descriptions title="组名称" :column="3">
-            <a-descriptions-item label="负责人"> 林东东 </a-descriptions-item>
-            <a-descriptions-item label="角色码"> 1234567 </a-descriptions-item>
-            <a-descriptions-item label="所属部门"> XX公司 - YY部 </a-descriptions-item>
-            <a-descriptions-item label="过期时间"> 2017-08-08 </a-descriptions-item>
-            <a-descriptions-item label="描述" :span="2"> 这段描述很长很长很长很长很长很长很长很长很长很长很长很长很长很长... </a-descriptions-item>
+        <a-card title="Multi-level groups of information">
+          <a-descriptions title="The name of the group" :column="3">
+            <a-descriptions-item label="HEAD"> Lin Dongdong </a-descriptions-item>
+            <a-descriptions-item label="Character code"> 1234567 </a-descriptions-item>
+            <a-descriptions-item label="AFFILIATION"> XX公司 - YY部 </a-descriptions-item>
+            <a-descriptions-item label="Expiration time"> 2017-08-08 </a-descriptions-item>
+            <a-descriptions-item label="DESCRIPTION" :span="2"> This description is long, long </a-descriptions-item>
           </a-descriptions>
           <a-divider />
-          <a-descriptions title="组名称" :column="1">
-            <a-descriptions-item label="学名">
+          <a-descriptions title="The name of the group" :column="1">
+            <a-descriptions-item label="SCIENTIFIC">
               Citrullus lanatus (Thunb.) Matsum. et Nakai一年生蔓生藤本；茎、枝粗壮，具明显的棱。卷须较粗..
             </a-descriptions-item>
           </a-descriptions>
           <a-divider />
-          <a-descriptions title="组名称" :column="1">
-            <a-descriptions-item label="负责人"> 付小小 </a-descriptions-item>
-            <a-descriptions-item label="角色码"> 1234568 </a-descriptions-item>
+          <a-descriptions title="The name of the group" :column="1">
+            <a-descriptions-item label="HEAD"> ATTACHEDSMALL </a-descriptions-item>
+            <a-descriptions-item label="Character code"> 1234568 </a-descriptions-item>
           </a-descriptions>
         </a-card>
       </a-card>
-      <a-card title="用户近半年来电记录" class="my-5">
+      <a-card title="The user's call record in the past six months" class="my-5">
         <Empty />
       </a-card>
       <BasicTable @register="registerTimeTable" />
@@ -107,7 +107,7 @@
     },
     setup() {
       const [registerTimeTable] = useTable({
-        title: '退货进度',
+        title: 'Return Progress',
         columns: refundTimeTableSchema,
         pagination: false,
         dataSource: refundTimeTableData,

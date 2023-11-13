@@ -4,10 +4,10 @@
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <!--插槽:table标题-->
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> 新增</a-button>
+        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
         <JThirdAppButton biz-type="user" :selected-row-keys="selectedRowKeys" syncToApp syncToLocal @sync-finally="onSyncFinally" />
-        <a-button type="primary" @click="openQuitModal(true, {})" preIcon="ant-design:user-delete-outlined">离职信息</a-button>
-        <div style="margin-left: 10px;margin-top: 5px"> 当前登录租户: <span class="tenant-name">{{loginTenantName}}</span> </div>
+        <a-button type="primary" @click="openQuitModal(true, {})" preIcon="ant-design:user-delete-outlined">Departure information</a-button>
+        <div style="margin-left: 10px;margin-top: 5px"> Current logged-in tenant: <span class="tenant-name">{{loginTenantName}}</span> </div>
       </template>
       <!--操作栏-->
       <template #action="{ record }">
@@ -64,7 +64,7 @@
   const { prefixCls, tableContext, onExportXls, onImportXls } = useListPage({
     designScope: 'user-list',
     tableProps: {
-      title: '租户用户列表',
+      title: 'A list of tenant users',
       api: getUserTenantPageList,
       columns: userTenantColumns,
       size: 'small',
@@ -140,7 +140,7 @@
   function getTableAction(record): ActionItem[] {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
         // ifShow: () => hasPermission('system:user:edit'),
       },
@@ -152,11 +152,11 @@
   function getDropDownAction(record): ActionItem[] {
     return [
       {
-        label: '详情',
+        label: 'DETAIL',
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: '离职',
+        label: 'DIMISSION',
         onClick: handleQuit.bind(null, record.username),
         //update-begin---author:wangshuai ---date:20230130  for：[QQYUN-3974]租户的创建人 不应该有离职按钮------------
         ifShow: () =>{
@@ -165,23 +165,23 @@
         //update-end---author:wangshuai ---date:20230130  for：[QQYUN-3974]租户的创建人 不应该有离职按钮------------
       },
       {
-        label: '交接',
+        label: 'CONNECT',
         onClick: handleHandover.bind(null, record),
         ifShow: () =>{
           return record.username === record.createBy;
         }
       },
       {
-        label: '同意',
+        label: 'AGREE',
         onClick: updateStatus.bind(null, record.id, '1'),
         ifShow: () => {
           return (record.status === '3' || record.status === '4') && record.createBy === createBy;
         },
       },
       {
-        label: '拒绝',
+        label: 'REFUSE',
         popConfirm: {
-          title: '是否确认拒绝',
+          title: 'Whether to confirm the rejection',
           confirm: updateStatus.bind(null, record.id, '4'),
         },
         ifShow: () => {
@@ -249,7 +249,7 @@
       let userId = values[0];
       changeOwenUserTenant({ userId:userId, tenantId:unref(tenantId) }).then((res) =>{
         if(res.success){
-          createMessage.success("交接成功");
+          createMessage.success("The handover was successful");
           //update-begin---author:wangshuai ---date:20230721  for：【QQYUN-5847】租户管理员办理交接，不是创建者不需要刷新浏览器------------
           let username = userStore.userInfo?.username;
           if(username == handOverUserName.value){

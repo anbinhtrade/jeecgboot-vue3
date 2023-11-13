@@ -18,13 +18,13 @@ export enum ComponentTypes {
 
 export const columns: BasicColumn[] = [
   {
-    title: '菜单名称',
+    title: 'Menu name',
     dataIndex: 'name',
     width: 200,
     align: 'left',
   },
   {
-    title: '菜单类型',
+    title: 'Menu type',
     dataIndex: 'menuType',
     width: 150,
     customRender: ({ text }) => {
@@ -32,7 +32,7 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: '图标',
+    title: 'ICON',
     dataIndex: 'icon',
     width: 50,
     customRender: ({ record }) => {

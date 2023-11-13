@@ -70,27 +70,27 @@ const dbUrlMap = {
 
 export const columns: BasicColumn[] = [
   {
-    title: '数据源名称',
+    title: 'Name',
     dataIndex: 'name',
     width: 200,
     align: 'left',
   },
   {
-    title: '数据库类型',
+    title: 'Database type',
     dataIndex: 'dbType_dictText',
     width: 200,
   },
   {
-    title: '驱动类',
+    title: 'Driver class',
     dataIndex: 'dbDriver',
     width: 200,
   },
   {
-    title: '数据源地址',
+    title: 'Data source',
     dataIndex: 'dbUrl',
   },
   {
-    title: '用户名',
+    title: 'Username',
     dataIndex: 'dbUsername',
     width: 200,
   },
@@ -99,13 +99,13 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: '数据源名称',
+    label: 'The name of the data source',
     component: 'Input',
     colProps: { span: 8 },
   },
   {
     field: 'dbType',
-    label: '数据库类型',
+    label: 'Database type',
     component: 'JDictSelectTag',
     colProps: { span: 8 },
     componentProps: () => {
@@ -125,7 +125,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'code',
-    label: '数据源编码',
+    label: 'Data source encoding',
     component: 'Input',
     required: true,
     dynamicDisabled: ({ values }) => {
@@ -134,13 +134,13 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'name',
-    label: '数据源名称',
+    label: 'The name of the data source',
     component: 'Input',
     required: true,
   },
   {
     field: 'dbType',
-    label: '数据库类型',
+    label: 'Database type',
     component: 'JDictSelectTag',
     required: true,
     componentProps: ({ formModel }) => {
@@ -154,32 +154,32 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'dbDriver',
-    label: '驱动类',
+    label: 'Driver class',
     required: true,
     component: 'Input',
   },
   {
     field: 'dbUrl',
-    label: '数据源地址',
+    label: 'The address of the data source',
     required: true,
     component: 'Input',
   },
   {
     field: 'dbUsername',
-    label: '用户名',
+    label: 'Username',
     required: true,
     component: 'Input',
   },
   {
     field: 'dbPassword',
-    label: '密码',
+    label: 'Password',
     required: true,
     component: 'InputPassword',
     slot: 'pwd',
   },
   {
     field: 'remark',
-    label: '备注',
+    label: 'Remark',
     component: 'InputTextArea',
   },
 ];

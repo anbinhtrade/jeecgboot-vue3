@@ -1,21 +1,20 @@
 import { BasicColumn, FormSchema } from '/@/components/Table';
-import { getAutoScrollContainer } from '/@/utils/common/compUtils';
 import { render } from "/@/utils/common/renderUtils";
 import { rules } from "/@/utils/helper/validator";
 
 export const columns: BasicColumn[] = [
   {
-    title: '租户名称',
+    title: 'Tenant name',
     dataIndex: 'name',
     width: 200,
     align: 'left',
   },
   {
-    title: '租户编号(ID)',
+    title: 'Tenant number(ID)',
     dataIndex: 'id',
     width: 180,
   },{
-    title: '组织LOGO',
+    title: 'Organization logo',
     dataIndex: 'companyLogo',
     width: 100,
     customRender: ({ text }) => {
@@ -27,12 +26,12 @@ export const columns: BasicColumn[] = [
   },
   {
     dataIndex: 'trade_dictText',
-    title: '所属行业',
+    title: 'INDUSTRY',
     width: 150
   },
   {
     dataIndex: 'companySize_dictText',
-    title: '公司规模',
+    title: 'The size of the company',
     width: 100
   },
   {
@@ -42,7 +41,7 @@ export const columns: BasicColumn[] = [
   },
   {
     dataIndex: 'position_dictText',
-    title: '职级',
+    title: 'RANK',
     width: 150
   },
   {
@@ -52,23 +51,23 @@ export const columns: BasicColumn[] = [
   },
   {
     dataIndex: 'createBy_dictText',
-    title: '创建者(拥有者)',
+    title: 'Created by (Owner)',
     width: 150
   },
 /*  {
-    title: '开始时间',
+    title: 'Start time',
     dataIndex: 'beginDate',
     sorter: true,
     width: 180,
   },
   {
-    title: '结束时间',
+    title: 'End time',
     dataIndex: 'endDate',
     sorter: true,
     width: 180,
   },*/
   {
-    title: '状态',
+    title: 'STATE',
     dataIndex: 'status_dictText',
     width: 100,
   },
@@ -77,18 +76,18 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: '租户名称',
+    label: 'Tenant name',
     component: 'Input',
     colProps: { span: 8 },
   },
   {
     field: 'status',
-    label: '状态',
+    label: 'STATE',
     component: 'Select',
     componentProps: {
       options: [
-        { label: '正常', value: 1 },
-        { label: '冻结', value: 0 },
+        { label: 'NORMAL', value: 1 },
+        { label: 'FREEZE', value: 0 },
       ],
     },
     colProps: { span: 8 },
@@ -109,13 +108,13 @@ export const searchFormSchema: FormSchema[] = [
 export const formSchema: FormSchema[] = [
   {
     field: 'name',
-    label: '租户名称',
+    label: 'Tenant name',
     component: 'Input',
     required: true,
   },
   {
     field: 'id',
-    label: '租户编号(ID)',
+    label: 'Tenant number(ID)',
     component: 'InputNumber',
     required: true,
     ifShow: ({ values }) => {
@@ -124,7 +123,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'companyLogo',
-    label: '组织LOGO',
+    label: 'Organization logo',
     component: 'JImageUpload',
     componentProps:{
       text:'logo'
@@ -132,30 +131,30 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'trade',
-    label: '所属行业',
+    label: 'INDUSTRY',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode:'trade',
     }
   }, {
     field: 'companySize',
-    label: '公司规模',
+    label: 'The size of the company',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode:'company_size',
     }
   }, {
     field: 'companyAddress',
-    label: '公司地址',
+    label: 'Company address',
     component: 'InputTextArea',
     componentProps: {
-      placeholder: '请输入公司地址',
+      placeholder: 'Please enter your business address',
       rows: 4,
     }
   },
 /*  {
     field: 'beginDate',
-    label: '开始时间',
+    label: 'Start time',
     component: 'DatePicker',
     componentProps: {
       showTime: true,
@@ -165,7 +164,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'endDate',
-    label: '结束时间',
+    label: 'End time',
     component: 'DatePicker',
     componentProps: {
       showTime: true,
@@ -175,7 +174,7 @@ export const formSchema: FormSchema[] = [
   },*/
   {
     field: 'houseNumber',
-    label: '门牌号',
+    label: 'NUMBER',
     component: 'Input',
     dynamicDisabled: true,
     ifShow: ({ values }) => {
@@ -184,7 +183,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'position',
-    label: '职级',
+    label: 'RANK',
     component: 'JDictSelectTag',
     componentProps:{
       dictCode: 'company_rank'
@@ -192,7 +191,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'department',
-    label: '部门',
+    label: 'DEPARTMENT',
     component: 'JDictSelectTag',
     componentProps:{
       dictCode:'company_department'
@@ -200,22 +199,22 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: '状态',
+    label: 'STATE',
     component: 'RadioButtonGroup',
     defaultValue: 1,
     componentProps: {
       options: [
-        { label: '正常', value: 1 },
-        { label: '冻结', value: 0 },
+        { label: 'NORMAL', value: 1 },
+        { label: 'FREEZE', value: 0 },
       ],
     },
   },
 ];
 
-//定义用户表格列
+//Define user table columns
 export const userColumns: BasicColumn[] =[
   {
-    title: '用户账号',
+    title: 'User Accounts',
     dataIndex: 'username',
     width: 100,
     align: 'left',
@@ -226,77 +225,77 @@ export const userColumns: BasicColumn[] =[
     width: 100,
   },
   {
-    title: '性别',
+    title: 'GENDER',
     dataIndex: 'sex_dictText',
     width: 100,
   },
   {
-    title: '手机号码',
+    title: 'Mobile phone number',
     dataIndex: 'phone',
     width: 100,
   },
 ];
 
-//邀请用户搜索表单
+//Invite users to search for the form
 export const userSearchFormSchema: FormSchema[] = [
   {
     field: 'username',
-    label: '账号',
+    label: 'ACCOUNT',
     component: 'Input',
   },
   {
     field: 'realname',
-    label: '姓名',
+    label: 'NAME',
     component: 'Input',
   },
 ];
 
-//产品包列表
+//A list of product packages
 export const packColumns: BasicColumn[] = [
   {
-    title: '产品包名称',
+    title: 'Package name',
     dataIndex: 'packName',
     width: 100,
   },
   {
-    title: '状态',
+    title: 'STATE',
     dataIndex: 'status',
     width: 100,
     customRender: ({ text }) => {
       if (text === '1') {
-        return '开启';
+        return 'OPEN';
       } else {
-        return '关闭';
+        return 'Shut down';
       }
     },
   },
   {
-    title: '备注',
+    title: 'REMARK',
     dataIndex: 'remarks',
     width: 150,
   },
 ];
 
-//产品包搜索表单
+//Package search form
 export const packFormSchema: FormSchema[] = [
   {
     field: 'packName',
-    label: '产品包名称',
+    label: 'Package name',
     component: 'JInput',
     colProps: { xxl: 8 },
   },
 ];
 
-//产品包表单
+//Package form
 export const packMenuFormSchema: FormSchema[] = [
   {
     field: 'packName',
-    label: '产品包名称',
+    label: 'Package name',
     component: 'Input',
   },
   {
     field: 'permissionIds',
-    label: '菜单列表',
+    label: 'Menu list',
     component: 'JTreeSelect',
     componentProps: {
       dict: 'sys_permission,name,id',
@@ -309,44 +308,44 @@ export const packMenuFormSchema: FormSchema[] = [
   },
   {
     field: 'remarks',
-    label: '描述',
+    label: 'DESCRIPTION',
     component: 'InputTextArea',
   },
   {
     field: 'status',
-    label: '开启状态',
+    label: 'ON',
     component: 'Switch',
     componentProps: {
       checkedValue: '1',
-      checkedChildren: '开启',
+      checkedChildren: 'OPEN',
       unCheckedValue: '0',
-      unCheckedChildren: '关闭',
+      unCheckedChildren: 'Shut down',
     },
     defaultValue: '1',
   },
   {
     field: 'id',
-    label: '开启状态',
+    label: 'ON',
     component: 'Input',
     show: false
   },
 ];
 
-//回收站列表
+//Recycle bin list
 export const recycleColumns : BasicColumn[] = [
   {
-    title: '租户名称',
+    title: 'Tenant name',
     dataIndex: 'name',
     width: 100,
     align: 'left',
   },
   {
-    title: '租户编号(ID)',
+    title: 'Tenant ID',
     dataIndex: 'id',
     width: 100,
   },
   {
-    title: '组织LOGO',
+    title: 'Organization logo',
     dataIndex: 'companyLogo',
     width: 100,
     customRender: ({ text }) => {
@@ -358,7 +357,7 @@ export const recycleColumns : BasicColumn[] = [
   },
   {
     dataIndex: 'houseNumber',
-    title: '门牌号',
+    title: 'NUMBER',
     width: 100,
   }
 ]
@@ -367,12 +366,12 @@ export const recycleColumns : BasicColumn[] = [
 export const searchRecycleFormSchema : FormSchema[] = [
   {
     field: 'name',
-    label: '租户名称',
+    label: 'Tenant name',
     component: 'Input',
   },
   {
     field: 'houseNumber',
-    label: '门牌号',
+    label: 'NUMBER',
     component: 'Input',
   },
 ]
@@ -380,19 +379,19 @@ export const searchRecycleFormSchema : FormSchema[] = [
 //产品包用户列表
 export const tenantPackUserColumns: BasicColumn[] = [
   {
-    title: '用户',
+    title: 'USER',
     dataIndex: 'realname',
     width: 200,
   },
   {
-    title: '部门',
+    title: 'DEPARTMENT',
     dataIndex: 'departNames',
     width: 200,
     ellipsis: true,
     slots: { customRender: 'departNames' }
   },
   {
-    title: '职位',
+    title: 'POSTS',
     dataIndex: 'positionNames',
     ellipsis: true,
     width: 200,
@@ -401,14 +400,14 @@ export const tenantPackUserColumns: BasicColumn[] = [
 ]
 
 /**
- * 用户租户新增编辑表单
+ * A new edit form has been added to the user tenant
  */
 export const tenantUserSchema: FormSchema[] = [
   { field: 'id', label: 'id', component: 'Input', show: false },
   { field: 'username', label: 'username', component: 'Input', show: false },
   {
     field: 'realname',
-    label: '姓名',
+    label: 'NAME',
     component: 'Input',
     dynamicDisabled: ({ values }) => {
       return !!values.id;
@@ -416,7 +415,7 @@ export const tenantUserSchema: FormSchema[] = [
   },
   {
     field: 'phone',
-    label: '手机',
+    label: 'CELL PHONE',
     component: 'Input',
     dynamicRules: ({ model, schema }) => {
       if (model.id) {
@@ -430,7 +429,7 @@ export const tenantUserSchema: FormSchema[] = [
   },
   {
     field: 'email',
-    label: '邮箱',
+    label: 'MAILBOX',
     component: 'Input',
     dynamicRules: ({ model, schema }) => {
       if (model.id) {
@@ -442,20 +441,20 @@ export const tenantUserSchema: FormSchema[] = [
       return !!values.id;
     },
   },
-  { field: 'selecteddeparts', label: '部门', component: 'JSelectDept', componentProps: { checkStrictly: true } },
+  { field: 'selecteddeparts', label: 'DEPARTMENT', component: 'JSelectDept', componentProps: { checkStrictly: true } },
   {
     field: 'post',
-    label: '职位',
+    label: 'POSTS',
     component: 'JSelectPosition',
   },
   {
     field: 'workNo',
-    label: '工号',
+    label: 'Construction No.',
     component: 'Input',
     dynamicRules: ({ model, schema }) => {
-      return [{ required: true, message: '请输入工号' }, { ...rules.duplicateCheckRule('sys_user', 'work_no', model, schema, false)[0] }];
+      return [{ required: true, message: 'Please enter your work number' }, { ...rules.duplicateCheckRule('sys_user', 'work_no', model, schema, false)[0] }];
     },
   },
-  { field: 'relTenantIds', label: '租户', component: 'Input',show:false },
-  { field: 'selectedroles', label: '角色', component: 'Input',show:false },
+  { field: 'relTenantIds', label: 'TENANT', component: 'Input',show:false },
+  { field: 'selectedroles', label: 'ROLE', component: 'Input',show:false },
 ];

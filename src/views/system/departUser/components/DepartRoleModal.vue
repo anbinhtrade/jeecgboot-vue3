@@ -16,27 +16,27 @@
 
   const emit = defineEmits(['success', 'register']);
   const props = defineProps({
-    // 当前部门ID
+    // Current Department ID
     departId: { require: true, type: String },
   });
   const prefixCls = inject('prefixCls');
-  // 当前是否是更新模式
+  // Whether it is currently in update mode
   const isUpdate = ref<boolean>(true);
-  // 当前的弹窗数据
+  // The current pop-up data
   const model = ref<object>({});
-  const title = computed(() => (isUpdate.value ? '编辑' : '新增'));
+  const title = computed(() => (isUpdate.value ? 'EDIT' : 'NEW'));
 
-  //注册表单
+  //Sign-up forms
   const [registerForm, { resetFields, setFieldsValue, validate, updateSchema }] = useForm({
     schemas: departRoleModalFormSchema,
     showActionButtonGroup: false,
   });
 
-  // 注册弹窗
+  // Registration pop-up
   const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data) => {
     await resetFields();
     isUpdate.value = unref(data?.isUpdate);
-    // 无论新增还是编辑，都可以设置表单值
+    // Whether you add or edit a form, you can set the form value
     let record = unref(data?.record);
     if (typeof record === 'object') {
       model.value = record;

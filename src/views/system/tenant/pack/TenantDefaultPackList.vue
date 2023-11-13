@@ -2,7 +2,7 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:user-add-outlined" type="primary" @click="handleAdd">新增</a-button>
+        <a-button preIcon="ant-design:user-add-outlined" type="primary" @click="handleAdd">NEW</a-button>
         <a-button
           v-if="selectedRowKeys.length > 0"
           preIcon="ant-design:delete-outlined"

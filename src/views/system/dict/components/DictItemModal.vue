@@ -60,7 +60,7 @@
   });
 
   //设置标题
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+  const getTitle = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
 
   //表单提交事件
   async function handleSubmit() {
@@ -80,7 +80,7 @@
   }
   
   /**
-   * 字典颜色点击事件
+   * Dictionary color click events
    * 
    * @param index
    * @param item

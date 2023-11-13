@@ -2,14 +2,14 @@
   <BasicModal v-bind="$attrs" @register="registerModal" :title="title" @ok="handleSubmit" width="800px" :showCancelBtn="false" :showOkBtn="false">
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px" v-if="showPackAddAndEdit">新增 </a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px" v-if="showPackAddAndEdit">NEW </a-button>
         <a-button
           v-if="selectedRowKeys.length > 0"
           preIcon="ant-design:delete-outlined"
           type="primary"
           @click="handlePackBatch"
           style="margin-right: 5px"
-          >批量删除
+          >Delete in bulk
         </a-button>
       </template>
       <template #action="{ record }">
@@ -83,11 +83,11 @@
   function getActions(record) {
     return [
       {
-        label: '用户',
+        label: 'USER',
         onClick: seeTenantPackUser.bind(null, record),
       },
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
         ifShow: ()=>{ return showPackAddAndEdit.value }
       },
@@ -126,7 +126,7 @@
   async function handleDelete(record) {
     //update-begin---author:wangshuai ---date:20230222  for：系统默认产品包不允许删除------------
     if(packCode.indexOf(record.packCode) != -1){
-        createMessage.warning("默认系统产品包不允许删除");
+        createMessage.warning("The default system package cannot be deleted");
        return;
     }
     //update-end---author:wangshuai ---date:20230222  for：系统默认产品包不允许删除------------
@@ -134,14 +134,14 @@
   }
 
   /**
-   * 批量删除产品包
+   * Delete packages in bulk
    */
   async function handlePackBatch() {
     let value = selectedRows.value;
     if(value && value.length>0){
       for (let i = 0; i < value.length; i++) {
         if(packCode.indexOf(value[i].packCode) != -1){
-          createMessage.warning("默认系统产品包不允许删除");
+          createMessage.warning("The default system package cannot be deleted");
           return;
         }
       }

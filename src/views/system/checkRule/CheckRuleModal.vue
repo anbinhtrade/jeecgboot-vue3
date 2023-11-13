@@ -41,7 +41,7 @@
   import { pick } from 'lodash-es';
 
   //设置标题
-  const title = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+  const title = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
   // 声明Emits
   const emit = defineEmits(['register', 'success']);
   const isUpdate = ref(true);
@@ -153,14 +153,14 @@
       })
       .catch(() => {
         setModalProps({ confirmLoading: false });
-        console.error('验证未通过!');
+        console.error('Verification failed!');
       });
   }
 
   // 表单提交请求
   async function saveOrUpdateFormData(formData) {
     try {
-      console.log('表单提交数据', formData);
+      console.log('Form submission data', formData);
       setModalProps({ confirmLoading: true });
       if (isUpdate.value) {
         await updateCheckRule(formData);
@@ -186,7 +186,7 @@
       new RegExp(cellValue);
       callback(true);
     } catch (e) {
-      callback(false, '请输入正确的正则表达式');
+      callback(false, 'Please enter the correct regular expression');
     }
   };
 
@@ -198,50 +198,50 @@
       minWidth: 180,
       validateRules: [
         { required: true, message: '${title}不能为空' },
-        { pattern: /^[1-9]\d*$/, message: '请输入零以上的正整数' },
+        { pattern: /^[1-9]\d*$/, message: 'Please enter a positive integer above zero' },
       ],
     },
     {
-      title: '规则（正则表达式）',
+      title: 'Rules (Regular Expressions)',
       key: 'pattern',
       minWidth: 320,
       type: JVxeTypes.input,
-      validateRules: [{ required: true, message: '规则不能为空' }, { handler: validatePatternHandler }],
+      validateRules: [{ required: true, message: 'The rule cannot be empty' }, { handler: validatePatternHandler }],
     },
     {
-      title: '提示文本',
+      title: 'Prompt text',
       key: 'message',
       minWidth: 180,
       type: JVxeTypes.input,
-      validateRules: [{ required: true, message: '${title}不能为空' }],
+      validateRules: [{ required: true, message: '${title} cannot be empty' }],
     },
   ]);
 
   const columns2 = ref<JVxeColumn[]>([
     {
-      title: '优先级',
+      title: 'PRIORITY',
       key: 'priority',
       type: JVxeTypes.select,
       defaultValue: '1',
       options: [
-        { title: '优先运行', value: '1' },
-        { title: '最后运行', value: '0' },
+        { title: 'Priority run', value: '1' },
+        { title: 'Finally run', value: '0' },
       ],
       validateRules: [],
     },
     {
-      title: '规则（正则表达式）',
+      title: 'Rules (Regular Expressions)',
       key: 'pattern',
       width: '40%',
       type: JVxeTypes.input,
-      validateRules: [{ required: true, message: '规则不能为空' }, { handler: validatePatternHandler }],
+      validateRules: [{ required: true, message: 'The rule cannot be empty' }, { handler: validatePatternHandler }],
     },
     {
-      title: '提示文本',
+      title: 'Prompt text',
       key: 'message',
       width: '20%',
       type: JVxeTypes.input,
-      validateRules: [{ required: true, message: '${title}不能为空' }],
+      validateRules: [{ required: true, message: '${title} cannot be empty' }],
     },
   ]);
 </script>

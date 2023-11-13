@@ -4,30 +4,30 @@
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <!--插槽:table标题-->
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> 新增</a-button>
+        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
         <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" :disabled="isDisabledAuth('system:user:export')"> 导出</a-button>
-        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
-        <a-button type="primary" @click="openModal(true, {})" preIcon="ant-design:hdd-outlined"> 回收站</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
+        <a-button type="primary" @click="openModal(true, {})" preIcon="ant-design:hdd-outlined"> RECYCLE BIN</a-button>
 <!--        <JThirdAppButton biz-type="user" :selected-row-keys="selectedRowKeys" syncToApp syncToLocal @sync-finally="onSyncFinally" />-->
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                DELETE
               </a-menu-item>
               <a-menu-item key="2" @click="batchFrozen(2)">
                 <Icon icon="ant-design:lock-outlined"></Icon>
-                冻结
+                FREEZE
               </a-menu-item>
               <a-menu-item key="3" @click="batchFrozen(1)">
                 <Icon icon="ant-design:unlock-outlined"></Icon>
-                解冻
+                THAW
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Bulk operations
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
@@ -90,7 +90,7 @@
   const { prefixCls, tableContext, onExportXls, onImportXls } = useListPage({
     designScope: 'user-list',
     tableProps: {
-      title: '用户列表',
+      title: 'List of users',
       api: listNoCareTenant,
       columns: columns,
       size: 'small',
@@ -106,7 +106,7 @@
       },
     },
     exportConfig: {
-      name: '用户列表',
+      name: 'List of users',
       url: getExportUrl,
     },
     importConfig: {
@@ -165,7 +165,7 @@
   async function batchHandleDelete() {
     let hasAdmin = unref(selectedRows).filter((item) => item.username == 'admin');
     if (unref(hasAdmin).length > 0) {
-      createMessage.warning('管理员账号不允许此操作！');
+      createMessage.warning('This operation is not allowed for the administrator account！');
       return;
     }
     await batchDeleteUser({ ids: selectedRowKeys.value }, () => {
@@ -197,7 +197,7 @@
    */
   async function handleFrozen(record, status) {
     if ('admin' == record.username) {
-      createMessage.warning('管理员账号不允许此操作！');
+      createMessage.warning('This operation is not allowed for the administrator account！');
       return;
     }
     await frozenBatch({ ids: record.id, status: status }, reload);
@@ -208,13 +208,13 @@
   function batchFrozen(status) {
     let hasAdmin = selectedRows.value.filter((item) => item.username == 'admin');
     if (unref(hasAdmin).length > 0) {
-      createMessage.warning('管理员账号不允许此操作！');
+      createMessage.warning('This operation is not allowed for the administrator account！');
       return;
     }
     createConfirm({
       iconType: 'warning',
-      title: '确认操作',
-      content: '是否' + (status == 1 ? '解冻' : '冻结') + '选中账号?',
+      title: 'Confirm the action',
+      content: 'WHETHER' + (status == 1 ? 'THAW' : 'FREEZE') + 'Select the account?',
       onOk: async () => {
         await frozenBatch({ ids: unref(selectedRowKeys).join(','), status: status }, reload);
       },
@@ -238,7 +238,7 @@
   function getTableAction(record): ActionItem[] {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
         // ifShow: () => hasPermission('system:user:edit'),
       },
@@ -250,39 +250,39 @@
   function getDropDownAction(record): ActionItem[] {
     return [
       {
-        label: '详情',
+        label: 'DETAIL',
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: '密码',
+        label: 'PASSWORD',
         //auth: 'user:changepwd',
         onClick: handleChangePassword.bind(null, record.username),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },
       {
-        label: '冻结',
+        label: 'FREEZE',
         ifShow: record.status == 1,
         popConfirm: {
-          title: '确定冻结吗?',
+          title: 'Are you sure about freezing?',
           confirm: handleFrozen.bind(null, record, 2),
         },
       },
       {
-        label: '解冻',
+        label: 'THAW',
         ifShow: record.status == 2,
         popConfirm: {
-          title: '确定解冻吗?',
+          title: 'Are you sure to thaw?',
           confirm: handleFrozen.bind(null, record, 1),
         },
       },
       {
-        label: '代理人',
+        label: 'AGENT',
         onClick: handleAgentSettings.bind(null, record.username),
       },
     ];

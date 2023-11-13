@@ -2,20 +2,20 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">新增</a-button>
-<!--        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>-->
-<!--        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>-->
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">NEW</a-button>
+<!--        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> Export</a-button>-->
+<!--        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="on Import Xls">导入</j-upload-button>-->
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                DELETE
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Bulk operations
             <Icon style="fontsize: 12px" icon="ant-design:down-outlined"></Icon>
           </a-button>
         </a-dropdown>
@@ -49,7 +49,7 @@
   const { prefixCls, onExportXls, onImportXls, tableContext, doRequest } = useListPage({
     designScope: 'notice-template',
     tableProps: {
-      title: '消息通知',
+      title: 'Message notifications',
       api: getList,
       columns: columns,
       formConfig: {
@@ -57,7 +57,7 @@
       },
     },
     exportConfig: {
-      name: '消息通知列表',
+      name: 'A list of message notifications',
       url: getExportUrl,
     },
     importConfig: {
@@ -127,7 +127,7 @@
   function getActions(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
         ifShow: record.sendStatus == 0,
       },
@@ -139,28 +139,28 @@
   function getDropDownAction(record) {
     return [
       {
-        label: '删除',
+        label: 'DELETE',
         ifShow: record.sendStatus != 1,
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },
       {
-        label: '发布',
+        label: 'PUBLISH',
         ifShow: record.sendStatus == 0,
         onClick: handleRelease.bind(null, record.id),
       },
       {
-        label: '撤销',
+        label: 'QUASH',
         ifShow: record.sendStatus == 1,
         popConfirm: {
-          title: '确定要撤销吗？',
+          title: 'Are you sure you want to revoke?',
           confirm: handleReovke.bind(null, record.id),
         },
       },
       {
-        label: '查看',
+        label: 'VIEW',
         onClick: handleDetail.bind(null, record),
       },
     ];

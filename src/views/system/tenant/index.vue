@@ -2,18 +2,18 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">新增</a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">NEW</a-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                DELETE
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Bulk operations
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
@@ -23,7 +23,7 @@
           @click="handleInvitation"
           style="margin-right: 5px"
           :disabled="selectedRowKeys.length === 0"
-          >邀请用户加入</a-button
+          >Invite users to join</a-button
         >
         <a-button
           preIcon="ant-design:plus-outlined"
@@ -31,9 +31,9 @@
           @click="handlePack"
           style="margin-right: 5px"
           :disabled="selectedRowKeys.length === 0"
-          >套餐</a-button
+          >PACKAGE</a-button
         >
-        <a-button type="primary" @click="recycleBinClick" preIcon="ant-design:hdd-outlined">回收站</a-button>
+        <a-button type="primary" @click="recycleBinClick" preIcon="ant-design:hdd-outlined">RECYCLE BIN</a-button>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getActions(record)" />
@@ -73,7 +73,7 @@
   const { prefixCls, tableContext } = useListPage({
     designScope: 'tenant-template',
     tableProps: {
-      title: '租户列表',
+      title: 'List of tenants',
       api: getTenantList,
       columns: columns,
       formConfig: {
@@ -95,26 +95,26 @@
   function getActions(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           placement: 'left',
           confirm: handleDelete.bind(null, record),
         },
       },
       {
-        label: '用户',
+        label: 'USER',
         onClick: handleSeeUser.bind(null, record.id),
       },
     ];
   }
 
   /**
-   * 新增事件
+   * New events
    */
   function handleAdd() {
     openModal(true, {
@@ -123,7 +123,7 @@
   }
 
   /**
-   * 编辑事件
+   * Edit the event
    */
   function handleEdit(record) {
     openModal(true, {
@@ -133,14 +133,14 @@
   }
 
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     await deleteTenant({ id: record.id }, handleSuccess);
   }
 
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   async function batchHandleDelete() {
     await batchDeleteTenant({ ids: selectedRowKeys.value }, handleSuccess);
@@ -181,7 +181,7 @@
    */
   function handlePack() {
     if (unref(selectedRowKeys).length > 1) {
-      createMessage.warn('请选择一个');
+      createMessage.warn('Please select one');
       return;
     }
     packModal(true, {

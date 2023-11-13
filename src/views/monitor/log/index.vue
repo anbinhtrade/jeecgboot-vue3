@@ -2,19 +2,19 @@
   <BasicTable @register="registerTable" :searchInfo="searchInfo" :columns="logColumns">
     <template #tableTitle>
       <a-tabs defaultActiveKey="1" @change="tabChange" size="small">
-        <a-tab-pane tab="登录日志" key="1"></a-tab-pane>
-        <a-tab-pane tab="操作日志" key="2"></a-tab-pane>
+        <a-tab-pane tab="Login logs" key="1"></a-tab-pane>
+        <a-tab-pane tab="Operation logs" key="2"></a-tab-pane>
       </a-tabs>
     </template>
     <template #expandedRowRender="{ record }">
       <div v-if="searchInfo.logType == 2">
         <div style="margin-bottom: 5px">
           <a-badge status="success" style="vertical-align: middle" />
-          <span style="vertical-align: middle">请求方法:{{ record.method }}</span></div
+          <span style="vertical-align: middle">Request method:{{ record.method }}</span></div
         >
         <div>
           <a-badge status="processing" style="vertical-align: middle" />
-          <span style="vertical-align: middle">请求参数:{{ record.requestParam }}</span></div
+          <span style="vertical-align: middle">Request parameters:{{ record.requestParam }}</span></div
         >
       </div>
     </template>
@@ -36,7 +36,7 @@
   const { prefixCls, tableContext } = useListPage({
     designScope: 'user-list',
     tableProps: {
-      title: '日志列表',
+      title: 'List of logs',
       api: getLogList,
       expandRowByClick: true,
       showActionColumn: false,
@@ -66,7 +66,7 @@
   }
 
   /**
-   * 选择事件
+   * Select the event
    */
   function onSelectChange(selectedRowKeys: (string | number)[]) {
     checkedKeys.value = selectedRowKeys;

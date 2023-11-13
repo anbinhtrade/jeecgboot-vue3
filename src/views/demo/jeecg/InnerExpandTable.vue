@@ -2,7 +2,7 @@
   <a-card :bordered="false">
     <BasicTable @register="registerTable" :expandedRowKeys="expandedRowKeys" :rowSelection="rowSelection" @expand="handleExpand">
       <template #tableTitle>
-        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> 新增</a-button>
+        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> NEW</a-button>
       </template>
       <template #expandedRowRender>
         <BasicTable bordered size="middle" rowKey="id" :canResize="false" :columns="innerColumns" :dataSource="innerData" :pagination="false">
@@ -127,7 +127,7 @@
     bordered: true,
     actionColumn: {
       width: 110,
-      title: '操作',
+      title: 'Action',
       dataIndex: 'action',
       slots: { customRender: 'action' },
       fixed: undefined,

@@ -10,20 +10,20 @@
     >
       <!--插槽:table标题-->
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> 新增</a-button>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
-        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
+        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                DELETE
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Bulk operations
             <Icon icon="ant-design:down-outlined"></Icon>
           </a-button>
         </a-dropdown>
@@ -58,7 +58,7 @@
   const { prefixCls, onExportXls, onImportXls, tableContext } = useListPage({
     designScope: 'category-template',
     tableProps: {
-      title: '分类字典',
+      title: 'Classification dictionary',
       api: list,
       columns: columns,
       actionColumn: {
@@ -70,7 +70,7 @@
       isTreeTable: true,
     },
     exportConfig: {
-      name: '分类字典列表',
+      name: 'List of categorical dictionaries',
       url: getExportUrl,
     },
     importConfig: {
@@ -78,12 +78,12 @@
     },
   });
 
-  //注册table数据
+  //Register table data
   const [registerTable, { reload, collapseAll, updateTableDataRecord, findTableDataRecord, getDataSource }, { rowSelection, selectedRowKeys }] =
     tableContext;
 
   /**
-   * 新增事件
+   * New events
    */
   function handleCreate() {
     openModal(true, {
@@ -92,7 +92,7 @@
   }
 
   /**
-   * 编辑事件
+   * Edit the event
    */
   async function handleEdit(record) {
     openModal(true, {
@@ -102,7 +102,7 @@
   }
 
   /**
-   * 详情
+   * DETAIL
    */
   async function handleDetail(record) {
     openModal(true, {
@@ -113,21 +113,21 @@
   }
 
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     await deleteCategory({ id: record.id }, importSuccess);
   }
 
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   async function batchHandleDelete() {
     const ids = selectedRowKeys.value.filter((item) => !item.includes('loading'));
     await batchDeleteCategory({ ids: ids }, importSuccess);
   }
   /**
-   * 导入
+   * IMPORT
    */
   function importSuccess() {
     //update-begin---author:wangshuai ---date:20220530  for：[issues/54]树字典，勾选，然后批量删除，系统错误------------
@@ -135,7 +135,7 @@
     //update-end---author:wangshuai ---date:20220530  for：[issues/54]树字典，勾选，然后批量删除，系统错误--------------
   }
   /**
-   * 添加下级
+   * Add subordinates
    */
   function handleAddSub(record) {
     openModal(true, {
@@ -144,7 +144,7 @@
     });
   }
   /**
-   * 成功回调
+   * Successful callback
    */
   async function handleSuccess({ isUpdate,isSubAdd, values, expandedArr }) {
     if (isUpdate) {
@@ -171,13 +171,13 @@
   }
 
   /**
-   * 接口请求成功后回调
+   * The callback is made after the API request is successful
    */
   function onFetchSuccess(result) {
     getDataByResult(result.items) && loadDataByExpandedRows();
   }
   /**
-   * 根据已展开的行查询数据（用于保存后刷新时异步加载子级的数据）
+   * Query data against expanded rows (used to load data for children asynchronously when refreshed after saving.)）
    */
   async function loadDataByExpandedRows() {
     if (unref(expandedRowKeys).length > 0) {

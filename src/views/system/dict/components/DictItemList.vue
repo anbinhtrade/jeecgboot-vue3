@@ -1,8 +1,8 @@
 <template>
-  <BasicDrawer v-bind="$attrs" @register="registerDrawer" title="字典列表" width="800px">
+  <BasicDrawer v-bind="$attrs" @register="registerDrawer" title="Dictionary list" width="800px">
     <BasicTable @register="registerTable" :rowClassName="getRowClassName">
       <template #tableTitle>
-        <a-button type="primary" @click="handleCreate"> 新增</a-button>
+        <a-button type="primary" @click="handleCreate"> NEW</a-button>
       </template>
       <template v-slot:bodyCell="{column, record, index}">
         <template v-if="column.dataIndex ==='action'">
@@ -72,7 +72,7 @@
     immediate: false,
     actionColumn: {
       width: 100,
-      title: '操作',
+      title: 'OPERATE',
       dataIndex: 'action',
       //slots: { customRender: 'action' },
       fixed: undefined,
@@ -111,13 +111,13 @@
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

@@ -2,20 +2,20 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">新增</a-button>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
-        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">NEW</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                DELETE
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Bulk operations
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
@@ -43,7 +43,7 @@
   const { prefixCls, tableContext, onExportXls, onImportXls } = useListPage({
     designScope: 'quartz-template',
     tableProps: {
-      title: '任务列表',
+      title: 'Task list',
       api: getQuartzList,
       columns: columns,
       actionColumn: {
@@ -56,7 +56,7 @@
       },
     },
     exportConfig: {
-      name: '定时任务列表',
+      name: 'A list of scheduled tasks',
       url: getExportUrl,
     },
     importConfig: {
@@ -67,15 +67,15 @@
   const [registerTable, { reload }, { rowSelection, selectedRowKeys }] = tableContext;
 
   /**
-   * 操作列定义
+   * Action column definition
    * @param record
    */
   function getActions(record) {
     return [
       {
-        label: '启动',
+        label: 'INITIATE',
         popConfirm: {
-          title: '是否启动选中任务?',
+          title: 'Whether to start the selected task?',
           confirm: handlerResume.bind(null, record),
         },
         ifShow: (_action) => {
@@ -83,9 +83,9 @@
         },
       },
       {
-        label: '停止',
+        label: 'Stop it',
         popConfirm: {
-          title: '是否暂停选中任务?',
+          title: 'Do you want to pause the selected task?',
           confirm: handlerPause.bind(null, record),
         },
         ifShow: (_action) => {
@@ -101,20 +101,20 @@
   function getDropDownAction(record) {
     return [
       {
-        label: '立即执行',
+        label: 'Execute it now',
         popConfirm: {
-          title: '是否立即执行任务?',
+          title: 'Whether the task is performed immediately?',
           confirm: handlerExecute.bind(null, record),
         },
       },
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

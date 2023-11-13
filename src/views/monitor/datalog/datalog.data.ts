@@ -2,27 +2,27 @@ import { BasicColumn, FormSchema } from '/@/components/Table';
 
 export const columns: BasicColumn[] = [
   {
-    title: '表名',
+    title: 'Table name',
     dataIndex: 'dataTable',
     width: 150,
     align: 'left',
   },
   {
-    title: '数据ID',
+    title: 'Data ID',
     dataIndex: 'dataId',
     width: 350,
   },
   {
-    title: '版本号',
+    title: 'Version number',
     dataIndex: 'dataVersion',
     width: 100,
   },
   {
-    title: '数据内容',
+    title: 'Data content',
     dataIndex: 'dataContent',
   },
   {
-    title: '创建人',
+    title: 'Created by',
     dataIndex: 'createBy',
     sorter: true,
     width: 200,
@@ -32,13 +32,13 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'dataTable',
-    label: '表名',
+    label: 'Table name',
     component: 'Input',
     colProps: { span: 8 },
   },
   {
     field: 'dataId',
-    label: '数据ID',
+    label: 'Data ID',
     component: 'Input',
     colProps: { span: 8 },
   },

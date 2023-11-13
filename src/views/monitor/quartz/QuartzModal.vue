@@ -45,7 +45,7 @@
     }
   });
   //设置标题
-  const title = computed(() => (!unref(isUpdate) ? '新增任务' : '编辑任务'));
+  const title = computed(() => (!unref(isUpdate) ? 'New Tasks' : 'Edit The Task'));
   //表单提交事件
   async function handleSubmit(v) {
     try {

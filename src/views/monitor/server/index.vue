@@ -2,10 +2,10 @@
   <div class="p-4">
     <a-card :bordered="false" style="height: 100%">
       <a-tabs v-model:activeKey="activeKey" @change="tabChange">
-        <a-tab-pane key="1" tab="服务器信息"></a-tab-pane>
-        <a-tab-pane key="2" tab="JVM信息" force-render></a-tab-pane>
-        <a-tab-pane key="3" tab="Tomcat信息"></a-tab-pane>
-        <a-tab-pane key="4" tab="磁盘监控">
+        <a-tab-pane key="1" tab="Server Information"></a-tab-pane>
+        <a-tab-pane key="2" tab="JVM information" force-render></a-tab-pane>
+        <a-tab-pane key="3" tab="Tomcat Information"></a-tab-pane>
+        <a-tab-pane key="4" tab="Disk monitoring">
           <DiskInfo v-if="activeKey == 4" style="height: 100%"></DiskInfo>
         </a-tab-pane>
       </a-tabs>
@@ -16,7 +16,7 @@
           <div slot="message"
             >上次更新时间：{{ lastUpdateTime }}
             <a-divider type="vertical" />
-            <a @click="handleUpdate">立即更新</a></div
+            <a @click="handleUpdate">Update now</a></div
           >
         </template>
         <template #param="{ record, text }">

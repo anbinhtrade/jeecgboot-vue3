@@ -12,7 +12,7 @@
     @template="handleTemplate"
   >
     <template #header>
-      <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleCreate">新增</a-button>
+      <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleCreate">NEW</a-button>
     </template>
     <template #cardTitle>
       <a-tabs defaultActiveKey="1" @change="tabChange" size="small">
@@ -20,7 +20,7 @@
           <template #tab>
             <span>
               <Icon icon="ant-design:bar-chart-outlined" :size="20"></Icon>
-              仪表盘设计
+              Dashboard design
             </span>
           </template>
         </a-tab-pane>
@@ -28,7 +28,7 @@
           <template #tab>
             <span>
               <Icon icon="ant-design:star-outlined" :size="20"></Icon>
-              模板
+              TEMPLATE
             </span>
           </template>
         </a-tab-pane>
@@ -72,7 +72,7 @@
   }
 
   /**
-   * 新增事件
+   * New events
    */
   function handleCreate() {
     openModal(true, {
