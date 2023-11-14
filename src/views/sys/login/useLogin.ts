@@ -180,7 +180,7 @@ export function isOAuth2AppEnv() {
  * @param tenantId
  */
 export function sysOAuth2Login(source) {
-  let url = `${window._CONFIG['domianURL']}/sys/thirdLogin/oauth2/${source}/login`;
+  let url = `${window._CONFIG['domainURL']}/sys/thirdLogin/oauth2/${source}/login`;
   url += `?state=${encodeURIComponent(window.location.origin)}`;
   //update-begin---author:wangshuai ---date:20230224  for：[QQYUN-3440]新建企业微信和钉钉配置表，通过租户模式隔离------------
   let tenantId = getAuthCache(OAUTH2_THIRD_LOGIN_TENANT_ID);

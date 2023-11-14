@@ -33,7 +33,7 @@ function asyncImportRoute(routes: AppRouteRecordRaw[] | undefined) {
   }
   if (!routes) return;
   routes.forEach((item) => {
-    console.log('asyncImportRoute', item);
+    // console.log('asyncImportRoute', item);
 
     //【jeecg-boot/issues/I5N2PN】左侧动态菜单怎么做国际化处理  2022-10-09
     //菜单支持国际化翻译
@@ -62,9 +62,12 @@ function asyncImportRoute(routes: AppRouteRecordRaw[] | undefined) {
     let tenantId = getTenantId();
     // URL支持{{ window.xxx }}占位符变量
     //update-begin---author:wangshuai ---date:20220711  for：[VUEN-1638]菜单tenantId需要动态生成------------
+
     try {
       item.component = (item.component || '').replace(/{{([^}}]+)?}}/g, (s1, s2) => _eval(s2)).replace('${token}', token).replace('${tenantId}', tenantId);
     } catch (e) {
+      console.log('item.component', window);
+      console.log('item.component', item.component)
       console.error(e);
     }
     //update-end---author:wangshuai ---date:20220711  for：[VUEN-1638]菜单tenantId需要动态生成------------
