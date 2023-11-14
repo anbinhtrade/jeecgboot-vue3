@@ -20,12 +20,12 @@ export const columns: BasicColumn[] = [
     width: 200,
   },
   {
-    title: '描述',
+    title: 'DESCRIPTION',
     dataIndex: 'description',
     width: 200,
   },
   {
-    title: '状态',
+    title: 'STATE',
     dataIndex: 'status',
     width: 100,
     customRender: ({ text }) => {
@@ -82,7 +82,7 @@ export const formSchema: FormSchema[] = [
     componentProps: {
       options: [
         { label: 'STRING', value: 'string' },
-        { label: 'JSON对象', value: 'json' },
+        { label: 'JSONOBJECT', value: 'json' },
       ],
     },
   },

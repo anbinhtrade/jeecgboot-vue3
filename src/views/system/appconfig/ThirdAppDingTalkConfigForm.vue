@@ -1,14 +1,14 @@
 <template>
   <div class="base-collapse">
-    <div class="header"> 钉钉集成 </div>
+    <div class="header"> DingTalk integration </div>
     <a-collapse expand-icon-position="right" :bordered="false">
       <a-collapse-panel key="1">
         <template #header>
-          <div style="font-size: 16px"> 1.获取对接信息</div>
+          <div style="font-size: 16px"> 1.Get docking information</div>
         </template>
-        <div class="base-desc">从企业微信获取对接信息，即可开始集成以及同步通讯录</div>
+        <div class="base-desc">Obtain the docking information from the enterprise WeChat to start integration and synchronization of address books</div>
         <div style="margin-top: 5px">
-          <a href='https://help.qiaoqiaoyun.com/expand/dingding.html' target='_blank'>如何获取对接信息?</a>
+          <a href='https://help.qiaoqiaoyun.com/expand/dingding.html' target='_blank'>How to obtain docking information?</a>
         </div>
       </a-collapse-panel>
     </a-collapse>
@@ -17,10 +17,10 @@
         <a-collapse-panel key="2">
           <template #header>
             <div style="width: 100%; justify-content: space-between; display: flex">
-              <div style="font-size: 16px"> 2.对接信息录入</div>
+              <div style="font-size: 16px"> 2.Entry of docking information</div>
             </div>
           </template>
-          <div class="base-desc">完成步骤1后，填入Agentld、 AppKey、AppSecret后 可对接应用与同步通讯录</div>
+          <div class="base-desc">After completing step 1，Fill in Agentld, AppKey、AppSecret后 Can be connected to applications and synchronized address book</div>
           <div class="flex-flow">
             <div class="base-title">Agentld</div>
             <div class="base-message">
@@ -40,25 +40,25 @@
             </div>
           </div>
           <div style="margin-top: 20px; width: 100%; text-align: right">
-            <a-button @click="dingEditClick">编辑</a-button>
+            <a-button @click="dingEditClick">COMPILER</a-button>
           </div>
         </a-collapse-panel>
       </a-collapse>
       <div class="sync-padding">
-        <div style="font-size: 16px; width: 100%"> 3.数据同步</div>
+        <div style="font-size: 16px; width: 100%"> 3.DATA SYNCHRONIZATION</div>
         <div style="margin-top: 20px" class="base-desc">
-          从钉钉同步到本地
+          Synchronize from DingTalk to local
           <ul style='list-style-type: disc;margin-left: 20px;'>
-            <li>同步部门到本地</li>
+            <li>Synchronize departments to local</li>
             <li>
-              同步部门下的用户到本地
-              <a-tooltip title='同步用户与部门文档'>
+              Synchronize users under departments to local
+              <a-tooltip title='Synchronize user and department documents'>
                 <a-icon @click='handleIconClick' type="question-circle" class="sync-text"/>
               </a-tooltip>
             </li>
           </ul>
           <div style="float: right">
-            <a-button :loading="btnLoading" @click="syncDingTalk">{{ !btnLoading ? '同步' : '同步中' }}</a-button>
+            <a-button :loading="btnLoading" @click="syncDingTalk">{{ !btnLoading ? 'SYNCHRONIZED' : 'SYNCHRONIZING' }}</a-button>
           </div>
         </div>
       </div>
@@ -84,22 +84,22 @@
     },
     setup() {
       const { createMessage } = useMessage();
-      //折叠面板选中key
+      //Collapse panel selects key
       const collapseActiveKey = ref<string>('');
-      //按钮加载事件
+      //Button loading event
       const btnLoading = ref<boolean>(false);
-      //第三方配置数据
+      //Third party configuration data
       const appConfigData = ref<any>({
         agentId: undefined,
         clientId: '',
         clientSecret: '',
       });
 
-      //企业微信钉钉配置modal
+      //Enterprise WeChat DingTalk configuration modal
       const [registerAppConfigModal, { openModal }] = useModal();
 
       /**
-       * 钉钉编辑
+       * DINGTALKEDIT
        */
       async function dingEditClick() {
         let tenantId = getTenantId();
@@ -110,7 +110,7 @@
       }
 
       /**
-       * 初始化第三方数据
+       * Initialize third-party data
        */
       async function initThirdAppConfigData(params) {
         let values = await getThirdConfigByTenantId(params);
@@ -120,7 +120,7 @@
       }
 
       /**
-       * 成功回调
+       * SUCCESSFUL CALLBACK
        */
       function handleSuccess() {
         let tenantId = getTenantId();
@@ -128,7 +128,7 @@
       }
 
       /**
-       * 同步钉钉
+       * Synchronous DingTalk
        */
       async function syncDingTalk() {
         btnLoading.value = true;
@@ -141,12 +141,12 @@
                 title: res.message,
                 content: () => {
                   let nodes;
-                  let successInfo = [`成功信息如下：`, renderTextarea(h, res.result.successInfo.map((v, i) => `${i + 1}. ${v}`).join('\n'))];
+                  let successInfo = [`The success message is as follows:`, renderTextarea(h, res.result.successInfo.map((v, i) => `${i + 1}. ${v}`).join('\n'))];
                   if (res.success) {
-                    nodes = [...successInfo, h('br'), `无失败信息！`];
+                    nodes = [...successInfo, h('br'), `No failure message!`];
                   } else {
                     nodes = [
-                      `失败信息如下：`,
+                      `The failure message is as follows:`,
                       renderTextarea(h, res.result.failInfo.map((v, i) => `${i + 1}. ${v}`).join('\n')),
                       h('br'),
                       ...successInfo,
@@ -167,7 +167,7 @@
                 Modal.warning(options)
               } else {
                 createMessage.warning({
-                  content: "同步失败，请检查对接信息录入中是否填写正确，并确认是否已开启钉钉配置！",
+                  content: "Synchronization failed. Please check whether the docking information is filled in correctly and confirm whether the DingTalk configuration has been turned on.！",
                   duration: 5
                 });
               }
@@ -179,7 +179,7 @@
       }
 
       /**
-       * 渲染文本
+       * RENDER TEXT
        * @param h
        * @param value
        */
@@ -203,7 +203,7 @@
       }
 
       /**
-       * 钉钉同步文档
+       * DingTalk sync documents
        */
       function handleIconClick(){
         window.open("https://help.qiaoqiaoyun.com/expand/dingdingsyn.html","_target")
@@ -278,13 +278,13 @@
       padding-left: 0;
     }
   }
-  /*begin 兼容暗夜模式*/
-  //暗黑模式下卡片的边框设置成none
+  /*begin Compatible with dark night mode*/
+  //Set the card border to none in dark mode
   [data-theme='dark'] .base-collapse .ant-collapse{
     border: none !important;
   }
-  /*end 兼容暗夜模式*/
-  /*文档按钮问号样式*/
+  /*end Compatible with dark night mode*/
+  /*Document button question mark style*/
   .sync-text{
     margin-left: 2px;
     cursor: pointer;

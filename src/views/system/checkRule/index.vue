@@ -3,20 +3,20 @@
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <!--插槽:table标题-->
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">新增</a-button>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
-        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">NEW</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                <span>删除</span>
+                <span>DELETE</span>
               </a-menu-item>
             </a-menu>
           </template>
           <a-button>
-            <span>批量操作</span>
+            <span>Bulk operations</span>
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
@@ -55,11 +55,11 @@
   import CheckRuleModal from '/@/views/system/checkRule/CheckRuleModal.vue';
   const [registerModal, { openModal }] = useModal();
 
-  // 列表页面公共参数、方法
+  // Common parameters and methods on the list page
   const { prefixCls, tableContext, createMessage, onExportXls, onImportXls, createSuccessModal } = useListPage({
     designScope: 'check-rule',
     tableProps: {
-      title: '编码校验规则管理页面',
+      title: 'Encoding Verification Rules Management page',
       api: getCheckRuleList,
       columns: columns,
       showIndexColumn: true,
@@ -69,7 +69,7 @@
     },
     exportConfig: {
       url: exportUrl,
-      name: '编码校验规则列表',
+      name: 'A list of encoding rules',
     },
     importConfig: {
       url: importUrl,
@@ -80,7 +80,7 @@
   const [registerTable, { reload }, { rowSelection, selectedRowKeys }] = tableContext;
 
   /**
-   * 新增事件
+   * New events
    */
   function handleAdd() {
     openModal(true, {
@@ -89,7 +89,7 @@
   }
 
   /**
-   * 编辑事件
+   * Edit the event
    */
   function handleEdit(record) {
     console.log('record....', record);
@@ -100,7 +100,7 @@
   }
 
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     console.log(12345, record);
@@ -108,7 +108,7 @@
   }
 
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   async function batchHandleDelete() {
     await batchDeleteCheckRule({ ids: selectedRowKeys.value }, () => {
@@ -118,30 +118,30 @@
   }
 
   /**
-   * 功能测试
+   * Functional testing
    */
   function testRule(record) {
     openTestModal(true, { ruleCode: record.ruleCode });
   }
 
   /**
-   * 编辑
+   * EDIT
    */
   function getTableAction(record): ActionItem[] {
-    return [{ label: '编辑', onClick: handleEdit.bind(null, record) }];
+    return [{ label: 'EDIT', onClick: handleEdit.bind(null, record) }];
   }
 
   /**
-   * 下拉操作栏
+   * Drop down the action bar
    */
   function getDropDownAction(record): ActionItem[] {
     return [
-      { label: '功能测试', onClick: testRule.bind(null, record) },
+      { label: 'Functional testing', onClick: testRule.bind(null, record) },
       {
-        label: '删除',
+        label: 'DELETE',
         color: 'error',
         popConfirm: {
-          title: '确认要删除吗？',
+          title: 'Are you sure you want to delete it?？',
           confirm: handleDelete.bind(null, record),
         },
       },

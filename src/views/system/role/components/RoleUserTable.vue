@@ -1,21 +1,21 @@
 <template>
-  <BasicDrawer @register="registerBaseDrawer" title="角色用户" width="800" destroyOnClose>
+  <BasicDrawer @register="registerBaseDrawer" title="ROLE USER" width="800" destroyOnClose>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button type="primary" @click="handleCreate" v-if="!disableUserEdit"> 新增用户</a-button>
-        <a-button type="primary" @click="handleSelect"> 已有用户</a-button>
+        <a-button type="primary" @click="handleCreate" v-if="!disableUserEdit"> New users</a-button>
+        <a-button type="primary" @click="handleSelect"> Already have users</a-button>
 
         <a-dropdown v-if="checkedKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="bx:bx-unlink"></Icon>
-                取消关联
+                DISASSOCIATE
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Batch operations
             <Icon icon="ant-design:down-outlined"></Icon>
           </a-button>
         </a-dropdown>
@@ -24,9 +24,9 @@
         <TableAction :actions="getTableAction(record)" />
       </template>
     </BasicTable>
-    <!--用户操作抽屉-->
+    <!--User action drawer-->
     <UserDrawer @register="registerDrawer" @success="handleSuccess" />
-    <!--用户选择弹窗-->
+    <!--User selection popup-->
     <UseSelectModal @register="registerModal" @select="selectOk" />
   </BasicDrawer>
 </template>
@@ -53,12 +53,12 @@
     setProps({ searchInfo: { roleId: data.id } });
     reload();
   });
-  //注册drawer
+  //Register drawer
   const [registerDrawer, { openDrawer }] = useDrawer();
-  //注册drawer
+  //Register drawer
   const [registerModal, { openModal }] = useModal();
   const [registerTable, { reload, updateTableDataRecord, setProps }] = useTable({
-    title: '用户列表',
+    title: 'USER LIST',
     api: userList,
     columns: userColumns,
     formConfig: {
@@ -79,7 +79,7 @@
     rowKey: 'id',
     actionColumn: {
       width: 180,
-      title: '操作',
+      title: 'MANIPULATE',
       dataIndex: 'action',
       slots: { customRender: 'action' },
       fixed: undefined,
@@ -87,7 +87,7 @@
   });
 
   /**
-   * 选择列配置
+   * Select column configuration
    */
   const rowSelection = {
     type: 'checkbox',
@@ -97,14 +97,14 @@
   };
 
   /**
-   * 选择事件
+   * Select event
    */
   function onSelectChange(selectedRowKeys: (string | number)[], selectionRows) {
     checkedKeys.value = selectedRowKeys;
   }
 
   /**
-   * 新增
+   * NEW
    */
   function handleCreate() {
     openDrawer(true, {
@@ -114,7 +114,7 @@
     });
   }
   /**
-   * 编辑
+   * COMPILER
    */
   async function handleEdit(record: Recordable) {
     try {
@@ -133,51 +133,51 @@
   }
 
   /**
-   * 删除事件
+   * DELETE EVENT
    */
   async function handleDelete(record) {
     await deleteUserRole({ userId: record.id, roleId: roleId.value }, reload);
   }
 
   /**
-   * 批量删除事件
+   * Delete events in batches
    */
   async function batchHandleDelete() {
     await batchDeleteUserRole({ userIds: checkedKeys.value.join(','), roleId: roleId.value }, reload);
   }
 
   /**
-   * 成功回调
+   * SUCCESSFUL CALLBACK
    */
   function handleSuccess({ isUpdate, values }) {
     isUpdate ? updateTableDataRecord(values.id, values) : reload();
   }
   /**
-   * 选择已有用户
+   * Select an existing user
    */
   function handleSelect() {
     openModal(true);
   }
   /**
-   * 添加已有用户
+   * Add existing user
    */
   async function selectOk(val) {
     await addUserRole({ roleId: roleId.value, userIdList: val }, reload);
   }
   /**
-   * 操作栏
+   * Action bar
    */
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'COMPILER',
         onClick: handleEdit.bind(null, record),
         ifShow: () => !props.disableUserEdit,
       },
       {
-        label: '取消关联',
+        label: 'DISASSOCIATE',
         popConfirm: {
-          title: '是否确认取消关联',
+          title: 'Confirm to cancel the association?',
           confirm: handleDelete.bind(null, record),
         },
       },

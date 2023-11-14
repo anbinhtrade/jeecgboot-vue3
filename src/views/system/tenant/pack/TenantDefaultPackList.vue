@@ -9,14 +9,14 @@
           type="primary"
           @click="handlePackBatch"
           style="margin-right: 5px"
-        >批量删除
+        >Delete in bulk
         </a-button>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getActions(record)" />
       </template>
     </BasicTable>
-    <!--  产品包  -->
+    <!--  Product Packages  -->
     <TenantPackMenuModal @register="registerPackMenuModal" @success="handleSuccess"/>
   </div>
 </template>
@@ -37,7 +37,7 @@
   const [registerPackMenuModal, { openModal: packModal }] = useModal();
   const userStore = useUserStore();
 
-  // 列表页面公共参数、方法
+  // Common parameters and methods on the list page
   const { prefixCls, tableContext } = useListPage({
     designScope: 'tenant-template',
     tableProps: {
@@ -54,19 +54,19 @@
   const [registerTable, { reload }, { rowSelection, selectedRowKeys, selectedRows }] = tableContext;
 
   /**
-   * 操作列定义
+   * Action column definition
    * @param record
    */
   function getActions(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除租户产品包',
+          title: 'Whether to confirm the deletion of the tenant package',
           confirm: handleDelete.bind(null, record.id),
         },
       },
@@ -74,7 +74,7 @@
   }
 
   /**
-   * 编辑产品包
+   * Edit the package
    */ 
   function handleAdd() {
     packModal(true, {
@@ -86,13 +86,13 @@
   
   
   /**
-   * 删除默认产品包
+   * Delete the default package
    */ 
   async function handleDelete(id) {
     await deletePackPermissions({ ids: id }, handleSuccess);
   }
   /**
-   * 编辑
+   * EDIT
    */
   function handleEdit(record) {
     packModal(true, {     
@@ -104,11 +104,11 @@
   }
 
   /**
-   * 新增产品包
+   * A new product package has been added
    */
   async function handlePack() {
     if (unref(selectedRowKeys).length > 1) {
-      createMessage.warn('请选择一个');
+      createMessage.warn('Please select one');
       return;
     }
     packModal(true, {
@@ -117,21 +117,21 @@
   }
 
   /**
-   * 删除成功之后回调事件
+   * After the deletion is successful, the event is called
    */
   function handleSuccess() {
     (selectedRowKeys.value = []) && reload();
   }
 
   /**
-   * 批量删除产品包
+   * Delete packages in bulk
    */
   async function handlePackBatch() {
     Modal.confirm({
-      title: '删除租户产品包',
-      content: '是否删除租户产品包',
-      okText: '确认',
-      cancelText: '取消',
+      title: 'Delete the tenant package',
+      content: 'Whether to delete the tenant package',
+      okText: 'CONFIRM',
+      cancelText: 'CANCEL',
       onOk: async () => {
         await deletePackPermissions({ ids: selectedRowKeys.value.join(',')}, handleSuccess);
       }

@@ -10,13 +10,13 @@ export function useExportImage() {
   const exportRef = ref();
 
   /**
-   * 导出图片触发事件
+   * Export image triggering event
    * @param fileName
    */
   function onExportImage(fileName) {
     let ele = exportRef.value;
     if(!ele){
-      console.error('没有导出对象')
+      console.error('There are no exported objects')
       return;
     }
     const size = {

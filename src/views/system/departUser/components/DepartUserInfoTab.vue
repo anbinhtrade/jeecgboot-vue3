@@ -3,20 +3,20 @@
   <BasicTable @register="registerTable" :rowSelection="rowSelection">
     <!--插槽:table标题-->
     <template #tableTitle>
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="selectAddUser">添加已有用户</a-button>
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="createUser">新建用户</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="selectAddUser">Add existing users</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="createUser">Create a new user</a-button>
       <template v-if="selectedRowKeys.length > 0">
         <a-dropdown>
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="onUnlinkDepartUserBatch">
                 <icon icon="bx:bx-unlink" />
-                <span>取消关联</span>
+                <span>DISASSOCIATE</span>
               </a-menu-item>
             </a-menu>
           </template>
           <a-button>
-            <span>批量操作 </span>
+            <span>Bulk operations </span>
             <icon icon="akar-icons:chevron-down" />
           </a-button>
         </a-dropdown>
@@ -120,7 +120,7 @@
   // 创建用户
   function createUser() {
     if (!departId.value) {
-      createMessage.warning('请先选择一个部门');
+      createMessage.warning('Please select a department first');
     } else {
       openDrawer(true, {
         isUpdate: false,
@@ -159,7 +159,7 @@
   // 批量取消关联部门和用户之间的关系
   async function unlinkDepartUser(idList, confirm) {
     if (!departId.value) {
-      createMessage.warning('请先选择一个部门');
+      createMessage.warning('Please select a department first');
     } else {
       setLoading(true);
       let userIds = unref(idList).join(',');
@@ -196,7 +196,7 @@
   }
 
   /**
-   * 用户抽屉表单成功回调
+   * The user drawer form has a successful callback
    */
   function onUserDrawerSuccess({ isUpdate, values }) {
     isUpdate ? updateTableDataRecord(values.id, values) : reload();
@@ -206,7 +206,7 @@
    * 操作栏
    */
   function getTableAction(record): ActionItem[] {
-    return [{ label: '编辑', onClick: editUserInfo.bind(null, record) }];
+    return [{ label: 'EDIT', onClick: editUserInfo.bind(null, record) }];
   }
 
   /**
@@ -214,13 +214,13 @@
    */
   function getDropDownAction(record): ActionItem[] {
     return [
-      { label: '部门角色', onClick: showDepartRole.bind(null, record) },
-      { label: '用户详情', onClick: showUserDetail.bind(null, record) },
+      { label: 'Department roles', onClick: showDepartRole.bind(null, record) },
+      { label: 'User details', onClick: showUserDetail.bind(null, record) },
       {
-        label: '取消关联',
+        label: 'DISASSOCIATE',
         color: 'error',
         popConfirm: {
-          title: '确认取消关联吗？',
+          title: 'Do you want to confirm the disassociation?？',
           confirm: unlinkDepartUser.bind(null, [record.id], false),
         },
       },

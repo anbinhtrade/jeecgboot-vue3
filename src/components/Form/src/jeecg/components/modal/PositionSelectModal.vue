@@ -1,4 +1,4 @@
-<!--职务选择框-->
+<!--Job Title Selection Box-->
 <template>
   <div>
     <BasicModal
@@ -32,7 +32,7 @@
             :useSearchForm="true"
             :formConfig="{ showActionButtonGroup: false, baseRowStyle: { minHeight: '40px' } }"
           >
-            <!--操作栏-->
+            <!--Action bar-->
             <template #action="{ record }">
               <a href="javascript:void(0)" @click="handleDeleteSelected(record)"><Icon icon="ant-design:delete-outlined"></Icon></a>
             </template>
@@ -65,7 +65,7 @@
       //选择框标题
       modalTitle: {
         type: String,
-        default: '职务选择',
+        default: 'Job selection',
       },
     },
     emits: ['register', 'getSelectResult'],

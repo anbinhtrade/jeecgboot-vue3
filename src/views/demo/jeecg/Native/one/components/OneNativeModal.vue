@@ -7,7 +7,7 @@
     @ok="handleOk"
     :okButtonProps="{ class: { 'jee-hidden': disableSubmit } }"
     @cancel="handleCancel"
-    cancelText="关闭"
+    cancelText="Shut down"
   >
     <OneNativeForm ref="realForm" @ok="submitCallback" :disabled="disableSubmit"></OneNativeForm>
   </BasicModal>
@@ -26,7 +26,7 @@
   const emit = defineEmits(['register', 'ok']);
 
   function add() {
-    title.value = '新增';
+    title.value = 'NEW';
     visible.value = true;
     nextTick(() => {
       realForm.value.add();
@@ -34,7 +34,7 @@
   }
 
   function edit(record) {
-    title.value = disableSubmit.value ? '详情' : '编辑';
+    title.value = disableSubmit.value ? 'DETAIL' : 'EDIT';
     visible.value = true;
     nextTick(() => {
       realForm.value.edit(record);

@@ -2,10 +2,10 @@
   <div class="p-4">
     <a-card :bordered="false" style="height: 100%">
       <a-tabs v-model:activeKey="activeKey" animated @change="tabChange">
-        <a-tab-pane key="1" tab="柱状图">
+        <a-tab-pane key="1" tab="HISTOGRAM">
           <a-row>
             <a-col :span="24">
-              <Bar :chartData="barDataSource" height="50vh" :option="{ title: { text: '销售额排行', left: 'center' } }"></Bar>
+              <Bar :chartData="barDataSource" height="50vh" :option="{ title: { text: 'Top sales', left: 'center' } }"></Bar>
             </a-col>
             <!-- <a-col :span="7" style="margin-left:50px" >
                             配置项：
@@ -13,37 +13,37 @@
                         </a-col>-->
           </a-row>
         </a-tab-pane>
-        <a-tab-pane key="2" tab="多列柱状图" force-render>
+        <a-tab-pane key="2" tab="Multi-column histogram" force-render>
           <BarMulti :chartData="barMultiData" :option="multiBarOption" height="50vh"></BarMulti>
         </a-tab-pane>
-        <a-tab-pane key="3" tab="迷你柱状图" style="display: flex; justify-content: center">
+        <a-tab-pane key="3" tab="Mini histogram" style="display: flex; justify-content: center">
           <Bar :chartData="barDataSource" width="30%" height="50vh"></Bar>
         </a-tab-pane>
-        <a-tab-pane key="4" tab="面积图">
-          <SingleLine :chartData="barDataSource" height="50vh" :option="{ title: { text: '销售额排行', left: 'center' } }"></SingleLine>
+        <a-tab-pane key="4" tab="Area chart">
+          <SingleLine :chartData="barDataSource" height="50vh" :option="{ title: { text: 'Top sales', left: 'center' } }"></SingleLine>
         </a-tab-pane>
-        <a-tab-pane key="5" tab="迷你面积图" style="display: flex; justify-content: center">
+        <a-tab-pane key="5" tab="Mini area chart" style="display: flex; justify-content: center">
           <SingleLine :chartData="barDataSource" width="30%" height="50vh"></SingleLine>
         </a-tab-pane>
-        <a-tab-pane key="6" tab="多行折线图">
+        <a-tab-pane key="6" tab="Multi-line line chart">
           <LineMulti :chartData="barMultiData" height="50vh" :option="multiBarOption" type="line"></LineMulti>
         </a-tab-pane>
-        <a-tab-pane key="7" tab="饼图">
-          <pie :chartData="pieData" height="40vh" :option="{ title: { text: '基础饼状图', left: 'center' } }" />
+        <a-tab-pane key="7" tab="Pie charts">
+          <pie :chartData="pieData" height="40vh" :option="{ title: { text: 'Basic pie chart', left: 'center' } }" />
         </a-tab-pane>
-        <a-tab-pane key="8" tab="雷达图">
+        <a-tab-pane key="8" tab="Radar chart">
           <Radar :chartData="radarData" height="50vh"></Radar>
         </a-tab-pane>
-        <a-tab-pane key="9" tab="仪表盘">
-          <Gauge :chartData="{ name: '出勤率', value: 70 }" height="50vh"></Gauge>
+        <a-tab-pane key="9" tab="DASHBOARD">
+          <Gauge :chartData="{ name: 'Attendance rate', value: 70 }" height="50vh"></Gauge>
         </a-tab-pane>
-        <a-tab-pane key="10" tab="折柱图">
+        <a-tab-pane key="10" tab="Folded column chart">
           <BarAndLine :chartData="barLineData" height="50vh"></BarAndLine>
         </a-tab-pane>
-        <a-tab-pane key="11" tab="排名列表">
-          <RankList title="门店销售排行榜" :list="rankList" style="width: 600px; margin: 0 auto"></RankList>
+        <a-tab-pane key="11" tab="Ranked lists">
+          <RankList title="Store sales leaderboard" :list="rankList" style="width: 600px; margin: 0 auto"></RankList>
         </a-tab-pane>
-        <a-tab-pane key="13" tab="趋势">
+        <a-tab-pane key="13" tab="TREND">
           <trend title="Trend" term="Trend：" :percentage="30" />
         </a-tab-pane>
         <!--暂无-->
@@ -73,12 +73,12 @@
   const activeKey = ref('1');
   const { barDataSource, barMultiData, pieData, barLineData, radarData } = getData;
   const multiBarOption = {
-    title: { text: '多列柱状图', left: 'center' },
+    title: { text: 'Multi-column histogram', left: 'center' },
   };
-  const rankList = loadData('name', 'total', 2000, 100, '北京朝阳 ', ' 号店');
+  const rankList = loadData('name', 'total', 2000, 100, 'Chaoyang, Beijing ', ' No. Store');
   //tab切换
   function tabChange(key) {
-    console.log('切换的key:', key);
+    console.log('The key of the switch:', key);
   }
   function loadData(x, y, max, min, before = '', after = '月') {
     let data = [];

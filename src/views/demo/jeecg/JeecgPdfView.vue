@@ -11,14 +11,14 @@
           <a-col :span="24">
             <a-divider orientation="left">{{ file.fileName }}</a-divider>
           </a-col>
-          <!-- 预览区域 -->
+          <!-- Preview the area -->
           <a-col :span="24">
             <template v-if="file.filePdfPath">
               <div @click="pdfPreview(file.title)">
                 <img style="width: 80px; height: 80px" src="../../../assets/images/pdf4.jpg" />
               </div>
             </template>
-            <template v-else> (暂无材料，点击"选择文件"或"扫描上传"上传文件) </template>
+            <template v-else> (If there are no materials yet, click "Select File" or "Scan and Upload" to upload the file) </template>
           </a-col>
         </div>
       </a-col>
@@ -38,10 +38,10 @@
     {
       id: '1',
       key: '1',
-      title: '实例.pdf',
+      title: 'Example .pdf',
       fileCode: 'shili',
-      fileName: '实例',
-      filePdfPath: '实例',
+      fileName: 'INSTANCE',
+      filePdfPath: 'INSTANCE',
     },
   ];
 
@@ -51,7 +51,7 @@
       const glob = useGlobSetting();
       const treeData = ref([
         {
-          title: '所有PDF电子档',
+          title: 'All PDF electronic files',
           key: '0-0',
           children: mockdata,
         },
@@ -61,7 +61,7 @@
       const url = ref(`${glob.domainUrl}/sys/common/pdf/pdfPreviewIframe`);
 
       /**
-       * 打开iframe窗口
+       * Open an iframe window
        * @param title
        */
       function pdfPreview(title) {

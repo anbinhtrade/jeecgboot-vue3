@@ -69,27 +69,27 @@
       const expandedKeys = ref([]);
       const searchInfo = {};
       /**
-       *表格配置
+       *Table configuration
        */
       const tableProps = {
         columns: [
           {
-            title: '用户账号',
+            title: 'User Accounts',
             dataIndex: 'username',
             width: 180,
           },
           {
-            title: '用户姓名',
+            title: 'User name',
             dataIndex: 'realname',
             width: 180,
           },
           {
-            title: '性别',
+            title: 'GENDER',
             dataIndex: 'sex_dictText',
             width: 80,
           },
           {
-            title: '手机号码',
+            title: 'Mobile phone number',
             dataIndex: 'phone',
             // width: 50,
           },
@@ -122,7 +122,7 @@
           //update-end-author:liusq date:2023-10-30 for: [issues/5514]组件页面显示错位
           schemas: [
             {
-              label: '账号',
+              label: 'ACCOUNT',
               field: 'username',
               component: 'Input',
             },
@@ -133,7 +133,7 @@
       const getBindValue = Object.assign({}, unref(props), unref(attrs), tableProps);
       const [{ rowSelection, visibleChange, indexColumnProps, getSelectResult, reset }] = useSelectBiz(getTableList, getBindValue);
       /**
-       * 加载树形数据
+       * Load tree data
        */
       function queryDepartTree() {
         queryDepartTreeSync().then((res) => {
@@ -145,7 +145,7 @@
         });
       }
       /**
-       * 加载子级部门
+       * Load child departments
        */
       async function loadChildrenTreeData(treeNode) {
         try {
@@ -163,7 +163,7 @@
         return Promise.resolve();
       }
       /**
-       * 点击树节点,筛选出对应的用户
+       * Click on the tree node to filter out the corresponding users
        */
       function onDepSelect(keys) {
         if (keys[0] != null) {
@@ -175,10 +175,10 @@
         }
       }
       /**
-       * 自定义重置方法
+       * Customize the reset method
        * */
       async function customResetFunc() {
-        console.log('自定义查询');
+        console.log('Custom queries');
         //树节点清空
         selectedDepIds.value = [];
         //查询条件清空
@@ -187,7 +187,7 @@
         reset();
       }
       /**
-       * 确定选择
+       * Confirm the selection
        */
       function handleOk() {
         getSelectResult((options, values) => {

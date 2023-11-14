@@ -80,7 +80,7 @@
   });
 
   /**
-   * 新增
+   * NEW
    */
   function handleCreate() {
     openModal(true, {
@@ -89,7 +89,7 @@
   }
 
   /**
-   * 编辑
+   * EDIT
    */
   function handleEdit(record) {
     openModal(true, {
@@ -99,14 +99,14 @@
   }
 
   /**
-   * 删除
+   * DELETE
    */
   async function handleDelete(record) {
     await deleteItem({ id: record.id }, reload);
   }
 
   /**
-   * 操作栏
+   * Action bar
    */
   function getTableAction(record) {
     return [

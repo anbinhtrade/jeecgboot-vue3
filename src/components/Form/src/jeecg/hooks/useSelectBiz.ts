@@ -72,14 +72,14 @@ export function useSelectBiz(getList, props) {
     columnWidth: 20,
     selectedRowKeys: checkedKeys,
     onChange: onSelectChange,
-    //update-begin-author:wangshuai---date:20221102--for: [VUEN-2562]用户选择，跨页选择后，只有当前页人员 ---
-    //table4.4.0新增属性选中之后是否清空上一页下一页的数据，默认false
+    //update-begin-author:wangshuai---date:20221102--for: [VUEN-2562]User Choice，When a spread is selected, only the current page is occupied ---
+    //table4.4.0: Added the property to whether to clear the data on the previous page and the next page after it is selected，默认false
     preserveSelectedRowKeys:true,
     //update-end-author:wangshuai---date:20221102--for: [VUEN-2562]用户选择，跨页选择后，只有当前页人员 ---
   };
 
   /**
-   * 序号列配置
+   * Configure the ordinal number column
    */
   const indexColumnProps = {
     dataIndex: 'index',

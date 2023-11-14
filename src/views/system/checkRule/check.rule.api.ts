@@ -13,16 +13,16 @@ enum Api {
 }
 
 /**
- * 导出地址
+ * Export addresses
  */
 export const exportUrl = Api.exportXls;
 /**
- * 导入地址
+ * Import addresses
  */
 export const importUrl = Api.importXls;
 
 /**
- * 列表查询
+ * List queries
  * @param params
  */
 export const getCheckRuleList = (params) => {
@@ -30,7 +30,7 @@ export const getCheckRuleList = (params) => {
 };
 
 /**
- * 删除
+ * DELETE
  * @param params
  * @param handleSuccess
  */
@@ -41,7 +41,7 @@ export const deleteCheckRule = (params, handleSuccess) => {
 };
 
 /**
- * 批量删除
+ * Delete in bulk
  * @param params
  */
 export const batchDeleteCheckRule = (params, handleSuccess) => {
@@ -59,8 +59,7 @@ export const batchDeleteCheckRule = (params, handleSuccess) => {
 };
 
 /**
- * 根据编码校验规则code，校验传入的值是否合法
- * @param ruleCode
+* According to the code check rule, check whether the incoming value is valid * @param ruleCode
  * @param value
  */
 export const validateCheckRule = (ruleCode, value) => {
@@ -70,7 +69,7 @@ export const validateCheckRule = (ruleCode, value) => {
 };
 
 /**
- * 保存
+ * SAVE
  * @param params
  */
 export const saveCheckRule = (params) => {
@@ -78,7 +77,7 @@ export const saveCheckRule = (params) => {
 };
 
 /**
- * 更新
+ * UPDATE
  * @param params
  */
 export const updateCheckRule = (params) => {

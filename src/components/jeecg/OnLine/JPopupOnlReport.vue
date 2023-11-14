@@ -19,10 +19,10 @@
           <a-col :md="6" :sm="8">
             <span style="float: left; overflow: hidden" class="table-page-search-submitButtons">
               <a-col :lg="6">
-                <a-button type="primary" preIcon="ant-design:search-outlined" @click="searchQuery">查询</a-button>
-                <a-button type="primary" preIcon="ant-design:reload-outlined" @click="searchReset" style="margin-left: 8px">重置</a-button>
+                <a-button type="primary" preIcon="ant-design:search-outlined" @click="searchQuery">INQUIRE</a-button>
+                <a-button type="primary" preIcon="ant-design:reload-outlined" @click="searchReset" style="margin-left: 8px">RESET</a-button>
                 <a @click="handleToggleSearch" style="margin-left: 8px">
-                  {{ toggleSearchStatus ? '收起' : '展开' }}
+                  {{ toggleSearchStatus ? 'COLLAPSE' : 'UNFOLD' }}
                   <Icon :icon="toggleSearchStatus ? 'ant-design:up-outlined' : 'ant-design:down-outlined'" />
                 </a>
               </a-col>
@@ -46,7 +46,7 @@
       @change="handleChangeInTable"
     >
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
       </template>
     </BasicTable>
 

@@ -41,23 +41,23 @@
         </div>
         <div class="margin-bottom-10 nowarp font-size-13">
           <span class="gray-75 item-label">职位</span>
-          <span class="gray-3">{{ userInfo.postText ? userInfo.postText : "未填写" }}</span>
+          <span class="gray-3">{{ userInfo.postText ? userInfo.postText : "Not filled" }}</span>
         </div>
         <div class="font-size-13">
           <span class="item-label"></span>
-          <span class="item-label pointer" style="color:#1e88e5" @click="openEditModal">编辑</span>
+          <span class="item-label pointer" style="color:#1e88e5" @click="openEditModal">EDIT</span>
         </div>
       </div>
-      <!-- 联系信息 -->
+      <!-- Contact Information -->
       <div class="account-info">
-        <div class="font-size-15 font-bold font-color-gray" style="margin-bottom: 16px">联系信息</div>
+        <div class="font-size-15 font-bold font-color-gray" style="margin-bottom: 16px">Contact Information</div>
         <div class="margin-bottom-10 font-size-13">
-          <span class="gray-75 item-label">邮箱</span>
-          <span class="gray-3">{{ userInfo.email ? userInfo.email : "未填写" }}</span>
+          <span class="gray-75 item-label">MAILBOX</span>
+          <span class="gray-3">{{ userInfo.email ? userInfo.email : "Not filled" }}</span>
         </div>
         <div class="margin-bottom-10 font-size-13">
-          <span class="gray-75 item-label">手机</span>
-          <span class="gray-3">{{ userInfo.phone ? userInfo.phone : "未填写" }}</span>
+          <span class="gray-75 item-label">CELL PHONE</span>
+          <span class="gray-3">{{ userInfo.phone ? userInfo.phone : "Not filled" }}</span>
         </div>
       </div>
     </div>
@@ -99,7 +99,7 @@ const avatar = computed(() => {
 });
 
 /**
- * 更新用户头像
+ * Update the user's avatar
  */
 function updateAvatar(src: string, data: string) {
   const userinfo = userStore.getUserInfo;
@@ -111,8 +111,8 @@ function updateAvatar(src: string, data: string) {
 }
 
 /**
- * 更新用户信息
- * @params 参数
+ * Update user information
+ * @params PARAMETER
  */
 function updateUserInfo(params) {
   userEdit(params).then((res) => {
@@ -140,7 +140,7 @@ function editRealName() {
     updateUserInfo({ realname: userInfo.value.realname, id: userInfo.value.id });
     userStore.setUserInfo(userInfo.value);
   } else {
-    createMessage.warn("请输入姓名");
+    createMessage.warn("Please enter a name");
   }
   isEdit.value = false;
 }
@@ -152,17 +152,17 @@ function getBirthDay(val) {
   if (val) {
     return dayjs(val).format("YYYY-MM-DD");
   } else {
-    return "未填写";
+    return "Not filled";
   }
 }
 
 /**
- * 获取性别
+ * Get the gender
  * @param val
  */
 function getSex(val) {
   let findOption = sexOption.find(item => parseInt(item.value) === val);
-  let sex = "未填写";
+  let sex = "Not filled";
   if (findOption) {
     sex = findOption.text;
   }
@@ -170,7 +170,7 @@ function getSex(val) {
 }
 
 /**
- * 打开编辑弹窗
+ * Open the edit pop-up window
  */
 function openEditModal() {
   let value = cloneDeep(userInfo.value);
@@ -180,7 +180,7 @@ function openEditModal() {
 }
 
 /**
- * 获取用户信息
+ * Obtain user information
  */
 function getUserDetail() {
   getUserData().then((async res => {
@@ -198,7 +198,7 @@ function getUserDetail() {
 }
 
 /**
- * 获取使用时间
+ * Get usage time
  * @param date
  */
 function getDiffDay(date) {
@@ -209,7 +209,7 @@ function getDiffDay(date) {
   // 将两个日期都转换为毫秒格式，然后做差
   diffDate = Math.abs(nowDate - createDate) // 取相差毫秒数的绝对值
   totalDays = Math.floor(diffDate / (1000 * 3600 * 24)) // 向下取整
-  return totalDays+" 天";
+  return totalDays+" SKY";
 }
 onMounted(async () => {
   getUserDetail();

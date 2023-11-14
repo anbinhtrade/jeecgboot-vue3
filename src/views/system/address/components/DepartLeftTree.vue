@@ -1,7 +1,7 @@
 <template>
   <a-card :bordered="false" style="height: 100%">
     <a-spin :spinning="loading">
-      <a-input-search placeholder="按部门名称搜索…" style="margin-bottom: 10px" @search="onSearch" allowClear />
+      <a-input-search placeholder="Search by department name…" style="margin-bottom: 10px" @search="onSearch" allowClear />
       <!--组织机构树-->
       <template v-if="treeData.length > 0">
         <a-tree
@@ -15,7 +15,7 @@
           @select="onSelect"
         ></a-tree>
       </template>
-      <a-empty v-else description="暂无数据" />
+      <a-empty v-else description="No data yet" />
     </a-spin>
   </a-card>
 </template>

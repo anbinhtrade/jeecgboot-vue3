@@ -18,24 +18,24 @@
     schemas: [
       {
         field: 'orderCode',
-        label: '订单号',
+        label: 'Order number',
         component: 'Input',
         required: true,
       },
       {
         field: 'ctype',
-        label: '订单类型',
+        label: 'The type of order',
         component: 'Select',
         componentProps: {
           options: [
-            { label: '国内订单', value: '1' },
-            { label: '国际订单', value: '2' },
+            { label: 'Domestic orders', value: '1' },
+            { label: 'International Orders', value: '2' },
           ],
         },
       },
       {
         field: 'orderDate',
-        label: '订单日期',
+        label: 'The date of the order',
         component: 'DatePicker',
         componentProps: {
           valueFormat: 'YYYY-MM-DD hh:mm:ss',
@@ -43,12 +43,12 @@
       },
       {
         field: 'orderMoney',
-        label: '订单金额',
+        label: 'The amount of the order',
         component: 'InputNumber',
       },
       {
         field: 'content',
-        label: '订单备注',
+        label: 'Order notes',
         component: 'Input',
       },
       {
@@ -60,32 +60,32 @@
     ],
     showActionButtonGroup: false,
   });
-  //表单赋值
+  //Form assignment
   const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data) => {
-    //重置表单
+    //Reset the form
     await resetFields();
     setModalProps({ confirmLoading: false });
     isUpdate.value = !!data?.isUpdate;
     if (unref(isUpdate)) {
-      //表单赋值
+      //Form assignment
       await setFieldsValue({
         ...data.record,
       });
     }
   });
-  //设置标题
-  const title = computed(() => (!unref(isUpdate) ? '新增订单' : '编辑订单'));
-  //表单提交事件
+  //Set the title
+  const title = computed(() => (!unref(isUpdate) ? 'Add a new order' : 'Edit the order'));
+  //Form submission events
   async function handleSubmit(v) {
     try {
       let values = await validate();
       setModalProps({ confirmLoading: true });
-      //提交表单
+      //Submit the form
       let url = unref(isUpdate) ? '/test/order/edit' : '/test/order/add';
       defHttp.post({ url: url, params: values });
-      //关闭弹窗
+      //Close the pop-up window
       closeModal();
-      //刷新列表
+      //Refresh the list
       emit('success');
     } finally {
       setModalProps({ confirmLoading: false });

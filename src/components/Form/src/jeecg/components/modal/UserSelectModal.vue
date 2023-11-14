@@ -160,38 +160,38 @@
       //定义表格列
       const columns = [
         {
-          title: '用户账号',
+          title: 'User Accounts',
           dataIndex: 'username',
           width: 120,
           align: 'left',
         },
         {
-          title: '用户姓名',
+          title: 'User name',
           dataIndex: 'realname',
           width: 120,
         },
         {
-          title: '性别',
+          title: 'GENDER',
           dataIndex: 'sex_dictText',
           width: 50,
         },
         {
-          title: '手机号码',
+          title: 'Mobile phone number',
           dataIndex: 'phone',
           width: 120,
         },
         {
-          title: '邮箱',
+          title: 'MAILBOX',
           dataIndex: 'email',
           // width: 40,
         },
         {
-          title: '状态',
+          title: 'STATE',
           dataIndex: 'status_dictText',
           width: 80,
         },
       ];
-      //已选择的table信息
+      //Information about the selected table
       const selectedTable = {
         pagination: false,
         showIndexColumn: false,
@@ -202,12 +202,12 @@
         rowKey: 'id',
         columns: [
           {
-            title: '用户姓名',
+            title: 'User name',
             dataIndex: 'realname',
             width: 40,
           },
           {
-            title: '操作',
+            title: 'OPERATE',
             dataIndex: 'action',
             align: 'center',
             width: 40,
@@ -216,11 +216,11 @@
         ],
       };
       /**
-       * 确定选择
+       * Confirm the selection
        */
       function handleOk() {
         getSelectResult((options, values) => {
-          //回传选项和已选择的值
+          //Postback options and selected values
           emit('getSelectResult', options, values);
           //关闭弹窗
           closeModal();
@@ -229,7 +229,7 @@
       
       //update-begin---author:wangshuai ---date:20230703  for：【QQYUN-5685】5、离职人员可以选自己------------
       /**
-       * 用户返回结果逻辑查询
+       * The user returns a logical query of the results
        */
       function afterFetch(record) {
         let excludeList = props.excludeUserIdList;

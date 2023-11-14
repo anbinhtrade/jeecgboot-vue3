@@ -153,11 +153,11 @@
       // update-end--author:liaozhiyang---date:20230908---for：【QQYUN-6417】生产环境字典慢的问题
       createMessage.success('刷新缓存完成！');
     } else {
-      createMessage.error('刷新缓存失败！');
+      createMessage.error('Failed to flush the cache！');
     }
   }
   /**
-   * 字典配置
+   * Dictionary configuration
    */
   function handleItem(record) {
     openDrawer(true, {
@@ -170,17 +170,17 @@
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '字典配置',
+        label: 'Dictionary configuration',
         onClick: handleItem.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '确定删除吗?',
+          title: 'Are you sure to delete it?',
           confirm: handleDelete.bind(null, record),
         },
       },

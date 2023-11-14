@@ -28,13 +28,13 @@
         ...data.record,
       });
     }
-    //禁用表单
+    //Disable the form
     setProps({ disabled: !attrs.showFooter });
   });
   /**
-   * 标题
+   * TITLE
    */
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增角色' : '编辑角色'));
+  const getTitle = computed(() => (!unref(isUpdate) ? 'New characters' : 'Edit the role'));
   /**
    * 提交
    */
@@ -42,7 +42,7 @@
     try {
       const values = await validate();
       setDrawerProps({ confirmLoading: true });
-      //提交表单
+      //Submit the form
       await saveOrUpdateRole(values, isUpdate.value);
       closeDrawer();
       emit('success');

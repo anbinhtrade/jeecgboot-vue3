@@ -57,14 +57,14 @@
   const [registerDragModal, { openModal: openDragModal }] = useModal();
   const passwordRef = ref()
   let reload = (params?) => {};
-   //额外的查询参数
+   //Additional query parameters
   const params = reactive({type:"1",izTemplate:'0'});
-  // 获取内部fetch方法;
+  // Get the internal fetch method;
   function getMethod(m: any) {
     reload = m;
   }
   /**
-   * 提交后的回调
+   * Post-commit callbacks
    */
   function handleOk(record) {
     reload();
@@ -81,10 +81,10 @@
   }
 
   /**
-   * 编辑
+   * EDIT
    */
   function handleEdit(record: Recordable) {
-    //判断是否有保护密码
+    //Determine whether there is a protected password
     let hasPassword = record.protectionCode && record.protectionCode.length > 0;
     if (hasPassword) {
       passwordRef.value.showModal('edit', record);
@@ -97,7 +97,7 @@
     }
   }
   /**
-   * 密码校验成功
+   * The password is verified
    */
   async function checkPassOk(type, record) {
     if (type == 'edit') {
@@ -111,21 +111,21 @@
   }
 
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     //判断是否有保护密码
     let hasPassword = record.protectionCode && record.protectionCode.length > 0;
     if (hasPassword) {
       passwordRef.value.showModal('delete', record);
-      passwordRef.value.extraMsg = '面板被保护中,删除前请先输入保护码';
+      passwordRef.value.extraMsg = 'The panel is being protected, please enter the protection code before deleting it';
     } else {
       await deleteOne({ id: record.id }, reload);
     }
   }
 
   /**
-   * 页面配置
+   * Page configuration
    */
   function handleDesign(record) {
     openDragModal(true, {
@@ -135,19 +135,19 @@
   }
 
   /**
-   * 页面预览
+   * Page preview
    */
   function handleView(id) {
     router.push({ name: 'drag-page-view-@id'!, params: { id } });
   }
   /**
-   * 面板复制
+   * Panel duplication
    */
   async function handleCopy(id) {
     await copyPage({ id }, reload);
   }
   /**
-   * 收藏模板
+   * Favorite templates
    */
   async function handleTemplate(id,template) {
     let params = {id, izTemplate:template};
@@ -155,7 +155,7 @@
     console.log('handleTemplate-------------->res:',res)
     reload();
   }
-  // 面板类型
+  // Panel type
   function tabChange(key) {
     if(key!=='3'){
       params.type = key;
@@ -168,7 +168,7 @@
   }
 
   /**
-   * 成功回调，刷新列表
+   * Successful callback to refresh the list
    */
   function success() {
     reload();

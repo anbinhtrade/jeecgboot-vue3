@@ -5,7 +5,7 @@
       <!--插槽:table标题-->
       <template #tableTitle>
         <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" :disabled="isDisabledAuth('system:user:export')"> 导出</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" :disabled="isDisabledAuth('system:user:export')"> EXPORT</a-button>
         <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
         <a-button type="primary" @click="openModal(true, {})" preIcon="ant-design:hdd-outlined"> RECYCLE BIN</a-button>
 <!--        <JThirdAppButton biz-type="user" :selected-row-keys="selectedRowKeys" syncToApp syncToLocal @sync-finally="onSyncFinally" />-->
@@ -32,7 +32,7 @@
           </a-button>
         </a-dropdown>
       </template>
-      <!--操作栏-->
+      <!--Action bar-->
       <template #action="{ record }">
         <TableAction :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)" />
       </template>

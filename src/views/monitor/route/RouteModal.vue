@@ -99,7 +99,7 @@
               </a-menu>
             </template>
             <a-button type="dashed" style="margin-left: 8px; width: 100%">
-              添加路由条件
+              Add a routing condition
               <DownOutlined :size="22" />
             </a-button>
           </a-dropdown>
@@ -133,7 +133,7 @@
               </a-menu>
             </template>
             <a-button type="dashed" style="margin-left: 8px; width: 100%">
-              添加过滤器
+              Add filters
               <DownOutlined />
             </a-button>
           </a-dropdown>
@@ -171,12 +171,12 @@
   const currentNameIndex = ref(0);
   const currentTagIndex = ref(-1);
   const validatorRules = {
-    routerId: [{ required: true, message: 'routerId不能为空', trigger: 'blur' }],
-    name: [{ required: true, message: '路由名称不能为空', trigger: 'blur' }],
-    uri: [{ required: true, message: 'uri不能为空', trigger: 'blur' }],
+    routerId: [{ required: true, message: 'The router ID cannot be empty', trigger: 'blur' }],
+    name: [{ required: true, message: 'The route name cannot be empty', trigger: 'blur' }],
+    uri: [{ required: true, message: 'The URI cannot be empty', trigger: 'blur' }],
   };
   const noKeyRouter = ['Path', 'Host', 'Method', 'After', 'Before', 'Between', 'RemoteAddr'];
-  const filterArray = [/*{ key: 0, name: '熔断器' },*/ { key: 1, name: '限流过滤器' }];
+  const filterArray = [/*{ key: 0, name: '熔断器''Fuses' },*/ { key: 1, name: 'Flow-limiting filters' }];
   const tagArray = ref([
     {
       name: 'Path',
@@ -272,7 +272,7 @@
   }
 
   /**
-   * 值修改事件
+   * Value modification event
    * @param e
    * @param item
    * @param key

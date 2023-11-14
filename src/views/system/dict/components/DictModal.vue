@@ -33,7 +33,7 @@
     }
   });
   //设置标题
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增字典' : '编辑字典'));
+  const getTitle = computed(() => (!unref(isUpdate) ? 'Added a dictionary' : 'Edit the dictionary'));
   //表单提交事件
   async function handleSubmit() {
     try {

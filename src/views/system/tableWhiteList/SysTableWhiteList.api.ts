@@ -12,23 +12,23 @@ enum Api {
 }
 
 /**
- * 导出api
+ * EXPORT api
  * @param params
  */
 export const getExportUrl = Api.exportXls;
 /**
- * 导入api
+ * Import APIs
  */
 export const getImportUrl = Api.importExcel;
 /**
- * 列表接口
+ * List interface
  * @param params
  */
 export const list = (params) =>
   defHttp.get({url: Api.list, params});
 
 /**
- * 删除单个
+ * Delete a single
  * @param params
  * @param handleSuccess
  */
@@ -38,16 +38,16 @@ export const deleteOne = (params, handleSuccess) => {
   });
 }
 /**
- * 批量删除
+ * Delete in bulk
  * @param params
  * @param handleSuccess
  */
 export const batchDelete = (params, handleSuccess) => {
   Modal.confirm({
-    title: '确认删除',
-    content: '是否删除选中数据',
-    okText: '确认',
-    cancelText: '取消',
+    title: 'Confirm the deletion',
+    content: 'Specifies whether to delete the selected data',
+    okText: 'CONFIRM',
+    cancelText: 'CANCEL',
     onOk: () => {
       return defHttp.delete({
         url: Api.deleteBatch,
@@ -59,9 +59,9 @@ export const batchDelete = (params, handleSuccess) => {
   });
 }
 /**
- * 保存或者更新
+ * Save or update
  * @param params
- * @param isUpdate 是否是更新数据
+ * @param isUpdate Whether it is an update data
  */
 export const saveOrUpdate = (params, isUpdate) => {
   let url = isUpdate ? Api.edit : Api.save;

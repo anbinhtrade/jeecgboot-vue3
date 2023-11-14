@@ -2,7 +2,7 @@
   <div>
     <template v-if="hasFile" v-for="(file, fileKey) of [innerFile || {}]" :key="fileKey">
       <div style="position: relative">
-        <a-tooltip v-if="file.status === 'uploading'" :title="`上传中(${Math.floor(file.percent)}%)`">
+        <a-tooltip v-if="file.status === 'uploading'" :title="`UPLOADING(${Math.floor(file.percent)}%)`">
           <LoadingOutlined />
           <span style="margin-left: 5px">上传中…</span>
         </a-tooltip>
@@ -12,25 +12,25 @@
           <span style="margin-left: 5px">{{ ellipsisFileName }}</span>
         </a-tooltip>
 
-        <a-tooltip v-else :title="file.message || '上传失败'">
+        <a-tooltip v-else :title="file.message || 'Upload failed'">
           <Icon icon="ant-design:exclamation-circle" style="color: red" />
           <span style="margin-left: 5px">{{ ellipsisFileName }}</span>
         </a-tooltip>
 
         <Dropdown :trigger="['click']" placement="bottomRight" style="margin-left: 10px">
-          <a-tooltip title="操作">
+          <a-tooltip title="OPERATE">
             <Icon v-if="file.status !== 'uploading'" icon="ant-design:setting" style="cursor: pointer" />
           </a-tooltip>
           <template #overlay>
             <a-menu>
               <a-menu-item v-if="originColumn.allowDownload !== false" @click="handleClickDownloadFile">
-                <span><Icon icon="ant-design:download" />&nbsp;下载</span>
+                <span><Icon icon="ant-design:download" />&nbsp;DOWNLOAD</span>
               </a-menu-item>
               <a-menu-item v-if="originColumn.allowRemove !== false" @click="handleClickDeleteFile">
-                <span><Icon icon="ant-design:delete" />&nbsp;删除</span>
+                <span><Icon icon="ant-design:delete" />&nbsp;DELETE</span>
               </a-menu-item>
               <a-menu-item @click="handleMoreOperation">
-                <span><Icon icon="ant-design:bars" />&nbsp;更多</span>
+                <span><Icon icon="ant-design:bars" />&nbsp;MORE</span>
               </a-menu-item>
             </a-menu>
           </template>

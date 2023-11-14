@@ -5,12 +5,12 @@
         <TableAction
           :actions="[
             {
-              label: '编辑',
+              label: 'EDIT',
               onClick: handleEdit.bind(null, record),
               auth: 'other', // 根据权限控制是否显示: 无权限，不显示
             },
             {
-              label: '删除',
+              label: 'DELETE',
               icon: 'ic:outline-delete-outline',
               onClick: handleDelete.bind(null, record),
               auth: 'super', // 根据权限控制是否显示: 有权限，会显示
@@ -18,9 +18,9 @@
           ]"
           :dropDownActions="[
             {
-              label: '启用',
+              label: 'ENABLE',
               popConfirm: {
-                title: '是否启用？',
+                title: 'Is it enabled?',
                 confirm: handleOpen.bind(null, record),
               },
               ifShow: (_action) => {
@@ -28,9 +28,9 @@
               },
             },
             {
-              label: '禁用',
+              label: 'DISABLE',
               popConfirm: {
-                title: '是否禁用？',
+                title: 'Is it disabled?',
                 confirm: handleOpen.bind(null, record),
               },
               ifShow: () => {
@@ -38,9 +38,9 @@
               },
             },
             {
-              label: '同时控制',
+              label: 'Control at the same time',
               popConfirm: {
-                title: '是否动态显示？',
+                title: 'Whether it is displayed dynamically？',
                 confirm: handleOpen.bind(null, record),
               },
               auth: 'super', // 同时根据权限和业务控制是否显示
@@ -61,21 +61,21 @@
   import { demoListApi } from '/@/api/demo/table';
   const columns: BasicColumn[] = [
     {
-      title: '编号',
+      title: 'NUMBERING',
       dataIndex: 'no',
       width: 100,
     },
     {
-      title: '姓名',
+      title: 'NAME',
       dataIndex: 'name',
       auth: 'test', // 根据权限控制是否显示: 无权限，不显示
     },
     {
-      title: '状态',
+      title: 'STATE',
       dataIndex: 'status',
     },
     {
-      title: '地址',
+      title: 'ADDRESS',
       dataIndex: 'address',
       auth: 'super', // 同时根据权限和业务控制是否显示
       ifShow: (_column) => {
@@ -83,11 +83,11 @@
       },
     },
     {
-      title: '开始时间',
+      title: 'Start time',
       dataIndex: 'beginTime',
     },
     {
-      title: '结束时间',
+      title: 'End time',
       dataIndex: 'endTime',
       width: 200,
     },
@@ -96,7 +96,7 @@
     components: { BasicTable, TableAction },
     setup() {
       const [registerTable] = useTable({
-        title: 'TableAction组件及固定列示例',
+        title: 'Examples of Table Action components and fixed columns',
         api: demoListApi,
         columns: columns,
         bordered: true,
@@ -108,13 +108,13 @@
         },
       });
       function handleEdit(record: Recordable) {
-        console.log('点击了编辑', record);
+        console.log('Clicked Edit', record);
       }
       function handleDelete(record: Recordable) {
-        console.log('点击了删除', record);
+        console.log('Clicked Delete', record);
       }
       function handleOpen(record: Recordable) {
-        console.log('点击了启用', record);
+        console.log('Click Enable', record);
       }
       return {
         registerTable,

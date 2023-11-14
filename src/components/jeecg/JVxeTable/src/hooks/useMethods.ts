@@ -434,19 +434,19 @@ export function useMethods(props: JVxeTableProps, { emit }, data: JVxeDataProps,
    */
   function insertRows(rows: Recordable | Recordable[] = {}, index: number, options?: IAddRowsOptions) {
     if (index < 0) {
-      console.warn(`【JVxeTable】insertRows：index必须传递数字，且大于-1`);
+      console.warn(`J Vxe Table: insert rows:index must pass a number and be greater than -1`);
       return;
     }
     return addOrInsert(rows, index, 'inserted', options);
   }
 
-  /** 获取表格表单里的值 */
+  /** Get the values in the table table */
   function getValues(callback, rowIds) {
     let tableData = getTableData({ rowIds: rowIds });
     callback('', tableData);
   }
 
-  /** 获取表格数据 */
+  /** Get tabular data */
   function getTableData(options: any = {}) {
     let { rowIds } = options;
     let tableData;
@@ -487,7 +487,7 @@ export function useMethods(props: JVxeTableProps, { emit }, data: JVxeDataProps,
     if (!row) {
       row = getNewRowById(id);
       if (!row) {
-        console.warn(`JVxeTable.getIfRowById：没有找到id为"${id}"的行`);
+        console.warn(`JVxeTable.getIfRowById：No ID was found"${id}"OF THE LINE`);
         return { row: null };
       }
       isNew = true;

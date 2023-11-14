@@ -17,12 +17,12 @@ enum Api {
 }
 
 /**
- * 上传父路径
+ * Upload the parent path
  */
 export const uploadUrl = `${baseUploadUrl}/sys/common/upload`;
 
 /**
- * 职务列表
+ * Job Title
  * @param params
  */
 export const getPositionList = (params) => {
@@ -30,7 +30,7 @@ export const getPositionList = (params) => {
 };
 
 /**
- * 用户列表
+ * List of users
  * @param params
  */
 export const getUserList = (params) => {
@@ -38,7 +38,7 @@ export const getUserList = (params) => {
 };
 
 /**
- * 角色列表
+ * List of roles
  * @param params
  */
 export const getRoleList = (params) => {
@@ -46,67 +46,67 @@ export const getRoleList = (params) => {
 };
 
 /**
- * 异步获取部门树列表
+ * Get the list of department trees asynchronously
  */
 export const queryDepartTreeSync = (params?) => {
   return defHttp.get({ url: Api.queryDepartTreeSync, params });
 };
 /**
- * 获取部门树列表
+ * Get a list of department trees
  */
 export const queryTreeList = (params?) => {
   return defHttp.get({ url: Api.queryTreeList, params });
 };
 
 /**
- * 分类字典树控件 加载节点
+ * Classification Dictionary Tree Control Load node
  */
 export const loadTreeData = (params?) => {
   return defHttp.get({ url: Api.loadTreeData, params });
 };
 
 /**
- * 根据字典code加载字典text
+ * Load the dictionary text based on the dictionary code
  */
 export const loadDictItem = (params?) => {
   return defHttp.get({ url: Api.loadDictItem, params });
 };
 
 /**
- * 根据字典code加载字典text
+ * Load the dictionary text based on the dictionary code
  */
 export const getDictItems = (dictCode) => {
   return defHttp.get({ url: Api.getDictItems + dictCode }, { joinTime: false });
 };
 /**
- * 部门用户modal选择列表加载list
+ * The department user modal picklist loads the list
  */
 export const getTableList = (params) => {
   return defHttp.get({ url: Api.getTableList, params });
 };
 /**
- * 加载全部分类字典数据
+ * Load all categorical dictionary data
  */
 export const loadCategoryData = (params) => {
   return defHttp.get({ url: Api.getCategoryData, params });
 };
 /**
- * 文件上传
+ * File upload
  */
 export const uploadFile = (params, success) => {
   return defHttp.uploadFile({ url: uploadUrl }, params, { success });
 };
 /**
- * 下载文件
- * @param url 文件路径
- * @param fileName 文件名
+ * Download the file
+ * @param url File path
+ * @param fileName FILENAME
  * @param parameter
  * @returns {*}
  */
 export const downloadFile = (url, fileName?, parameter?) => {
   return getFileblob(url, parameter).then((data) => {
     if (!data || data.size === 0) {
-      message.warning('文件下载失败');
+      message.warning('File download failed');
       return;
     }
     if (typeof window.navigator.msSaveBlob !== 'undefined') {
@@ -126,7 +126,7 @@ export const downloadFile = (url, fileName?, parameter?) => {
 };
 
 /**
- * 下载文件 用于excel导出
+ * Download the file for excel export
  * @param url
  * @param parameter
  * @returns {*}
@@ -143,7 +143,7 @@ export const getFileblob = (url, parameter) => {
 };
 
 /**
- * 【用于评论功能】自定义文件上传-方法
+ * 【For commenting function] Custom file upload-method
  */
 export const uploadMyFile = (url, data) => {
   return defHttp.uploadMyFile(url, data);

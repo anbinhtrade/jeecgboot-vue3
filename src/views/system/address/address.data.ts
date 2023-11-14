@@ -3,33 +3,33 @@ import { BasicColumn } from '/@/components/Table';
 
 export const columns: BasicColumn[] = [
   {
-    title: '姓名',
+    title: 'NAME',
     dataIndex: 'realname',
     width: 150,
   },
   {
-    title: '工号',
+    title: 'Construction No.',
     dataIndex: 'workNo',
     width: 100,
   },
   {
-    title: '部门',
+    title: 'DEPARTMENT',
     dataIndex: 'departName',
     width: 200,
   },
   {
-    title: '职务',
+    title: 'OFFICE',
     dataIndex: 'post',
     width: 150,
     slots: { customRender: 'post' },
   },
   {
-    title: '手机',
+    title: 'CELL PHONE',
     width: 150,
     dataIndex: 'telephone',
   },
   {
-    title: '邮箱',
+    title: 'MAILBOX',
     width: 150,
     dataIndex: 'email',
   },
@@ -37,13 +37,13 @@ export const columns: BasicColumn[] = [
 
 export const searchFormSchema: FormSchema[] = [
   {
-    label: '姓名',
+    label: 'NAME',
     field: 'realname',
     component: 'Input',
     colProps: { span: 6 },
   },
   {
-    label: '工号',
+    label: 'Construction No.',
     field: 'workNo',
     component: 'Input',
     colProps: { span: 6 },

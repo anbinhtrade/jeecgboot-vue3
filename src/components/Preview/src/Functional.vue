@@ -246,7 +246,7 @@
         },
       });
 
-      // 上一页下一页
+      // PREV NEXT
       function handleChange(direction: 'left' | 'right') {
         const { currentIndex } = imgState;
         const { imageList } = props;

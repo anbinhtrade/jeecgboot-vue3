@@ -213,7 +213,7 @@
     }
   }
   /**
-   * 处理数据集
+   * Work with datasets
    */
   function getDataByResult(result) {
     if (result && result.length > 0) {
@@ -275,18 +275,18 @@
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '确定删除吗?',
+          title: 'Are you sure about deleting it?',
           confirm: handleDelete.bind(null, record),
         },
       },
       {
-        label: '添加下级',
+        label: 'Add subordinates',
         onClick: handleAddSub.bind(null, { pid: record.id }),
       },
     ];

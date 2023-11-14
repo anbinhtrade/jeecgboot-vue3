@@ -11,28 +11,28 @@
   import { formSchema } from './fill.rule.data';
   import { saveFillRule, updateFillRule } from './fill.rule.api';
 
-  //设置标题
-  const title = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+  //Set the title
+  const title = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
 
   // 声明Emits
   const emit = defineEmits(['register', 'success']);
   const isUpdate = ref(true);
 
-  //表单配置
+  //Form configuration
   const [registerForm, { resetFields, setFieldsValue, validate, getFieldsValue }] = useForm({
     schemas: formSchema,
     showActionButtonGroup: false,
     baseColProps: { span: 12 },
   });
 
-  //表单赋值
+  //Form assignment
   const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data) => {
-    //重置表单
+    //Reset the form
     await resetFields();
     setModalProps({ confirmLoading: false });
     isUpdate.value = !!data?.isUpdate;
     if (unref(isUpdate)) {
-      //表单赋值
+      //Form assignment
       await setFieldsValue({
         ...data.record,
       });
@@ -46,7 +46,7 @@
       setModalProps({ confirmLoading: true });
       if (isUpdate.value) {
         let allFieldsValue = getFieldsValue();
-        // 编辑页面 如果表单没有父级下拉框 则提交时候 validate方法不返该值 需要手动设置
+        // Edit the page: If the form does not have a parent drop-down box, the validate method does not return this value when submitting, and it needs to be set manually
         if (!formValue.parentId && allFieldsValue.parentId) {
           formValue.parentId = allFieldsValue.parentId;
         }
@@ -54,9 +54,9 @@
       } else {
         await saveFillRule(formValue);
       }
-      //关闭弹窗
+      //Close the pop-up window
       closeModal();
-      //刷新列表
+      //Refresh the list
       emit('success');
     } finally {
       setModalProps({ confirmLoading: false });

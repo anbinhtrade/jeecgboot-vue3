@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="MarkDown组件嵌入Form示例">
+  <PageWrapper title="Example of embedding a Form into a Mark Down component">
     <CollapseContainer title="MarkDown表单">
       <BasicForm :labelWidth="100" :schemas="schemas" :actionColOptions="{ span: 24 }" @submit="handleSubmit" />
     </CollapseContainer>
@@ -18,7 +18,7 @@
       field: 'title',
       component: 'Input',
       label: 'title',
-      defaultValue: '标题',
+      defaultValue: 'TITLE',
       rules: [{ required: true }],
     },
     {

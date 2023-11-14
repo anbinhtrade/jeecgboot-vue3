@@ -3,26 +3,26 @@ import { FormSchema } from '/@/components/Table';
 
 export const columns: BasicColumn[] = [
   {
-    title: '分类名称',
+    title: 'Classification name',
     dataIndex: 'name',
     width: 350,
     align: 'left',
   },
   {
-    title: '分类编码',
+    title: 'Classification code',
     dataIndex: 'code',
   },
 ];
 
 export const searchFormSchema: FormSchema[] = [
   {
-    label: '名称',
+    label: 'NAME',
     field: 'name',
     component: 'Input',
     colProps: { span: 6 },
   },
   {
-    label: '编码',
+    label: 'ENCODE',
     field: 'code',
     component: 'Input',
     colProps: { span: 6 },
@@ -37,7 +37,7 @@ export const formSchema: FormSchema[] = [
     show: false,
   },
   {
-    label: '父级节点',
+    label: 'Parent node',
     field: 'pid',
     component: 'TreeSelect',
     componentProps: {
@@ -59,7 +59,7 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: '分类名称',
+    label: 'Classification name',
     field: 'name',
     required: true,
     component: 'Input',

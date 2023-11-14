@@ -4,19 +4,19 @@
       <!--插槽:table标题-->
       <template #tableTitle>
         <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAdd">NEW</a-button>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
-        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
         <a-dropdown v-if="showBatchBtn">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="onDeleteBatch">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                <span>删除</span>
+                <span>DELETE</span>
               </a-menu-item>
             </a-menu>
           </template>
           <a-button>
-            <span>批量操作</span>
+            <span>Bulk operations</span>
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
@@ -44,11 +44,11 @@
   import { useMessage } from '/@/hooks/web/useMessage';
   const { createMessage } = useMessage();
 
-  // 列表页面公共参数、方法
+  // Common parameters and methods on the list page
   const { prefixCls, onExportXls, onImportXls, tableContext } = useListPage({
     designScope: 'message-template',
     tableProps: {
-      title: '消息中心模板列表数据',
+      title: 'Message Center template list data',
       api: list,
       columns: columns,
       formConfig: {
@@ -57,7 +57,7 @@
     },
     exportConfig: {
       url: Api.exportXls,
-      name: '消息中心模板列表',
+      name: 'A list of Message Center templates',
     },
     importConfig: {
       url: Api.importXls,
@@ -73,7 +73,7 @@
 
   function onAdd() {
     openModal(true, {
-      title: '新增消息模板',
+      title: 'Message templates are added',
       isUpdate: false,
       showFooter: true,
       record: {},
@@ -82,11 +82,11 @@
 
   function onEdit(record) {
     if (record.useStatus === '1') {
-      createMessage.warning('此模板已被应用，禁止编辑!');
+      createMessage.warning('This template has been applied and editing is prohibited!');
       return;
     }
     openModal(true, {
-      title: '修改消息模板',
+      title: 'Modify the message template',
       isUpdate: true,
       record: record,
       showFooter: true,
@@ -97,7 +97,7 @@
     if (record) {
       //update-begin-author:taoyan date:2022-7-14 for: VUEN-1652【bug】应用状态下不允许删除
       if(record.useStatus == '1'){
-        createMessage.warning('该模板已被应用禁止删除!');
+        createMessage.warning('The template has been removed by the app ban!');
         return;
       }
       //update-end-author:taoyan date:2022-7-14 for: VUEN-1652【bug】应用状态下不允许删除
@@ -106,9 +106,9 @@
   }
 
   /**
-   * 根据 ids 批量删除
+   * Bulk deletion based on IDS
    * @param idListRef array
-   * @param confirm 是否显示确认提示框
+   * @param confirm Whether to display a confirmation prompt
    */
   async function doDeleteDepart(idListRef, confirm = true) {
     const idList = unref(idListRef);
@@ -129,7 +129,7 @@
       let arr = toRaw(selectedRows.value);
       let temp = arr.filter(item=>item.useStatus=='1')
       if(temp.length>0){
-        createMessage.warning('选中的模板已被应用禁止删除!');
+        createMessage.warning('The selected template has been removed by an app ban!');
         return;
       }
       //update-end-author:taoyan date:2022-7-14 for: VUEN-1652【bug】应用状态下不允许删除
@@ -149,23 +149,23 @@
    */
   function getTableAction(record): ActionItem[] {
     //update-begin---author:wangshuai ---date:20221123  for：[VUEN-2807]消息模板加一个查看功能------------
-    return [{ label: '查看', onClick: handleDetail.bind(null, record)}, { label: '编辑', onClick: onEdit.bind(null, record) }];
+    return [{ label: 'VIEW', onClick: handleDetail.bind(null, record)}, { label: 'EDIT', onClick: onEdit.bind(null, record) }];
     //update-end---author:wangshuai ---date:20221123  for：[VUEN-2807]消息模板加一个查看功能------------
   }
 
   /**
-   * 下拉操作栏
+   * Drop down the action bar
    */
   function getDropDownAction(record): ActionItem[] {
     return [
-      { label: '应用', onClick: handleUse.bind(null, record) },
-      { label: '停用', onClick: handleNotUse.bind(null, record) },
-      { label: '发送测试', onClick: onSendTest.bind(null, record) },
+      { label: 'APPLY', onClick: handleUse.bind(null, record) },
+      { label: 'DEACTIVATED', onClick: handleNotUse.bind(null, record) },
+      { label: 'Send a test', onClick: onSendTest.bind(null, record) },
       {
-        label: '删除',
+        label: 'DELETE',
         color: 'error',
         popConfirm: {
-          title: '确认要删除吗？',
+          title: 'Are you sure you want to delete it?？',
           confirm: onDelete.bind(null, record),
         },
       },
@@ -173,7 +173,7 @@
   }
 
   /**
-   * 应用
+   * APPLY
    */
   async function handleUse(record) {
     let param = { id: record.id, useStatus: '1' };
@@ -182,7 +182,7 @@
   }
 
   /**
-   * 停用
+   * DEACTIVATED
    */
   async function handleNotUse(record) {
     let param = { id: record.id, useStatus: '0' };
@@ -191,7 +191,7 @@
   }
 
   /**
-   * 查看
+   * VIEW
    * @param record
    */
   function handleDetail(record) {

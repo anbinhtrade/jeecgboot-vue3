@@ -1,7 +1,7 @@
 <template>
   <PageWrapper
-    title="可展开表格"
-    content="不可与scroll共用。TableAction组件可配置stopButtonPropagation来阻止操作按钮的点击事件冒泡，以便配合Table组件的expandRowByClick"
+    title="EXPANDABLE TABLE"
+    content="Cannot be used in conjunction with scrolls。The Table Action component can be configured with stop button propagation to prevent the click event of the action button from bubbling up, so as to cooperate with the expand Row By Click of the Table component"
   >
     <BasicTable @register="registerTable">
       <template #expandedRowRender="{ record }">
@@ -12,16 +12,16 @@
           stopButtonPropagation
           :actions="[
             {
-              label: '删除',
+              label: 'DELETE',
               icon: 'ic:outline-delete-outline',
               onClick: handleDelete.bind(null, record),
             },
           ]"
           :dropDownActions="[
             {
-              label: '启用',
+              label: 'ENABLE',
               popConfirm: {
-                title: '是否启用？',
+                title: 'Whether it is enabled？',
                 confirm: handleOpen.bind(null, record),
               },
             },
@@ -44,8 +44,8 @@
     setup() {
       const [registerTable] = useTable({
         api: demoListApi,
-        title: '可展开表格演示',
-        titleHelpMessage: ['已启用expandRowByClick', '已启用stopButtonPropagation'],
+        title: 'TO EXPAND THE TABLE PRESENTATION',
+        titleHelpMessage: ['ENABLEDexpandRowByClick', 'ENABLEDstopButtonPropagation'],
         columns: getBasicColumns(),
         rowKey: 'id',
         canResize: false,
@@ -58,10 +58,10 @@
         },
       });
       function handleDelete(record: Recordable) {
-        console.log('点击了删除', record);
+        console.log('Clicked Delete', record);
       }
       function handleOpen(record: Recordable) {
-        console.log('点击了启用', record);
+        console.log('Click Enable', record);
       }
 
       return {

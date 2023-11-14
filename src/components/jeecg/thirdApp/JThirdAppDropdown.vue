@@ -1,21 +1,21 @@
 <template>
   <a-dropdown v-if="syncToApp && syncToLocal">
-    <a-button type="primary" preIcon="ant-design:sync-outlined">同步{{ name }}</a-button>
+    <a-button type="primary" preIcon="ant-design:sync-outlined">Synchronize{{ name }}</a-button>
     <template #overlay>
       <a-menu @click="handleMenuClick">
-        <a-menu-item v-if="syncToApp" key="to-app">同步到{{ name }}</a-menu-item>
-        <a-menu-item v-if="getSyncToLocal" key="to-local">同步到本地</a-menu-item>
+        <a-menu-item v-if="syncToApp" key="to-app">Sync to {{ name }}</a-menu-item>
+        <a-menu-item v-if="getSyncToLocal" key="to-local">Sync to local</a-menu-item>
       </a-menu>
     </template>
   </a-dropdown>
   <a-button v-else-if="syncToApp" type="primary" preIcon="ant-design:sync-outlined" @click="handleMenuClick({ key: 'to-app' })"
-    >同步{{ name }}</a-button
+    >Synchronize{{ name }}</a-button
   >
-  <a-button v-else type="primary" preIcon="ant-design:sync-outlined" @click="handleMenuClick({ key: 'to-local' })">同步{{ name }}到本地</a-button>
+  <a-button v-else type="primary" preIcon="ant-design:sync-outlined" @click="handleMenuClick({ key: 'to-local' })">Synchronize{{ name }} to local</a-button>
 </template>
 
 <script lang="ts" setup>
-  /* JThirdAppButton 的子组件，不可单独使用 */
+  /* JThirdAppButton A subcomponent of and cannot be used alone */
   import { computed } from 'vue';
 
   const props = defineProps({
@@ -24,11 +24,11 @@
     syncToApp: Boolean,
     syncToLocal: Boolean,
   });
-  // 声明Emits
+  // Declare Emits
   const emit = defineEmits(['to-app', 'to-local']);
 
   const getSyncToLocal = computed(() => {
-    // 由于企业微信接口变更，将不再支持同步到本地
+    // Due to the change of the enterprise WeChat interface, synchronization to local will no longer be supported.
     if (props.type === 'wechatEnterprise') {
       return false;
     }

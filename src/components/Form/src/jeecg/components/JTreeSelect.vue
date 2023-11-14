@@ -36,7 +36,7 @@
 
   const props = defineProps({
     value: propTypes.string.def(''),
-    placeholder: propTypes.string.def('请选择'),
+    placeholder: propTypes.string.def('Please select'),
     dict: propTypes.string.def('id'),
     parentCode: propTypes.string.def(''),
     pidField: propTypes.string.def('pid'),
@@ -102,7 +102,7 @@
   //update-end-author:taoyan date:2022-5-25 for: VUEN-1056 15、严重——online树表单，添加的时候，父亲节点是空的
 
   /**
-   * 根据code获取下拉数据并回显
+   * Obtain the drop-down data based on the code and display it back
    */
   async function loadItemByCode() {
     if (!props.value || props.value == '0') {
@@ -177,12 +177,12 @@
       }
       treeData.value = [...res.result];
     } else {
-      console.log('数根节点查询结果异常', res);
+      console.log('The query result of the root node is abnormal', res);
     }
   }
 
   /**
-   * 异步加载数据
+   * Load data asynchronously
    */
   async function asyncLoadTreeData(treeNode) {
     if (treeNode.dataRef.children) {
@@ -208,7 +208,7 @@
         i.value = i.key;
         i.isLeaf = !!i.leaf;
       }
-      //添加子节点
+      //Add a child node
       addChildren(pid, res.result, treeData.value);
       treeData.value = [...treeData.value];
     }
@@ -216,7 +216,7 @@
   }
 
   /**
-   * 加载子节点
+   * Load the child node
    */
   function addChildren(pid, children, treeArray) {
     if (treeArray && treeArray.length > 0) {
@@ -236,7 +236,7 @@
   }
 
   /**
-   * 选中树节点事件
+   * Select the tree node event
    */
   function onChange(value) {
     if (!value) {
@@ -255,14 +255,14 @@
   }
 
   /**
-   * 文本框值变化
+   * The text box value changes
    */
   function onSearch(value) {
     console.log(value);
   }
 
   /**
-   * 校验条件配置是否有误
+   * Check whether the configuration condition is incorrect
    */
   function validateProp() {
     let mycondition = props.condition;
@@ -275,11 +275,11 @@
           if (typeof test == 'object' && test) {
             resolve();
           } else {
-            createMessage.error('组件JTreeSelect-condition传值有误，需要一个json字符串!');
+            createMessage.error('SUBASSEMBLY JTreeSelect-condition The value is incorrect，A json string is required!');
             reject();
           }
         } catch (e) {
-          createMessage.error('组件JTreeSelect-condition传值有误，需要一个json字符串!');
+          createMessage.error('SUBASSEMBLY JTreeSelect-The condition value is incorrect，A json string is required!');
           reject();
         }
       }
@@ -307,7 +307,7 @@
       }
       treeData.value = [...res.result];
     } else {
-      console.log('数根节点查询结果异常', res);
+      console.log('The query result of the root node is abnormal', res);
     }
   }
 
@@ -325,7 +325,7 @@
   }
 
   /**
-   * 递归找子节点
+   * Recursively find child nodes
    * @param data
    * @param arr
    */

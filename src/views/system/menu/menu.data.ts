@@ -40,19 +40,19 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: '组件',
+    title: 'SUBASSEMBLY',
     dataIndex: 'component',
     align: 'left',
     width: 150,
   },
   {
-    title: '路径',
+    title: 'PATH',
     dataIndex: 'url',
     align: 'left',
     width: 150,
   },
   {
-    title: '排序',
+    title: 'SORT',
     dataIndex: 'sortNo',
     width: 50,
   },
@@ -61,7 +61,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: '菜单名称',
+    label: 'Menu name',
     component: 'Input',
     colProps: { span: 8 },
   },
@@ -76,19 +76,19 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'menuType',
-    label: '菜单类型',
+    label: 'Menu type',
     component: 'RadioButtonGroup',
     defaultValue: 0,
     componentProps: ({ formActionType, formModel }) => {
       return {
         options: [
-          { label: '一级菜单', value: 0 },
-          { label: '子菜单', value: 1 },
-          { label: '按钮/权限', value: 2 },
+          { label: 'Level 1 menu', value: 0 },
+          { label: 'SUBMENU', value: 1 },
+          { label: 'Buttons/Permissions', value: 2 },
         ],
         onChange: (e) => {
           const { updateSchema, clearValidate } = formActionType;
-          const label = isButton(e) ? '按钮/权限' : '菜单名称';
+          const label = isButton(e) ? 'Buttons/Permissions' : 'Menu name';
           //清除校验
           clearValidate();
           updateSchema([
@@ -112,13 +112,13 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'name',
-    label: '菜单名称',
+    label: 'Menu name',
     component: 'Input',
     required: true,
   },
   {
     field: 'parentId',
-    label: '上级菜单',
+    label: 'Parent menu',
     component: 'TreeSelect',
     required: true,
     componentProps: {
@@ -138,7 +138,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'url',
-    label: '访问路径',
+    label: 'Access path',
     component: 'Input',
     required: true,
     //update-begin-author:liusq date:2023-06-06 for: [issues/5008]子表数据权限设置不生效
@@ -152,10 +152,10 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'component',
-    label: '前端组件',
+    label: 'Front-end components',
     component: 'Input',
     componentProps: {
-      placeholder: '请输入前端组件',
+      placeholder: 'Please enter the front-end component',
     },
     defaultValue:'layouts/default/index',
     required: true,
@@ -163,39 +163,39 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'componentName',
-    label: '组件名称',
+    label: 'The name of the component',
     component: 'Input',
     componentProps: {
-      placeholder: '请输入组件名称',
+      placeholder: 'Please enter a component name',
     },
     helpMessage: [
-      '此处名称应和vue组件的name属性保持一致。',
-      '组件名称不能重复，主要用于路由缓存功能。',
-      '如果组件名称和vue组件的name属性不一致，则会导致路由缓存失效。',
-      '非必填，留空则会根据访问路径自动生成。',
+      'The name of this parameter should be the same as the name attribute of the vue component.',
+      'The component name cannot be duplicated and is mainly used for route caching.',
+      'If the name attribute of the component is inconsistent with the name attribute of the vue component, the route cache will be invalidated.',
+      'If it is not required, it will be automatically generated based on the access path.',
     ],
     defaultValue: '',
     ifShow: ({ values }) => !isButton(values.menuType),
   },
   {
     field: 'frameSrc',
-    label: 'Iframe地址',
+    label: 'Iframe address',
     component: 'Input',
     rules: [
-      { required: true, message: '请输入Iframe地址' },
-      { type: 'url', message: '请输入正确的url地址' },
+      { required: true, message: 'Please enter an iframe address' },
+      { type: 'url', message: 'Please enter the correct URL address' },
     ],
     ifShow: ({ values }) => !isButton(values.menuType) && values.component === ComponentTypes.IFrame,
   },
   {
     field: 'redirect',
-    label: '默认跳转地址',
+    label: 'The default redirection address',
     component: 'Input',
     ifShow: ({ values }) => isDir(values.menuType),
   },
   {
     field: 'perms',
-    label: '授权标识',
+    label: 'Authorization Identifier',
     component: 'Input',
     ifShow: ({ values }) => isButton(values.menuType),
     // dynamicRules: ({ model }) => {
@@ -258,14 +258,14 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'sortNo',
-    label: '排序',
+    label: 'SORT',
     component: 'InputNumber',
     defaultValue: 1,
     ifShow: ({ values }) => !isButton(values.menuType),
   },
   {
     field: 'route',
-    label: '是否路由菜单',
+    label: 'Whether to route menu',
     component: 'Switch',
     defaultValue: true,
     componentProps: {

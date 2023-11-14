@@ -23,14 +23,14 @@ export function usePopBiz(ob, tableRef?) {
   }
   // update-end--author:liaozhiyang---date:20230811---for：【issues/675】子表字段Popup弹框数据不更新
   const { createMessage } = useMessage();
-  //弹窗可视状态
+  //The pop-up window can be visualized
   const visible = ref(false);
   //表格加载
   const loading = ref(false);
   //cgRpConfigId
   const cgRpConfigId = ref('');
-  //标题
-  const title = ref('列表');
+  //TITLE
+  const title = ref('LIST');
   // 排序字段，默认无排序
   const iSorter = ref<any>('');
   // 查询对象
@@ -43,7 +43,7 @@ export function usePopBiz(ob, tableRef?) {
   const dictOptions = ref({});
   //数据集
   const dataSource = ref<Array<object>>([]);
-  //定义表格信息
+  //Define tabular information
   const columns = ref<Array<object>>([]);
   // 当前路由
   const route = useRoute();
@@ -67,7 +67,7 @@ export function usePopBiz(ob, tableRef?) {
   }
 
   /**
-   * 选择列配置
+   * Select a column configuration
    */
   const rowSelection = {
     fixed: true,
@@ -77,14 +77,14 @@ export function usePopBiz(ob, tableRef?) {
   };
 
   /**
-   * 序号列配置
+   * Configure the ordinal number column
    */
   const indexColumnProps = {
     dataIndex: 'index',
     width: '15px',
   };
   /**
-   * 分页配置
+   * Pagination configuration
    */
   const pagination = reactive({
     current: 1,
@@ -106,7 +106,7 @@ export function usePopBiz(ob, tableRef?) {
   });
 
   /**
-   * 表格选择事件
+   * Table selection events
    * @param selectedRowKeys
    * @param selectRow
    */
@@ -125,12 +125,12 @@ export function usePopBiz(ob, tableRef?) {
           }
         });
       } else {
-        // 新增
+        // NEW
         const append: any = [];
         const beforeRowKeys = selectRows.value.map((item) => combineRowKey(item));
         selectedRowKeys.forEach((key) => {
           if (!beforeRowKeys.find((item) => item === key)) {
-            // 那就是新增选中的行
+            // That's the newly selected row
             const row = getRowByKey(key);
             row && append.push(row);
           }
@@ -142,7 +142,7 @@ export function usePopBiz(ob, tableRef?) {
     // update-end--author:liaozhiyang---date:20230919---for：【QQYUN-4263】跨页选择导出问题
   }
   /**
-   * 过滤没用选项
+   * Filter useless options
    * @param selectedRowKeys
    */
   function filterUnuseSelect() {
@@ -153,7 +153,7 @@ export function usePopBiz(ob, tableRef?) {
   }
 
   /**
-   * 根据key获取row信息
+   * Obtain ROW information based on the key
    * @param key
    */
   function getRowByKey(key) {
@@ -162,7 +162,7 @@ export function usePopBiz(ob, tableRef?) {
   }
 
   /**
-   * 加载rowKey
+   * Load the row key
    */
   function combineRowKey(record) {
     let res = record?.id || '';
@@ -174,7 +174,7 @@ export function usePopBiz(ob, tableRef?) {
   }
 
   /**
-   * 加载列信息
+   * Load column information
    */
   function loadColumnsInfo() {
     let url = `${configUrl.getColumns}${props.code}`;
@@ -200,7 +200,7 @@ export function usePopBiz(ob, tableRef?) {
         }
         if (currColumns[0].key !== 'rowIndex') {
           currColumns.unshift({
-            title: '序号',
+            title: 'SERIAL NUMBER',
             dataIndex: 'rowIndex',
             key: 'rowIndex',
             width: 60,
@@ -217,7 +217,7 @@ export function usePopBiz(ob, tableRef?) {
   }
 
   /**
-   * 加载列和数据[列表专用]
+   * Loading Columns and Data [List Only]
    */
   function loadColumnsAndData() {
     // 第一次加载 置空isTotal 在这里调用确保 该方法只是进入页面后 加载一次 其余查询不走该方法
@@ -295,7 +295,7 @@ export function usePopBiz(ob, tableRef?) {
             count += parseFloat(row[dataIndex]);
           }
         });
-        totalRow[dataIndex] = isNaN(count) ? '包含非数字内容' : count.toFixed(2);
+        totalRow[dataIndex] = isNaN(count) ? 'Contains non-digital content' : count.toFixed(2);
 
         // 长整形时合计不显示.00后缀
         let v = metaColumnList.find((v) => v.dataIndex == dataIndex);
@@ -331,7 +331,7 @@ export function usePopBiz(ob, tableRef?) {
   }
 
   /**
-   * 处理列的href和字典翻译
+   * Handle href and dictionary translations for columns
    */
   function handleColumnHrefAndDict(columns: OnlineColumn[], fieldHrefSlotKeysMap: {}): OnlineColumn[] {
     for (let column of columns) {
@@ -435,7 +435,7 @@ export function usePopBiz(ob, tableRef?) {
   // 获取路由器对象 href跳转用到
   let router = useRouter();
   /**
-   * href 点击事件
+   * href Click Events
    * @param field
    * @param record
    */
@@ -683,7 +683,7 @@ export function usePopBiz(ob, tableRef?) {
    */
   function handleChangeInTable(page, filters, sorter) {
     console.log(page, filters, sorter);
-    //分页、排序、筛选变化时触发
+    //Triggered when there are changes in pagination, sorting, and filtering
     if (Object.keys(sorter).length > 0) {
       iSorter.value = {
         column: sorter.field,
@@ -702,7 +702,7 @@ export function usePopBiz(ob, tableRef?) {
   }
 
   /**
-   * 行点击事件
+   * ROW CLICK EVENTS
    * @param record
    */
   function clickThenCheck(record) {
@@ -733,7 +733,7 @@ export function usePopBiz(ob, tableRef?) {
     }
   }
 
-  //防止字典中有垃圾数据
+  //Prevent junk data in the dictionary
   function initDictOptionData(arr) {
     let obj = {};
     Object.keys(arr).map((k) => {
@@ -745,7 +745,7 @@ export function usePopBiz(ob, tableRef?) {
   }
 
   /**
-   * 过滤对象中为空的属性
+   * Filter for attributes that are empty in the object
    * @param obj
    * @returns {*}
    */
@@ -775,7 +775,7 @@ export function usePopBiz(ob, tableRef?) {
   const hrefComponent = ref({
     model: {
       title: '',
-      okText: '关闭',
+      okText: 'Shut down',
       width: '100%',
       visible: false,
       destroyOnClose: true,
@@ -800,7 +800,7 @@ export function usePopBiz(ob, tableRef?) {
 
   // 超链点击事件--> 打开一个modal窗口
   function openHrefCompModal(href) {
-    // 解析 href 参数
+    // ANALYSIS href PARAMETER
     let index = href.indexOf('?');
     let path = href;
     if (index !== -1) {
@@ -823,7 +823,7 @@ export function usePopBiz(ob, tableRef?) {
 
   //update-begin-author:taoyan date:2022-5-31 for: VUEN-1155 popup 选择数据时，会选择多条重复数据
   /**
-   * emit事件 获取选中的行数据
+   * emitAFFAIR Get the selected row data
    */
   function getOkSelectRows(): any[] {
     let arr = unref(selectRows);

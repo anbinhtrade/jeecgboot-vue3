@@ -1,6 +1,6 @@
 <template>
-  <PageWrapper title="富文本嵌入表单示例">
-    <CollapseContainer title="富文本表单">
+  <PageWrapper title="Example of a rich text embedded form">
+    <CollapseContainer title="Rich text forms">
       <BasicForm :labelWidth="100" :schemas="schemas" :actionColOptions="{ span: 24 }" @submit="handleSubmit" />
     </CollapseContainer>
   </PageWrapper>

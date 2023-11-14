@@ -1,7 +1,7 @@
 <template>
-  <BasicModal v-bind="$attrs" @register="registerModal" title="字典回收站" :showOkBtn="false" width="1000px" destroyOnClose>
+  <BasicModal v-bind="$attrs" @register="registerModal" title="Dictionary Recycle Bin" :showOkBtn="false" width="1000px" destroyOnClose>
     <BasicTable @register="registerTable">
-      <!--操作栏-->
+      <!--Action bar-->
       <template #action="{ record }">
         <TableAction :actions="getTableAction(record)" />
       </template>
@@ -41,26 +41,26 @@
   });
 
   /**
-   * 还原事件
+   * Restore the event
    */
   async function handleRevert(record) {
     await putRecycleBin(record.id, reload);
     emit('success');
   }
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     await deleteRecycleBin(record.id, reload);
   }
   /**
-   * 批量还原事件
+   * Bulk restore events
    */
   function batchHandleRevert() {
     handleRevert({ id: toRaw(checkedKeys.value).join(',') });
   }
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   function batchHandleDelete() {
     handleDelete({ id: toRaw(checkedKeys.value).join(',') });
@@ -69,19 +69,19 @@
   function getTableAction(record) {
     return [
       {
-        label: '取回',
+        label: 'Round-up',
         icon: 'ant-design:redo-outlined',
         popConfirm: {
-          title: '是否确认取回',
+          title: 'Whether to confirm the retrieval',
           confirm: handleRevert.bind(null, record),
         },
       },
       {
-        label: '彻底删除',
+        label: 'Delete completely',
         icon: 'ant-design:scissor-outlined',
         color: 'error',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

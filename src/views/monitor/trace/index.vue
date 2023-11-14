@@ -3,9 +3,9 @@
     <BasicTable @register="registerTable" :dataSource="dataSource">
       <template #tableTitle>
         <div slot="message">
-          共追踪到 {{ dataSource.length }} 条近期HTTP请求记录
+          A total of traced to {{ dataSource.length }} recent HTTP requests
           <a-divider type="vertical" />
-          <a @click="loadDate">立即刷新</a>
+          <a @click="loadDate">Refresh now</a>
         </div>
       </template>
 

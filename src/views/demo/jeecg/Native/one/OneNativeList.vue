@@ -1,21 +1,21 @@
 <template>
   <a-card :bordered="false">
-    <!-- 操作按钮区域 -->
+    <!-- Action button area -->
     <div class="table-operator">
-      <a-button @click="handleAdd" type="primary" preIcon="ant-design:plus">新增</a-button>
-      <!--      <a-button type="primary" preIcon="ant-design:download" @click="handleExportExcel('单表原生列表')">导出</a-button>-->
-      <!--      <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="handleImportExcel">导入</j-upload-button>-->
+      <a-button @click="handleAdd" type="primary" preIcon="ant-design:plus">NEW</a-button>
+      <!--      <a-button type="primary" preIcon="ant-design:download" @click="handleExportExcel('单表原生列表')">EXPORT</a-button>-->
+      <!--      <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="handleImportExcel">IMPORT</j-upload-button>-->
       <a-dropdown v-if="selectedRowKeys.length > 0">
         <template #overlay>
           <a-menu>
             <a-menu-item key="1" @click="batchDel">
               <Icon icon="ant-design:delete-outlined"></Icon>
-              删除
+              DELETE
             </a-menu-item>
           </a-menu>
         </template>
         <a-button
-          >批量操作
+          >Bulk operations
           <Icon icon="mdi:chevron-down"></Icon>
         </a-button>
       </a-dropdown>
@@ -24,9 +24,9 @@
     <!-- table区域-begin -->
     <div>
       <div class="ant-alert ant-alert-info" style="margin-bottom: 16px">
-        <i class="anticon anticon-info-circle ant-alert-icon"></i> 已选择 <a style="font-weight: 600">{{ selectedRowKeys.length }}</a
+        <i class="anticon anticon-info-circle ant-alert-icon"></i> SELECTED <a style="font-weight: 600">{{ selectedRowKeys.length }}</a
         >项
-        <a style="margin-left: 24px" @click="onClearSelected">清空</a>
+        <a style="margin-left: 24px" @click="onClearSelected">EMPTY</a>
       </div>
 
       <a-table
@@ -45,28 +45,28 @@
       >
         <template #bodyCell="{ column, text, record }">
           <template v-if="column.dataIndex==='tupian'">
-            <span v-if="!text" style="font-size: 12px; font-style: italic">无图片</span>
+            <span v-if="!text" style="font-size: 12px; font-style: italic">No images</span>
             <img v-else :src="getImgView(text)" :preview="record.id" alt="" class="anty-img-wrap" />
           </template>
           <template v-else-if="column.dataIndex==='wenjian'">
             <span v-if="!text" style="font-size: 12px; font-style: italic">无文件</span>
-            <a-button v-else :ghost="true" type="primary" preIcon="ant-design:download" size="small" @click="downloadFile(text)"> 下载 </a-button>
+            <a-button v-else :ghost="true" type="primary" preIcon="ant-design:download" size="small" @click="downloadFile(text)"> DOWNLOAD </a-button>
           </template>
           <template v-else-if="column.dataIndex==='action'">
-            <a @click="handleEdit(record)">编辑</a>
+            <a @click="handleEdit(record)">EDIT</a>
             <a-divider type="vertical" />
             <a-dropdown>
               <!-- update-begin--author:liaozhiyang---date:20230803---for：【QQYUN-5838】图标改小保持一致 -->
-              <a class="ant-dropdown-link">更多 <Icon icon="mdi-light:chevron-down"></Icon></a>
+              <a class="ant-dropdown-link">MORE <Icon icon="mdi-light:chevron-down"></Icon></a>
               <!-- update-end--author:liaozhiyang---date:20230803---for：【QQYUN-5838】图标改小保持一致 -->
               <template #overlay>
                 <a-menu class="antd-more">
                   <a-menu-item>
-                    <a @click="handleDetail(record)">详情</a>
+                    <a @click="handleDetail(record)">DETAIL</a>
                   </a-menu-item>
                   <a-menu-item>
-                    <Popconfirm title="确定删除吗?" @confirm="() => handleDelete(record.id)">
-                      <a>删除</a>
+                    <Popconfirm title="Are you sure to delete it?" @confirm="() => handleDelete(record.id)">
+                      <a>DELETE</a>
                     </Popconfirm>
                   </a-menu-item>
                 </a-menu>
@@ -114,36 +114,36 @@
   //表头
   const columns = ref<any>([
     {
-      title: '文本',
+      title: 'TEXT',
       align: 'center',
       dataIndex: 'name',
     },
     {
-      title: '字典下拉',
+      title: 'Dictionary drop-down',
       align: 'center',
       dataIndex: 'xiala',
       customRender: ({ text }) => (text ? filterMultiDictText(dictOptions.value['xiala'], text) : ''),
     },
     {
-      title: '字典单选',
+      title: 'Dictionary single-select',
       align: 'center',
       dataIndex: 'danxuan',
       customRender: ({ text }) => (text ? filterMultiDictText(dictOptions.value['danxuan'], text) : ''),
     },
     {
-      title: '字典多选',
+      title: 'Dictionary multi-select',
       align: 'center',
       dataIndex: 'duoxuan',
       customRender: ({ text }) => (text ? filterMultiDictText(dictOptions.value['duoxuan'], text) : ''),
     },
     {
-      title: '开关',
+      title: 'SWITCH',
       align: 'center',
       dataIndex: 'kaiguan',
       customRender: ({ text }) => (text ? filterMultiDictText(dictOptions.value['kaiguan'], text) : ''),
     },
     {
-      title: '日期',
+      title: 'DATE',
       align: 'center',
       dataIndex: 'riqi',
       customRender: function ({ text }) {
@@ -151,27 +151,27 @@
       },
     },
     {
-      title: '年月日时分秒',
+      title: 'Year, month, day, hour, minute, second',
       align: 'center',
       dataIndex: 'nyrsfm',
     },
     {
-      title: '时间',
+      title: 'TIME',
       align: 'center',
       dataIndex: 'shijian',
     },
     {
-      title: '文件',
+      title: 'FILE',
       align: 'center',
       dataIndex: 'wenjian',
     },
     {
-      title: '图片',
+      title: 'IMAGE',
       align: 'center',
       dataIndex: 'tupian',
     },
     {
-      title: '操作',
+      title: 'OPERATE',
       dataIndex: 'action',
       align: 'center',
       fixed: 'right',
@@ -193,7 +193,7 @@
     pageSize: 10,
     pageSizeOptions: ['10', '20', '30'],
     showTotal: (total, range) => {
-      return range[0] + '-' + range[1] + ' 共' + total + '条';
+      return range[0] + '-' + range[1] + ' COMMON' + total + 'STRIP';
     },
     showQuickJumper: true,
     showSizeChanger: true,
@@ -207,7 +207,7 @@
   const { createMessage } = useMessage();
 
   /**
-   * 复选框选中事件
+   * Check the box to select the event
    * @param rowKeys
    * @param rows
    */
@@ -217,7 +217,7 @@
   }
 
   /**
-   * 表格改变事件
+   * Table change events
    */
   function handleTableChange({ pagination, filters, sorter }) {
     ipagination.value = pagination;
@@ -226,7 +226,7 @@
   }
 
   /**
-   * 新增
+   * NEW
    */
   function handleAdd() {
     oneProtogenesisModal.value.disableSubmit = false;
@@ -234,7 +234,7 @@
   }
 
   /**
-   * 清除选中行
+   * Clear the selected rows
    */
   function onClearSelected() {
     selectedRowKeys.value = [];
@@ -242,14 +242,14 @@
   }
 
   /**
-   * 批量删除
+   * Delete in bulk
    */
   function batchDel() {
     Modal.confirm({
-      title: '确认删除',
-      content: '是否删除选中数据',
-      okText: '确认',
-      cancelText: '取消',
+      title: 'Confirm the deletion',
+      content: 'Specifies whether to delete the selected data',
+      okText: 'CONFIRM',
+      cancelText: 'CANCEL',
       onOk: () => {
         defHttp.delete({ url: Api.delete, data: { ids: selectedRowKeys.value } }, { joinParamsToUrl: true }).then(() => {
           handleSuccess();
@@ -279,7 +279,7 @@
   }
 
   /**
-   * 获取查询参数
+   * Get the query parameters
    */
   function getQueryParams() {
     let params = Object.assign(queryParam.value, iSorter.value, iFilters.value);
@@ -290,7 +290,7 @@
   }
 
   /**
-   * 字段权限控制
+   * Field permission control
    */
   function getQueryField() {
     let str = 'id,';
@@ -301,7 +301,7 @@
   }
 
   /**
-   * 初始化数据
+   * Initialize the data
    */
   function loadData(arg?) {
     if (arg === 1) {
@@ -336,14 +336,14 @@
   }
 
   /**
-   * 查询区域展开关闭
+   * The query area is expanded and closed
    */
   function handleToggleSearch() {
     toggleSearchStatus.value = !toggleSearchStatus.value;
   }
 
   /**
-   * 重置按钮
+   * Reset button
    */
   function searchReset() {
     queryParam.value = {};
@@ -351,7 +351,7 @@
   }
 
   /**
-   * 获取预览图片
+   * Get a preview image
    */
   function getImgView(text) {
     if (text && text.indexOf(',') > 0) {
@@ -361,7 +361,7 @@
   }
 
   /**
-   * 编辑
+   * EDIT
    * @param record
    */
   function handleEdit(record) {
@@ -370,7 +370,7 @@
   }
 
   /**
-   * 详情
+   * DETAIL
    * @param record
    */
   function handleDetail(record) {
@@ -379,7 +379,7 @@
   }
 
   /**
-   * 删除
+   * DELETE
    * @param id
    */
   function handleDelete(id) {
@@ -389,7 +389,7 @@
   }
 
   /**
-   * 初始化字典选项
+   * Initialize dictionary options
    */
   async function initDictConfig() {
     dictOptions.value['flzds'] = await loadCategoryData({ code: 'B01' });
@@ -399,7 +399,7 @@
   }
 
   /**
-   * 保存表单后回调事件
+   * Recall events after the form is saved
    */
   function handleSuccess() {
     selectedRowKeys.value = [];
@@ -408,8 +408,8 @@
   }
   onMounted(() => {
     dictOptions.value['kaiguan'] = [
-      { text: '是', value: '1' },
-      { text: '否', value: '2' },
+      { text: 'BE', value: '1' },
+      { text: 'NOT', value: '2' },
     ];
     //初始加载页面
     loadData();

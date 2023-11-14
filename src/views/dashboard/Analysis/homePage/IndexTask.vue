@@ -6,13 +6,13 @@
           <template #title>
             <div class="index-md-title">
               <img src="../../../../assets/images/daiban.png" />
-              我的待办【{{ dataSource1.length }}】
+              My to-do [{{ dataSource1.length }}】
             </div>
           </template>
 
           <template v-if="dataSource1 && dataSource1.length > 0" #extra>
             <a @click="goPage"
-              >更多
+              >MORE
               <Icon icon="ant-design:double-right-outlined" />
             </a>
           </template>
@@ -35,7 +35,7 @@
             </template>
 
             <template #action="{ text, record }">
-              <a @click="handleData">办理</a>
+              <a @click="handleData">TRANSACT</a>
             </template>
           </a-table>
         </a-card>
@@ -46,13 +46,13 @@
           <template #title>
             <div class="index-md-title">
               <img src="../../../../assets/images/zaiban.png" />
-              我的在办【{{ dataSource2.length }}】
+              Mine is in the works【{{ dataSource2.length }}】
             </div>
           </template>
 
           <template v-if="dataSource2 && dataSource2.length > 0" #extra>
             <a @click="goPage"
-              >更多
+              >MORE
               <Icon icon="ant-design:double-right-outlined" />
             </a>
           </template>
@@ -75,7 +75,7 @@
             </template>
 
             <template #action="{ text, record }">
-              <a @click="handleData">办理</a>
+              <a @click="handleData">TRANSACT</a>
             </template>
           </a-table>
         </a-card>
@@ -90,7 +90,7 @@
           <template #title>
             <div class="index-md-title">
               <img src="../../../../assets/images/guaz.png" />
-              我的挂账【{{ dataSource4.length }}】
+              My account【{{ dataSource4.length }}】
             </div>
           </template>
 
@@ -112,7 +112,7 @@
             </template>
 
             <template #action="{ text, record }">
-              <a @click="handleData">办理</a>
+              <a @click="handleData">TRANSACT</a>
             </template>
           </a-table>
         </a-card>
@@ -123,7 +123,7 @@
           <template #title>
             <div class="index-md-title">
               <img src="../../../../assets/images/duban.png" />
-              我的督办【{{ dataSource3.length }}】
+              My superintendent【{{ dataSource3.length }}】
             </div>
           </template>
 
@@ -145,7 +145,7 @@
             </template>
 
             <template #action="{ text, record }">
-              <a @click="handleData">办理</a>
+              <a @click="handleData">TRANSACT</a>
             </template>
           </a-table>
         </a-card>
@@ -165,31 +165,31 @@
     {
       id: '001',
       orderNo: '电[1]1267102',
-      orderTitle: '药品出问题了',
+      orderTitle: 'Something went wrong with the medicine',
       restDay: 1,
     },
     {
       id: '002',
       orderNo: '电[4]5967102',
-      orderTitle: '吃了xxx医院的药，病情越来越严重',
+      orderTitle: 'After taking the medicine from xxx hospital, my condition is getting worse and worse',
       restDay: 0,
     },
     {
       id: '003',
       orderNo: '电[3]5988987',
-      orderTitle: '今天去超市买鸡蛋，鸡蛋都是坏的',
+      orderTitle: 'I went to the supermarket today to buy eggs, and the eggs are all bad',
       restDay: 7,
     },
     {
       id: '004',
       orderNo: '电[2]5213491',
-      orderTitle: 'xx宝实体店高价售卖xx',
+      orderTitle: 'XX treasure physical store sells XX at a high price',
       restDay: 5,
     },
     {
       id: '005',
       orderNo: '电[1]1603491',
-      orderTitle: '以红利相诱，答应退保后扣一年费用',
+      orderTitle: 'Offering dividends and promising to deduct one-year fees after surrendering the policy',
       restDay: 0,
     },
   ];
@@ -197,31 +197,31 @@
   const tempSs2 = [
     {
       id: '001',
-      orderTitle: '我要投诉这个大超市',
+      orderTitle: 'I'm going to complain about this big supermarket',
       orderNo: '电[1]10299456',
       restDay: 6,
     },
     {
       id: '002',
-      orderTitle: 'xxx医院乱开药方,售卖假药',
+      orderTitle: 'xxx hospital prescribes drugs indiscriminately and sells counterfeit medicines',
       orderNo: '电[2]20235691',
       restDay: 0,
     },
     {
       id: '003',
-      orderTitle: '我想问问这家店是干啥的',
+      orderTitle: 'I d like to ask what this shop is all about',
       orderNo: '电[3]495867322',
       restDay: 7,
     },
     {
       id: '004',
-      orderTitle: '我要举报朝阳区奥森公园酒店',
+      orderTitle: 'I would like to report Aosen Park Hotel in Chaoyang District',
       orderNo: '电[2]1193849',
       restDay: 3,
     },
     {
       id: '005',
-      orderTitle: '我今天吃饭吃到一个石头子',
+      orderTitle: 'I ate a stone at dinner today',
       orderNo: '电[4]56782344',
       restDay: 9,
     },

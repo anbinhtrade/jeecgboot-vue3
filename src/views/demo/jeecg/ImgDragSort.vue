@@ -7,17 +7,17 @@
         </div>
       </template>
       <template #footer>
-        <a-button @click="sureChange" type="primary" style="margin-top: 100px">确定</a-button>
+        <a-button @click="sureChange" type="primary" style="margin-top: 100px">Are you sure</a-button>
       </template>
     </draggable>
-    <a-divider>json数据</a-divider>
+    <a-divider>json DATA</a-divider>
     <a-row>
       <a-col :span="12">
-        <p>拖拽前：</p>
+        <p>Before dragging:</p>
         <textarea rows="25" style="width: 780px">{{ oldDateSource }}</textarea>
       </a-col>
       <a-col :span="12">
-        <p>拖拽后：</p>
+        <p>After dragging:</p>
         <textarea rows="25" style="width: 780px">{{ newDateSource }}</textarea>
       </a-col>
     </a-row>
@@ -48,8 +48,8 @@
    * @param evt
    */
   function end(evt) {
-    console.log('拖动前的位置' + evt.oldIndex);
-    console.log('拖动后的位置' + evt.newIndex);
+    console.log('Drag the previous position' + evt.oldIndex);
+    console.log('The position after dragging' + evt.newIndex);
   }
 
   /**

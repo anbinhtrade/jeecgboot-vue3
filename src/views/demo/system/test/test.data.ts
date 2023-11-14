@@ -3,17 +3,17 @@ import { FormSchema } from '/@/components/Table';
 
 export const columns: BasicColumn[] = [
   {
-    title: '名称',
+    title: 'NAME',
     dataIndex: 'testName',
     width: 200,
   },
   {
-    title: '值',
+    title: 'VALUE',
     dataIndex: 'testValue',
     width: 180,
   },
   {
-    title: '创建时间',
+    title: 'Creation time',
     dataIndex: 'createTime',
     width: 180,
   },
@@ -22,7 +22,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'testName',
-    label: '名称',
+    label: 'NAME',
     component: 'Input',
     colProps: { span: 8 },
   },
@@ -31,13 +31,13 @@ export const searchFormSchema: FormSchema[] = [
 export const formSchema: FormSchema[] = [
   {
     field: 'testName',
-    label: '名称',
+    label: 'NAME',
     required: true,
     component: 'Input',
   },
   {
     field: 'testValue',
-    label: '值',
+    label: 'VALUE',
     required: true,
     component: 'Input',
   },

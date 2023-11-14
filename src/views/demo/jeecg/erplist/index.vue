@@ -10,12 +10,12 @@
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                DELETE
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Bulk operations
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
@@ -27,20 +27,20 @@
     </BasicTable>
     <!--子表表格tab-->
     <a-tabs defaultActiveKey="1" style="margin: 10px">
-      <a-tab-pane tab="客户信息" key="1">
+      <a-tab-pane tab="Customer Information" key="1">
         <JeecgOrderCustomerList />
       </a-tab-pane>
-      <a-tab-pane tab="机票信息" key="2" forceRender>
+      <a-tab-pane tab="Ticket information" key="2" forceRender>
         <JeecgOrderTicketList />
       </a-tab-pane>
     </a-tabs>
   </div>
-  <!-- 表单区域 -->
+  <!-- Form area -->
   <JeecgOrderModal @register="registerModal" @success="handleSuccess"></JeecgOrderModal>
 </template>
 
 <script lang="ts" name="tab-list" setup>
-  //ts语法
+  //TS SYNTAX
   import { ref, computed, unref, watch, provide } from 'vue';
   import { BasicTable, TableAction } from '/@/components/Table';
   import { useListPage } from '/@/hooks/system/useListPage';
@@ -117,14 +117,14 @@
   }
 
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     await deleteOne({ id: record.id }, reload);
   }
 
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   async function batchHandleDelete() {
     await batchDelete({ ids: selectedRowKeys.value }, () => {
@@ -146,13 +146,13 @@
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

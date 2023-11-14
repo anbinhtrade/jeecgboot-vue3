@@ -27,13 +27,13 @@ enum Api {
   //获取用户租户列表
   getTenantPageListByUserId = '/sys/tenant/getTenantPageListByUserId',
   
-  //新增、编辑用户租户
+  //Add or edit user tenants
   saveUser = '/sys/user/add',
   editUser = '/sys/user/editTenantUser',
 }
 
 /**
- * 查询租户列表
+ * Query the list of tenants
  * @param params
  */
 export const getTenantList = (params) => {
@@ -41,7 +41,7 @@ export const getTenantList = (params) => {
 };
 
 /**
- * 保存或者更新租户
+ * Save or update the tenant
  * @param params
  */
 export const saveOrUpdateTenant = (params, isUpdate) => {
@@ -50,7 +50,7 @@ export const saveOrUpdateTenant = (params, isUpdate) => {
 };
 
 /**
- * 查询租户详情
+ * Query tenant details
  * @param params
  */
 export const getTenantById = (params) => {
@@ -58,7 +58,7 @@ export const getTenantById = (params) => {
 };
 
 /**
- * 删除租户
+ * Delete the tenant
  * @param params
  */
 export const deleteTenant = (params, handleSuccess) => {
@@ -68,15 +68,15 @@ export const deleteTenant = (params, handleSuccess) => {
 };
 
 /**
- * 批量删除租户
+ * Delete tenants in bulk
  * @param params
  */
 export const batchDeleteTenant = (params, handleSuccess) => {
   Modal.confirm({
-    title: '确认删除',
-    content: '是否删除选中数据',
-    okText: '确认',
-    cancelText: '取消',
+    title: 'Confirm the deletion',
+    content: 'Specifies whether to delete the selected data',
+    okText: 'CONFIRM',
+    cancelText: 'CANCEL',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatch, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();
@@ -86,18 +86,18 @@ export const batchDeleteTenant = (params, handleSuccess) => {
 };
 
 /**
- * 获取登录用户部门信息
+ * Obtain the department information of the logged-in user
  */
 export const getUserTenants = (params?) => defHttp.get({ url: Api.getCurrentUserTenants, params });
 
 /**
- * 邀请用户加入租户
+ * Invite users to join the tenant
  * @param params
  */
 export const invitationUserJoin = (params) => defHttp.put({ url: Api.invitationUserJoin, params }, { joinParamsToUrl: true });
 
 /**
- * 通过租户id获取数据
+ * Get the data by tenant ID
  * @param params
  */
 export const getTenantUserList = (params) => {
@@ -105,15 +105,15 @@ export const getTenantUserList = (params) => {
 };
 
 /**
- * 用户离开租户
+ * The user leaves the tenant
  * @param params
  */
 export const leaveTenant = (params, handleSuccess) => {
   Modal.confirm({
-    title: '请离',
-    content: '是否请离该用户',
-    okText: '确认',
-    cancelText: '取消',
+    title: 'Please leave',
+    content: 'Whether to leave the user',
+    okText: 'CONFIRM',
+    cancelText: 'CANCEL',
     onOk: () => {
       return defHttp.put({ url: Api.leaveTenant, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();
@@ -123,7 +123,7 @@ export const leaveTenant = (params, handleSuccess) => {
 };
 
 /**
- * 获取产品包列表
+ * Get a list of packages
  * @param params
  */
 export const packList = (params) => {
@@ -131,7 +131,7 @@ export const packList = (params) => {
 };
 
 /**
- * 添加菜单
+ * Add a menu
  * @param params
  */
 export const addPackPermission = (params) => {
@@ -139,7 +139,7 @@ export const addPackPermission = (params) => {
 };
 
 /**
- * 添加菜单
+ * Add a menu
  * @param params
  */
 export const editPackPermission = (params) => {
@@ -147,7 +147,7 @@ export const editPackPermission = (params) => {
 };
 
 /**
- * 删除菜单
+ * Delete the menu
  * @param params
  */
 export const deletePackPermissions = (params, handleSuccess) => {
@@ -157,7 +157,7 @@ export const deletePackPermissions = (params, handleSuccess) => {
 };
 
 /**
- * 获取租户回收站的列表
+ * Get a list of tenant recycle bins
  * @param params
  */
 export const recycleBinPageList = (params) => {
@@ -165,7 +165,7 @@ export const recycleBinPageList = (params) => {
 };
 
 /**
- * 租户彻底删除
+ * The tenant is completely deleted
  * @param params
  */
 export const deleteLogicDeleted = (params,handleSuccess) => {
@@ -177,7 +177,7 @@ export const deleteLogicDeleted = (params,handleSuccess) => {
 };
 
 /**
- * 租户还原
+ * Tenant restoration
  * @param params
  */
 export const revertTenantLogic = (params,handleSuccess) => {
@@ -187,7 +187,7 @@ export const revertTenantLogic = (params,handleSuccess) => {
 };
 
 /**
- * 获取租户产品包下面的用户
+ * Get the users below the tenant package
  * @param params
  */
 export const queryTenantPackUserList = (params) => {
@@ -195,7 +195,7 @@ export const queryTenantPackUserList = (params) => {
 };
 
 /**
- * 移除用户和产品包的关系数据
+ * Remove user-package relationship data
  * @param params
  */
 export const deleteTenantPackUser = (params)=>{
@@ -203,7 +203,7 @@ export const deleteTenantPackUser = (params)=>{
 }
 
 /**
- * 添加用户和产品包的关系数据
+ * Add relational data for users and packages
  * @param params
  */
 export const addTenantPackUser = (params)=>{
@@ -211,7 +211,7 @@ export const addTenantPackUser = (params)=>{
 }
 
 /**
- * 查询用户租户列表
+ * Query the list of user tenants
  * @param params
  */
 export const getTenantPageListByUserId = (params) => {
@@ -220,7 +220,7 @@ export const getTenantPageListByUserId = (params) => {
 
 
 /**
- * 获取当前登录租户名称
+ * Obtain the name of the current logged-in tenant
  */
 export async function getLoginTenantName() {
   let tenantId = getTenantId();
@@ -230,11 +230,11 @@ export async function getLoginTenantName() {
       return result.name;
     }
   }
-  return "空";
+  return "SKY";
 }
 
 /**
- * 保存或者更新用户
+ * Save or update users
  * @param params
  */
 export const saveOrUpdateTenantUser = (params, isUpdate) => {

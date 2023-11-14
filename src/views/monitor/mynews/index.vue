@@ -2,7 +2,7 @@
   <div>
     <BasicTable @register="registerTable" :searchInfo="searchInfo">
       <template #tableTitle>
-        <a-button type="primary" @click="handlerReadAllMsg">全部标注已读</a-button>
+        <a-button type="primary" @click="handlerReadAllMsg">All marked as read</a-button>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getActions(record)" />
@@ -39,7 +39,7 @@
   const { prefixCls, tableContext } = useListPage({
     designScope: 'mynews-list',
     tableProps: {
-      title: '我的消息',
+      title: 'My message',
       api: getMyNewsList,
       columns: columns,
       formConfig: {
@@ -50,13 +50,13 @@
   });
   const [registerTable, { reload }] = tableContext;
   /**
-   * 操作列定义
+   * Action column definition
    * @param record
    */
   function getActions(record) {
     return [
       {
-        label: '查看',
+        label: 'VIEW',
         onClick: handleDetail.bind(null, record),
       },
     ];

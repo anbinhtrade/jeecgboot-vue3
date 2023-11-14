@@ -3,61 +3,61 @@
     <a-form ref="formRef" :model="orderMainModel" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="validatorRules">
       <a-row class="form-row" :gutter="16">
         <a-col :lg="8">
-          <a-form-item label="订单号" name="orderCode">
-            <a-input v-model:value="orderMainModel.orderCode" placeholder="请输入订单号" />
+          <a-form-item label="Order number" name="orderCode">
+            <a-input v-model:value="orderMainModel.orderCode" placeholder="Please enter your order number" />
           </a-form-item>
         </a-col>
         <a-col :lg="8">
-          <a-form-item label="订单类型">
-            <a-select placeholder="请选择订单类型" v-model:value="orderMainModel.ctype">
+          <a-form-item label="The type of order">
+            <a-select placeholder="Please select an order type" v-model:value="orderMainModel.ctype">
               <a-select-option value="1">国内订单</a-select-option>
               <a-select-option value="2">国际订单</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :lg="8">
-          <a-form-item label="订单日期">
+          <a-form-item label="The date of the order">
             <a-date-picker showTime valueFormat="YYYY-MM-DD HH:mm:ss" v-model:value="orderMainModel.orderDate" />
           </a-form-item>
         </a-col>
       </a-row>
       <a-row class="form-row" :gutter="16">
         <a-col :lg="8">
-          <a-form-item label="订单金额">
-            <a-input v-model:value="orderMainModel.orderMoney" placeholder="请输入订单金额" />
+          <a-form-item label="The amount of the order">
+            <a-input v-model:value="orderMainModel.orderMoney" placeholder="Please enter the amount of your order" />
           </a-form-item>
         </a-col>
         <a-col :lg="8">
-          <a-form-item label="订单备注">
-            <a-input v-model:value="orderMainModel.content" placeholder="请输入订单备注" />
+          <a-form-item label="Order notes">
+            <a-input v-model:value="orderMainModel.content" placeholder="Please enter a remark for your order" />
           </a-form-item>
         </a-col>
       </a-row>
       <a-tabs defaultActiveKey="1">
-        <a-tab-pane tab="客户信息" key="1">
+        <a-tab-pane tab="Customer Information" key="1">
           <a-row class="form-row" :gutter="16">
             <a-col :lg="8">
-              <a-form-item label="客户姓名">
-                <a-input v-model:value="orderMainModel.jeecgOrderCustomerList.name" placeholder="请输入客户姓名" />
+              <a-form-item label="Customer's name">
+                <a-input v-model:value="orderMainModel.jeecgOrderCustomerList.name" placeholder="Please enter the customer's name" />
               </a-form-item>
             </a-col>
             <a-col :lg="8">
-              <a-form-item label="手机号">
-                <a-input v-model:value="orderMainModel.jeecgOrderCustomerList.telphone" placeholder="请输入手机号" />
+              <a-form-item label="Mobile phone number">
+                <a-input v-model:value="orderMainModel.jeecgOrderCustomerList.telphone" placeholder="Please enter your mobile phone number" />
               </a-form-item>
             </a-col>
           </a-row>
         </a-tab-pane>
 
-        <a-tab-pane tab="机票信息" key="2" forceRender>
+        <a-tab-pane tab="Ticket information" key="2" forceRender>
           <a-row class="form-row" :gutter="16">
             <a-col :lg="8">
-              <a-form-item label="航班号">
-                <a-input v-model:value="orderMainModel.jeecgOrderTicketList.ticketCode" placeholder="请输入航班号" />
+              <a-form-item label="Flight number">
+                <a-input v-model:value="orderMainModel.jeecgOrderTicketList.ticketCode" placeholder="Please enter your flight number" />
               </a-form-item>
             </a-col>
             <a-col :lg="8">
-              <a-form-item label="起飞时间">
+              <a-form-item label="Departure time">
                 <a-date-picker showTime valueFormat="YYYY-MM-DD HH:mm:ss" v-model:value="orderMainModel.jeecgOrderTicketList.tickectDate" />
               </a-form-item>
             </a-col>
@@ -91,7 +91,7 @@
         sm: { span: 16 },
       });
       const validatorRules = {
-        orderCode: [{ required: true, message: '订单号不能为空', trigger: 'blur' }],
+        orderCode: [{ required: true, message: 'The order number cannot be empty', trigger: 'blur' }],
       };
       const orderMainModel = reactive({
         id: null,

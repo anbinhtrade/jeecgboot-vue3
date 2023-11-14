@@ -6,8 +6,8 @@ export const schemas: FormSchema[] = [
   {
     field: 'jdst',
     component: 'JDictSelectTag',
-    label: '性别下拉',
-    helpMessage: ['component模式'],
+    label: 'Gender drop-down',
+    helpMessage: ['componentMODE'],
     componentProps: {
       dictCode: 'sex',
     },
@@ -18,14 +18,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'jdst',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'jdst1',
     component: 'JDictSelectTag',
-    label: '性别选择',
-    helpMessage: ['component模式'],
+    label: 'Gender selection',
+    helpMessage: ['componentMODE'],
     componentProps: {
       dictCode: 'sex',
       type: 'radioButton',
@@ -37,14 +37,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'jdst1',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'jdst2',
     component: 'JDictSelectTag',
-    label: '字典表下拉',
-    helpMessage: ['component模式'],
+    label: 'Dictionary table drop-down',
+    helpMessage: ['componentMODE'],
     componentProps: {
       dictCode: 'sys_user,realname,id',
     },
@@ -55,14 +55,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'jdst2',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'jdst3',
     component: 'JDictSelectTag',
-    label: '字典表下拉(带条件)',
-    helpMessage: ['component模式'],
+    label: 'Dictionary table drop-down (with conditional)',
+    helpMessage: ['componentMODE'],
     componentProps: {
       dictCode: "sys_user,realname,id,username!='admin' order by create_time",
     },
@@ -73,27 +73,27 @@ export const schemas: FormSchema[] = [
   {
     field: 'jdst3',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'jsst',
     component: 'JSearchSelect',
-    label: '字典搜索(同步)',
+    label: 'Dictionary Search (Sync)',
     colProps: { span: 12 },
     componentProps: {
       //dict: "sys_depart,depart_name,id",
       dictOptions: [
         {
-          text: '选项一',
+          text: 'Option one',
           value: '1',
         },
         {
-          text: '选项二',
+          text: 'Option two',
           value: '2',
         },
         {
-          text: '选项三',
+          text: 'Option three',
           value: '3',
         },
       ],
@@ -102,13 +102,13 @@ export const schemas: FormSchema[] = [
   {
     field: 'jsst',
     component: 'JEllipsis',
-    label: '选择值',
+    label: 'Select a value',
     colProps: { span: 12 },
   },
   {
     field: 'jsst2',
     component: 'JSearchSelect',
-    label: '字典搜索(异步)',
+    label: 'Dictionary search (asynchronous)',
     colProps: { span: 12 },
     componentProps: {
       dict: 'sys_depart,depart_name,id',
@@ -119,13 +119,13 @@ export const schemas: FormSchema[] = [
   {
     field: 'jsst2',
     component: 'JEllipsis',
-    label: '选择值',
+    label: 'Select a value',
     colProps: { span: 12 },
   },
   {
     field: 'xldx',
     component: 'JDictSelectTag',
-    label: '字典下拉多选',
+    label: 'Dictionary drop-down for multiple choices',
     colProps: { span: 12 },
     componentProps: {
       dictCode: 'sex',
@@ -135,13 +135,13 @@ export const schemas: FormSchema[] = [
   {
     field: 'xldx',
     component: 'JEllipsis',
-    label: '选择值',
+    label: 'Select a value',
     colProps: { span: 12 },
   },
   {
     field: 'xldx2',
     component: 'JSelectMultiple',
-    label: '字典下拉多选2',
+    label: 'Select 2 from the dictionary drop-down',
     colProps: { span: 12 },
     componentProps: {
       dictCode: 'sex',
@@ -150,13 +150,13 @@ export const schemas: FormSchema[] = [
   {
     field: 'xldx2',
     component: 'JEllipsis',
-    label: '选择值',
+    label: 'Select a value',
     colProps: { span: 12 },
   },
   {
     field: 'dxxlk',
     component: 'JDictSelectTag',
-    label: '字典下拉单选',
+    label: 'Dictionary drop-down single-selection',
     colProps: { span: 12 },
     componentProps: {
       dictCode: 'sex',
@@ -165,18 +165,18 @@ export const schemas: FormSchema[] = [
   {
     field: 'dxxlk',
     component: 'JEllipsis',
-    label: '选择值',
+    label: 'Select a value',
     colProps: { span: 12 },
   },
   {
-    label: '可输入下拉',
+    label: 'You can enter a drop-down',
     field: 'selectInput',
     component: 'JSelectInput',
     componentProps: {
       options: [
-        { label: '选项一', value: '1' },
-        { label: '选项二', value: '2' },
-        { label: '选项三', value: '3' },
+        { label: 'Option one', value: '1' },
+        { label: 'Option two', value: '2' },
+        { label: 'Option three', value: '3' },
       ],
     },
     colProps: { span: 12 },
@@ -184,14 +184,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'selectInput',
     component: 'JEllipsis',
-    label: '选择值',
+    label: 'Select a value',
     colProps: { span: 12 },
   },
   {
     field: 'depart3',
     component: 'JSelectDept',
-    label: '选择部门—自定义值',
-    helpMessage: ['component模式'],
+    label: 'Select Department—Custom value',
+    helpMessage: ['componentMODE'],
     componentProps: { showButton: false, rowKey: 'orgCode', primaryKey: 'orgCode' },
     colProps: {
       span: 12,
@@ -200,14 +200,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'depart3',
     component: 'JEllipsis',
-    label: '选中部门',
+    label: 'Select the department',
     colProps: { span: 12 },
   },
   {
     field: 'depart2',
     component: 'JSelectDept',
-    label: '选择部门',
-    helpMessage: ['component模式'],
+    label: 'Select a department',
+    helpMessage: ['componentMODE'],
     componentProps: { showButton: false },
     colProps: {
       span: 12,
@@ -216,14 +216,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'depart2',
     component: 'JEllipsis',
-    label: '选中部门',
+    label: 'Select the department',
     colProps: { span: 12 },
   },
   {
     field: 'user2',
     component: 'JSelectUser',
-    label: '用户选择组件',
-    helpMessage: ['component模式'],
+    label: 'The user selects the component',
+    helpMessage: ['componentMODE'],
     componentProps: {
       labelKey: 'realname',
       rowKey: 'id',
@@ -236,14 +236,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'user2',
     component: 'JEllipsis',
-    label: '选中用户',
+    label: 'Select the user',
     colProps: { span: 12 },
   },
   {
     field: 'user3',
     component: 'JSelectUserByDept',
-    label: '部门选择用户',
-    helpMessage: ['component模式'],
+    label: 'Department selects the user',
+    helpMessage: ['componentMODE'],
     componentProps: {
       labelKey: 'realname',
       rowKey: 'username',
@@ -255,14 +255,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'user3',
     component: 'JEllipsis',
-    label: '选中用户',
+    label: 'Select the user',
     colProps: { span: 12 },
   },
   {
     field: 'role2',
     component: 'JSelectRole',
-    label: '角色选择组件',
-    helpMessage: ['component模式'],
+    label: 'Role Selection Component',
+    helpMessage: ['componentMODE'],
     colProps: {
       span: 12,
     },
@@ -270,33 +270,33 @@ export const schemas: FormSchema[] = [
   {
     field: 'role2',
     component: 'JEllipsis',
-    label: '选中角色',
+    label: 'Select the role',
     colProps: { span: 12 },
   },
   {
     field: 'position2',
     component: 'JSelectPosition',
-    label: '职务选择组件',
-    helpMessage: ['component模式'],
+    label: 'Job Title Selection Component',
+    helpMessage: ['componentMODE'],
     colProps: { span: 12 },
     componentProps: { async: true, showSelectTable: true },
   },
   {
     field: 'position2',
     component: 'JEllipsis',
-    label: '选中职务',
+    label: 'Select the job title',
     colProps: { span: 12 },
   },
   {
     field: 'checkbox1',
     component: 'JCheckbox',
-    label: 'JCheckbox组件1',
-    helpMessage: ['component模式'],
+    label: 'JCheckboxSUBASSEMBLY1',
+    helpMessage: ['componentMODE'],
     defaultValue: '1,2',
     componentProps: {
       options: [
-        { label: '男', value: '1' },
-        { label: '女', value: '2' },
+        { label: 'MAN', value: '1' },
+        { label: 'WOMAN', value: '2' },
       ],
     },
     colProps: {
@@ -306,15 +306,15 @@ export const schemas: FormSchema[] = [
   {
     field: 'checkbox1',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'checkbox2',
     component: 'Input',
-    label: 'JCheckbox组件2',
+    label: 'JCheckboxSUBASSEMBLY2',
     defaultValue: '1',
-    helpMessage: ['插槽模式'],
+    helpMessage: ['Slot mode'],
     slot: 'JCheckbox',
     colProps: {
       span: 12,
@@ -323,12 +323,12 @@ export const schemas: FormSchema[] = [
   {
     field: 'checkbox2',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'data1',
-    label: '日期选择',
+    label: 'Date selection',
     component: 'DatePicker',
     componentProps: {
       showTime: true,
@@ -341,14 +341,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'data1',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: {
       span: 12,
     },
   },
   {
     field: 'data2',
-    label: '年份范围选择',
+    label: 'Year range selection',
     component: 'RangePicker',
     componentProps: {
       picker: 'year',
@@ -361,7 +361,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'data2',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: {
       span: 12,
     },
@@ -369,8 +369,8 @@ export const schemas: FormSchema[] = [
   {
     field: 'hk',
     component: 'Input',
-    label: '滑块验证码',
-    helpMessage: ['插槽模式'],
+    label: 'Slider captcha',
+    helpMessage: ['Slot mode'],
     slot: 'dargVerify',
     colProps: {
       span: 12,
@@ -379,7 +379,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'hk',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: {
       span: 12,
     },
@@ -387,14 +387,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'JTreeDict',
     component: 'JTreeDict',
-    label: '树字典',
-    helpMessage: ['component模式'],
+    label: 'Tree Dictionary',
+    helpMessage: ['componentMODE'],
     colProps: { span: 12 },
   },
   {
     field: 'JTreeDict',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: {
       span: 12,
     },
@@ -402,8 +402,8 @@ export const schemas: FormSchema[] = [
   {
     field: 'ts',
     component: 'JTreeSelect',
-    label: '下拉树选择',
-    helpMessage: ['component模式'],
+    label: 'Drop-down tree selection',
+    helpMessage: ['componentMODE'],
     componentProps: {
       dict: 'sys_permission,name,id',
       pidField: 'parent_id',
@@ -417,14 +417,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'ts',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'ts1',
     component: 'JTreeSelect',
-    label: '下拉树多选',
-    helpMessage: ['component模式'],
+    label: 'Drop-down tree for multiple selections',
+    helpMessage: ['componentMODE'],
     componentProps: {
       dict: 'sys_permission,name,id',
       pidField: 'parent_id',
@@ -439,13 +439,13 @@ export const schemas: FormSchema[] = [
   {
     field: 'ts1',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'category',
     component: 'JCategorySelect',
-    label: '分类字典树',
+    label: 'Classification dictionary tree',
     helpMessage: ['component模式'],
     defaultValue: '',
     componentProps: {
@@ -459,14 +459,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'category',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'JEasyCron',
     component: 'JEasyCron',
     label: 'JEasyCron',
-    helpMessage: ['component模式'],
+    helpMessage: ['componentMODE'],
     colProps: { span: 12 },
     defaultValue: '* * * * * ? *',
     rules: [{ validator: JCronValidator }],
@@ -474,14 +474,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'JEasyCron',
     component: 'JEllipsis',
-    label: '选择值',
+    label: 'Select a value',
     colProps: { span: 12 },
   },
   {
     field: 'JInput',
     component: 'JInput',
-    label: '特殊查询组件',
-    helpMessage: ['插槽模式'],
+    label: 'Special query components',
+    helpMessage: ['Slot mode'],
     slot: 'JInput',
     colProps: {
       span: 12,
@@ -490,13 +490,13 @@ export const schemas: FormSchema[] = [
   {
     field: 'jinputtype',
     component: 'Select',
-    label: '查询类型',
+    label: 'The type of query',
     componentProps: {
       options: [
-        { value: 'like', label: '模糊（like）' },
-        { value: 'ne', label: '不等于（ne）' },
-        { value: 'ge', label: '大于等于（ge）' },
-        { value: 'le', label: '小于等于（le)' },
+        { value: 'like', label: 'Blur (like)' },
+        { value: 'ne', label: 'Not equal to (ne)' },
+        { value: 'ge', label: 'Greater than or equal to (GE)' },
+        { value: 'le', label: 'Less than or equal to (le)' },
       ],
     },
     colProps: {
@@ -506,14 +506,14 @@ export const schemas: FormSchema[] = [
   {
     field: 'JInput',
     component: 'JEllipsis',
-    label: '输入值',
+    label: 'Enter a value',
     colProps: { span: 6 },
   },
   {
     field: 'field1',
     component: 'Select',
-    label: '省市区选择',
-    helpMessage: ['插槽模式'],
+    label: 'Provincial and municipal selection',
+    helpMessage: ['Slot mode'],
     slot: 'jAreaLinkage',
     colProps: {
       span: 12,
@@ -523,7 +523,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'field1',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: {
       span: 12,
     },
@@ -531,8 +531,8 @@ export const schemas: FormSchema[] = [
   {
     field: 'field0',
     component: 'Select',
-    label: '禁用组件(方式一)',
-    helpMessage: ['插槽模式'],
+    label: '禁用组件(方式一)Disabling a Component (Mode 1)',
+    helpMessage: ['Slot mode'],
     slot: 'jAreaLinkage1',
     colProps: {
       span: 12,
@@ -543,7 +543,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'field0',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: {
       span: 12,
     },
@@ -551,8 +551,8 @@ export const schemas: FormSchema[] = [
   {
     field: 'field2',
     component: 'JAreaLinkage',
-    label: '禁用组件(方式二)',
-    helpMessage: ['component模式'],
+    label: 'Disabling a Component (Method 2)',
+    helpMessage: ['componentMODE'],
     colProps: {
       span: 12,
     },
@@ -565,7 +565,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'field2',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: {
       span: 12,
     },
@@ -573,8 +573,8 @@ export const schemas: FormSchema[] = [
   {
     field: 'pca1',
     component: 'JAreaSelect',
-    label: '省市区级联',
-    helpMessage: ['component模式'],
+    label: 'Provincial and municipal cascades',
+    helpMessage: ['componentMODE'],
     defaultValue: '140302',
     colProps: {
       span: 12,
@@ -583,7 +583,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'pca1',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: {
       span: 12,
     },
@@ -591,8 +591,8 @@ export const schemas: FormSchema[] = [
   {
     field: 'pop1',
     component: 'Input',
-    label: 'JPopup示例',
-    helpMessage: ['插槽模式'],
+    label: 'JPopupEXAMPLE',
+    helpMessage: ['Slot mode'],
     slot: 'JPopup',
     colProps: {
       span: 12,
@@ -601,7 +601,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'pop1',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: {
       span: 12,
     },
@@ -610,83 +610,83 @@ export const schemas: FormSchema[] = [
     field: 'JInputPop',
     component: 'JInputPop',
     label: 'JInputPop',
-    helpMessage: ['component模式'],
+    helpMessage: ['componentMODE'],
     colProps: { span: 12 },
   },
   {
     field: 'JInputPop',
     component: 'JEllipsis',
-    label: '输入值',
+    label: 'Enter a value',
     colProps: { span: 12 },
   },
   {
     field: 'JTreeDictAsync',
     component: 'JTreeDict',
-    label: '异步JTreeDict',
-    helpMessage: ['component模式'],
+    label: 'ASYNCHRONOUSJTreeDict',
+    helpMessage: ['componentMODE'],
     colProps: { span: 12 },
     componentProps: { async: true },
   },
   {
     field: 'JTreeDictAsync',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'JSwitch',
     component: 'JSwitch',
     label: 'JSwitch',
-    helpMessage: ['component模式'],
+    helpMessage: ['componentMODE'],
     colProps: { span: 12 },
   },
   {
     field: 'JSwitch',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   {
     field: 'JSwitchSelect',
     component: 'JSwitch',
     label: 'JSwitchSelect',
-    helpMessage: ['component模式'],
+    helpMessage: ['componentMODE'],
     colProps: { span: 12 },
     componentProps: { query: true },
   },
   {
     field: 'JSwitchSelect',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   
   {
     field: 'userSelect2',
     component: 'UserSelect',
-    label: '高级用户选择',
-    helpMessage: ['component模式'],
+    label: 'Advanced user selection',
+    helpMessage: ['componentMODE'],
     colProps: { span: 12 },
   },
   {
     field: 'userSelect2',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
   
   {
     field: 'superQuery',
     component: 'Input',
-    label: '高级查询',
-    helpMessage: ['插槽模式'],
+    label: 'Advanced queries',
+    helpMessage: ['Slot mode'],
     slot: 'superQuery',
     colProps: { span: 12 },
   },
   {
     field: 'superQuery',
     component: 'JEllipsis',
-    label: '选中值',
+    label: 'Selected values',
     colProps: { span: 12 },
   },
 ];

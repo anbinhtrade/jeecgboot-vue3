@@ -1,8 +1,8 @@
 <template>
-  <BasicDrawer v-bind="$attrs" @register="registerDrawer" title="数据权限规则" :width="adaptiveWidth">
+  <BasicDrawer v-bind="$attrs" @register="registerDrawer" title="Data permission rules" :width="adaptiveWidth">
     <BasicTable @register="registerTable">
       <template #tableTitle>
-        <a-button type="primary" @click="handleCreate"> 新增</a-button>
+        <a-button type="primary" @click="handleCreate"> NEW</a-button>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getTableAction(record)" />
@@ -23,14 +23,14 @@
   import { useDrawerAdaptiveWidth } from '/@/hooks/jeecg/useAdaptiveWidth';
   const permissionId = ref('');
   const { adaptiveWidth } = useDrawerAdaptiveWidth();
-  //权限规则model
+  //Permission rule model
   const [registerModal, { openModal }] = useModal();
   const [registerDrawer] = useDrawerInner(async (data) => {
     permissionId.value = data.id;
     setProps({ searchInfo: { permissionId: unref(permissionId) } });
     reload();
   });
-  // 自适应列配置
+  // Adaptive column configuration
   const adaptiveColProps: Partial<ColEx> = {
     xs: 24, // <576px
     sm: 24, // ≥576px
@@ -68,7 +68,7 @@
     immediate: false,
     actionColumn: {
       width: 100,
-      title: '操作',
+      title: 'OPERATE',
       dataIndex: 'action',
       slots: { customRender: 'action' },
       fixed: undefined,
@@ -76,7 +76,7 @@
   });
 
   /**
-   * 新增
+   * NEW
    */
   function handleCreate() {
     openModal(true, {
@@ -85,7 +85,7 @@
   }
 
   /**
-   * 编辑
+   * EDIT
    */
   function handleEdit(record) {
     openModal(true, {
@@ -95,25 +95,25 @@
   }
 
   /**
-   * 删除
+   * DELETE
    */
   async function handleDelete(record) {
     await deleteRule({ id: record.id }, reload);
   }
 
   /**
-   * 操作栏
+   * Action bar
    */
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

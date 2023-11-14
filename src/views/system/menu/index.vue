@@ -94,7 +94,7 @@
   }
 
   /**
-   * 新增
+   * NEW
    */
   function handleCreate() {
     showFooter.value = true;
@@ -104,7 +104,7 @@
   }
 
   /**
-   * 编辑
+   * EDIT
    */
   function handleEdit(record) {
     showFooter.value = true;
@@ -114,7 +114,7 @@
     });
   }
   /**
-   * 详情
+   * DETAIL
    */
   function handleDetail(record) {
     showFooter.value = false;
@@ -124,7 +124,7 @@
     });
   }
   /**
-   * 添加下级
+   * Add subordinates
    */
   function handleAddSub(record) {
     openDrawer(true, {
@@ -133,26 +133,26 @@
     });
   }
   /**
-   * 数据权限弹窗
+   * Data Permissions pop-up window
    */
   function handleDataRule(record) {
     openDataRule(true, { id: record.id });
   }
 
   /**
-   * 删除
+   * DELETE
    */
   async function handleDelete(record) {
     await deleteMenu({ id: record.id }, reload);
   }
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   async function batchHandleDelete() {
     await batchDeleteMenu({ ids: checkedKeys.value }, reload);
   }
   /**
-   * 成功回调
+   * Successful callback
    */
   function handleSuccess() {
     reload();
@@ -164,7 +164,7 @@
   }
 
   /**
-   * 操作栏
+   * Action bar
    */
   function getTableAction(record) {
     return [

@@ -1,15 +1,14 @@
 import { BasicColumn, FormSchema } from '/@/components/Table';
-import { rules } from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
 
 export const columns: BasicColumn[] = [
   {
-    title: '标题',
+    title: 'TITLE',
     width: 150,
     dataIndex: 'titile',
   },
   {
-    title: '消息类型',
+    title: 'The type of message',
     dataIndex: 'msgCategory',
     width: 100,
     customRender: ({ text }) => {
@@ -17,12 +16,12 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: '发布人',
+    title: 'PUBLISHER',
     width: 100,
     dataIndex: 'sender',
   },
   {
-    title: '优先级',
+    title: 'PRIORITY',
     dataIndex: 'priority',
     width: 70,
     customRender: ({ text }) => {
@@ -31,7 +30,7 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: '通告对象',
+    title: 'Notification object',
     dataIndex: 'msgType',
     width: 100,
     customRender: ({ text }) => {
@@ -39,7 +38,7 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: '发布状态',
+    title: 'Publishing status',
     dataIndex: 'sendStatus',
     width: 70,
     customRender: ({ text }) => {
@@ -48,12 +47,12 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: '发布时间',
+    title: 'RELEASED',
     width: 100,
     dataIndex: 'sendTime',
   },
   {
-    title: '撤销时间',
+    title: 'Revocation time',
     width: 100,
     dataIndex: 'cancelTime',
   },
@@ -62,7 +61,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'titile',
-    label: '标题',
+    label: 'TITLE',
     component: 'JInput',
     colProps: { span: 8 },
   },
@@ -77,28 +76,28 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'msgCategory',
-    label: '消息类型',
+    label: 'The type of message',
     required: true,
     component: 'JDictSelectTag',
     defaultValue: '1',
     componentProps: {
       type: 'radio',
       dictCode: 'msg_category',
-      placeholder: '请选择类型',
+      placeholder: 'Please select a type',
     },
   },
   {
     field: 'titile',
-    label: '标题',
+    label: 'TITLE',
     component: 'Input',
     required: true,
     componentProps: {
-      placeholder: '请输入标题',
+      placeholder: 'Please enter a title',
     },
   },
   {
     field: 'msgAbstract',
-    label: '摘要',
+    label: 'SUMMARY',
     component: 'InputTextArea',
     required: true,
   },
@@ -115,19 +114,19 @@ export const formSchema: FormSchema[] = [
   // },
   {
     field: 'msgType',
-    label: '接收用户',
+    label: 'Receiving users',
     defaultValue: 'ALL',
     component: 'JDictSelectTag',
     required: true,
     componentProps: {
       type: 'radio',
       dictCode: 'msg_type',
-      placeholder: '请选择发布范围',
+      placeholder: 'Please select a publishing scope',
     },
   },
   {
     field: 'userIds',
-    label: '指定用户',
+    label: 'Specify the user',
     component: 'JSelectUser',
     required: true,
     componentProps: {
@@ -138,18 +137,18 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'priority',
-    label: '优先级',
+    label: 'PRIORITY',
     defaultValue: 'H',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'priority',
       type: 'radio',
-      placeholder: '请选择优先级',
+      placeholder: 'Please select a priority',
     },
   },
   {
     field: 'msgContent',
-    label: '内容',
+    label: 'CONTENT',
     component: 'Input',
     render: render.renderTinymce,
   },

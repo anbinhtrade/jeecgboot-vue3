@@ -13,15 +13,15 @@ enum Api {
 }
 
 /**
- * 导出url
+ * Export URLs
  */
 export const getExportUrl = Api.exportXls;
 /**
- * 导入url
+ * Import URLs
  */
 export const getImportUrl = Api.importExcel;
 /**
- * 查询租户列表
+ * Query the list of tenants
  * @param params
  */
 export const getList = (params) => {
@@ -29,7 +29,7 @@ export const getList = (params) => {
 };
 
 /**
- * 保存或者更新通告
+ * Save or update the announcement
  * @param params
  */
 export const saveOrUpdate = (params, isUpdate) => {
@@ -38,7 +38,7 @@ export const saveOrUpdate = (params, isUpdate) => {
 };
 
 /**
- * 删除通告
+ * Delete the announcement
  * @param params
  */
 export const deleteNotice = (params, handleSuccess) => {
@@ -48,18 +48,18 @@ export const deleteNotice = (params, handleSuccess) => {
 };
 
 /**
- * 批量消息公告
+ * Bulk message announcements
  * @param params
  */
 export const batchDeleteNotice = (params) => defHttp.delete({ url: Api.deleteBatch, data: params }, { joinParamsToUrl: true });
 
 /**
- * 发布
+ * PUBLISH
  * @param id
  */
 export const doReleaseData = (params) => defHttp.get({ url: Api.releaseData, params });
 /**
- * 撤销
+ * QUASH
  * @param id
  */
 export const doReovkeData = (params) => defHttp.get({ url: Api.reovkeData, params });

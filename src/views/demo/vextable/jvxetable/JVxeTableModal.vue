@@ -5,33 +5,33 @@
       <div style="overflow-x: hidden">
         <a-row class="form-row" :gutter="16">
           <a-col :lg="8">
-            <a-form-item label="订单号" name="orderCode">
-              <a-input v-model:value="orderMainModel.orderCode" placeholder="请输入订单号" />
+            <a-form-item label="Order number" name="orderCode">
+              <a-input v-model:value="orderMainModel.orderCode" placeholder="Please enter your order number" />
             </a-form-item>
           </a-col>
           <a-col :lg="8">
-            <a-form-item label="订单类型" name="ctype">
-              <a-select placeholder="请选择订单类型" v-model:value="orderMainModel.ctype">
-                <a-select-option value="1">国内订单</a-select-option>
-                <a-select-option value="2">国际订单</a-select-option>
+            <a-form-item label="The type of order" name="ctype">
+              <a-select placeholder="Please select an order type" v-model:value="orderMainModel.ctype">
+                <a-select-option value="1">Domestic orders</a-select-option>
+                <a-select-option value="2">International Orders</a-select-option>
               </a-select>
             </a-form-item>
           </a-col>
           <a-col :lg="8">
-            <a-form-item label="订单日期" name="orderDate">
+            <a-form-item label="The date of the order" name="orderDate">
               <a-date-picker showTime valueFormat="YYYY-MM-DD HH:mm:ss" v-model:value="orderMainModel.orderDate" />
             </a-form-item>
           </a-col>
         </a-row>
         <a-row class="form-row" :gutter="16">
           <a-col :lg="8">
-            <a-form-item label="订单金额" name="orderMoney">
-              <a-input v-model:value="orderMainModel.orderMoney" placeholder="请输入订单金额" />
+            <a-form-item label="The amount of the order" name="orderMoney">
+              <a-input v-model:value="orderMainModel.orderMoney" placeholder="Please enter the amount of your order" />
             </a-form-item>
           </a-col>
           <a-col :lg="8">
-            <a-form-item label="订单备注" name="content">
-              <a-input v-model:value="orderMainModel.content" placeholder="请输入订单备注" />
+            <a-form-item label="Order notes" name="content">
+              <a-input v-model:value="orderMainModel.content" placeholder="Please enter a remark for your order" />
             </a-form-item>
           </a-col>
         </a-row>
@@ -39,7 +39,7 @@
       <!-- update-end--author:liaozhiyang---date:20230803---for：【QQYUN-5866】鼠标放上去有左右滚动条 -->
       <!-- 子表单区域 -->
       <a-tabs v-model:activeKey="activeKey" @change="handleChangeTabs">
-        <a-tab-pane tab="客户信息" key="tableRef1">
+        <a-tab-pane tab="Customer Information" key="tableRef1">
           <JVxeTable
             ref="tableRef1"
             stripe
@@ -56,7 +56,7 @@
           ></JVxeTable>
         </a-tab-pane>
 
-        <a-tab-pane tab="机票信息" key="tableRef2" forceRender>
+        <a-tab-pane tab="Ticket information" key="tableRef2" forceRender>
           <JVxeTable
             ref="tableRef2"
             stripe

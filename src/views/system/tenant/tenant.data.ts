@@ -220,7 +220,7 @@ export const userColumns: BasicColumn[] =[
     align: 'left',
   },
   {
-    title: '用户姓名',
+    title: 'User name',
     dataIndex: 'realname',
     width: 100,
   },

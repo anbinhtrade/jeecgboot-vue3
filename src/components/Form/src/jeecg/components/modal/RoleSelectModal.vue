@@ -79,7 +79,7 @@
         //update-end-author:liusq date:2023-10-30 for: [issues/5514]组件页面显示错位
         schemas: [
           {
-            label: '角色名称',
+            label: 'Role Name',
             field: 'roleName',
             component: 'Input',
           },
@@ -88,13 +88,13 @@
       //定义表格列
       const columns = [
         {
-          title: '角色名称',
+          title: 'Role Name',
           dataIndex: 'roleName',
           width: 240,
           align: 'left',
         },
         {
-          title: '角色编码',
+          title: 'ROLE CODING',
           dataIndex: 'roleCode',
           // width: 40,
         },

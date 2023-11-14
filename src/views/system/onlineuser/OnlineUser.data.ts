@@ -2,10 +2,10 @@ import { FormSchema } from '/@/components/Table';
 import { render } from "/@/utils/common/renderUtils";
 import { getToken } from '/@/utils/auth';
 
-//列表
+//LIST
 export const columns = [
   {
-    title:'用户账号',
+    title:'USER ACCOUNT',
     align:"center",
     dataIndex: 'username',
     customRender: ( {text,record} ) => {
@@ -16,38 +16,38 @@ export const columns = [
       return text
     },
   },{
-    title:'用户姓名',
+    title:'USERNAME',
     align:"center",
     dataIndex: 'realname'
   },{
-    title: '头像',
+    title: 'HEAD SCULPTURE',
     align: "center",
     width: 120,
     dataIndex: 'avatar',
     customRender: render.renderAvatar,
   },{
-    title:'生日',
+    title:'DATE OF BIRTH',
     align:"center",
     dataIndex: 'birthday'
   },{
-    title: '性别',
+    title: 'SEXUALITY',
     align: "center",
     dataIndex: 'sex',
     customRender: ({text}) => {
       return render.renderDict(text, 'sex');
     }
   },{
-    title:'手机号',
+    title:'Phone number',
     align:"center",
     dataIndex: 'phone'
   }
 ];
 
-//查询区域
+//Query area
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'username',
-    label: '用户账号',
+    label: 'USER ACCOUNT',
     component: 'Input',
     colProps: { span: 6 },
   }

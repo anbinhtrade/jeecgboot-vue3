@@ -3,38 +3,38 @@ import { render } from '/@/utils/common/renderUtils';
 
 export const columns: BasicColumn[] = [
   {
-    title: '标题',
+    title: 'TITLE',
     dataIndex: 'titile',
     width: 100,
     align: 'left',
   },
   {
-    title: '消息类型',
+    title: 'The type of message',
     dataIndex: 'msgCategory',
     width: 80,
     customRender: ({ text }) => {
       return render.renderDictNative(
         text,
         [
-          { label: '通知公告', value: '1', color: 'blue' },
-          { label: '系统消息', value: '2' },
+          { label: 'Notification Announcement', value: '1', color: 'blue' },
+          { label: 'System messages', value: '2' },
         ],
         true
       );
     },
   },
   {
-    title: '发布人',
+    title: 'PUBLISHER',
     dataIndex: 'sender',
     width: 80,
   },
   {
-    title: '发布时间',
+    title: 'RELEASED',
     dataIndex: 'sendTime',
     width: 80,
   },
   {
-    title: '优先级',
+    title: 'PRIORITY',
     dataIndex: 'priority',
     width: 80,
     customRender: ({ text }) => {
@@ -43,15 +43,15 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: '阅读状态',
+    title: 'Reading status',
     dataIndex: 'readFlag',
     width: 80,
     customRender: ({ text }) => {
       return render.renderDictNative(
         text,
         [
-          { label: '未读', value: '0', color: 'red' },
-          { label: '已读', value: '1' },
+          { label: 'UNREAD', value: '0', color: 'red' },
+          { label: 'READ', value: '1' },
         ],
         true
       );
@@ -62,13 +62,13 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'titile',
-    label: '标题',
+    label: 'TITLE',
     component: 'Input',
     colProps: { span: 8 },
   },
   {
     field: 'sender',
-    label: '发布人',
+    label: 'PUBLISHER',
     component: 'Input',
     colProps: { span: 8 },
   },

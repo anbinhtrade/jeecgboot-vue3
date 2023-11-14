@@ -34,24 +34,24 @@
         </div>
         <div class="item-content" v-show="item.show">
           <div class="content-box">
-            <div class="content-name"> 组织名片 </div>
+            <div class="content-name"> Organize business cards </div>
             <div class="content-desc">
               <div class="flex-flow">
-                <div class="content-des-text">姓名</div>
+                <div class="content-des-text">NAME</div>
                 <div style="font-size: 13px;color: #000000">
                   {{ userDetail.realname }}
                 </div>
               </div>
               <div class="flex-flow">
-                <div class="content-des-text">部门</div>
+                <div class="content-des-text">DEPARTMENT</div>
                 <div style="font-size: 13px">
-                  {{ userDetail.orgCodeTxt ? userDetail.orgCodeTxt : '未填写' }}
+                  {{ userDetail.orgCodeTxt ? userDetail.orgCodeTxt : 'Not filled' }}
                 </div>
               </div>
               <div class="flex-flow">
-                <div class="content-des-text">职业</div>
+                <div class="content-des-text">OCCUPATION</div>
                 <div style="font-size: 13px">
-                  {{ userDetail.postText ? userDetail.postText : '未填写' }}
+                  {{ userDetail.postText ? userDetail.postText : 'Not filled' }}
                 </div>
               </div>
             </div>
@@ -63,11 +63,11 @@
               class="font-color333 flex-flow margin-right40 font-size13 pointer"
             >
               <Icon icon="ant-design:edit-outlined" class="footer-icon" />
-              <span>查看租户名片</span>
+              <span>Review the tenant business card</span>
             </span>
             <span v-else class="font-color9e flex-flow margin-right40 font-size13">
               <Icon icon="ant-design:edit-outlined" class="footer-icon" />
-              <span>查看租户名片</span>
+              <span>Review the tenant business card</span>
             </span>
             <span
               v-if="item.userTenantStatus !== '3' && item.auth"
@@ -75,11 +75,11 @@
               class="font-color333 flex-flow margin-right40 font-size13 pointer"
             >
               <Icon icon="ant-design:tool-outlined" class="footer-icon" />
-              <span>租户管理？</span>
+              <span>Tenant management？</span>
             </span>
             <span v-else-if="item.userTenantStatus === '3' && item.auth" class="font-color9e flex-flow margin-right40 font-size13">
               <Icon icon="ant-design:tool-outlined" class="footer-icon" />
-              <span>租户管理？</span>
+              <span>Tenant management？</span>
             </span>
             <span
               v-if="item.userTenantStatus !== '3' && !item.auth"
@@ -87,11 +87,11 @@
               class="font-color333 flex-flow margin-right40 font-size13 pointer"
             >
               <Icon icon="ant-design:tool-outlined" class="footer-icon" />
-              <span>申请角色权限？</span>
+              <span>Apply for role permissions？</span>
             </span>
             <span v-else-if="item.userTenantStatus === '3' && !item.auth" class="font-color9e flex-flow margin-right40 font-size13">
               <Icon icon="ant-design:tool-outlined" class="footer-icon" />
-              <span>申请角色权限？</span>
+              <span>Apply for role permissions？</span>
             </span>
             <span
               v-if="item.userTenantStatus !== '3'"
@@ -99,11 +99,11 @@
               class="font-color333 flex-flow margin-right40 font-size13 pointer"
             >
               <Icon icon="ant-design:gold-outlined" class="footer-icon" />
-              <span>我的汇报关系？</span>
+              <span>My reporting relationship？</span>
             </span>
             <span v-else class="font-color9e flex-flow margin-right40 font-size13">
               <Icon icon="ant-design:gold-outlined" class="footer-icon" />
-              <span>我的汇报关系？</span>
+              <span>My reporting relationship？</span>
             </span>
             <span
               v-if="item.userTenantStatus !== '3'"
@@ -111,11 +111,11 @@
               class="font-color333 flex-flow margin-right40 font-size13 pointer"
             >
               <Icon icon="ant-design:export-outlined" class="footer-icon" />
-              <span>退出租户</span>
+              <span>Exit the tenant</span>
             </span>
             <span v-else class="font-color9e flex-flow margin-right40 font-size13">
               <Icon icon="ant-design:export-outlined" class="footer-icon" />
-              <span>退出租户</span>
+              <span>Exit the tenant</span>
             </span>
           </div>
         </div>
@@ -125,20 +125,20 @@
   </div>
   <a-modal v-model:visible="tenantVisible" width="400px" wrapClassName="edit-tenant-setting">
     <template #title>
-      <div style="font-size: 17px; font-weight: 700">查看名片</div>
-      <div style="color: #9e9e9e; margin-top: 10px; font-size: 13px"> 名片是您在该组织下的个人信息，只在本组织中展示。 </div>
+      <div style="font-size: 17px; font-weight: 700">View business cards</div>
+      <div style="color: #9e9e9e; margin-top: 10px; font-size: 13px"> A business card is your personal information under the organization and is only displayed in the organization. </div>
     </template>
     <div style="margin-top: 24px; font-size: 13px; padding: 0 24px">
-      <div class="font-color75">姓名</div>
+      <div class="font-color75">NAME</div>
       <div class="margin-top6 margin-bottom-16">{{ userDetail.realname }}</div>
-      <div>部门</div>
-      <div class="margin-top6 margin-bottom-16">{{ userDetail.orgCodeTxt ? userDetail.orgCodeTxt : '未填写' }}</div>
-      <div>职位</div>
-      <div class="margin-top6 margin-bottom-16">{{ userDetail.postText ? userDetail.postText : '未填写' }}</div>
-      <div>工作地点</div>
-      <div class="margin-top6 margin-bottom-16">{{ userData.workPlace ? userData.workPlace : '未填写' }}</div>
-      <div>工号</div>
-      <div class="margin-top6 margin-bottom-16">{{ userDetail.workNo ? userDetail.workNo : '未填写' }}</div>
+      <div>DEPARTMENT</div>
+      <div class="margin-top6 margin-bottom-16">{{ userDetail.orgCodeTxt ? userDetail.orgCodeTxt : 'Not filled' }}</div>
+      <div>POSTS</div>
+      <div class="margin-top6 margin-bottom-16">{{ userDetail.postText ? userDetail.postText : 'Not filled' }}</div>
+      <div>Place of work</div>
+      <div class="margin-top6 margin-bottom-16">{{ userData.workPlace ? userData.workPlace : 'Not filled' }}</div>
+      <div>Construction No.</div>
+      <div class="margin-top6 margin-bottom-16">{{ userDetail.workNo ? userDetail.workNo : 'Not filled' }}</div>
     </div>
   </a-modal>
 

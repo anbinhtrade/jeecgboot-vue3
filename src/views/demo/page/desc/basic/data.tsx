@@ -39,29 +39,29 @@ export const refundSchema: DescItem[] = [
 export const personSchema: DescItem[] = [
   {
     field: 'b1',
-    label: '用户姓名',
+    label: 'User name',
   },
   {
     field: 'b2',
-    label: '联系电话',
+    label: 'Contact number',
   },
   {
     field: 'b3',
-    label: '常用快递',
+    label: 'Commonly used couriers',
   },
   {
     field: 'b4',
-    label: '取货地址',
+    label: 'Pick-up address',
   },
   {
     field: 'b5',
-    label: '备注',
+    label: 'REMARK',
   },
 ];
 
 export const refundTableSchema: BasicColumn[] = [
   {
-    title: '商品编号',
+    title: 'Item number',
     width: 150,
     dataIndex: 't1',
     customRender: ({ record }) => {
@@ -73,7 +73,7 @@ export const refundTableSchema: BasicColumn[] = [
     },
   },
   {
-    title: '商品名称',
+    title: 'The title of the product',
     width: 150,
     dataIndex: 't2',
   },

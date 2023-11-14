@@ -1,34 +1,34 @@
 <template>
   <div>
-    <!--引用表格-->
+    <!--Cite the table-->
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
-      <!--插槽:table标题-->
+      <!--slot: table title-->
       <template #tableTitle>
         <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined">
-          新增
+          New
         </a-button>
 <!--        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls">-->
-<!--          导出-->
+<!--          EXPORT-->
 <!--        </a-button>-->
 <!--        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">-->
-<!--          导入-->
+<!--          IMPORT-->
 <!--        </j-upload-button>-->
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                Delete
               </a-menu-item>
             </a-menu>
           </template>
           <a-button>
-            批量操作
+            Bulk Operations
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
       </template>
-      <!--操作栏-->
+      <!--Action Bar-->
       <template #action="{ record }">
         <TableAction
           :actions="getTableAction(record)"
@@ -37,7 +37,7 @@
       </template>
     </BasicTable>
 
-    <!-- 表单区域 -->
+    <!-- Form area -->
     <SysTableWhiteListModal @register="registerModal" @success="handleSuccess"/>
   </div>
 </template>
@@ -55,7 +55,7 @@ const [registerModal, {openModal}] = useModal();
 //注册table数据
 const {prefixCls, tableContext, onExportXls, onImportXls} = useListPage({
   tableProps: {
-    title: '系统表白名单',
+    title: 'The system whitelist',
     api: list,
     columns,
     canResize: false,
@@ -70,7 +70,7 @@ const {prefixCls, tableContext, onExportXls, onImportXls} = useListPage({
     },
   },
   exportConfig: {
-    name: "系统表白名单",
+    name: "The system whitelist",
     url: getExportUrl,
   },
   importConfig: {
@@ -81,7 +81,7 @@ const {prefixCls, tableContext, onExportXls, onImportXls} = useListPage({
 const [registerTable, {reload}, {rowSelection, selectedRowKeys}] = tableContext
 
 /**
- * 新增事件
+ * New events
  */
 function handleAdd() {
   openModal(true, {
@@ -91,7 +91,7 @@ function handleAdd() {
 }
 
 /**
- * 编辑事件
+ * Edit the event
  */
 function handleEdit(record: Recordable) {
   openModal(true, {
@@ -102,7 +102,7 @@ function handleEdit(record: Recordable) {
 }
 
 /**
- * 详情
+ * DETAIL
  */
 function handleDetail(record: Recordable) {
   openModal(true, {
@@ -113,33 +113,33 @@ function handleDetail(record: Recordable) {
 }
 
 /**
- * 删除事件
+ * Delete the event
  */
 async function handleDelete(record) {
   await deleteOne({id: record.id}, reload);
 }
 
 /**
- * 批量删除事件
+ * Delete events in bulk
  */
 async function batchHandleDelete() {
   await batchDelete({ids: selectedRowKeys.value}, reload);
 }
 
 /**
- * 成功回调
+ * Successful callback
  */
 function handleSuccess({isUpdate, values}) {
   reload();
 }
 
 /**
- * 操作栏
+ * Action bar
  */
 function getTableAction(record) {
   return [
     {
-      label: '编辑',
+      label: 'EDIT',
       onClick: handleEdit.bind(null, record),
     }
   ]
@@ -151,12 +151,12 @@ function getTableAction(record) {
 function getDropDownAction(record) {
   return [
     {
-      label: '详情',
+      label: 'DETAIL',
       onClick: handleDetail.bind(null, record),
     }, {
-      label: '删除',
+      label: 'DELETE',
       popConfirm: {
-        title: '是否确认删除',
+        title: 'Whether to confirm the deletion',
         confirm: handleDelete.bind(null, record),
       }
     }

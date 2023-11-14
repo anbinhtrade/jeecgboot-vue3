@@ -5,7 +5,7 @@
         <TableAction :actions="createActions(record, column)" />
       </template>
     </BasicTable>
-    <a-button block class="mt-5" type="dashed" @click="handleAdd"> 新增成员 </a-button>
+    <a-button block class="mt-5" type="dashed" @click="handleAdd"> New members have been added </a-button>
   </div>
 </template>
 <script lang="ts">
@@ -14,17 +14,17 @@
 
   const columns: BasicColumn[] = [
     {
-      title: '成员姓名',
+      title: 'Member name',
       dataIndex: 'name',
       editRow: true,
     },
     {
-      title: '工号',
+      title: 'Construction No.',
       dataIndex: 'no',
       editRow: true,
     },
     {
-      title: '所属部门',
+      title: 'AFFILIATION',
       dataIndex: 'dept',
       editRow: true,
     },
@@ -56,7 +56,7 @@
         dataSource: data,
         actionColumn: {
           width: 160,
-          title: '操作',
+          title: 'OPERATE',
           dataIndex: 'action',
           slots: { customRender: 'action' },
         },
@@ -101,23 +101,23 @@
         if (!record.editable) {
           return [
             {
-              label: '编辑',
+              label: 'EDIT',
               onClick: handleEdit.bind(null, record),
             },
             {
-              label: '删除',
+              label: 'DELETE',
             },
           ];
         }
         return [
           {
-            label: '保存',
+            label: 'SAVE',
             onClick: handleSave.bind(null, record, column),
           },
           {
-            label: '取消',
+            label: 'CANCEL',
             popConfirm: {
-              title: '是否取消编辑',
+              title: 'Whether to cancel the edit',
               confirm: handleCancel.bind(null, record, column),
             },
           },

@@ -1,27 +1,27 @@
 <template>
   <div :class="boxClass">
     <vxe-toolbar ref="xToolbarRef" custom>
-      <!-- 工具按钮 -->
+      <!-- TOOL BUTTONS -->
       <template #buttons>
         <div :class="`${prefixCls}-button div`" :size="btnSize">
           <slot v-if="showPrefix" name="toolbarPrefix" :size="btnSize" />
           <a-button v-if="showAdd" type="primary" preIcon="ant-design:plus-outlined" :disabled="disabled" @click="trigger('add')">
-            <span>新增</span>
+            <span>NEW</span>
           </a-button>
           <a-button v-if="showSave" preIcon="ant-design:save-outlined" :disabled="disabled" @click="trigger('save')">
             <span>保存</span>
           </a-button>
           <template v-if="selectedRowIds.length > 0">
-            <Popconfirm v-if="showRemove" :title="`确定要删除这 ${selectedRowIds.length} 项吗?`" @confirm="trigger('remove')">
-              <a-button preIcon="ant-design:minus-outlined" :disabled="disabled">删除</a-button>
+            <Popconfirm v-if="showRemove" :title="`OK you want to remove this ${selectedRowIds.length} ITEM?`" @confirm="trigger('remove')">
+              <a-button preIcon="ant-design:minus-outlined" :disabled="disabled">DELETE</a-button>
             </Popconfirm>
             <template v-if="showClearSelection">
-              <a-button preIcon="ant-design:delete-outlined" @click="trigger('clearSelection')">清空选择</a-button>
+              <a-button preIcon="ant-design:delete-outlined" @click="trigger('clearSelection')">Clear the selection</a-button>
             </template>
           </template>
           <slot v-if="showSuffix" name="toolbarSuffix" :size="btnSize" />
           <a v-if="showCollapse" style="margin-left: 4px" @click="toggleCollapse">
-            <span>{{ collapsed ? '展开' : '收起' }}</span>
+            <span>{{ collapsed ? 'UNFOLD' : 'COLLAPSE' }}</span>
             <Icon :icon="collapsed ? 'ant-design:down-outlined' : 'ant-design:up-outlined'" />
           </a>
         </div>

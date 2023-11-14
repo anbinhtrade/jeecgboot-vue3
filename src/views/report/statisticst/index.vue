@@ -2,27 +2,27 @@
   <div class="p-4">
     <a-card :bordered="false" style="height: 100%">
       <a-tabs v-model:activeKey="activeKey" animated @change="tabChange">
-        <a-tab-pane key="bar" tab="柱状图">
+        <a-tab-pane key="bar" tab="HISTOGRAM">
           <a-row>
             <a-col :span="10">
               <a-radio-group v-model:value="barType" @change="statisticst">
-                <a-radio-button value="year">按年统计</a-radio-button>
-                <a-radio-button value="month">按月统计</a-radio-button>
-                <a-radio-button value="category">按类别统计</a-radio-button>
-                <a-radio-button value="cabinet">按柜号统计</a-radio-button>
+                <a-radio-button value="year">Calculated on an annual basis</a-radio-button>
+                <a-radio-button value="month">MONTHLY</a-radio-button>
+                <a-radio-button value="category">Statistics by category</a-radio-button>
+                <a-radio-button value="cabinet">Statistics by cabinet number</a-radio-button>
               </a-radio-group>
             </a-col>
           </a-row>
           <Bar :chartData="dataSource" height="50vh"></Bar>
         </a-tab-pane>
-        <a-tab-pane key="pie" tab="饼状图" force-render>
+        <a-tab-pane key="pie" tab="Pie chart" force-render>
           <a-row :gutter="24">
             <a-col :span="10">
               <a-radio-group v-model:value="pieType" @change="statisticst">
-                <a-radio-button value="year">按年统计</a-radio-button>
-                <a-radio-button value="month">按月统计</a-radio-button>
-                <a-radio-button value="category">按类别统计</a-radio-button>
-                <a-radio-button value="cabinet">按柜号统计</a-radio-button>
+                <a-radio-button value="year">Calculated on an annual basis</a-radio-button>
+                <a-radio-button value="month">MONTHLY</a-radio-button>
+                <a-radio-button value="category">Statistics by category</a-radio-button>
+                <a-radio-button value="cabinet">Statistics by cabinet number</a-radio-button>
               </a-radio-group>
             </a-col>
             <Pie :chartData="dataSource" height="40vh"></Pie>
@@ -75,7 +75,7 @@
   function getYearCountSource(data) {
     for (let i = 0; i < data.length; i++) {
       dataSource.value.push({
-        name: `${data[i].year}年`,
+        name: `${data[i].year}YEAR`,
         value: data[i].yearcount,
       });
     }
@@ -129,7 +129,7 @@
   }
   //tab切换
   function tabChange(key) {
-    console.log('切换的key:', key);
+    console.log('SWITCHED key:', key);
   }
   loadDate(url.getYearCountInfo, 'year', {});
 </script>

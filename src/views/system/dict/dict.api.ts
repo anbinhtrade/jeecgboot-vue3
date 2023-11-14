@@ -21,22 +21,22 @@ enum Api {
   queryAllDictItems = '/sys/dict/queryAllDictItems',
 }
 /**
- * 导出api
+ * Export API
  * @param params
  */
 export const getExportUrl = Api.exportXls;
 /**
- * 导入api
+ * Import APIs
  * @param params
  */
 export const getImportUrl = Api.importExcel;
 /**
- * 字典列表接口
+ * Dictionary list interface
  * @param params
  */
 export const list = (params) => defHttp.get({ url: Api.list, params });
 /**
- * 删除字典
+ * Delete the dictionary
  */
 export const deleteDict = (params, handleSuccess) => {
   return defHttp.delete({ url: Api.deleteDict, params }, { joinParamsToUrl: true }).then(() => {
@@ -44,15 +44,15 @@ export const deleteDict = (params, handleSuccess) => {
   });
 };
 /**
- * 批量删除字典
+ * Delete dictionaries in bulk
  * @param params
  */
 export const batchDeleteDict = (params, handleSuccess) => {
   Modal.confirm({
-    title: '确认删除',
-    content: '是否删除选中数据',
-    okText: '确认',
-    cancelText: '取消',
+    title: 'Confirm the deletion',
+    content: 'Specifies whether to delete the selected data',
+    okText: 'CONFIRM',
+    cancelText: 'CANCEL',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatch, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();
@@ -61,7 +61,7 @@ export const batchDeleteDict = (params, handleSuccess) => {
   });
 };
 /**
- * 保存或者更新字典
+ * Save or update the dictionary
  * @param params
  */
 export const saveOrUpdateDict = (params, isUpdate) => {
@@ -69,17 +69,17 @@ export const saveOrUpdateDict = (params, isUpdate) => {
   return defHttp.post({ url: url, params });
 };
 /**
- * 唯一校验
+ * Unique checksum
  * @param params
  */
 export const duplicateCheck = (params) => defHttp.get({ url: Api.duplicateCheck, params }, { isTransformResponse: false });
 /**
- * 字典回收站列表
+ * Dictionary recycle bin list
  * @param params
  */
 export const getRecycleBinList = (params) => defHttp.get({ url: Api.recycleBinList, params });
 /**
- * 回收站还原
+ * Recycle Bin Restore
  * @param params
  */
 export const putRecycleBin = (id, handleSuccess) => {
@@ -88,7 +88,7 @@ export const putRecycleBin = (id, handleSuccess) => {
   });
 };
 /**
- * 回收站删除
+ * Recycle bin deletion
  * @param params
  */
 export const deleteRecycleBin = (id, handleSuccess) => {
@@ -97,12 +97,12 @@ export const deleteRecycleBin = (id, handleSuccess) => {
   });
 };
 /**
- * 字典配置列表
+ * Dictionary configuration list
  * @param params
  */
 export const itemList = (params) => defHttp.get({ url: Api.itemList, params });
 /**
- * 字典配置删除
+ * Dictionary configuration deletion
  * @param params
  */
 export const deleteItem = (params, handleSuccess) => {
@@ -111,7 +111,7 @@ export const deleteItem = (params, handleSuccess) => {
   });
 };
 /**
- * 保存或者更新字典配置
+ * Save or update the dictionary configuration
  * @param params
  */
 export const saveOrUpdateDictItem = (params, isUpdate) => {
@@ -119,17 +119,17 @@ export const saveOrUpdateDictItem = (params, isUpdate) => {
   return defHttp.post({ url: url, params });
 };
 /**
- * 校验字典数据值
+ * Verify the dictionary data value
  * @param params
  */
 export const dictItemCheck = (params) => defHttp.get({ url: Api.dictItemCheck, params }, { isTransformResponse: false });
 /**
- * 刷新字典
+ * Refresh the dictionary
  * @param params
  */
 export const refreshCache = () => defHttp.get({ url: Api.refreshCache }, { isTransformResponse: false });
 /**
- * 获取所有字典项
+ * Get all dictionary items
  * @param params
  */
 export const queryAllDictItems = () => defHttp.get({ url: Api.queryAllDictItems }, { isTransformResponse: false });

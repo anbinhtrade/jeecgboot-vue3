@@ -10,12 +10,12 @@
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                DELETE
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Bulk operations
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
@@ -43,7 +43,7 @@
   const { prefixCls, tableContext, onImportXls, onExportXls } = useListPage({
     designScope: 'quartz-template',
     tableProps: {
-      title: '任务列表',
+      title: 'Task list',
       api: getDataSourceList,
       columns: columns,
       formConfig: {
@@ -53,7 +53,7 @@
       },
     },
     exportConfig: {
-      name: '数据源列表',
+      name: 'List of data sources',
       url: getExportUrl,
     },
     importConifg: {
@@ -70,13 +70,13 @@
   function getActions(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

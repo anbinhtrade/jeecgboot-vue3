@@ -26,7 +26,7 @@
         <slot :name="item.slot"></slot>
       </template>
 
-      <a-button type="link" size="small" v-if="!$slots.more"> 更多 <Icon icon="mdi-light:chevron-down"></Icon> </a-button>
+      <a-button type="link" size="small" v-if="!$slots.more"> MORE <Icon icon="mdi-light:chevron-down"></Icon> </a-button>
     </Dropdown>
   </div>
 </template>

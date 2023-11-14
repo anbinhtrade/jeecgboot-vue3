@@ -3,7 +3,7 @@
   <BasicTable @register="registerTable" :rowSelection="rowSelection">
     <!--插槽:table标题-->
     <template #tableTitle>
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="addDepartRole">添加部门角色</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="addDepartRole">Add a department role</a-button>
       <template v-if="selectedRowKeys.length > 0">
         <a-divider type="vertical" />
         <a-dropdown>
@@ -11,12 +11,12 @@
             <a-menu>
               <a-menu-item key="1" @click="onDeleteDepartRoleBatch">
                 <icon icon="ant-design:delete-outlined" />
-                <span>删除</span>
+                <span>DELETE</span>
               </a-menu-item>
             </a-menu>
           </template>
           <a-button>
-            <span>批量操作 </span>
+            <span>Bulk operations </span>
             <icon icon="akar-icons:chevron-down" />
           </a-button>
         </a-dropdown>
@@ -142,7 +142,7 @@
   // 批量删除部门角色
   async function deleteDepartRole(idList, confirm) {
     if (!departId.value) {
-      createMessage.warning('请先选择一个部门');
+      createMessage.warning('Please select a department first');
     } else {
       setLoading(true);
       let ids = unref(idList).join(',');
@@ -174,7 +174,7 @@
    * 操作栏
    */
   function getTableAction(record): ActionItem[] {
-    return [{ label: '编辑', onClick: editDepartRole.bind(null, record) }];
+    return [{ label: 'EDIT', onClick: editDepartRole.bind(null, record) }];
   }
 
   /**
@@ -182,12 +182,12 @@
    */
   function getDropDownAction(record): ActionItem[] {
     return [
-      { label: '授权', onClick: permissionDepartRole.bind(null, record) },
+      { label: 'AUTHORIZATION', onClick: permissionDepartRole.bind(null, record) },
       {
-        label: '删除',
+        label: 'DELETE',
         color: 'error',
         popConfirm: {
-          title: '确认要删除吗？',
+          title: 'Are you sure you want to delete it?',
           confirm: deleteDepartRole.bind(null, [record.id], false),
         },
       },

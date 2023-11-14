@@ -10,12 +10,12 @@
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                DELETE
               </a-menu-item>
             </a-menu>
           </template>
           <a-button
-            >批量操作
+            >Bulk operations
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
@@ -97,7 +97,7 @@
    */
   function handleCreate() {
     if (isEmpty(unref(orderId))) {
-      $message.createMessage.warning('请选择一个订单信息');
+      $message.createMessage.warning('Please select an order information');
       return;
     }
     openModal(true, {
@@ -107,7 +107,7 @@
   }
 
   /**
-   * 编辑事件
+   * Edit the event
    */
   async function handleEdit(record: Recordable) {
     openModal(true, {
@@ -118,14 +118,14 @@
   }
 
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     await deleteTicket({ id: record.id }, reload);
   }
 
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   async function batchHandleDelete() {
     await deleteBatchTicket({ ids: selectedRowKeys.value }, () => {
@@ -147,13 +147,13 @@
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

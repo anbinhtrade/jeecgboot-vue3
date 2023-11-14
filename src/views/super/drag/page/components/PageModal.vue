@@ -1,5 +1,5 @@
 <template>
-  <BasicModal v-bind="$attrs" @register="registerModal" okText="保存" :title="getTitle" @ok="handleSubmit" :width="700" destroyOnClose>
+  <BasicModal v-bind="$attrs" @register="registerModal" okText="SAVE" :title="getTitle" @ok="handleSubmit" :width="700" destroyOnClose>
     <BasicForm @register="registerForm" />
     <template #appendFooter>
       <a-button type="primary" @click="handleSubmit(1)">保存并设计</a-button>
@@ -42,7 +42,7 @@
     }
   });
   //设置标题
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+  const getTitle = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
 
   /**
    * 表单提交事件

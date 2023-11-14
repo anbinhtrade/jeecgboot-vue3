@@ -73,7 +73,7 @@
     success();
   });
   //设置标题
-  const title = '租户产品包列表';
+  const title = 'A list of tenant packages';
 
   //表单提交事件
   async function handleSubmit(v) {
@@ -102,7 +102,7 @@
   }
 
   /**
-   * 编辑
+   * EDIT
    * @param record
    */
   async function handleEdit(record) {
@@ -115,21 +115,21 @@
     });
   }
 
-  //默认系统产品包不允许删除,包含(超级管理员、组织账户管理员、组织应用管理员)
+  //The default system package cannot be deleted, including super administrators, organization account administrators, and organization application administrators)
   const packCode = reactive<any>(['superAdmin','accountAdmin','appAdmin']);
   const { createMessage } = useMessage();
   
   /**
-   * 删除产品包
-   * @param 删除
+   * Delete the package the package
+   * @param DELETE
    */
   async function handleDelete(record) {
-    //update-begin---author:wangshuai ---date:20230222  for：系统默认产品包不允许删除------------
+    //update-begin---author:wangshuai ---date:20230222  for: The default package cannot be deleted------------
     if(packCode.indexOf(record.packCode) != -1){
         createMessage.warning("The default system package cannot be deleted");
        return;
     }
-    //update-end---author:wangshuai ---date:20230222  for：系统默认产品包不允许删除------------
+    //update-end---author:wangshuai ---date:20230222  for: The default package cannot be deleted------------
     await deletePackPermissions({ ids: record.id }, success);
   }
 
@@ -147,10 +147,10 @@
       }
     }
     Modal.confirm({
-      title: '删除租户产品包',
-      content: '是否删除租户产品包',
-      okText: '确认',
-      cancelText: '取消',
+      title: 'Delete the tenant package',
+      content: 'Whether to delete the tenant package',
+      okText: 'CONFIRM',
+      cancelText: 'CANCEL',
       onOk: async () => {
         await deletePackPermissions({ ids: selectedRowKeys.value.join(',')}, success);
       }
@@ -159,7 +159,7 @@
 
   /**
    *
-   * 新增表单
+   * Add a new form
    */
   function handleAdd() {
     openModal(true, {
@@ -171,7 +171,7 @@
   }
 
   /**
-   * 产品包下面的用户
+   * Users below the package
    * @param record
    */
   function seeTenantPackUser(record) {
@@ -181,19 +181,19 @@
   }
 
   /**
-   * 更多
+   * MORE
    * @param record
    */
   function getDropDownAction(record) {
     return [
       {
-        label: '详情',
+        label: 'DETAIL',
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除租户产品包',
+          title: 'Whether to confirm the deletion of the tenant package',
           confirm: handleDelete.bind(null, record),
         },
       },
@@ -201,7 +201,7 @@
   }
 
   /**
-   * 详情
+   * DETAIL
    * @param record
    */
   function handleDetail(record) {

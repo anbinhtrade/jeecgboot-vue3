@@ -4,9 +4,9 @@ export const cardList = (() => {
     result.push({
       id: i,
       title: 'Jeecg Admin',
-      description: '基于Vue Next, TypeScript, Ant Design Vue实现的一套完整的企业级后台管理系统',
+      description: '基于Vue Next, TypeScript, Ant Design A complete set of enterprise-level back-end management systems implemented by Vue',
       datetime: '2020-11-26 17:39',
-      extra: '编辑',
+      extra: 'EDIT',
       icon: 'logos:vue',
       color: '#1890ff',
       author: 'Jeecg',

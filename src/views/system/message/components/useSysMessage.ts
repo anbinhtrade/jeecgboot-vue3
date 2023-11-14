@@ -8,7 +8,7 @@ import { useModal } from '/@/components/Modal';
 import {useMessage} from "/@/hooks/web/useMessage";
 
 /**
- * 列表接口
+ * List interface
  * @param params
  */
 const queryMessageList = (params) => {
@@ -17,7 +17,7 @@ const queryMessageList = (params) => {
 };
 
 /**
- * 获取消息列表数据
+ * Get the message list data
  */
 export function useSysMessage() {
   const { createMessage } = useMessage();
@@ -125,17 +125,17 @@ export function useSysMessage() {
   // 消息类型
   function getMsgCategory(item) {
     if(item.busType=='email'){
-      return '邮件提醒:';
+      return 'Email alerts:';
     } else if(item.busType=='bpm'){
-      return '流程催办:';
+      return 'Process urging:';
     } else if(item.busType=='bpm_cc'){
-      return '流程抄送:';
+      return 'Process CC:';
     }else if(item.busType=='bpm_task'){
-      return '流程任务:';
+      return 'Process tasks:';
     } else if (item.msgCategory == '2') {
-      return '系统消息:';
+      return 'System messages:';
     } else if (item.msgCategory == '1') {
-      return '通知公告:';
+      return 'Notification Announcement:';
     }
     return '';
   }

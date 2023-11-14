@@ -34,14 +34,14 @@
   const loading = ref(false);
   const columns = ref<JVxeColumn[]>([
     {
-      title: '下拉框_字典表搜索',
+      title: 'Drop-down box_Dictionary table search',
       key: 'select_dict_search',
       type: JVxeTypes.selectDictSearch,
       width: 200,
       async: true, // 异步搜索，默认为 true
       // 字典表配置信息：数据库表名,显示字段名,存储字段名
       dict: 'sys_user,realname,username',
-      tipsContent: '请输入查询条件',
+      tipsContent: 'Please enter your search criteria',
     },
     {
       title: 'JPopup',
@@ -59,7 +59,7 @@
       ],
     },
     {
-      title: 'JP-性别',
+      title: 'JP-GENDER',
       key: 'popup_sex',
       type: JVxeTypes.select,
       dictCode: 'sex',
@@ -67,61 +67,61 @@
       width: 100,
     },
     {
-      title: 'JP-年龄',
+      title: 'JP-AGE',
       key: 'popup_age',
       type: JVxeTypes.normal,
       width: 80,
     },
     {
-      title: '用户选择',
+      title: 'User Choice',
       key: 'userSelect',
       type: JVxeTypes.userSelect,
       width: 240,
     },
     {
-      title: '部门选择',
+      title: 'Department selection',
       key: 'departSelect',
       type: JVxeTypes.departSelect,
       width: 240,
     },
     {
-      title: '单选',
+      title: 'RADIO',
       key: 'radio',
       type: JVxeTypes.radio,
       width: 130,
       options: [
-        { text: '男', value: '1' },
-        { text: '女', value: '2' },
+        { text: 'MAN', value: '1' },
+        { text: 'WOMAN', value: '2' },
       ],
       // 允许清除选择（再点一次取消选择）
       allowClear: false,
     },
     {
-      title: '上传',
+      title: 'UPLOAD',
       key: 'upload',
       type: JVxeTypes.upload,
       width: 180,
-      btnText: '点击上传',
+      btnText: 'Click Upload',
       token: true,
       responseName: 'message',
       action: uploadUrl,
     },
     {
-      title: '图片上传',
+      title: 'Image upload',
       key: 'image',
       type: JVxeTypes.image,
       width: 180,
       maxCount: 6,
     },
     {
-      title: '文件上传',
+      title: 'File upload',
       key: 'file',
       type: JVxeTypes.file,
       width: 180,
       maxCount: 2,
     },
     {
-      title: '进度条',
+      title: 'Progress bar',
       key: 'progress',
       type: JVxeTypes.progress,
       minWidth: 320,
@@ -149,8 +149,8 @@
   /** 获取值，忽略表单验证 */
   function handleTableGet() {
     const values = tableRef.value!.getTableData();
-    console.log('获取值:', { values });
-    createMessage.success('获取值成功，请看控制台输出');
+    console.log('Get the value:', { values });
+    createMessage.success('The value was obtained successfully，Take a look at the console output');
   }
 
   /* 随机生成分页数据 */

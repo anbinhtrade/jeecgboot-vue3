@@ -185,7 +185,7 @@
     pageSize,
     pageNo,
     total,
-    showTotal: (total) => `总 ${total} 条`,
+    showTotal: (total) => `TOTAL ${total} STRIP`,
     onChange: pageChange,
     onShowSizeChange: pageSizeChange,
   });
@@ -221,16 +221,16 @@
       if(hasAuth()){
          commonAction = [
           {
-            text: '编辑',
+            text: 'EDIT',
             event: '1',
             onClick: handleEdit.bind(null, record),
           },
           {
-            text: '复制面板',
+            text: 'Duplicate the panel',
             event: '2',
             onClick: handleCopy.bind(null, record.id),
           },{
-             text: '取消模板',
+             text: 'Cancel the template',
              event: '6',
              onClick: handleTemplate.bind(null, record,'0'),
            }
@@ -239,7 +239,7 @@
         ///1.2没有权限的用户只能复制和预览
          commonAction = [
           {
-            text: '复制面板',
+            text: 'Duplicate the panel',
             event: '2',
             onClick: handleCopy.bind(null, record.id),
           }
@@ -250,17 +250,17 @@
       //非模板案例的tab下的按钮显示
       let commonAction = [
         {
-          text: '编辑',
+          text: 'EDIT',
           event: '1',
           onClick: handleEdit.bind(null, record),
         },
         {
-          text: '复制面板',
+          text: 'Duplicate the panel',
           event: '2',
           onClick: handleCopy.bind(null, record.id),
         },
         {
-          text: '复制路由',
+          text: 'Replicate routes',
           event: '3',
           onClick: handleCopyUrl.bind(null, record.path),
         },
@@ -269,13 +269,13 @@
       if(hasAuth()){
         if(record.izTemplate == '1'){
           commonAction.push({
-            text: '取消模板',
+            text: 'Cancel the template',
             event: '6',
             onClick: handleTemplate.bind(null, record,'0'),
           })
         }else{
           commonAction.push({
-            text: '收藏模板',
+            text: 'Favorite templates',
             event: '5',
             onClick: handleTemplate.bind(null, record,'1'),
           })
@@ -285,16 +285,16 @@
       //删除按钮的逻辑判断
       if(!hasPassword(record)){
         commonAction.push({
-          text: '删除',
+          text: 'DELETE',
           event: '4',
           popConfirm: {
-            title: '是否确认删除',
+            title: 'Whether to confirm the deletion',
             confirm: handleDelete.bind(null, record),
           }
         })
       }else {
         commonAction.push({
-          text: '删除',
+          text: 'DELETE',
           event: '4',
           onClick: handleDelete.bind(null, record),
         })
@@ -303,7 +303,7 @@
     }
   }
   /**
-   * 判断是否有模板操作权限
+   * Check whether you have the permission to operate on the template
    */
   function hasAuth(){
     return hasPermission('drag:template:edit')

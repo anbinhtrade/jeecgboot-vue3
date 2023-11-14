@@ -3,38 +3,38 @@
     <a-form ref="formRef" :model="orderMainModel" :label-col="labelCol" :wrapper-col="wrapperCol" :rules="validatorRules">
       <a-row class="form-row" :gutter="16">
         <a-col :lg="8">
-          <a-form-item label="订单号" name="orderCode">
-            <a-input v-model:value="orderMainModel.orderCode" placeholder="请输入订单号" />
+          <a-form-item label="Order number" name="orderCode">
+            <a-input v-model:value="orderMainModel.orderCode" placeholder="Please enter your order number" />
           </a-form-item>
         </a-col>
         <a-col :lg="8">
-          <a-form-item label="订单类型">
-            <a-select placeholder="请选择订单类型" v-model:value="orderMainModel.ctype">
-              <a-select-option value="1">国内订单</a-select-option>
-              <a-select-option value="2">国际订单</a-select-option>
+          <a-form-item label="The type of order">
+            <a-select placeholder="Please select an order type" v-model:value="orderMainModel.ctype">
+              <a-select-option value="1">Domestic orders</a-select-option>
+              <a-select-option value="2">International Orders</a-select-option>
             </a-select>
           </a-form-item>
         </a-col>
         <a-col :lg="8">
-          <a-form-item label="订单日期">
+          <a-form-item label="The date of the order">
             <a-date-picker showTime valueFormat="YYYY-MM-DD HH:mm:ss" v-model:value="orderMainModel.orderDate" />
           </a-form-item>
         </a-col>
       </a-row>
       <a-row class="form-row" :gutter="16">
         <a-col :lg="8">
-          <a-form-item label="订单金额">
-            <a-input v-model:value="orderMainModel.orderMoney" placeholder="请输入订单金额" />
+          <a-form-item label="The amount of the order">
+            <a-input v-model:value="orderMainModel.orderMoney" placeholder="Please enter the amount of your order" />
           </a-form-item>
         </a-col>
         <a-col :lg="8">
-          <a-form-item label="订单备注">
-            <a-input v-model:value="orderMainModel.content" placeholder="请输入订单备注" />
+          <a-form-item label="Order notes">
+            <a-input v-model:value="orderMainModel.content" placeholder="Please enter a remark for your order" />
           </a-form-item>
         </a-col>
       </a-row>
       <a-tabs defaultActiveKey="1">
-        <a-tab-pane tab="客户信息" key="1">
+        <a-tab-pane tab="Customer Information" key="1">
           <div>
             <a-row type="flex" style="margin-bottom: 10px" :gutter="16">
               <a-col :span="5">Customer Name</a-col>
@@ -57,8 +57,8 @@
               <a-col :span="5">
                 <a-form-item>
                   <a-select placeholder="GENDER" v-model:value="item.sex">
-                    <a-select-option value="1">男</a-select-option>
-                    <a-select-option value="2">女</a-select-option>
+                    <a-select-option value="1">MAN</a-select-option>
+                    <a-select-option value="2">WOMAN</a-select-option>
                   </a-select>
                 </a-form-item>
               </a-col>
@@ -84,12 +84,12 @@
             </a-row>
             <a-button type="dashed" style="width: 98%; margin-top: 10px" @click="addRowCustom">
               <Icon icon="ph:plus-bold" />
-              添加客户信息
+              Add customer information
             </a-button>
           </div>
         </a-tab-pane>
 
-        <a-tab-pane tab="机票信息" key="2" forceRender>
+        <a-tab-pane tab="Ticket information" key="2" forceRender>
           <a-row type="flex" style="margin-bottom: 10px" :gutter="16">
             <a-col :span="6">Flight number</a-col>
             <a-col :span="6">Flight time</a-col>

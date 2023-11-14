@@ -52,7 +52,7 @@
     });
   });
   //设置标题
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增字典' : '编辑字典'));
+  const getTitle = computed(() => (!unref(isUpdate) ? 'Added a dictionary' : 'Edit the dictionary'));
 
   /**
    * 根据pid获取展开的节点

@@ -13,16 +13,16 @@ enum Api {
 }
 
 /**
- * 导出地址
+ * Export addresses
  */
 export const exportUrl = Api.exportXls;
 /**
- * 导入地址
+ * Import addresses
  */
 export const importUrl = Api.importExcel;
 
 /**
- * 列表查询
+ * List queries
  * @param params
  */
 export const getFillRuleList = (params) => {
@@ -30,7 +30,7 @@ export const getFillRuleList = (params) => {
 };
 
 /**
- * 删除
+ * DELETE
  * @param params
  * @param handleSuccess
  */
@@ -41,15 +41,15 @@ export const deleteFillRule = (params, handleSuccess) => {
 };
 
 /**
- * 批量删除
+ * Delete in bulk
  * @param params
  */
 export const batchDeleteFillRule = (params, handleSuccess) => {
   Modal.confirm({
-    title: '确认删除',
-    content: '是否删除选中数据',
-    okText: '确认',
-    cancelText: '取消',
+    title: 'Confirm the deletion',
+    content: 'Specifies whether to delete the selected data',
+    okText: 'CONFIRM',
+    cancelText: 'CANCEL',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatch, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();
@@ -59,7 +59,7 @@ export const batchDeleteFillRule = (params, handleSuccess) => {
 };
 
 /**
- * 规则功能测试
+ * Rule functional testing
  * @param params
  */
 export const handleTest = (params) => {
@@ -67,7 +67,7 @@ export const handleTest = (params) => {
 };
 
 /**
- * 保存
+ * SAVE
  * @param params
  */
 export const saveFillRule = (params) => {
@@ -75,7 +75,7 @@ export const saveFillRule = (params) => {
 };
 
 /**
- * 更新
+ * UPDATE
  * @param params
  */
 export const updateFillRule = (params) => {

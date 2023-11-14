@@ -1,90 +1,90 @@
 import { FormSchema } from '/@/components/Form';
 
-// 部门基础表单
+// Department base form
 export function useBasicFormSchema() {
   const basicFormSchema: FormSchema[] = [
     {
       field: 'departName',
-      label: '机构名称',
+      label: 'Name of the institution',
       component: 'Input',
       componentProps: {
-        placeholder: '请输入机构/部门名称',
+        placeholder: 'Please enter the name of the organization/department',
       },
-      rules: [{ required: true, message: '机构名称不能为空' }],
+      rules: [{ required: true, message: 'The organization name cannot be empty' }],
     },
     {
       field: 'parentId',
-      label: '上级部门',
+      label: 'Superior department',
       component: 'TreeSelect',
       componentProps: {
         treeData: [],
-        placeholder: '无',
+        placeholder: 'NOT',
         dropdownStyle: { maxHeight: '200px', overflow: 'auto' },
       },
     },
     {
       field: 'orgCode',
-      label: '机构编码',
+      label: 'Mechanism code',
       component: 'Input',
       componentProps: {
-        placeholder: '请输入机构编码',
+        placeholder: 'Please enter your organization code',
       },
     },
     {
       field: 'orgCategory',
-      label: '机构类型',
+      label: 'Type of institution',
       component: 'RadioButtonGroup',
       componentProps: { options: [] },
     },
     {
       field: 'departOrder',
-      label: '排序',
+      label: 'SORT',
       component: 'InputNumber',
       componentProps: {},
     },
     {
       field: 'mobile',
-      label: '电话',
+      label: 'PHONE',
       component: 'Input',
       componentProps: {
-        placeholder: '请输入电话',
+        placeholder: 'Please enter a phone number',
       },
     },
     {
       field: 'fax',
-      label: '传真',
+      label: 'FAX',
       component: 'Input',
       componentProps: {
-        placeholder: '请输入传真',
+        placeholder: 'Please enter a fax',
       },
     },
     {
       field: 'address',
-      label: '地址',
+      label: 'ADDRESS',
       component: 'Input',
       componentProps: {
-        placeholder: '请输入地址',
+        placeholder: 'Please enter an address',
       },
     },
     {
       field: 'memo',
-      label: '备注',
+      label: 'REMARK',
       component: 'InputTextArea',
       componentProps: {
-        placeholder: '请输入备注',
+        placeholder: 'Please enter a comment',
       },
     },
   ];
   return { basicFormSchema };
 }
 
-// 机构类型选项
+// Institution Type Options
 export const orgCategoryOptions = {
   // 一级部门
-  root: [{ value: '1', label: '公司' }],
-  // 子级部门
+  root: [{ value: '1', label: 'FIRM' }],
+  // Sub-divisions
   child: [
-    { value: '2', label: '部门' },
-    { value: '3', label: '岗位' },
+    { value: '2', label: 'DEPARTMENT' },
+    { value: '3', label: 'POST' },
   ],
 };

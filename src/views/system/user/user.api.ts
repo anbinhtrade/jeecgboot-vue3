@@ -32,7 +32,7 @@ enum Api {
   getUserTenantPageList='/sys/tenant/getUserTenantPageList',
 }
 /**
- * 导出api
+ * EXPORT api
  * @param params
  */
 export const getExportUrl = Api.exportXls;

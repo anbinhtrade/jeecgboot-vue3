@@ -13,24 +13,24 @@
   const emit = defineEmits(['register', 'success']);
   const isUpdate = ref(true);
 
-  //自定义接受参数
+  //Customize the acceptance parameters
   const props = defineProps({
-    //是否禁用页面
+    //Whether to disable the page
     isDisabled: {
       type: Boolean,
       default: false,
     },
   });
 
-  //表单配置
+  //Form configuration
   const [registerForm, { resetFields, setFieldsValue, validate }] = useForm({
     //labelWidth: 150,
     schemas: formSchema,
     showActionButtonGroup: false,
   });
-  //表单赋值
+  //Form assignment
   const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data) => {
-    //重置表单
+    //Reset the form
     await resetFields();
     setModalProps({ confirmLoading: false, showOkBtn: !props.isDisabled});
     isUpdate.value = !!data?.isUpdate;
@@ -41,16 +41,16 @@
       await setFieldsValue({createTime: data.createTime})
     }
     if (unref(isUpdate)) {
-      //获取详情
+      //Get the details
       data.record = await getDemoById({ id: data.record.id });
-      //表单赋值
+      //Form assignment
       await setFieldsValue({
         ...data.record,
       });
     }
   });
   //设置标题
-  const title = computed(() => (!unref(isUpdate) ? '新增' : '编辑'));
+  const title = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
   //表单提交事件
   async function handleSubmit(v) {
     try {

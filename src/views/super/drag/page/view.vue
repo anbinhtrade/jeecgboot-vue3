@@ -69,7 +69,7 @@
   const route = useRoute();
 
   /**
-   * 跳转路由页面
+   * The route page is redirected
    * @param path
    * @param openMode
    */
@@ -79,7 +79,7 @@
       let winUrl = pathResolve(nextRoute);
       window.open(winUrl.href, '_blank')
     }else{
-      // 当前页面打开视图
+      // The current page opens the view
       push(nextRoute)
     }
   }
@@ -96,7 +96,7 @@
         viewId: '',
         lowAppId: route.params.appId
       }
-      console.log('创建记录 打开modal的参数', modalData)
+      console.log('Create a record Open the modal parameter', modalData)
       openRecordModal(true, modalData);
     }else if(operationType=='2'){
       let appId = route.params.appId;
@@ -109,7 +109,7 @@
           view: params.view
         }
       }
-      console.log('打开视图 路由', nextRoute)
+      console.log('Open the view Routing', nextRoute)
       goPage(nextRoute, params)
       //update-end-author:taoyan date:2023-2-23 for: QQYUN-3674【仪表盘】按钮配置，打开创建model和打开视图
     
@@ -143,7 +143,7 @@
   watch(()=>props.routeInfo, (info)=>{
     if(info){
       if(info.exportImage){
-        console.log('导出图片》》》');
+        console.log('Exporting Pictures》》');
         let name = dragData.value.name;
         onExportImage(name);
       }

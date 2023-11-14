@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="基础表单" contentBackground content=" 表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景。" contentClass="p-4">
+  <PageWrapper title="Basic form" contentBackground content=" Form pages are used to collect or verify information from users，Basic forms are commonly found in form scenarios where there are few data items。" contentClass="p-4">
     <BasicForm @register="register" />
   </PageWrapper>
 </template>

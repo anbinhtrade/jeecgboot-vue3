@@ -1,5 +1,5 @@
 <template>
-  <a-card title="即时保存示例" :bordered="false">
+  <a-card title="Instant save samples" :bordered="false">
     <!--
       【即时保存大体思路】：
       1. JVxeTable 上必须加 keep-source 属性
@@ -70,23 +70,23 @@
       // 如果加上了该属性，就代表当前单元格是可编辑的，type就是表单的类型，input就是简单的输入框
       type: JVxeTypes.input,
     },
-    { key: 'call', title: '呼叫', width: 80, type: JVxeTypes.input },
-    { key: 'len', title: '长', width: 80, type: JVxeTypes.input },
-    { key: 'ton', title: '吨', width: 120, defaultValue: 233, type: JVxeTypes.input },
-    { key: 'payer', title: '付款方', width: 120, defaultValue: '张三', type: JVxeTypes.input },
-    { key: 'count', title: '数', width: 40, type: JVxeTypes.normal },
+    { key: 'call', title: 'CALL', width: 80, type: JVxeTypes.input },
+    { key: 'len', title: 'LONG', width: 80, type: JVxeTypes.input },
+    { key: 'ton', title: 'TON', width: 120, defaultValue: 233, type: JVxeTypes.input },
+    { key: 'payer', title: 'PAYER', width: 120, defaultValue: 'TOM', type: JVxeTypes.input },
+    { key: 'count', title: 'NUMBER', width: 40, type: JVxeTypes.normal },
     {
       key: 'company',
-      title: '公司',
+      title: 'FIRM',
       // 最小宽度，与宽度不同的是，这个不是固定的宽度，如果表格有多余的空间，会平均分配给设置了 minWidth 的列
       // 如果要做占满表格的列可以这么写
       minWidth: 180,
       type: JVxeTypes.input,
     },
-    { key: 'trend', title: '动向', width: 120, type: JVxeTypes.input },
+    { key: 'trend', title: 'TREND', width: 120, type: JVxeTypes.input },
   ]);
 
-  // 查询url地址
+  // Query the URL address
   enum Api {
     getData = '/mock/vxe/getData',
     // 模拟保存单行数据（即时保存）
@@ -97,7 +97,7 @@
 
   loadData();
 
-  // 加载数据
+  // Load the data
   async function loadData() {
     loading.value = true;
     // 调用查询数据接口
@@ -169,7 +169,7 @@
     loading.value = true;
     window.setTimeout(() => {
       loading.value = false;
-      createMessage.success('删除成功');
+      createMessage.success('The deletion is successful');
       // 假设后台返回删除成功，必须要调用 confirmRemove() 方法，才会真正在表格里移除（会同时删除选中的逻辑新增的数据）
       event.confirmRemove();
     }, 1000);
@@ -186,15 +186,15 @@
         // 校验通过
         if (!errMap) {
           // 【模拟保存】
-          let hideLoading = createMessage.loading(`正在保存"${column.title}"`, 0);
-          console.log('即时保存数据：', row);
+          let hideLoading = createMessage.loading(`SAVING"${column.title}"`, 0);
+          console.log('Save data instantly：', row);
           defHttp
             .put({
               url: Api.saveRow,
               params: row,
             })
             .then((res) => {
-              createMessage.success(`"${column.title}"保存成功！`);
+              createMessage.success(`"${column.title}"The save was successful！`);
               // 局部更新单元格为已保存状态
               $table.reloadRow(row, null, field);
             })

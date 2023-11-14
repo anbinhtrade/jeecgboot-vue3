@@ -1,46 +1,46 @@
 import {BasicColumn, FormSchema} from '/@/components/Table';
 
 const statusOptions = [
-  {label: '禁用', value: '0'},
-  {label: '启用', value: '1'},
+  {label: 'DISABLE', value: '0'},
+  {label: 'ENABLE', value: '1'},
 ]
 
 export const columns: BasicColumn[] = [
   {
-    title: '允许的表名',
+    title: 'Allowed table names',
     dataIndex: 'tableName',
   },
   {
-    title: '允许的字段名',
+    title: 'Allowed field names',
     dataIndex: 'fieldName',
   },
   {
-    title: '状态',
+    title: 'STATE',
     dataIndex: 'status',
     customRender({text}) {
       const find = statusOptions.find(opt => opt.value === text);
-      return find?.label || '未知';
+      return find?.label || 'UNKNOWN';
     }
   },
   {
-    title: '创建时间',
+    title: 'Creation time',
     dataIndex: 'createTime',
   }
 ];
 
 export const searchFormSchema: FormSchema[] = [
   {
-    label: '允许的表名',
+    label: 'Allowed table names',
     field: 'tableName',
     component: 'Input',
   },
   {
-    label: '允许的字段名',
+    label: 'Allowed field names',
     field: 'fieldName',
     component: 'Input',
   },
   {
-    label: '状态',
+    label: 'STATE',
     field: 'status',
     component: 'Select',
     componentProps: {
@@ -52,20 +52,20 @@ export const searchFormSchema: FormSchema[] = [
 export const formSchema: FormSchema[] = [
   {label: '', field: 'id', component: 'Input', show: false},
   {
-    label: '允许的表名',
+    label: 'Allowed table names',
     field: 'tableName',
     component: 'Input',
     required: true,
   },
   {
-    label: '允许的字段名',
+    label: 'Allowed field names',
     field: 'fieldName',
     component: 'Input',
     required: true,
-    helpMessage: '多个用逗号分割',
+    helpMessage: 'Multiple are separated by commas',
   },
   {
-    label: '状态',
+    label: 'STATE',
     field: 'status',
     component: 'Select',
     defaultValue: '1',

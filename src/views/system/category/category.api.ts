@@ -14,22 +14,22 @@ enum Api {
   getChildListBatch = '/sys/category/getChildListBatch',
 }
 /**
- * 导出api
+ * Export API
  * @param params
  */
 export const getExportUrl = Api.exportXls;
 /**
- * 导入api
+ * Import APIs
  * @param params
  */
 export const getImportUrl = Api.importExcel;
 /**
- * 列表接口
+ * List interface
  * @param params
  */
 export const list = (params) => defHttp.get({ url: Api.list, params });
 /**
- * 删除
+ * DELETE
  */
 export const deleteCategory = (params, handleSuccess) => {
   return defHttp.delete({ url: Api.deleteCategory, params }, { joinParamsToUrl: true }).then(() => {
@@ -37,15 +37,15 @@ export const deleteCategory = (params, handleSuccess) => {
   });
 };
 /**
- * 批量删除
+ * Delete in bulk
  * @param params
  */
 export const batchDeleteCategory = (params, handleSuccess) => {
   Modal.confirm({
-    title: '确认删除',
-    content: '是否删除选中数据',
-    okText: '确认',
-    cancelText: '取消',
+    title: 'Confirm the deletion',
+    content: 'Specifies whether to delete the selected data',
+    okText: 'CONFIRM',
+    cancelText: 'CANCEL',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatch, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();
@@ -54,7 +54,7 @@ export const batchDeleteCategory = (params, handleSuccess) => {
   });
 };
 /**
- * 保存或者更新
+ * Save or update
  * @param params
  */
 export const saveOrUpdateDict = (params, isUpdate) => {
@@ -62,17 +62,17 @@ export const saveOrUpdateDict = (params, isUpdate) => {
   return defHttp.post({ url: url, params });
 };
 /**
- * 查询全部树形节点数据
+ * Query all tree node data
  * @param params
  */
 export const loadTreeData = (params) => defHttp.get({ url: Api.loadTreeData, params });
 /**
- * 查询子节点数据
+ * Query the data of a child node
  * @param params
  */
 export const getChildList = (params) => defHttp.get({ url: Api.getChildList, params });
 /**
- * 批量查询子节点数据
+ * Query child node data in batches
  * @param params
  */
 export const getChildListBatch = (params) => defHttp.get({ url: Api.getChildListBatch, params }, { isTransformResponse: false });

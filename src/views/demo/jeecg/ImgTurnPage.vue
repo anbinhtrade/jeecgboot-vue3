@@ -18,8 +18,8 @@
       <a-col :span="18">
         <a-row style="margin-top: 10px; padding-left: 2%">
           <a-col :span="24" style="margin-bottom: 10px">
-            <a-button @click="prev" preIcon="ant-design:left-outlined" type="primary">上一页</a-button>
-            <a-button @click="next" preIcon="ant-design:right-outlined" style="margin-left: 8px" type="primary">下一页</a-button>
+            <a-button @click="prev" preIcon="ant-design:left-outlined" type="primary">PREVIOUS</a-button>
+            <a-button @click="next" preIcon="ant-design:right-outlined" style="margin-left: 8px" type="primary">NEXT</a-button>
             <span style="margin-left: 100px; font-weight: bolder">{{ navName }}</span>
           </a-col>
           <a-col :span="24">
@@ -36,43 +36,43 @@
   //mock数据
   const mockdata = [
     {
-      title: '第一页',
+      title: 'Page 1',
       key: '0-0',
       children: [
         {
-          title: '1页',
+          title: '1 page',
           key: '0-0-0',
           imgUrl: 'https://static.jeecg.com/upload/test/1_1588149743473.jpg',
         },
         {
-          title: '2页',
+          title: '2 pages',
           key: '0-0-1',
           imgUrl: 'https://static.jeecg.com/upload/test/u27356337152749454924fm27gp0_1588149731821.jpg',
         },
       ],
     },
     {
-      title: '第二页',
+      title: 'Page II',
       key: '0-1',
       children: [
         {
-          title: '1页',
+          title: '1 page',
           key: '0-1-0',
           imgUrl: 'https://static.jeecg.com/upload/test/u24454681402491956848fm27gp0_1588149712663.jpg',
         },
         {
-          title: '2页',
+          title: '2 pages',
           key: '0-1-1',
           imgUrl: 'https://static.jeecg.com/upload/test/u8891206113801177793fm27gp0_1588149704459.jpg',
         },
       ],
     },
     {
-      title: '第三页',
+      title: 'Page 3',
       key: '0-2',
       children: [
         {
-          title: '1页',
+          title: '1 page',
           key: '0-2-0',
           imgUrl: 'https://static.jeecg.com/upload/test/1374962_1587621329085.jpg',
         },
@@ -80,7 +80,7 @@
     },
   ];
   /**
-   * 左侧树形数据
+   * Tree data on the left
    */
   const treeData = ref(mockdata);
   //选中的key
@@ -98,7 +98,7 @@
   onMounted(getImgList);
 
   /**
-   * 加载图片集合
+   * Load the image collection
    */
   function getImgList() {
     var count = 0;
@@ -116,7 +116,7 @@
     setValue(imgList.value[unref(sort)]);
   }
   /**
-   * 节点选中事件
+   * NODE SELECTED EVENT
    */
   function onSelect(selectedKeys, info) {
     for (var i = 0; i < unref(imgList).length; i++) {
@@ -128,7 +128,7 @@
     }
   }
   /**
-   * 节点展开事件
+   * Node expansion event
    */
   function onExpand(expandedKey) {
     expandedKeys.value = [];
@@ -148,7 +148,7 @@
     setValue(unref(imgList)[unref(sort)]);
   }
   /**
-   * 下一页
+   * NEXT
    */
   function next() {
     if (unref(sort) === unref(imgList).length - 1) {

@@ -90,7 +90,7 @@
   const [registerTable, { reload }, { rowSelection, selectedRowKeys }] = tableContext;
 
   /**
-   * 新增
+   * NEW
    */
   function handleCreate() {
     showFooter.value = true;
@@ -99,7 +99,7 @@
     });
   }
   /**
-   * 编辑
+   * EDIT
    */
   function handleEdit(record: Recordable) {
     showFooter.value = true;
@@ -109,7 +109,7 @@
     });
   }
   /**
-   * 详情
+   * DETAIL
    */
   function handleDetail(record) {
     showFooter.value = false;
@@ -119,39 +119,39 @@
     });
   }
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     await deleteRole({ id: record.id }, reload);
   }
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   async function batchHandleDelete() {
     await batchDeleteRole({ ids: selectedRowKeys.value }, reload);
   }
   /**
-   * 角色授权弹窗
+   * Character authorization pop-up
    */
   function handlePerssion(record) {
     openRolePermissionDrawer(true, { roleId: record.id });
   }
 
   /**
-   * 首页配置弹窗
+   * Configure pop-up window on the home page
    */
   function handleIndexConfig(roleCode) {
     openIndexModal(true, { roleCode });
   }
   /**
-   * 角色用户
+   * Role Users
    */
   function handleUser(record) {
     //onSelectChange(selectedRowKeys)
     openRoleUserDrawer(true, record);
   }
   /**
-   * 操作栏
+   * Action bar
    */
   function getTableAction(record) {
     return [
@@ -167,7 +167,7 @@
   }
 
   /**
-   * 下拉操作栏
+   * Drop down the action bar
    */
   function getDropDownAction(record) {
     return [

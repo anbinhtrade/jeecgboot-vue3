@@ -1,7 +1,7 @@
 <template>
   <div v-for="(param, index) in dynamicInput.params" :key="index" style="display: flex">
-    <a-input placeholder="请输入参数key" v-model:value="param.label" style="width: 30%; margin-bottom: 5px" @input="emitChange" />
-    <a-input placeholder="请输入参数value" v-model:value="param.value" style="width: 30%; margin: 0 0 5px 5px" @input="emitChange" />
+    <a-input placeholder="Enter the parameter key" v-model:value="param.label" style="width: 30%; margin-bottom: 5px" @input="emitChange" />
+    <a-input placeholder="Please enter the value parameter" v-model:value="param.value" style="width: 30%; margin: 0 0 5px 5px" @input="emitChange" />
     <MinusCircleOutlined
       v-if="dynamicInput.params.length > min"
       class="dynamic-delete-button"
@@ -12,7 +12,7 @@
   <div>
     <a-button type="dashed" style="width: 60%" @click="add">
       <PlusOutlined />
-      新增
+      NEW
     </a-button>
   </div>
 </template>
@@ -21,7 +21,7 @@
   import { defineComponent, reactive, ref, UnwrapRef, watchEffect } from 'vue';
   import { propTypes } from '/@/utils/propTypes';
   import { isEmpty } from '/@/utils/is';
-  import { tryOnMounted, tryOnUnmounted } from '@vueuse/core';
+
   interface Params {
     label: string;
     value: string;
@@ -32,7 +32,7 @@
     props: {
       value: propTypes.string.def(''),
       //update-begin---author:wangshuai ---date:20220516  for：[VUEN-1043]系统编码规则，最后一个输入框不能删除------------
-      //自定义删除按钮多少才会显示
+      //Customize how much the delete button will appear
       min: propTypes.integer.def(1),
       //update-end---author:wangshuai ---date:20220516  for：[VUEN-1043]系统编码规则，最后一个输入框不能删除--------------
     },

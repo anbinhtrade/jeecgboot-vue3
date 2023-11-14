@@ -1,32 +1,32 @@
 <template>
   <BasicTable @register="registerTable">
     <template #tableTitle>
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> 新增</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
       <a-dropdown v-if="selectedRowKeys.length > 0">
         <template #overlay>
           <a-menu>
             <a-menu-item key="1" @click="batchHandleDelete">
               <Icon icon="ant-design:delete-outlined"></Icon>
-              删除
+              DELETE
             </a-menu-item>
           </a-menu>
         </template>
         <a-button
-          >批量操作
+          >Bulk operations
           <Icon icon="mdi:chevron-down"></Icon>
         </a-button>
       </a-dropdown>
-      <div style="margin-left: 10px;margin-top: 5px">当前登录租户: <span class="tenant-name">{{loginTenantName}}</span> </div>
+      <div style="margin-left: 10px;margin-top: 5px">The currently logged-in tenant: <span class="tenant-name">{{loginTenantName}}</span> </div>
     </template>
     <template #action="{ record }">
       <TableAction :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)" />
     </template>
   </BasicTable>
-  <!--角色用户表格-->
+  <!--Role User Table-->
   <RoleUserTable @register="roleUserDrawer" :disableUserEdit="true"/>
-  <!--角色编辑抽屉-->
+  <!--Character editing drawer-->
   <RoleDrawer @register="registerDrawer" @success="reload" :showFooter="showFooter" />
-  <!--角色详情-->
+  <!--Role details-->
   <RoleDesc @register="registerDesc"></RoleDesc>
 </template>
 <script lang="ts" name="system-role" setup>
@@ -47,11 +47,11 @@
   const [registerModal, { openModal }] = useModal();
   const [registerDesc, { openDrawer: openRoleDesc }] = useDrawer();
   
-  // 列表页面公共参数、方法
+  // Common parameters and methods on the list page
   const { prefixCls, tableContext, onImportXls, onExportXls } = useListPage({
     designScope: 'role-template',
     tableProps: {
-      title: '租户角色列表',
+      title: 'List of tenant roles',
       api: listByTenant,
       columns: columns,
       formConfig: {
@@ -61,14 +61,14 @@
         width: 120,
       },
       rowSelection: null,
-      //自定义默认排序
+      //Customize the default sorting
       defSort: {
         column: 'id',
         order: 'desc',
       },
     },
     exportConfig: {
-      name: '角色列表',
+      name: 'List of roles',
       url: getExportUrl,
     },
     importConfig: {
@@ -78,7 +78,7 @@
   const [registerTable, { reload }, { rowSelection, selectedRowKeys }] = tableContext;
 
   /**
-   * 新增
+   * NEW
    */
   function handleCreate() {
     showFooter.value = true;
@@ -87,7 +87,7 @@
     });
   }
   /**
-   * 编辑
+   * EDIT
    */
   function handleEdit(record: Recordable) {
     showFooter.value = true;
@@ -97,7 +97,7 @@
     });
   }
   /**
-   * 详情
+   * DETAIL
    */
   function handleDetail(record) {
     showFooter.value = false;
@@ -107,31 +107,31 @@
     });
   }
   /**
-   * 删除事件
+   * Delete the event
    */
   async function handleDelete(record) {
     await deleteRole({ id: record.id }, reload);
   }
   /**
-   * 批量删除事件
+   * Delete events in bulk
    */
   async function batchHandleDelete() {
     await batchDeleteRole({ ids: selectedRowKeys.value }, reload);
   }
   /**
-   * 角色用户
+   * Role Users
    */
   function handleUser(record) {
     //onSelectChange(selectedRowKeys)
     openRoleUserDrawer(true, record);
   }
   /**
-   * 操作栏
+   * Action bar
    */
   function getTableAction(record) {
     return [
       {
-        label: '用户',
+        label: 'USER',
         onClick: handleUser.bind(null, record),
       },
     ];
@@ -143,17 +143,17 @@
   function getDropDownAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '详情',
+        label: 'DETAIL',
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

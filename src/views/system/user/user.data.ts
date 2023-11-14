@@ -10,7 +10,7 @@ export const columns: BasicColumn[] = [
     width: 120,
   },
   {
-    title: '用户姓名',
+    title: 'User name',
     dataIndex: 'realname',
     width: 100,
   },
@@ -63,7 +63,7 @@ export const recycleColumns: BasicColumn[] = [
     width: 100,
   },
   {
-    title: '用户姓名',
+    title: 'User name',
     dataIndex: 'realname',
     width: 100,
   },
@@ -161,7 +161,7 @@ export const formSchema: FormSchema[] = [
     dynamicRules: ({ values }) => rules.confirmPassword(values, true),
   },
   {
-    label: '用户姓名',
+    label: 'User name',
     field: 'realname',
     required: true,
     component: 'Input',

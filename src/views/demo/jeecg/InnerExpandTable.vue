@@ -30,22 +30,22 @@
     deleteBatch: '/test/order/deleteBatch',
     customerListByMainId: '/test/order/listOrderCustomerByMainId',
   };
-  // 展开key
+  // Expand the key
   const expandedRowKeys = ref<any[]>([]);
-  // 选择key
+  // Select Key
   const checkedKeys = ref<any[]>([]);
-  // 子表数据
+  // Child table data
   const innerData = ref<any[]>([]);
-  // 主表表头
+  // Master header
   const columns = [
     {
-      title: '订单号',
+      title: 'Order number',
       align: 'center',
       dataIndex: 'orderCode',
       width: 100,
     },
     {
-      title: '订单类型',
+      title: 'The type of order',
       align: 'center',
       dataIndex: 'ctype',
       width: 100,
@@ -60,19 +60,19 @@
       },
     },
     {
-      title: '订单日期',
+      title: 'The date of the order',
       align: 'center',
       width: 100,
       dataIndex: 'orderDate',
     },
     {
-      title: '订单金额',
+      title: 'The amount of the order',
       align: 'center',
       dataIndex: 'orderMoney',
       width: 100,
     },
     {
-      title: '订单备注',
+      title: 'Order notes',
       align: 'center',
       dataIndex: 'content',
       width: 100,
@@ -81,35 +81,35 @@
   // 子表表头
   const innerColumns = [
     {
-      title: '客户名',
+      title: 'Customer name',
       align: 'center',
       width: 100,
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: '性别',
+      title: 'GENDER',
       align: 'center',
       dataIndex: 'sex',
       customRender: function (text) {
         //console.log(typeof  text )
         //console.log(text)
         if (text.value == '1') {
-          return '男';
+          return 'MAN';
         } else if (text.value == '2') {
-          return '女';
+          return 'WOMAN';
         } else {
           return text;
         }
       },
     },
     {
-      title: '身份证号码',
+      title: 'Identification number',
       align: 'center',
       dataIndex: 'idcard',
     },
     {
-      title: '电话',
+      title: 'PHONE',
       dataIndex: 'telphone',
       align: 'center',
     },
@@ -196,13 +196,13 @@
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'EDIT',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: '删除',
+        label: 'DELETE',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
         },
       },

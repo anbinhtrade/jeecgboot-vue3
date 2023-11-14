@@ -24,9 +24,9 @@
     isTreeTable: true,
     showIndexColumn: true,
     columns: [
-      { title: '名称', dataIndex: 'name' },
-      { title: '组件', dataIndex: 'component' },
-      { title: '排序', dataIndex: 'orderNum' },
+      { title: 'NAME', dataIndex: 'name' },
+      { title: 'SUBASSEMBLY', dataIndex: 'component' },
+      { title: 'SORT', dataIndex: 'orderNum' },
     ],
   });
 
