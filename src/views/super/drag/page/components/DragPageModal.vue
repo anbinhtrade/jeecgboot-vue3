@@ -71,14 +71,14 @@
     style: 'default',
     updateCount: null,
   });
-  //表单赋值
+  //Form assignment
   const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data) => {
     setModalProps({ showCancelBtn: false, showOkBtn: false });
     refresh.value = false;
     pageId.value = data.record.id;
-    //校验保护码
+    //Verify the protection code
     checkCode(data.record);
-    title.value = `页面设计 [${data.record.name}]`;
+    title.value = `Page design [${data.record.name}]`;
     const res = await queryById({ id: unref(pageId) });
     if (res.success) {
       dragData.value.name = res.result.name;
@@ -100,7 +100,7 @@
     }, 300);
   });
   /**
-   * 检验保护码
+   * Verify the protection code
    */
   function checkCode(result) {
     const password = result.protectionCode;
@@ -112,7 +112,7 @@
     }
   }
   /**
-   * 关闭事件
+   * Close the event
    */
   function handleClose() {
     closeModal();
@@ -120,16 +120,16 @@
     emit('close')
   }
   /**
-   * 保存布局后的回调事件
+   * Callback event after the layout is saved
    * @param data
    */
   function handleSave(data) {
-    //保存后不关闭modal
+    //Do not close modal after saving
     //closeModal()
     emit('success');
   }
   /**
-   * 新增组件后的滚动事件
+   * Scrolling event after adding a component
    * @param data
    */
   function handleScroll(scrollHeight) {
@@ -138,18 +138,18 @@
   }
   
   /**
-   * 模拟滚动效果
-   * @param element 滚动元素
-   * @param scrollHeight 滚动高度
+   * Simulate scrolling effects
+   * @param element Scroll elements
+   * @param scrollHeight Roll height
    */
   function scrollIntoView(element,scrollHeight) {
-    // 当前滚动高度
+    // The current scroll height
     let scrollTop = element.scrollTop;
-    // 滚动step方法
+    // Scroll step method
     const step = () =>{
-      // 距离目标滚动距离
+      // Roll distance from the target
       let distance = scrollHeight - scrollTop;
-      // 目标需要滚动的距离，也就是只走全部距离的十分之一
+      // The distance the target needs to roll, i.e. only one-tenth of the total distance
       scrollTop = scrollTop + distance / 10;
       if (Math.abs(distance) < 1) {
         element.scrollTo(0, scrollHeight);
@@ -162,7 +162,7 @@
   }
 
   /**
-   * 打开分享
+   * Turn on Sharing
    * @param url
    */
   function openWindow(url){

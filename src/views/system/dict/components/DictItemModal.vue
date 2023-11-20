@@ -60,7 +60,7 @@
   });
 
   //设置标题
-  const getTitle = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
+  const getTitle = computed(() => (!unref(isUpdate) ? 'New' : 'Edit'));
 
   //表单提交事件
   async function handleSubmit() {

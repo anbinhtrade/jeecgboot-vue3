@@ -223,31 +223,31 @@ export const getMoreInfo = (infoType) => {
 export const getTextInfo = (infoType) => {
   if (infoType == '1') {
     return {
-      'system.cpu.count': { color: 'green', text: 'CPU 数量', unit: '核' },
-      'system.cpu.usage': { color: 'green', text: '系统 CPU 使用率', unit: '%', valueType: 'Number' },
-      'process.start.time': { color: 'purple', text: '应用启动时间点', unit: '', valueType: 'Date' },
-      'process.uptime': { color: 'purple', text: '应用已运行时间', unit: '秒' },
-      'process.cpu.usage': { color: 'purple', text: '当前应用 CPU 使用率', unit: '%', valueType: 'Number' },
+      'system.cpu.count': { color: 'green', text: 'CPU', unit: 'Cores' },
+      'system.cpu.usage': { color: 'green', text: 'System Cpu Utilization', unit: '%', valueType: 'Number' },
+      'process.start.time': { color: 'purple', text: 'Application Started', unit: '', valueType: 'Date' },
+      'process.uptime': { color: 'purple', text: 'How long the app has been running', unit: 'Second' },
+      'process.cpu.usage': { color: 'purple', text: 'Current Application Cpu Utilization', unit: '%', valueType: 'Number' },
     };
   }
   if (infoType == '2') {
     return {
-      'jvm.memory.max': { color: 'purple', text: 'JVM 最大内存', unit: 'MB', valueType: 'RAM' },
-      'jvm.memory.committed': { color: 'purple', text: 'JVM 可用内存', unit: 'MB', valueType: 'RAM' },
-      'jvm.memory.used': { color: 'purple', text: 'JVM 已用内存', unit: 'MB', valueType: 'RAM' },
-      'jvm.buffer.memory.used': { color: 'cyan', text: 'JVM 缓冲区已用内存', unit: 'MB', valueType: 'RAM' },
-      'jvm.buffer.count': { color: 'cyan', text: '当前缓冲区数量', unit: '个' },
-      'jvm.threads.daemon': { color: 'green', text: 'JVM 守护线程数量', unit: '个' },
-      'jvm.threads.live': { color: 'green', text: 'JVM 当前活跃线程数量', unit: '个' },
-      'jvm.threads.peak': { color: 'green', text: 'JVM 峰值线程数量', unit: '个' },
-      'jvm.classes.loaded': { color: 'orange', text: 'JVM 已加载 Class 数量', unit: '个' },
-      'jvm.classes.unloaded': { color: 'orange', text: 'JVM 未加载 Class 数量', unit: '个' },
-      'jvm.gc.memory.allocated': { color: 'pink', text: 'GC 时, 年轻代分配的内存空间', unit: 'MB', valueType: 'RAM' },
-      'jvm.gc.memory.promoted': { color: 'pink', text: 'GC 时, 老年代分配的内存空间', unit: 'MB', valueType: 'RAM' },
-      'jvm.gc.max.data.size': { color: 'pink', text: 'GC 时, 老年代的最大内存空间', unit: 'MB', valueType: 'RAM' },
-      'jvm.gc.live.data.size': { color: 'pink', text: 'FullGC 时, 老年代的内存空间', unit: 'MB', valueType: 'RAM' },
-      'jvm.gc.pause.count': { color: 'blue', text: '系统启动以来GC 次数', unit: '次' },
-      'jvm.gc.pause.totalTime': { color: 'blue', text: '系统启动以来GC 总耗时', unit: '秒' },
+      'jvm.memory.max': { color: 'purple', text: 'JVM Maximum memory', unit: 'MB', valueType: 'RAM' },
+      'jvm.memory.committed': { color: 'purple', text: 'JVM Available memory', unit: 'MB', valueType: 'RAM' },
+      'jvm.memory.used': { color: 'purple', text: 'JVM Memory used', unit: 'MB', valueType: 'RAM' },
+      'jvm.buffer.memory.used': { color: 'cyan', text: 'JVM Buffer memory used', unit: 'MB', valueType: 'RAM' },
+      'jvm.buffer.count': { color: 'cyan', text: 'The current number of buffers', unit: '个' },
+      'jvm.threads.daemon': { color: 'green', text: 'JVM Number of daemon threads', unit: '个' },
+      'jvm.threads.live': { color: 'green', text: 'JVM The number of currently active threads', unit: '个' },
+      'jvm.threads.peak': { color: 'green', text: 'JVM Peak number of threads', unit: '个' },
+      'jvm.classes.loaded': { color: 'orange', text: 'JVM LOADED Class QUANTITY', unit: '个' },
+      'jvm.classes.unloaded': { color: 'orange', text: 'JVM Not loading Class QUANTITY', unit: '个' },
+      'jvm.gc.memory.allocated': { color: 'pink', text: 'GC TIME, Memory space allocated by the younger generation', unit: 'MB', valueType: 'RAM' },
+      'jvm.gc.memory.promoted': { color: 'pink', text: 'GC TIME, Memory space allocated in the old days', unit: 'MB', valueType: 'RAM' },
+      'jvm.gc.max.data.size': { color: 'pink', text: 'GC TIME, The largest memory space in the old days', unit: 'MB', valueType: 'RAM' },
+      'jvm.gc.live.data.size': { color: 'pink', text: 'FullGC TIME, Old-fashioned memory space', unit: 'MB', valueType: 'RAM' },
+      'jvm.gc.pause.count': { color: 'blue', text: 'The system has been started since the GC FREQUENCY', unit: 'NEXT' },
+      'jvm.gc.pause.totalTime': { color: 'blue', text: 'The system has been started since the GC Total time spent', unit: 'SECOND' },
     };
   }
   if (infoType == '3') {

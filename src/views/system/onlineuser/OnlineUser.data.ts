@@ -5,7 +5,7 @@ import { getToken } from '/@/utils/auth';
 //LIST
 export const columns = [
   {
-    title:'USER ACCOUNT',
+    title:'User Name',
     align:"center",
     dataIndex: 'username',
     customRender: ( {text,record} ) => {
@@ -16,21 +16,21 @@ export const columns = [
       return text
     },
   },{
-    title:'USERNAME',
+    title:'Real Name',
     align:"center",
     dataIndex: 'realname'
   },{
-    title: 'HEAD SCULPTURE',
+    title: 'Avatar',
     align: "center",
     width: 120,
     dataIndex: 'avatar',
     customRender: render.renderAvatar,
   },{
-    title:'DATE OF BIRTH',
+    title:'Birthday',
     align:"center",
     dataIndex: 'birthday'
   },{
-    title: 'SEXUALITY',
+    title: 'Gender',
     align: "center",
     dataIndex: 'sex',
     customRender: ({text}) => {
@@ -47,7 +47,7 @@ export const columns = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'username',
-    label: 'USER ACCOUNT',
+    label: 'User Name',
     component: 'Input',
     colProps: { span: 6 },
   }

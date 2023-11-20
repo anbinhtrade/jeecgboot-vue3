@@ -10,11 +10,11 @@ export const columns: BasicColumn[] = [
     align: 'left',
   },
   {
-    title: 'Tenant number(ID)',
+    title: 'Tenant Id',
     dataIndex: 'id',
     width: 180,
   },{
-    title: 'Organization logo',
+    title: 'Logo',
     dataIndex: 'companyLogo',
     width: 100,
     customRender: ({ text }) => {
@@ -26,7 +26,7 @@ export const columns: BasicColumn[] = [
   },
   {
     dataIndex: 'trade_dictText',
-    title: 'INDUSTRY',
+    title: 'Industry',
     width: 150
   },
   {
@@ -36,7 +36,7 @@ export const columns: BasicColumn[] = [
   },
   {
     dataIndex: 'houseNumber',
-    title: '门牌号',
+    title: 'Number',
     width: 100,
   },
   {
@@ -46,12 +46,12 @@ export const columns: BasicColumn[] = [
   },
   {
     dataIndex: 'department_dictText',
-    title: '部门',
+    title: 'Department',
     width: 150
   },
   {
     dataIndex: 'createBy_dictText',
-    title: 'Created by (Owner)',
+    title: 'Created by',
     width: 150
   },
 /*  {
@@ -67,7 +67,7 @@ export const columns: BasicColumn[] = [
     width: 180,
   },*/
   {
-    title: 'STATE',
+    title: 'Status',
     dataIndex: 'status_dictText',
     width: 100,
   },
@@ -82,12 +82,12 @@ export const searchFormSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'Select',
     componentProps: {
       options: [
-        { label: 'NORMAL', value: 1 },
-        { label: 'FREEZE', value: 0 },
+        { label: 'Normal', value: 1 },
+        { label: 'Freeze', value: 0 },
       ],
     },
     colProps: { span: 8 },
@@ -114,7 +114,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'id',
-    label: 'Tenant number(ID)',
+    label: 'Tenant ID',
     component: 'InputNumber',
     required: true,
     ifShow: ({ values }) => {
@@ -123,7 +123,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'companyLogo',
-    label: 'Organization logo',
+    label: 'Logo',
     component: 'JImageUpload',
     componentProps:{
       text:'logo'
@@ -131,7 +131,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'trade',
-    label: 'INDUSTRY',
+    label: 'Industry',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode:'trade',
@@ -174,7 +174,7 @@ export const formSchema: FormSchema[] = [
   },*/
   {
     field: 'houseNumber',
-    label: 'NUMBER',
+    label: 'Number',
     component: 'Input',
     dynamicDisabled: true,
     ifShow: ({ values }) => {
@@ -191,7 +191,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'department',
-    label: 'DEPARTMENT',
+    label: 'Department',
     component: 'JDictSelectTag',
     componentProps:{
       dictCode:'company_department'
@@ -199,13 +199,13 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'RadioButtonGroup',
     defaultValue: 1,
     componentProps: {
       options: [
-        { label: 'NORMAL', value: 1 },
-        { label: 'FREEZE', value: 0 },
+        { label: 'Normal', value: 1 },
+        { label: 'Freeze', value: 0 },
       ],
     },
   },
@@ -214,7 +214,7 @@ export const formSchema: FormSchema[] = [
 //Define user table columns
 export const userColumns: BasicColumn[] =[
   {
-    title: 'User Accounts',
+    title: 'User Name',
     dataIndex: 'username',
     width: 100,
     align: 'left',
@@ -240,12 +240,12 @@ export const userColumns: BasicColumn[] =[
 export const userSearchFormSchema: FormSchema[] = [
   {
     field: 'username',
-    label: 'ACCOUNT',
+    label: 'User Name',
     component: 'Input',
   },
   {
     field: 'realname',
-    label: 'NAME',
+    label: 'Real Name',
     component: 'Input',
   },
 ];
@@ -253,24 +253,24 @@ export const userSearchFormSchema: FormSchema[] = [
 //A list of product packages
 export const packColumns: BasicColumn[] = [
   {
-    title: 'Package name',
+    title: 'Pack Name',
     dataIndex: 'packName',
     width: 100,
   },
   {
-    title: 'STATE',
+    title: 'Status',
     dataIndex: 'status',
     width: 100,
     customRender: ({ text }) => {
       if (text === '1') {
-        return 'OPEN';
+        return 'Open';
       } else {
         return 'Shut down';
       }
     },
   },
   {
-    title: 'REMARK',
+    title: 'Remarks',
     dataIndex: 'remarks',
     width: 150,
   },
@@ -280,7 +280,7 @@ export const packColumns: BasicColumn[] = [
 export const packFormSchema: FormSchema[] = [
   {
     field: 'packName',
-    label: 'Package name',
+    label: 'Pack Name',
     component: 'JInput',
     colProps: { xxl: 8 },
   },
@@ -290,12 +290,12 @@ export const packFormSchema: FormSchema[] = [
 export const packMenuFormSchema: FormSchema[] = [
   {
     field: 'packName',
-    label: 'Package name',
+    label: 'Package Name',
     component: 'Input',
   },
   {
     field: 'permissionIds',
-    label: 'Menu list',
+    label: 'Menu List',
     component: 'JTreeSelect',
     componentProps: {
       dict: 'sys_permission,name,id',
@@ -308,7 +308,7 @@ export const packMenuFormSchema: FormSchema[] = [
   },
   {
     field: 'remarks',
-    label: 'DESCRIPTION',
+    label: 'Description',
     component: 'InputTextArea',
   },
   {
@@ -345,7 +345,7 @@ export const recycleColumns : BasicColumn[] = [
     width: 100,
   },
   {
-    title: 'Organization logo',
+    title: 'Logo',
     dataIndex: 'companyLogo',
     width: 100,
     customRender: ({ text }) => {
@@ -357,7 +357,7 @@ export const recycleColumns : BasicColumn[] = [
   },
   {
     dataIndex: 'houseNumber',
-    title: 'NUMBER',
+    title: 'Number',
     width: 100,
   }
 ]
@@ -371,7 +371,7 @@ export const searchRecycleFormSchema : FormSchema[] = [
   },
   {
     field: 'houseNumber',
-    label: 'NUMBER',
+    label: 'Number',
     component: 'Input',
   },
 ]
@@ -379,19 +379,19 @@ export const searchRecycleFormSchema : FormSchema[] = [
 //产品包用户列表
 export const tenantPackUserColumns: BasicColumn[] = [
   {
-    title: 'USER',
+    title: 'Real Name',
     dataIndex: 'realname',
     width: 200,
   },
   {
-    title: 'DEPARTMENT',
+    title: 'Department',
     dataIndex: 'departNames',
     width: 200,
     ellipsis: true,
     slots: { customRender: 'departNames' }
   },
   {
-    title: 'POSTS',
+    title: 'Position',
     dataIndex: 'positionNames',
     ellipsis: true,
     width: 200,
@@ -407,7 +407,7 @@ export const tenantUserSchema: FormSchema[] = [
   { field: 'username', label: 'username', component: 'Input', show: false },
   {
     field: 'realname',
-    label: 'NAME',
+    label: 'Name',
     component: 'Input',
     dynamicDisabled: ({ values }) => {
       return !!values.id;
@@ -415,7 +415,7 @@ export const tenantUserSchema: FormSchema[] = [
   },
   {
     field: 'phone',
-    label: 'CELL PHONE',
+    label: 'Phone',
     component: 'Input',
     dynamicRules: ({ model, schema }) => {
       if (model.id) {
@@ -429,7 +429,7 @@ export const tenantUserSchema: FormSchema[] = [
   },
   {
     field: 'email',
-    label: 'MAILBOX',
+    label: 'Email',
     component: 'Input',
     dynamicRules: ({ model, schema }) => {
       if (model.id) {
@@ -441,10 +441,10 @@ export const tenantUserSchema: FormSchema[] = [
       return !!values.id;
     },
   },
-  { field: 'selecteddeparts', label: 'DEPARTMENT', component: 'JSelectDept', componentProps: { checkStrictly: true } },
+  { field: 'selecteddeparts', label: 'Department', component: 'JSelectDept', componentProps: { checkStrictly: true } },
   {
     field: 'post',
-    label: 'POSTS',
+    label: 'Position',
     component: 'JSelectPosition',
   },
   {

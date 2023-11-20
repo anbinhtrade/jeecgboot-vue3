@@ -10,15 +10,15 @@
     >
       <!--插槽:table标题-->
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
-        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
+        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> New</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> Export</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">Import</j-upload-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                DELETE
+                Delete
               </a-menu-item>
             </a-menu>
           </template>
@@ -127,7 +127,7 @@
     await batchDeleteCategory({ ids: ids }, importSuccess);
   }
   /**
-   * IMPORT
+   * Import
    */
   function importSuccess() {
     //update-begin---author:wangshuai ---date:20220530  for：[issues/54]树字典，勾选，然后批量删除，系统错误------------
@@ -275,11 +275,11 @@
   function getTableAction(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Are you sure about deleting it?',
           confirm: handleDelete.bind(null, record),

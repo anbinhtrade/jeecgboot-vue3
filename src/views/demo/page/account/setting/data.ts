@@ -14,22 +14,22 @@ export interface ListItem {
 export const settingList = [
   {
     key: '1',
-    name: 'Basic settings',
+    name: 'Basic Settings',
     component: 'BaseSetting',
   },
   {
     key: '2',
-    name: '安全设置',
+    name: 'Security Settings',
     component: 'SecureSetting',
   },
   /* {
     key: '3',
-    name: '账号绑定',
+    name: 'Account Binding',
     component: 'AccountBind',
   },
   {
     key: '4',
-    name: '新消息通知',
+    name: 'New message notification',
     component: 'MsgNotify',
   },*/
 ];
@@ -45,12 +45,12 @@ export const baseSetschemas: FormSchema[] = [
   {
     field: 'realname',
     component: 'Input',
-    label: 'NICKNAME',
+    label: 'Nickname',
     colProps: { span: 18 },
   },
   {
     field: 'sex',
-    label: 'GENDER',
+    label: 'Gender',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'sex',
@@ -60,7 +60,7 @@ export const baseSetschemas: FormSchema[] = [
     colProps: { span: 18 },
   },
   {
-    label: 'BIRTHDAY',
+    label: 'Birthday',
     field: 'birthday',
     component: 'DatePicker',
     colProps: { span: 18 },
@@ -68,7 +68,7 @@ export const baseSetschemas: FormSchema[] = [
   {
     field: 'email',
     component: 'Input',
-    label: 'MAILBOX',
+    label: 'Email',
     colProps: { span: 18 },
   },
   {

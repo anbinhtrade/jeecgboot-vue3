@@ -3,7 +3,7 @@ import { FormSchema } from '/@/components/Table';
 
 export const columns: BasicColumn[] = [
   {
-    title: 'NAME',
+    title: 'Name',
     dataIndex: 'testName',
     width: 200,
   },
@@ -22,7 +22,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'testName',
-    label: 'NAME',
+    label: 'Name',
     component: 'Input',
     colProps: { span: 8 },
   },
@@ -31,7 +31,7 @@ export const searchFormSchema: FormSchema[] = [
 export const formSchema: FormSchema[] = [
   {
     field: 'testName',
-    label: 'NAME',
+    label: 'Name',
     required: true,
     component: 'Input',
   },

@@ -3,15 +3,15 @@
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <!--slot: table title-->
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">NEW</a-button>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
-        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">New</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> Export</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">Import</j-upload-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                <span>DELETE</span>
+                <span>Delete</span>
               </a-menu-item>
             </a-menu>
           </template>
@@ -121,10 +121,10 @@
   }
 
   /**
-   * EDIT
+   * Edit
    */
   function getTableAction(record): ActionItem[] {
-    return [{ label: 'EDIT', onClick: handleEdit.bind(null, record) }];
+    return [{ label: 'Edit', onClick: handleEdit.bind(null, record) }];
   }
 
   /**
@@ -134,7 +134,7 @@
     return [
       { label: 'Functional testing', onClick: testRule.bind(null, record) },
       {
-        label: 'DELETE',
+        label: 'Delete',
         color: 'error',
         popConfirm: {
           title: 'Are you sure you want to delete it?？',

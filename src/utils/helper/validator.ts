@@ -128,7 +128,7 @@ export const rules = {
 
 //update-begin-author:taoyan date:2022-6-16 for: 代码生成-原生表单用
 /**
- * 唯一校验函数，给原生<a-form>使用，vben的表单校验建议使用上述rules
+ * The only check function is given to the native<a-form>Yes, it is recommended to use the above rules for form validation of VBEN
  * @param tableName Table name
  * @param fieldName The name of the field
  * @param fieldVal Field values

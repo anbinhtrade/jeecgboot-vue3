@@ -1,7 +1,7 @@
 <template>
-  <BasicDrawer v-bind="$attrs" @register="registerDrawer" title="数据规则配置" width="450px" destroyOnClose>
+  <BasicDrawer v-bind="$attrs" @register="registerDrawer" title="Data rule configuration" width="450px" destroyOnClose>
     <a-tabs defaultActiveKey="1">
-      <a-tab-pane tab="数据规则" key="1">
+      <a-tab-pane tab="Data Rules" key="1">
         <a-checkbox-group v-model:value="dataRuleChecked" v-if="dataRuleList.length > 0">
           <a-row>
             <a-col :span="24" v-for="(item, index) in dataRuleList" :key="'dr' + index">
@@ -10,12 +10,12 @@
 
             <a-col :span="24">
               <div style="width: 100%; margin-top: 15px">
-                <a-button @click="saveDataRuleForRole" type="primary" size="small"> <Icon icon="ant-design:save-outlined"></Icon>点击保存</a-button>
+                <a-button @click="saveDataRuleForRole" type="primary" size="small"> <Icon icon="ant-design:save-outlined"></Icon>Click Save</a-button>
               </div>
             </a-col>
           </a-row>
         </a-checkbox-group>
-        <div v-else><h3>无配置信息!</h3></div>
+        <div v-else><h3>No configuration information!</h3></div>
       </a-tab-pane>
     </a-tabs>
   </BasicDrawer>
@@ -35,7 +35,7 @@
   const dataRuleChecked = ref([]);
 
   /**
-   * 数据
+   * DATA
    */
   const [registerDrawer, { setDrawerProps, closeDrawer }] = useDrawerInner(async (data) => {
     await reset();
@@ -55,7 +55,7 @@
   });
 
   /**
-   * 重置
+   * RESET
    */
   function reset() {
     functionId.value = '';
@@ -65,11 +65,11 @@
   }
 
   /**
-   * 提交
+   * SUBMIT
    */
   async function saveDataRuleForRole() {
     if (!unref(dataRuleChecked) || unref(dataRuleChecked).length == 0) {
-      createMessage.warning('请注意，现未勾选任何数据权限!');
+      createMessage.warning('Please note that no data permissions are checked!');
     }
     let params = {
       permissionId: unref(functionId),
@@ -77,9 +77,9 @@
       dataRuleIds: unref(dataRuleChecked).join(','),
     };
     await saveDataRule(params);
-    //关闭弹窗
+    //Close the pop-up window
     closeDrawer();
-    //刷新列表
+    //Refresh the list
     emit('success');
   }
 </script>

@@ -2,15 +2,15 @@
   <a-card :bordered="false">
     <!-- Action button area -->
     <div class="table-operator">
-      <a-button @click="handleAdd" type="primary" preIcon="ant-design:plus">NEW</a-button>
-      <!--      <a-button type="primary" preIcon="ant-design:download" @click="handleExportExcel('单表原生列表')">EXPORT</a-button>-->
-      <!--      <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="handleImportExcel">IMPORT</j-upload-button>-->
+      <a-button @click="handleAdd" type="primary" preIcon="ant-design:plus">New</a-button>
+      <!--      <a-button type="primary" preIcon="ant-design:download" @click="handleExportExcel('单表原生列表')">Export</a-button>-->
+      <!--      <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="handleImportExcel">Import</j-upload-button>-->
       <a-dropdown v-if="selectedRowKeys.length > 0">
         <template #overlay>
           <a-menu>
             <a-menu-item key="1" @click="batchDel">
               <Icon icon="ant-design:delete-outlined"></Icon>
-              DELETE
+              Delete
             </a-menu-item>
           </a-menu>
         </template>
@@ -53,11 +53,11 @@
             <a-button v-else :ghost="true" type="primary" preIcon="ant-design:download" size="small" @click="downloadFile(text)"> DOWNLOAD </a-button>
           </template>
           <template v-else-if="column.dataIndex==='action'">
-            <a @click="handleEdit(record)">EDIT</a>
+            <a @click="handleEdit(record)">Edit</a>
             <a-divider type="vertical" />
             <a-dropdown>
               <!-- update-begin--author:liaozhiyang---date:20230803---for：【QQYUN-5838】图标改小保持一致 -->
-              <a class="ant-dropdown-link">MORE <Icon icon="mdi-light:chevron-down"></Icon></a>
+              <a class="ant-dropdown-link">More <Icon icon="mdi-light:chevron-down"></Icon></a>
               <!-- update-end--author:liaozhiyang---date:20230803---for：【QQYUN-5838】图标改小保持一致 -->
               <template #overlay>
                 <a-menu class="antd-more">
@@ -66,7 +66,7 @@
                   </a-menu-item>
                   <a-menu-item>
                     <Popconfirm title="Are you sure to delete it?" @confirm="() => handleDelete(record.id)">
-                      <a>DELETE</a>
+                      <a>Delete</a>
                     </Popconfirm>
                   </a-menu-item>
                 </a-menu>
@@ -171,7 +171,7 @@
       dataIndex: 'tupian',
     },
     {
-      title: 'OPERATE',
+      title: 'Action',
       dataIndex: 'action',
       align: 'center',
       fixed: 'right',
@@ -226,7 +226,7 @@
   }
 
   /**
-   * NEW
+   * New
    */
   function handleAdd() {
     oneProtogenesisModal.value.disableSubmit = false;
@@ -361,7 +361,7 @@
   }
 
   /**
-   * EDIT
+   * Edit
    * @param record
    */
   function handleEdit(record) {
@@ -379,7 +379,7 @@
   }
 
   /**
-   * DELETE
+   * Delete
    * @param id
    */
   function handleDelete(id) {

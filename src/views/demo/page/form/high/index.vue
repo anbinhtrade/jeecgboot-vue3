@@ -1,12 +1,12 @@
 <template>
-  <PageWrapper class="high-form" title="高级表单" content=" 高级表单常见于一次性输入和提交大批量数据的场景。">
-    <a-card title="仓库管理" :bordered="false">
+  <PageWrapper class="high-form" title="Advanced forms" content=" Advanced forms are commonly used in scenarios where large volumes of data are entered and submitted at once.">
+    <a-card title="Warehouse management" :bordered="false">
       <BasicForm @register="register" />
     </a-card>
-    <a-card title="任务管理" :bordered="false" class="!mt-5">
+    <a-card title="Task management" :bordered="false" class="!mt-5">
       <BasicForm @register="registerTask" />
     </a-card>
-    <a-card title="成员管理" :bordered="false">
+    <a-card title="Member management" :bordered="false">
       <PersonTable ref="tableRef" />
     </a-card>
 

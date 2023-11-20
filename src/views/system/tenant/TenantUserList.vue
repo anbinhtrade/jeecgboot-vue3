@@ -4,7 +4,7 @@
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <!--插槽:table标题-->
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
+        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> New</a-button>
         <JThirdAppButton biz-type="user" :selected-row-keys="selectedRowKeys" syncToApp syncToLocal @sync-finally="onSyncFinally" />
         <a-button type="primary" @click="openQuitModal(true, {})" preIcon="ant-design:user-delete-outlined">Departure information</a-button>
         <div style="margin-left: 10px;margin-top: 5px"> Current logged-in tenant: <span class="tenant-name">{{loginTenantName}}</span> </div>
@@ -140,7 +140,7 @@
   function getTableAction(record): ActionItem[] {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
         // ifShow: () => hasPermission('system:user:edit'),
       },
@@ -228,12 +228,12 @@
   const handOverUserName = ref<string>('');
   
   /**
-   * 人员交接
+   * Personnel handover
    */
   function handleHandover(record) {
     tenantId.value = getTenantId();
     excludeUserIdList.value = [record.id];
-    //记录一下当前需要交接的用户名
+    //Make a note of the username that needs to be handed over
     handOverUserName.value = record.createBy;
     openUserModal(true)
   }

@@ -28,18 +28,18 @@
         <a-dropdown :trigger="['click']" placement="top">
           <template #overlay>
             <a-menu>
-              <a-menu-item key="3" @click="toggleCheckALL(true)">全部勾选</a-menu-item>
-              <a-menu-item key="4" @click="toggleCheckALL(false)">取消全选</a-menu-item>
-              <a-menu-item key="5" @click="toggleExpandAll(true)">展开所有</a-menu-item>
-              <a-menu-item key="6" @click="toggleExpandAll(false)">收起所有</a-menu-item>
+              <a-menu-item key="3" @click="toggleCheckALL(true)">Select All</a-menu-item>
+              <a-menu-item key="4" @click="toggleCheckALL(false)">Unselect All</a-menu-item>
+              <a-menu-item key="5" @click="toggleExpandAll(true)">Expand All</a-menu-item>
+              <a-menu-item key="6" @click="toggleExpandAll(false)">Collapse All</a-menu-item>
             </a-menu>
           </template>
           <a-button style="float: left">
-            树操作
+            Tree operations
             <Icon icon="ant-design:up-outlined" />
           </a-button>
         </a-dropdown>
-        <a-button type="primary" preIcon="ant-design:save-filled" @click="onSubmit">保存</a-button>
+        <a-button type="primary" preIcon="ant-design:save-filled" @click="onSubmit">SAVE</a-button>
       </div>
     </div>
   </a-spin>
@@ -163,7 +163,7 @@
 </script>
 
 <style lang="less" scoped>
-  // 【VUEN-188】解决滚动条不灵敏的问题
+  // 【VUEN-188】Resolved the issue that the scrollbar was not sensitive
   .depart-rule-tree :deep(.scrollbar__bar) {
     pointer-events: none;
   }

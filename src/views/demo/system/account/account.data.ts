@@ -14,7 +14,7 @@ export const columns: BasicColumn[] = [
     width: 120,
   },
   {
-    title: 'MAILBOX',
+    title: 'Email',
     dataIndex: 'email',
     width: 120,
   },
@@ -113,7 +113,7 @@ export const accountFormSchema: FormSchema[] = [
   },
 
   {
-    label: 'MAILBOX',
+    label: 'Email',
     field: 'email',
     component: 'Input',
     required: true,

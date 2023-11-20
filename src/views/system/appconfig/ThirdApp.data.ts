@@ -1,22 +1,22 @@
-//第三方app配置表单
+//Third-party app configuration forms
 import { FormSchema } from '/@/components/Form';
 
-//第三方app表单
+//Third-party app forms
 export const thirdAppFormSchema: FormSchema[] = [
   {
-    label: 'id',
+    label: 'Id',
     field: 'id',
     component: 'Input',
     show: false,
   },
   {
-    label: 'thirdType',
+    label: 'Third Type',
     field: 'thirdType',
     component: 'Input',
     show: false,
   },
   {
-    label: 'Agentld',
+    label: 'AgentId',
     field: 'agentId',
     component: 'Input',
     required: true,
@@ -39,18 +39,18 @@ export const thirdAppFormSchema: FormSchema[] = [
     component: 'Input',
     ifShow: ({ values }) => values.thirdType == 'wechat_enterprise',
   },{
-    label: '启用',
+    label: 'ENABLE',
     field: 'status',
     component: 'Switch',
     componentProps:{
-      checkedChildren:'关闭',
+      checkedChildren:'Shut down',
       checkedValue:1,
-      unCheckedChildren:'开启',
+      unCheckedChildren:'OPEN',
       unCheckedValue: 0
     },
     defaultValue: 1
   },{
-    label: '租户id',
+    label: 'Tenant ID',
     field: 'tenantId',
     component: 'Input',
     show: false,

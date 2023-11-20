@@ -2,7 +2,7 @@
   <BasicDrawer v-bind="$attrs" @register="registerDrawer" title="Data permission rules" :width="adaptiveWidth">
     <BasicTable @register="registerTable">
       <template #tableTitle>
-        <a-button type="primary" @click="handleCreate"> NEW</a-button>
+        <a-button type="primary" @click="handleCreate"> New</a-button>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getTableAction(record)" />
@@ -68,7 +68,7 @@
     immediate: false,
     actionColumn: {
       width: 100,
-      title: 'OPERATE',
+      title: 'Action',
       dataIndex: 'action',
       slots: { customRender: 'action' },
       fixed: undefined,
@@ -76,7 +76,7 @@
   });
 
   /**
-   * NEW
+   * New
    */
   function handleCreate() {
     openModal(true, {
@@ -85,7 +85,7 @@
   }
 
   /**
-   * EDIT
+   * Edit
    */
   function handleEdit(record) {
     openModal(true, {
@@ -95,7 +95,7 @@
   }
 
   /**
-   * DELETE
+   * Delete
    */
   async function handleDelete(record) {
     await deleteRule({ id: record.id }, reload);
@@ -107,11 +107,11 @@
   function getTableAction(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),

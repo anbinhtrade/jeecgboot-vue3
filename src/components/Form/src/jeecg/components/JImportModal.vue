@@ -1,22 +1,22 @@
 <template>
   <div>
-    <BasicModal v-bind="$attrs" @register="register" title="导入EXCEL" :width="600" @cancel="handleClose" :confirmLoading="uploading" destroyOnClose>
-      <!--是否校验-->
+    <BasicModal v-bind="$attrs" @register="register" title="Import Excel" :width="600" @cancel="handleClose" :confirmLoading="uploading" destroyOnClose>
+      <!--Whether it is verified-->
       <div style="margin: 0 5px 1px" v-if="online">
-        <span style="display: inline-block; height: 32px; line-height: 32px; vertical-align: middle">是否开启校验:</span>
+        <span style="display: inline-block; height: 32px; line-height: 32px; vertical-align: middle">Specifies whether to enable verification:</span>
         <span style="margin-left: 6px">
-          <a-switch :checked="validateStatus == 1" @change="handleChangeValidateStatus" checked-children="是" un-checked-children="否" size="small" />
+          <a-switch :checked="validateStatus == 1" @change="handleChangeValidateStatus" checked-children="BE" un-checked-children="NOT" size="small" />
         </span>
       </div>
       <!--上传-->
       <a-upload name="file" accept=".xls,.xlsx" :multiple="true" :fileList="fileList" :remove="handleRemove" :beforeUpload="beforeUpload">
-        <a-button preIcon="ant-design:upload-outlined">选择导入文件</a-button>
+        <a-button preIcon="ant-design:upload-outlined">Select the import file</a-button>
       </a-upload>
-      <!--页脚-->
+      <!--PAGE FOOTER-->
       <template #footer>
-        <a-button @click="handleClose">关闭</a-button>
+        <a-button @click="handleClose">Shut down</a-button>
         <a-button type="primary" @click="handleImport" :disabled="uploadDisabled" :loading="uploading">{{
-          uploading ? '上传中...' : '开始上传'
+          uploading ? 'UPLOADING...' : 'Start uploading'
         }}</a-button>
       </template>
     </BasicModal>
@@ -47,7 +47,7 @@
         default: '',
         required: false,
       },
-      //是否online导入
+      //Whether to import online
       online: {
         type: Boolean,
         default: false,
@@ -121,7 +121,7 @@
         });
         uploading.value = true;
 
-        //TODO 请求怎样处理的问题
+        //TODO The question of how the request is handled
         let headers = {
           'Content-Type': 'multipart/form-data;boundary = ' + new Date().getTime(),
         };
@@ -146,11 +146,11 @@
       function errorTip(tipMessage, fileUrl) {
         let href = glob.uploadUrl + fileUrl;
         createWarningModal({
-          title: '导入成功,但是有错误数据!',
+          title: 'The import was successful, but there was error data!',
           centered: false,
           content: `<div>
                         <span>${tipMessage}</span><br/>
-                        <span>具体详情请<a href = ${href} target="_blank"> 点击下载 </a> </span>
+                        <span>For more information, please visit<a href = ${href} target="_blank"> Click Download </a> </span>
                       </div>`,
         });
       }

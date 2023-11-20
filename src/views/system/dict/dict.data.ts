@@ -16,7 +16,7 @@ export const columns: BasicColumn[] = [
     width: 240,
   },
   {
-    title: 'DESCRIPTION',
+    title: 'Description',
     dataIndex: 'description',
     // width: 120
   },
@@ -34,7 +34,7 @@ export const recycleBincolumns: BasicColumn[] = [
     width: 120,
   },
   {
-    title: 'DESCRIPTION',
+    title: 'Description',
     dataIndex: 'description',
     width: 120,
   },
@@ -78,7 +78,7 @@ export const formSchema: FormSchema[] = [
     dynamicRules: ({ model, schema }) => rules.duplicateCheckRule('sys_dict', 'dict_code', model, schema, true),
   },
   {
-    label: 'DESCRIPTION',
+    label: 'Description',
     field: 'description',
     component: 'Input',
   },
@@ -86,7 +86,7 @@ export const formSchema: FormSchema[] = [
 
 export const dictItemColumns: BasicColumn[] = [
   {
-    title: 'NAME',
+    title: 'Name',
     dataIndex: 'itemText',
     width: 80,
   },
@@ -110,12 +110,12 @@ export const dictItemColumns: BasicColumn[] = [
 
 export const dictItemSearchFormSchema: FormSchema[] = [
   {
-    label: 'NAME',
+    label: 'Name',
     field: 'itemText',
     component: 'Input',
   },
   {
-    label: 'STATE',
+    label: 'Status',
     field: 'status',
     component: 'JDictSelectTag',
     componentProps: {
@@ -133,7 +133,7 @@ export const itemFormSchema: FormSchema[] = [
     show: false,
   },
   {
-    label: 'NAME',
+    label: 'Name',
     field: 'itemText',
     required: true,
     component: 'Input',
@@ -179,7 +179,7 @@ export const itemFormSchema: FormSchema[] = [
     slot:'itemColor'
   },
   {
-    label: 'DESCRIPTION',
+    label: 'Description',
     field: 'description',
     component: 'Input',
   },

@@ -295,8 +295,8 @@ export const schemas: FormSchema[] = [
     defaultValue: '1,2',
     componentProps: {
       options: [
-        { label: 'MAN', value: '1' },
-        { label: 'WOMAN', value: '2' },
+        { label: 'Male', value: '1' },
+        { label: 'Female', value: '2' },
       ],
     },
     colProps: {
@@ -622,7 +622,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'JTreeDictAsync',
     component: 'JTreeDict',
-    label: 'ASYNCHRONOUSJTreeDict',
+    label: 'Asynchronous',
     helpMessage: ['componentMODE'],
     colProps: { span: 12 },
     componentProps: { async: true },
@@ -630,13 +630,13 @@ export const schemas: FormSchema[] = [
   {
     field: 'JTreeDictAsync',
     component: 'JEllipsis',
-    label: 'Selected values',
+    label: 'Selected Values',
     colProps: { span: 12 },
   },
   {
     field: 'JSwitch',
     component: 'JSwitch',
-    label: 'JSwitch',
+    label: 'Jswitch',
     helpMessage: ['componentMODE'],
     colProps: { span: 12 },
   },

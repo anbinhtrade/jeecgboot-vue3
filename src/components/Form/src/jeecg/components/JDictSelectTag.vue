@@ -22,8 +22,8 @@
   </a-radio-group>
 
   <template v-else-if="compType === CompTypeEnum.Select">
-    <!-- 显示加载效果 -->
-    <a-input v-if="loadingEcho" readOnly placeholder="加载中…">
+    <!-- Displays the loading effect -->
+    <a-input v-if="loadingEcho" readOnly placeholder="LOADING…">
       <template #prefix>
         <LoadingOutlined />
       </template>
@@ -38,7 +38,7 @@
       :style="style"
       @change="handleChange"
     >
-      <a-select-option v-if="showChooseOption" :value="null">请选择…</a-select-option>
+      <a-select-option v-if="showChooseOption" :value="null">Please select…</a-select-option>
       <template v-for="item in dictOptions" :key="`${item.value}`">
         <a-select-option :value="item.value">
           <span style="display: inline-block; width: 100%" :title="item.label">
@@ -50,7 +50,7 @@
   </template>
 </template>
 <script lang="ts">
-  import { defineComponent, PropType, ref, reactive, watchEffect, computed, unref, watch, onMounted, nextTick } from 'vue';
+  import { defineComponent, ref, watchEffect, computed, unref, watch, nextTick } from 'vue';
   import { propTypes } from '/@/utils/propTypes';
   import { useAttrs } from '/@/hooks/core/useAttrs';
   import { initDictOptions } from '/@/utils/dict';
@@ -89,17 +89,17 @@
       const attrs = useAttrs();
       const [state, , , formItemContext] = useRuleFormItem(props, 'value', 'change');
       const getBindValue = Object.assign({}, unref(props), unref(attrs));
-      // 是否正在加载回显数据
+      // Whether the echo data is being loaded
       const loadingEcho = ref<boolean>(false);
-      // 是否是首次加载回显，只有首次加载，才会显示 loading
+      // Whether it is the first time to load the echo, loading will only be displayed when it is loaded for the first time
       let isFirstLoadEcho = true;
 
-      //组件类型
+      //Component type
       const compType = computed(() => {
         return !props.type || props.type === 'list' ? 'select' : props.type;
       });
       /**
-       * 监听字典code
+       * Listen to the dictionary code
        */
       watchEffect(() => {
         if (props.dictCode) {

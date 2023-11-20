@@ -9,42 +9,42 @@
   import { BasicForm, useForm } from '/@/components/Form/index';
   import { formSchema } from './position.data';
   import { saveOrUpdatePosition, getPositionById } from './position.api';
-  // 声明Emits
+  // STATEMENT Emits
   const emit = defineEmits(['success', 'register']);
   const isUpdate = ref(true);
-  //表单配置
+  //Form configuration
   const [registerForm, { resetFields, setFieldsValue, validate }] = useForm({
     //labelWidth: 150,
     schemas: formSchema,
     showActionButtonGroup: false,
   });
-  //表单赋值
+  //Form assignment
   const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data) => {
-    //重置表单
+    //Reset the form
     await resetFields();
     setModalProps({ confirmLoading: false });
     isUpdate.value = !!data?.isUpdate;
     if (unref(isUpdate)) {
-      //获取详情
+      //Get the details
       data.record = await getPositionById({ id: data.record.id });
-      //表单赋值
+      //Form assignment
       await setFieldsValue({
         ...data.record,
       });
     }
   });
-  //设置标题
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增职务' : '编辑职务'));
-  //表单提交事件
+  //Set the title
+  const getTitle = computed(() => (!unref(isUpdate) ? 'New positions' : 'Editorial position'));
+  //Form submission events
   async function handleSubmit() {
     try {
       const values = await validate();
       setModalProps({ confirmLoading: true });
-      //提交表单
+      //Submit the form
       await saveOrUpdatePosition(values, isUpdate.value);
-      //关闭弹窗
+      //Close the pop-up window
       closeModal();
-      //刷新列表
+      //Refresh the list
       emit('success');
     } finally {
       setModalProps({ confirmLoading: false });

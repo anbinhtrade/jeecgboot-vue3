@@ -3,7 +3,7 @@ import { render } from '/@/utils/common/renderUtils';
 
 export const columns: BasicColumn[] = [
   {
-    title: 'TITLE',
+    title: 'Title',
     dataIndex: 'titile',
     width: 100,
     align: 'left',
@@ -24,17 +24,17 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: 'PUBLISHER',
+    title: 'Publisher',
     dataIndex: 'sender',
     width: 80,
   },
   {
-    title: 'RELEASED',
+    title: 'Sent Time',
     dataIndex: 'sendTime',
     width: 80,
   },
   {
-    title: 'PRIORITY',
+    title: 'Priority',
     dataIndex: 'priority',
     width: 80,
     customRender: ({ text }) => {
@@ -62,13 +62,13 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'titile',
-    label: 'TITLE',
+    label: 'Title',
     component: 'Input',
     colProps: { span: 8 },
   },
   {
     field: 'sender',
-    label: 'PUBLISHER',
+    label: 'Publisher',
     component: 'Input',
     colProps: { span: 8 },
   },

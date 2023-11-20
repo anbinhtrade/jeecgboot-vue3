@@ -6,7 +6,7 @@ import { getViewportOffset } from '/@/utils/domUtils';
 import { isNumber, isString } from '/@/utils/is';
 
 export interface CompensationHeight {
-  // 使用 layout Footer 高度作为判断补偿高度的条件
+  // USE layout Footer The height is used as a condition for judging the compensation height
   useLayoutFooter: boolean;
   // refs HTMLElement
   elements?: Ref[];

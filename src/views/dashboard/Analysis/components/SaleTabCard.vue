@@ -13,23 +13,23 @@
             <a-range-picker :style="{ width: '256px' }" />
           </div>
         </template>
-        <a-tab-pane loading="true" tab="销售额" key="1">
+        <a-tab-pane loading="true" tab="SALES" key="1">
           <a-row>
             <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
-              <Bar :chartData="barData" :option="{ title: { text: '销售额排行', textStyle: { fontWeight: 'lighter' } } }" height="40vh" />
+              <Bar :chartData="barData" :option="{ title: { text: 'Top sales', textStyle: { fontWeight: 'lighter' } } }" height="40vh" />
             </a-col>
             <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
-              <RankList title="门店销售排行榜" :list="rankList" />
+              <RankList title="Store sales leaderboard" :list="rankList" />
             </a-col>
           </a-row>
         </a-tab-pane>
-        <a-tab-pane tab="销售趋势" key="2">
+        <a-tab-pane tab="Sales trends" key="2">
           <a-row>
             <a-col :xl="16" :lg="12" :md="12" :sm="24" :xs="24">
-              <Bar :chartData="barData.reverse()" :option="{ title: { text: '销售额排行', textStyle: { fontWeight: 'lighter' } } }" height="40vh" />
+              <Bar :chartData="barData.reverse()" :option="{ title: { text: 'Top sales', textStyle: { fontWeight: 'lighter' } } }" height="40vh" />
             </a-col>
             <a-col :xl="8" :lg="12" :md="12" :sm="24" :xs="24">
-              <RankList title="门店销售排行榜" :list="rankList" />
+              <RankList title="Store sales leaderboard" :list="rankList" />
             </a-col>
           </a-row>
         </a-tab-pane>
@@ -50,7 +50,7 @@
   const rankList = [];
   for (let i = 0; i < 7; i++) {
     rankList.push({
-      name: '白鹭岛 ' + (i + 1) + ' 号店',
+      name: 'Egret Island ' + (i + 1) + ' No. Store',
       total: 1234.56 - i * 100,
     });
   }
@@ -58,7 +58,7 @@
   const barData = [];
   for (let i = 0; i < 12; i += 1) {
     barData.push({
-      name: `${i + 1}月`,
+      name: `Month ${i + 1}`,
       value: Math.floor(Math.random() * 1000) + 200,
     });
   }

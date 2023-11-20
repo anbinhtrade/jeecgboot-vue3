@@ -2,7 +2,7 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">NEW</a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">New</a-button>
 <!--        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> Export</a-button>-->
 <!--        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="on Import Xls">导入</j-upload-button>-->
         <a-dropdown v-if="selectedRowKeys.length > 0">
@@ -10,7 +10,7 @@
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                DELETE
+                Delete
               </a-menu-item>
             </a-menu>
           </template>
@@ -127,7 +127,7 @@
   function getActions(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
         ifShow: record.sendStatus == 0,
       },
@@ -139,7 +139,7 @@
   function getDropDownAction(record) {
     return [
       {
-        label: 'DELETE',
+        label: 'Delete',
         ifShow: record.sendStatus != 1,
         popConfirm: {
           title: 'Whether to confirm the deletion',
@@ -147,12 +147,12 @@
         },
       },
       {
-        label: 'PUBLISH',
+        label: 'Publish',
         ifShow: record.sendStatus == 0,
         onClick: handleRelease.bind(null, record.id),
       },
       {
-        label: 'QUASH',
+        label: 'Revoke',
         ifShow: record.sendStatus == 1,
         popConfirm: {
           title: 'Are you sure you want to revoke?',
@@ -160,7 +160,7 @@
         },
       },
       {
-        label: 'VIEW',
+        label: 'View',
         onClick: handleDetail.bind(null, record),
       },
     ];

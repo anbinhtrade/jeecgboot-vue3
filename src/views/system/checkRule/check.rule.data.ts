@@ -5,19 +5,19 @@ import { validateCheckRule } from '/@/views/system/checkRule/check.rule.api';
 
 export const columns: BasicColumn[] = [
   {
-    title: 'The name of the rule',
+    title: 'Rule Name',
     dataIndex: 'ruleName',
     width: 200,
     align: 'center',
   },
   {
-    title: 'Rule encoding',
+    title: 'Rule Code',
     dataIndex: 'ruleCode',
     width: 200,
     align: 'center',
   },
   {
-    title: 'Rule description',
+    title: 'Rule Description',
     dataIndex: 'ruleDescription',
     width: 300,
     align: 'center',
@@ -30,13 +30,13 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'ruleName',
-    label: 'The name of the rule',
+    label: 'Rule Name',
     component: 'Input',
     colProps: { span: 6 },
   },
   {
     field: 'ruleCode',
-    label: 'Rule encoding',
+    label: 'Rule Code',
     component: 'Input',
     colProps: { span: 6 },
   },
@@ -51,14 +51,14 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'ruleName',
-    label: 'The name of the rule',
+    label: 'Rule Name',
     component: 'Input',
     required: true,
     colProps: { span: 24 },
   },
   {
     field: 'ruleCode',
-    label: 'Rule encoding',
+    label: 'Rule Code',
     component: 'Input',
     colProps: { span: 24 },
     dynamicDisabled: ({ values }) => {
@@ -94,7 +94,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'ruleDescription',
-    label: 'Rule description',
+    label: 'Rule Description',
     colProps: { span: 24 },
     component: 'InputTextArea',
     componentProps: {

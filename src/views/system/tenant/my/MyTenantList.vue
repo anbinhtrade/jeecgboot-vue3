@@ -8,7 +8,7 @@
           @click="handleInvitation"
           style="margin-right: 5px"
           :disabled="selectedRowKeys.length === 0"
-          >邀请用户加入</a-button
+          >Invite users to join</a-button
         >
         <a-button
           preIcon="ant-design:plus-outlined"
@@ -16,7 +16,7 @@
           @click="handlePack"
           style="margin-right: 5px"
           :disabled="selectedRowKeys.length === 0"
-          >套餐</a-button
+          >PACKAGE</a-button
         >
       </template>
       <template #action="{ record }">
@@ -25,7 +25,7 @@
     </BasicTable>
     <TenantInviteUserModal @register="registerSelUserModal" @inviteOk="handleInviteUserOk" />
     <TenantUserModal @register="registerTenUserModal" />
-    <!--  产品包  -->
+    <!--  Product Packages  -->
     <TenantPackList @register="registerPackModal" />
   </div>
 </template>
@@ -51,11 +51,11 @@
   const [registerPackModal, { openModal: packModal }] = useModal();
   const userStore = useUserStore();
 
-  // 列表页面公共参数、方法
+  // Common parameters and methods on the list page
   const { prefixCls, tableContext } = useListPage({
     designScope: 'tenant-template',
     tableProps: {
-      title: '租户列表',
+      title: 'List of tenants',
       api: getTenantPageListByUserId,
       columns: columns,
       formConfig: {
@@ -76,27 +76,27 @@
   const [registerTable, { reload }, { rowSelection, selectedRowKeys, selectedRows }] = tableContext;
 
   /**
-   * 操作列定义
+   * Action column definition
    * @param record
    */
   function getActions(record) {
     return [
       {
-        label: '用户',
+        label: 'User',
         onClick: handleSeeUser.bind(null, record.id),
       },
     ];
   }
 
   /**
-   * 邀请用户加入租户
+   * Invite users to join the tenant
    */
   function handleInvitation() {
     userOpenModal(true, {});
   }
 
   /**
-   * 用户选择回调事件
+   * The user selects the callback event
    * @param options
    * @param value
    */
@@ -107,7 +107,7 @@
   }
 
   /**
-   * 查看用户
+   * View users
    * @param id
    */
   async function handleSeeUser(id) {
@@ -117,22 +117,22 @@
   }
 
   /**
-   * 新增产品包
+   * A new product package has been added
    */
   async function handlePack() {
     if (unref(selectedRowKeys).length > 1) {
-      createMessage.warn('请选择一个');
+      createMessage.warn('Please select one');
       return;
     }
     packModal(true, {
       tenantId: unref(selectedRowKeys.value.join(',')),
-      //我的租户不显示新增和编辑产品包
+      //My tenant doesn't show new and edit packages
       showPackAddAndEdit: false
     });
   }
 
   /**
-   * 删除成功之后回调事件
+   * After the deletion is successful, the event is called
    */
   function handleSuccess() {
     (selectedRowKeys.value = []) && reload();

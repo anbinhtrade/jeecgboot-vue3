@@ -20,12 +20,12 @@ export const columns: BasicColumn[] = [
     width: 200,
   },
   {
-    title: 'DESCRIPTION',
+    title: 'Description',
     dataIndex: 'description',
     width: 200,
   },
   {
-    title: 'STATE',
+    title: 'Status',
     dataIndex: 'status',
     width: 100,
     customRender: ({ text }) => {
@@ -105,7 +105,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'quartz_status',
@@ -118,7 +118,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'description',
-    label: 'DESCRIPTION',
+    label: 'Description',
     component: 'InputTextArea',
   },
 ];

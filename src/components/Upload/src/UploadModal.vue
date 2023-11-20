@@ -223,7 +223,7 @@
         }
       }
 
-      //   点击保存
+      //   Click Save
       function handleOk() {
         const { maxNumber } = props;
 

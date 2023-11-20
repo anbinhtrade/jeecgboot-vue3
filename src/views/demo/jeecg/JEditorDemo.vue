@@ -30,7 +30,7 @@
     {
       field: 'name',
       component: 'Input',
-      label: 'NAME',
+      label: 'Name',
       required: true,
       defaultValue: 'zhangsan',
     },

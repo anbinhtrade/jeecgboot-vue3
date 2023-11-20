@@ -213,7 +213,7 @@
         if (!record.editable) {
           return [
             {
-              label: 'EDIT',
+              label: 'Edit',
               disabled: currentEditKeyRef.value ? currentEditKeyRef.value !== record.key : false,
               onClick: handleEdit.bind(null, record),
             },

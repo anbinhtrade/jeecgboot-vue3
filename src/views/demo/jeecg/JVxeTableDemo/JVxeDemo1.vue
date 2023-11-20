@@ -193,18 +193,18 @@
       type: JVxeTypes.datetime,
       width: 200,
       defaultValue: '2019-04-30 14:52:22',
-      placeholder: '请选择',
+      placeholder: 'Please select',
     },
     {
-      title: '时间',
+      title: 'TIME',
       key: 'time',
       type: JVxeTypes.time,
       width: 200,
       defaultValue: '14:52:22',
-      placeholder: '请选择',
+      placeholder: 'Please select',
     },
     {
-      title: '复选框',
+      title: 'CHECKBOX',
       key: 'checkbox',
       type: JVxeTypes.checkbox,
       width: 100,
@@ -212,7 +212,7 @@
       defaultChecked: false,
     },
     {
-      title: '操作',
+      title: 'OPERATION',
       key: 'action',
       type: JVxeTypes.slot,
       fixed: 'right',
@@ -275,27 +275,27 @@
   randomPage(0, 20, true);
 
   function onLookRow(props) {
-    createMessage.success('请在控制台查看输出');
-    // 参数介绍：
-    // props.value          当前单元格的值
-    // props.row            当前行的数据
-    // props.rowId          当前行ID
-    // props.rowIndex       当前行下标
-    // props.column         当前列的配置
-    // props.columnIndex    当前列下标
-    // props.$table         vxe实例，可以调用vxe内置方法
-    // props.target         JVXE实例，可以调用JVXE内置方法
-    // props.caseId         JVXE实例唯一ID
-    // props.scrolling      是否正在滚动
-    // props.triggerChange  触发change事件，用于更改slot的值
-    console.log('查看: ', { props });
+    createMessage.success('Please view the output in the console');
+    // Parameters are introduced：
+    // props.value          The value of the current cell
+    // props.row            The current row of data
+    // props.rowId          Current row ID
+    // props.rowIndex       Subscript for the current line
+    // props.column         The configuration of the current column
+    // props.columnIndex    Subscript for the current column
+    // props.$table         For a vxe instance, you can call the built-in methods of vxe
+    // props.target         JVXE instance, you can call JVXE built-in methods
+    // props.caseId         The unique ID of the JVXE instance
+    // props.scrolling      Whether or not it is scrolling
+    // props.triggerChange  The change event is triggered to change the value of the slot
+    console.log('View: ', { props });
   }
 
   async function onDeleteRow(props) {
     // 调用删除方法
     const res = await tableRef.value?.removeRows(props.row);
     if (res && res.rows.length > 0) {
-      createMessage.success('删除成功');
+      createMessage.success('The deletion is successful');
     }
   }
 
@@ -312,19 +312,19 @@
   function handleTableCheck() {
     tableRef.value!.validateTable().then((errMap) => {
       if (errMap) {
-        console.log('表单验证未通过：', { errMap });
-        createMessage.error('验证未通过，请在控制台查看详细');
+        console.log('The form validation failed：', { errMap });
+        createMessage.error('The verification failed, check the details in the console');
       } else {
-        createMessage.success('验证通过');
+        createMessage.success('Verified passed');
       }
     });
   }
 
-  /** 获取值，忽略表单验证 */
+  /** Get the value, ignore the form validation */
   function onGetData() {
     const values = tableRef.value!.getTableData();
-    console.log('获取值:', { values });
-    createMessage.success('获取值成功，请看控制台输出');
+    console.log('Get the value:', { values });
+    createMessage.success('The value is successful, please see the console output');
   }
 
   /** 模拟加载1000条数据 */
@@ -344,7 +344,7 @@
   }
 
   function onGetSelData() {
-    createMessage.info('请看控制台');
+    createMessage.info('Take a look at the console');
     console.log(tableRef.value!.getSelectionData());
   }
 
@@ -363,26 +363,26 @@
   function doDelete(deleteRows) {
     return new Promise((resolve) => {
       let rowId = deleteRows.filter((row) => row.id);
-      console.log('删除 rowId: ', rowId);
+      console.log('Delete rowId.': ', rowId);
       setTimeout(() => resolve(true), 1500);
     });
   }
 
-  /** 异步删除示例 */
+  /** Example of asynchronous deletion */
   async function onJVxeRemove(event) {
-    const hideLoading = createMessage.loading('删除中…', 0);
+    const hideLoading = createMessage.loading('Deleting...', 0);
     try {
       // 1. 向后台传递 event.deleteRows 以删除
       let flag = await doDelete(event.deleteRows);
       if (flag) {
-        // 注：如果启用了表格的 loading 状态，则必须先停止再删除，否则会导致无法从表格上删除数据
-        // 2. 调用 event.confirmRemove 方法确认删除成功
+        // Note: If the loading state of the table is enabled, you must stop and then delete it, otherwise you will not be able to delete the data from the table
+        // 2. Call the event.confirmRemove method to confirm that the deletion is successful
         // await tableRef.value!.removeSelection();
         await event.confirmRemove()
-        createMessage.success('删除成功！');
+        createMessage.success('Deleted successfully!');
       } else {
         // 3. 若删除失败，不调用 event.confirmRemove() 方法就不会删除数据
-        createMessage.warn('删除失败！');
+        createMessage.warn('Delete failed!');
       }
     } finally {
       hideLoading();

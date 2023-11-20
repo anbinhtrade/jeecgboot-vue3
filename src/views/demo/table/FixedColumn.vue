@@ -5,7 +5,7 @@
         <TableAction
           :actions="[
             {
-              label: 'DELETE',
+              label: 'Delete',
               icon: 'ic:outline-delete-outline',
               onClick: handleDelete.bind(null, record),
             },
@@ -37,7 +37,7 @@
       width: 280,
     },
     {
-      title: 'NAME',
+      title: 'Name',
       dataIndex: 'name',
       width: 260,
     },

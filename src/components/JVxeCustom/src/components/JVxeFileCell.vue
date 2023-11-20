@@ -18,7 +18,7 @@
         </a-tooltip>
 
         <Dropdown :trigger="['click']" placement="bottomRight" style="margin-left: 10px">
-          <a-tooltip title="OPERATE">
+          <a-tooltip title="Action">
             <Icon v-if="file.status !== 'uploading'" icon="ant-design:setting" style="cursor: pointer" />
           </a-tooltip>
           <template #overlay>
@@ -30,7 +30,7 @@
                 <span><Icon icon="ant-design:delete" />&nbsp;DELETE</span>
               </a-menu-item>
               <a-menu-item @click="handleMoreOperation">
-                <span><Icon icon="ant-design:bars" />&nbsp;MORE</span>
+                <span><Icon icon="ant-design:bars" />&nbsp;More</span>
               </a-menu-item>
             </a-menu>
           </template>

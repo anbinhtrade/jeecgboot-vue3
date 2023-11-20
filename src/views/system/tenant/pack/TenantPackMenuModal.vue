@@ -43,7 +43,7 @@
     //update-end---author:wangshuai ---date:20230705  for：【QQYUN-5685】2 产品包增加一个查看：添加底部有没有按钮及表单禁用------------
   });
   //设置标题
-  const title = computed(() => (unref(isUpdate) ? '编辑租户产品包' : '新增租户产品包'));
+  const title = computed(() => (unref(isUpdate) ? 'Edit the tenant package' : 'A tenant package is added'));
   //表单提交事件
   async function handleSubmit(v) {
     const values = await validate();

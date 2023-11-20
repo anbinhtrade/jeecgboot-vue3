@@ -42,11 +42,11 @@
     isUpdate.value = !!data?.isUpdate;
     if (unref(isUpdate)) {
       rowId.value = data.record.id;
-      //租户信息定义成数组
+      //Tenant information is defined as an array
       if (data.record.relTenantIds && !Array.isArray(data.record.relTenantIds)) {
         data.record.relTenantIds = data.record.relTenantIds.split(',');
       } else {
-        //【issues/I56C5I】用户管理中连续点两次编辑租户配置就丢失了
+        //【issues/I56C5I】Editing the tenant configuration twice in a row in user management is lost
         //data.record.relTenantIds = [];
       }
 
@@ -136,7 +136,7 @@
     //update-end-author:taoyan date:2022-5-24 for: VUEN-1117【issue】0523周开源问题
   });
   //获取标题
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增用户' : '编辑用户'));
+  const getTitle = computed(() => (!unref(isUpdate) ? 'Add a new user' : 'Edit the user'));
   const { adaptiveWidth } = useDrawerAdaptiveWidth();
 
   //提交事件

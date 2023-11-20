@@ -1,5 +1,5 @@
 <template>
-  <!--popup选择框-->
+  <!--POPUP SELECTION BOX-->
   <div>
     <BasicModal
       v-bind="$attrs"
@@ -31,10 +31,10 @@
             <a-col :md="8" :sm="8">
               <span style="float: left; overflow: hidden" class="table-page-search-submitButtons">
                 <a-col :lg="6">
-                  <a-button type="primary" preIcon="ant-design:reload-outlined" @click="searchReset">重置</a-button>
-                  <a-button type="primary" preIcon="ant-design:search-outlined" @click="searchQuery" style="margin-left: 8px">查询</a-button>
+                  <a-button type="primary" preIcon="ant-design:reload-outlined" @click="searchReset">RESET</a-button>
+                  <a-button type="primary" preIcon="ant-design:search-outlined" @click="searchQuery" style="margin-left: 8px">INQUIRE</a-button>
                   <a @click="handleToggleSearch" style="margin-left: 8px">
-                    {{ toggleSearchStatus ? '收起' : '展开' }}
+                    {{ toggleSearchStatus ? 'COLLAPSE' : 'UNFOLD' }}
                     <Icon :icon="toggleSearchStatus ? 'ant-design:up-outlined' : 'ant-design:down-outlined'" />
                   </a>
                 </a-col>
@@ -146,7 +146,7 @@
         }
       );
       /**
-       *监听popup动态参数 支持系统变量语法
+       *Listen to popup dynamic parameters Support system variable syntax
        */
       watch(
         () => props.param,
@@ -174,7 +174,7 @@
               }
             });
           } else {
-            console.warn('【JPopup】sorter参数不合法');
+            console.warn('【JPopup】The sorter parameter is invalid');
           }
         }
       });
@@ -196,7 +196,7 @@
         toggleSearchStatus.value = !unref(toggleSearchStatus);
       }
       /**
-       * 取消/关闭
+       * Cancellation/Closure
        */
       function handleCancel() {
         closeModal();
@@ -213,11 +213,11 @@
       function handleSubmit() {
         filterUnuseSelect();
         if (!props.multi && unref(selectRows) && unref(selectRows).length > 1) {
-          createMessage.warning('只能选择一条记录');
+          createMessage.warning('Only one record can be selected');
           return false;
         }
         if (!unref(selectRows) || unref(selectRows).length == 0) {
-          createMessage.warning('至少选择一条记录');
+          createMessage.warning('Select at least one record');
           return false;
         }
         //update-begin-author:taoyan date:2022-5-31 for: VUEN-1155 popup 选择数据时，会选择多条重复数据
@@ -234,7 +234,7 @@
         loadData(1);
       }
       /**
-       * 重置
+       * RESET
        */
       function searchReset() {
         queryParam.value = {};

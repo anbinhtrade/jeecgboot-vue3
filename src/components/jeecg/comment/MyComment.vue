@@ -4,22 +4,22 @@
     <div class="comment-content comment-html-shower" :class="{'no-content':noConent, 'top-div': showHtml, 'bottom-div': showHtml == false }" v-html="commentHtml" @click="handleClickHtmlShower"></div>
     <div class="comment-buttons" v-if="commentActive">
       <div style="cursor: pointer">
-        <Tooltip title="选择@用户">
+        <Tooltip title="Select @Users">
           <user-add-outlined @click="openSelectUser" />
         </Tooltip>
 
-        <Tooltip title="上传附件">
+        <Tooltip title="Upload Attachments">
           <PaperClipOutlined @click="uploadVisible = !uploadVisible" />
         </Tooltip>
 
-        <span title="表情" style="display: inline-block">
+        <span title="Facial Expression" style="display: inline-block">
           <SmileOutlined ref="emojiButton" @click="handleShowEmoji" />
           <div style="position: relative" v-show=""> </div>
         </span>
       </div>
       <div v-if="commentActive">
-        <a-button v-if="inner" @click="noComment" style="margin-right: 10px">取消</a-button>
-        <a-button type="primary" @click="sendComment" :loading="buttonLoading" :disabled="disabledButton">发 送</a-button>
+        <a-button v-if="inner" @click="noComment" style="margin-right: 10px">Cancel</a-button>
+        <a-button type="primary" @click="sendComment" :loading="buttonLoading" :disabled="disabledButton">Send</a-button>
       </div>
     </div>
     <upload-chunk ref="uploadRef" :visible="uploadVisible" @select="selectFirstFile"></upload-chunk>
@@ -57,16 +57,16 @@
 
   const optionsName = {
     categories: {
-      recent: '最常用的',
-      smileys: '表情选择',
-      people: '人物&身体',
-      nature: '动物&自然',
-      foods: '食物&饮料',
-      activity: '活动',
-      places: '旅行&地点',
-      objects: '物品',
-      symbols: '符号',
-      flags: '旗帜',
+      recent: 'The Most Commonly Used',
+      smileys: 'Emoji Selection',
+      people: 'Character & Body',
+      nature: 'Animals & Nature',
+      foods: 'Food & Drink',
+      activity: 'Activity',
+      places: 'Travel & Place',
+      objects: 'Goods',
+      symbols: 'Sign',
+      flags: 'Banner',
     },
   };
   export default {
@@ -227,7 +227,7 @@
       const commentHtml = computed(() => {
         let temp = myComment.value;
         if (!temp) {
-          return '请输入你的评论，可以@成员';
+          return 'Please enter your comment and can @ members';
         }
         return getHtml(temp);
       });
@@ -376,7 +376,7 @@
     color: #a1a1a1
   }
   
-  /**聊天表情本地化*/
+  /**Chat Emoticons Are Localized*/
   .emoji-type-image.emoji-set-apple {
     background-image: url("./image/emoji.png");
   }

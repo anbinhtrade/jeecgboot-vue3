@@ -4,7 +4,6 @@ import { getDictItemsByCode } from '/@/utils/dict/index';
 import { useRouter, useRoute } from 'vue-router'
 import { useAppStore } from '/@/store/modules/app';
 import { useTabs } from '/@/hooks/web/useTabs';
-import { useModal } from '/@/components/Modal';
 import {useMessage} from "/@/hooks/web/useMessage";
 
 /**
@@ -80,7 +79,7 @@ export function useSysMessage() {
     messageList.value = temp;
   }
 
-  //重置
+  //RESET
   function reset(){
     messageList.value = []
     pageNo.value = 1;
@@ -156,7 +155,7 @@ export function useSysMessage() {
 }
 
 /**
- * 用于消息跳转
+ * Used for message redirection
  */
 export function useMessageHref(emit, props){
   const messageHrefArray:any[] = getDictItemsByCode('messageHref');
@@ -173,7 +172,7 @@ export function useMessageHref(emit, props){
         // 从首页的消息通知跳转
         await goPageFromOuter(record);
       }else{
-        // 从消息页面列表点击详情查看 直接打开modal
+        // Click Details View from the list of messages to open modal directly
         openModalFun()
       }
     }else{
@@ -186,19 +185,19 @@ export function useMessageHref(emit, props){
   }
 
   /**
-   * 根据busType不同跳转不同页面
+   * Depending on the bus type, you will be redirected to different pages
    * @param record
    */
   async function goPageWithBusType(record){
     const { busType, busId, msgAbstract } = record;
     let temp = messageHrefArray.filter(item=>item.value === busType);
     if(!temp || temp.length==0){
-      console.error('当前业务类型不识别', busType);
+      console.error('The current business type is not recognized', busType);
       return;
     }
     let path = temp[0].text;
     path = path.replace('{DETAIL_ID}', busId)
-    //固定参数 detailId 用于查询表单数据
+    //The fixed parameter detailId is used to query form data
     let query:any = {
       detailId: busId
     };
@@ -210,10 +209,10 @@ export function useMessageHref(emit, props){
           query[k] = json[k]
         });
       }catch (e) {
-        console.error('msgAbstract参数不是JSON格式', msgAbstract)
+        console.error('The msg Abstract parameter is not in JSON format', msgAbstract)
       }
     }
-    // 跳转路由
+    // Jump routes
     appStore.setMessageHrefParams(query);
     if(rt.path.indexOf(path)>=0){
       await closeTab();
@@ -225,11 +224,11 @@ export function useMessageHref(emit, props){
   }
 
   /**
-   * 从首页的消息通知跳转消息列表打开modal
+   * Open modal from the message notification on the homepage
    * @param record
    */
   async function goPageFromOuter(record){
-    //没有定义业务类型 直接跳转我的消息页面
+    //There is no definition of the business type, and it goes directly to my message page
     emit('detail', record)
   }
   

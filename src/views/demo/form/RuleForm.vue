@@ -1,13 +1,13 @@
 <template>
-  <PageWrapper title="表单校验示例">
+  <PageWrapper title="Example of form validation">
     <div class="mb-4">
-      <a-button @click="validateForm" class="mr-2"> 手动校验表单</a-button>
-      <a-button @click="resetValidate" class="mr-2"> 清空校验信息</a-button>
-      <a-button @click="getFormValues" class="mr-2"> 获取表单值</a-button>
-      <a-button @click="setFormValues" class="mr-2"> 设置表单值</a-button>
-      <a-button @click="resetFields" class="mr-2"> 重置</a-button>
+      <a-button @click="validateForm" class="mr-2"> Manually validate the form</a-button>
+      <a-button @click="resetValidate" class="mr-2"> Clear the verification information</a-button>
+      <a-button @click="getFormValues" class="mr-2"> Get the form value</a-button>
+      <a-button @click="setFormValues" class="mr-2"> Set the form values</a-button>
+      <a-button @click="resetFields" class="mr-2"> RESET</a-button>
     </div>
-    <CollapseContainer title="表单校验">
+    <CollapseContainer title="Form validation">
       <BasicForm @register="register" @submit="handleSubmit" />
     </CollapseContainer>
   </PageWrapper>
@@ -24,7 +24,7 @@
     {
       field: 'field1',
       component: 'Input',
-      label: '字段1',
+      label: 'Field 1',
       colProps: {
         span: 8,
       },
@@ -33,7 +33,7 @@
     {
       field: 'field2',
       component: 'Input',
-      label: '字段2',
+      label: 'Field 2',
       colProps: {
         span: 8,
       },
@@ -50,7 +50,7 @@
     {
       field: 'field3',
       component: 'DatePicker',
-      label: '字段3',
+      label: 'Field 3',
       colProps: {
         span: 8,
       },
@@ -59,7 +59,7 @@
     {
       field: 'field33',
       component: 'DatePicker',
-      label: '字段33',
+      label: 'Field 33',
       colProps: {
         span: 8,
       },
@@ -71,7 +71,7 @@
     {
       field: 'field44',
       component: 'InputCountDown',
-      label: '验证码',
+      label: 'CAPTCHA',
       colProps: {
         span: 8,
       },
@@ -80,7 +80,7 @@
     {
       field: 'field4',
       component: 'Select',
-      label: '字段4',
+      label: 'Field 4',
       colProps: {
         span: 8,
       },
@@ -88,12 +88,12 @@
         mode: 'multiple',
         options: [
           {
-            label: '选项1',
+            label: 'Option 1',
             value: '1',
             key: '1',
           },
           {
-            label: '选项2',
+            label: 'Option 2',
             value: '2',
             key: '2',
           },
@@ -102,7 +102,7 @@
       rules: [
         {
           required: true,
-          message: '请输入aa',
+          message: 'Please enter AA',
           type: 'array',
         },
       ],
@@ -110,7 +110,7 @@
     {
       field: 'field441',
       component: 'Input',
-      label: '自定义校验',
+      label: 'Custom checks',
       colProps: {
         span: 8,
       },
@@ -121,11 +121,11 @@
           validator: async (rule, value) => {
             if (!value) {
               /* eslint-disable-next-line */
-              return Promise.reject('值不能为空');
+              return Promise.reject('The value cannot be empty');
             }
             if (value === '1') {
               /* eslint-disable-next-line */
-              return Promise.reject('值不能为1');
+              return Promise.reject('The value cannot be 1');
             }
             return Promise.resolve();
           },
@@ -136,18 +136,18 @@
     {
       field: 'field5',
       component: 'CheckboxGroup',
-      label: '字段5',
+      label: 'Field 5',
       colProps: {
         span: 8,
       },
       componentProps: {
         options: [
           {
-            label: '选项1',
+            label: 'Option 1',
             value: '1',
           },
           {
-            label: '选项2',
+            label: 'Option 2',
             value: '2',
           },
         ],
@@ -157,36 +157,36 @@
     {
       field: 'field7',
       component: 'RadioGroup',
-      label: '字段7',
+      label: 'Field 7',
       colProps: {
         span: 8,
       },
       componentProps: {
         options: [
           {
-            label: '选项1',
+            label: 'Option 1',
             value: '1',
           },
           {
-            label: '选项2',
+            label: 'Option 2',
             value: '2',
           },
         ],
       },
-      rules: [{ required: true, message: '覆盖默认生成的校验信息' }],
+      rules: [{ required: true, message: 'Override the default generated validation information' }],
     },
     {
       field: 'field8',
       component: 'Input',
-      label: '后端异步验证',
+      label: 'Backend asynchronous validation',
       colProps: {
         span: 8,
       },
-      helpMessage: ['本字段演示异步验证', '本地规则：必须填写', '后端规则：不能包含admin'],
+      helpMessage: ['This field demonstrates Asynchronous Validation', 'Local Rules: Required', 'Backend Rules: Cannot contain admin'],
       rules: [
         {
           required: true,
-          message: '请输入数据',
+          message: 'Please enter your data',
         },
         {
           validator(_, value) {
@@ -194,7 +194,7 @@
               isAccountExist(value)
                 .then(() => resolve())
                 .catch((err) => {
-                  reject(err.message || '验证失败');
+                  reject(err.message || 'Validation failed');
                 });
             });
           },

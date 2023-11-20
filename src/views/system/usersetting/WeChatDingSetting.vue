@@ -1,22 +1,22 @@
 <template>
   <div :class="[`${prefixCls}`]">
-    <div class="my-account">第三方APP</div>
+    <div class="my-account">Third-party Apps</div>
     <div class="account-row-item">
-      <div class="account-label gray-75">钉钉绑定</div>
+      <div class="account-label gray-75">DingTalk binding</div>
       <span>
         <DingtalkCircleFilled :style="!bindDingData.sysUserId ? { color: '#9e9e9e' } : { color: '#007FFF' }" class="item-icon" />
-        <span class="gray-75" style="margin-left: 12px">钉钉</span>
-        <span class="gray-75" style="margin-left: 8px" v-if="bindDingData.realname">{{ '已绑定：' + bindDingData.realname }}</span>
-        <span class="blue-e5 pointer" style="margin-left: 24px" @click="dingDingBind">{{ !bindDingData.sysUserId ? '绑定' : '解绑' }}</span>
+        <span class="gray-75" style="margin-left: 12px">Dingtalk</span>
+        <span class="gray-75" style="margin-left: 8px" v-if="bindDingData.realname">{{ 'Bind:' + bindDingData.realname }}</span>
+        <span class="blue-e5 pointer" style="margin-left: 24px" @click="dingDingBind">{{ !bindDingData.sysUserId ? 'Bind' : 'Unbinding' }}</span>
       </span>
     </div>
     <div class="account-row-item">
-      <div class="account-label gray-75">账号绑定</div>
+      <div class="account-label gray-75">Account Binding</div>
       <span>
         <WechatFilled :style="!bindWechatData.sysUserId ? { color: '#9e9e9e' } : { color: '#1ec563' }" class="item-icon" />
-        <span class="gray-75" style="margin-left: 12px">微信</span>
-        <span class="gray-75" style="margin-left: 8px" v-if="bindWechatData.realname">{{ '已绑定：' + bindWechatData.realname }}</span>
-        <span class="blue-e5 pointer" style="margin-left: 24px" @click="wechatBind">{{ !bindWechatData.sysUserId ? '绑定' : '解绑' }}</span>
+        <span class="gray-75" style="margin-left: 12px">Wechat</span>
+        <span class="gray-75" style="margin-left: 8px" v-if="bindWechatData.realname">{{ 'Bind:' + bindWechatData.realname }}</span>
+        <span class="blue-e5 pointer" style="margin-left: 24px" @click="wechatBind">{{ !bindWechatData.sysUserId ? 'Bind' : 'Unbinding' }}</span>
       </span>
     </div>
   </div>
@@ -40,7 +40,7 @@
   });
   const userStore = useUserStore();
 
-  //绑定微信的数据
+  //Bind the data of WeChat
   const bindWechatData = ref<any>({});
   //绑定钉钉的数据
   const bindDingData = ref<any>({});
@@ -61,7 +61,7 @@
   const receiveMessage = ref<any>('');
   
   /**
-   * 初始化钉钉和企业微信数据
+   * Initialize DingTalk and WeCom data
    */
   async function initUserDetail() {
     let values = await getThirdAccountByUserId({ thirdType: 'wechat_open,dingtalk,wechat_enterprise' });
@@ -77,29 +77,29 @@
   }
 
   /**
-   * 企业微信绑定解绑事件
+   * WeCom binding and unbinding event
    */
   function wechatEnterpriseBind() {
-    console.log('企业微信绑定解绑事件');
+    console.log('WeCom binding and unbinding event');
     let data = unref(bindEnterpriseData);
     if (!data.sysUserId) {
       onThirdLogin('wechat_enterprise');
     }else{
-      deleteAccount({ sysUserId: data.sysUserId, id: data.id }, '企业微信');
+      deleteAccount({ sysUserId: data.sysUserId, id: data.id }, 'Wecom');
     }
   }
 
   /**
-   * 钉钉绑定解绑事件
+   * DingTalk binding unbinding event
    */
   function dingDingBind() {
     let data = unref(bindDingData);
     if (!data.sysUserId) {
       onThirdLogin('dingtalk');
     } else {
-      deleteAccount({ sysUserId: data.sysUserId, id: data.id }, '钉钉');
+      deleteAccount({ sysUserId: data.sysUserId, id: data.id }, 'Dingtalk');
     }
-    console.log('钉钉绑定解绑事件');
+    console.log('DingTalk binding unbinding event');
   }
 
   /**
@@ -110,7 +110,7 @@
     if (!data.sysUserId) {
       onThirdLogin('wechat_open');
     }else{
-      deleteAccount({ sysUserId: data.sysUserId, id: data.id }, '微信');
+      deleteAccount({ sysUserId: data.sysUserId, id: data.id }, 'Wechat');
     }
   }
 
@@ -138,16 +138,16 @@
     receiveMessage.value = async function (event) {
       let token = event.data;
       if (typeof token === 'string') {
-        //如果是字符串类型 说明是token信息
-        if (token === '登录失败') {
+        //If it is a string type, it means that it is token information
+        if (token === 'Login failed') {
           cmsFailed();
-        } else if (token.includes('绑定手机号')) {
+        } else if (token.includes('Bind your mobile phone number')) {
           let strings = token.split(',');
           thirdUserUuid.value = strings[1];
           await bindThirdAccount();
         }else{
           if(token){
-            createMessage.warning('该敲敲云账号已被其它第三方账号绑定,请解绑或绑定其它敲敲云账号');
+            createMessage.warning('The KnockCloud account has been bound to another third-party account, please unbind or bind the other KnockCloud account');
           }
         }
       } else {
@@ -160,7 +160,7 @@
   }
 
   /**
-   * 绑定当前用户
+   * Bind the current user
    */
   async function bindThirdAccount() {
     if (!unref(thirdUserUuid)) {
@@ -187,7 +187,7 @@
    * 失败提示信息
    */
   function cmsFailed() {
-    createMessage.warning('第三方账号绑定异常');
+    createMessage.warning('The third-party account is abnormally bound');
     return;
   }
 
@@ -212,10 +212,10 @@
    */
   async function deleteAccount(params, text) {
     Modal.confirm({
-      title: '解绑' + text,
-      content: '确定要解绑吗',
-      okText: '确认',
-      cancelText: '取消',
+      title: 'Unbinding' + text,
+      content: 'Are you sure you want to unbind?',
+      okText: 'Confirm',
+      cancelText: 'Cancel',
       onOk: async () => {
         await deleteThirdAccount(params).then((res) =>{
           if(res.success){

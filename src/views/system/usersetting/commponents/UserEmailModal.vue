@@ -2,7 +2,7 @@
 <BasicModal v-bind="$attrs" @register="registerModal" width="500px"  :title="title" :showCancelBtn="false" :showOkBtn="false">
   <a-form class="antd-modal-form" ref="formRef" :model="formState" :rules="validatorRules">
     <a-form-item name="email">
-      <a-input size="large" v-model:value="formState.email" placeholder="请输入邮箱" />
+      <a-input size="large" v-model:value="formState.email" placeholder="Please enter your email address" />
     </a-form-item>
     <a-form-item>
       <a-button size="large" type="primary" block @click="updateEmail">
@@ -36,7 +36,7 @@ const formState = reactive<Record<string, any>>({
 const formRef = ref();
 
 const validatorRules: Record<string, Rule[]> = {
-  email: [{...rules.duplicateCheckRule("sys_user",'email',formState,{ label:'邮箱' })[0]},{ required: true, type: 'email', message: '邮箱格式不正确' }],
+  email: [{...rules.duplicateCheckRule("sys_user",'email',formState,{ label:'Mailbox' })[0]},{ required: true, type: 'email', message: 'The mailbox is incorrectly formatted' }],
 };
 const useForm = Form.useForm;
 const title = ref<string>('');
@@ -45,27 +45,27 @@ const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data
   formRef.value.resetFields();
   formRef.value.clearValidate();
   setModalProps({ confirmLoading: false });
-  title.value = '修改邮箱';
+  title.value = 'Modify the email address';
   //赋值
   data.record.smscode = '';
   Object.assign(formState, data.record);
 });
 
 /**
- * 倒计时执行前的函数
+ * A function before the countdown is executed
  */
 function sendCodeApi() {
   return getCaptcha({ mobile: formState.phone, smsmode: SmsEnum.REGISTER });
 }
 
 /**
- * 更新手机号
+ * Update your phone number
  */
 async function updateEmail() {
   await formRef.value.validateFields();
   userEdit(formState).then((res) =>{
     if(res.success){
-      createMessage.success("修改邮箱成功")
+      createMessage.success("The email address was modified")
       emit("success")
       closeModal();
     }else{

@@ -15,32 +15,32 @@ enum Api {
   phoneLogin = '/sys/phoneLogin',
   Logout = '/sys/logout',
   GetUserInfo = '/sys/user/getUserInfo',
-  // 获取系统权限
-  // 1、查询用户拥有的按钮/表单访问权限
-  // 2、所有权限
-  // 3、系统安全模式
+  // Get system permissions
+  // 1、Query the button/form access rights that a user has
+  // 2、All permissions
+  // 3、System security mode
   GetPermCode = '/sys/permission/getPermCode',
-  //新加的获取图形验证码的接口
+  //A new API to get a graphical verification code
   getInputCode = '/sys/randomImage',
-  //获取短信验证码的接口
+  //API for obtaining SMS verification code
   getCaptcha = '/sys/sms',
-  //注册接口
+  //Register the interface
   registerApi = '/sys/user/register',
-  //校验用户接口
+  //Verify the user interface
   checkOnlyUser = '/sys/user/checkOnlyUser',
-  //SSO登录校验
+  //SSO login verification
   validateCasLogin = '/sys/cas/client/validateLogin',
-  //校验手机号
+  //Verify the mobile phone number
   phoneVerify = '/sys/user/phoneVerification',
-  //修改密码
+  //Change your password
   passwordChange = '/sys/user/passwordChange',
-  //第三方登录
+  //Third-party logins
   thirdLogin = '/sys/thirdLogin/getLoginUser',
-  //第三方登录
+  //Third-party logins
   getThirdCaptcha = '/sys/thirdSms',
-  //获取二维码信息
+  //Get QR code information
   getLoginQrcode = '/sys/getLoginQrcode',
-  //监控二维码扫描状态
+  //Monitor QR code scanning status
   getQrcodeToken = '/sys/getQrcodeToken',
 }
 
@@ -114,7 +114,7 @@ export function getCodeInfo(currdatetime) {
   return defHttp.get({ url: url });
 }
 /**
- * @description: 获取短信验证码
+ * @description: Get the SMS verification code
  */
 export function getCaptcha(params) {
   return new Promise((resolve, reject) => {
@@ -123,7 +123,7 @@ export function getCaptcha(params) {
       if (res.success) {
         resolve(true);
       } else {
-        createErrorModal({ title: '错误提示', content: res.message || '未知问题' });
+        createErrorModal({ title: 'Error message', content: res.message || 'Unknown issue' });
         reject();
       }
     });
@@ -131,29 +131,29 @@ export function getCaptcha(params) {
 }
 
 /**
- * @description: 注册接口
+ * @description: Register the interface
  */
 export function register(params) {
   return defHttp.post({ url: Api.registerApi, params }, { isReturnNativeResponse: true });
 }
 
 /**
- *校验用户是否存在
+ * Verify whether the user exists
  * @param params
  */
 export const checkOnlyUser = (params) => defHttp.get({ url: Api.checkOnlyUser, params }, { isTransformResponse: false });
 /**
- *校验手机号码
+ * Verify the mobile phone number
  * @param params
  */
 export const phoneVerify = (params) => defHttp.post({ url: Api.phoneVerify, params }, { isTransformResponse: false });
 /**
- *密码修改
+ * Change your password
  * @param params
  */
 export const passwordChange = (params) => defHttp.get({ url: Api.passwordChange, params }, { isTransformResponse: false });
 /**
- * @description: 第三方登录
+ * @description: Third-party logins
  */
 export function thirdLogin(params, mode: ErrorMessageMode = 'modal') {
   //==========begin 第三方登录/auth2登录需要传递租户id===========
@@ -172,7 +172,7 @@ export function thirdLogin(params, mode: ErrorMessageMode = 'modal') {
   );
 }
 /**
- * @description: 获取第三方短信验证码
+ * @description: Get a third-party SMS verification code
  */
 export function setThirdCaptcha(params) {
   return new Promise((resolve, reject) => {
@@ -181,7 +181,7 @@ export function setThirdCaptcha(params) {
       if (res.success) {
         resolve(true);
       } else {
-        createErrorModal({ title: '错误提示', content: res.message || '未知问题' });
+        createErrorModal({ title: 'Error message', content: res.message || 'Unknown issue' });
         reject();
       }
     });
@@ -189,7 +189,7 @@ export function setThirdCaptcha(params) {
 }
 
 /**
- * 获取登录二维码信息
+ * Get the login QR code information
  */
 export function getLoginQrcode() {
   let url = Api.getLoginQrcode;
@@ -197,7 +197,7 @@ export function getLoginQrcode() {
 }
 
 /**
- * 监控扫码状态
+ * Monitor the status of code scanning
  */
 export function getQrcodeToken(params) {
   let url = Api.getQrcodeToken;
@@ -205,7 +205,7 @@ export function getQrcodeToken(params) {
 }
 
 /**
- * SSO登录校验
+ * SSO login verification
  */
 export async function validateCasLogin(params) {
   let url = Api.validateCasLogin;

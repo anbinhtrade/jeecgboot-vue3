@@ -29,7 +29,7 @@ export function usePopBiz(ob, tableRef?) {
   const loading = ref(false);
   //cgRpConfigId
   const cgRpConfigId = ref('');
-  //TITLE
+  //Title
   const title = ref('LIST');
   // 排序字段，默认无排序
   const iSorter = ref<any>('');
@@ -125,7 +125,7 @@ export function usePopBiz(ob, tableRef?) {
           }
         });
       } else {
-        // NEW
+        // New
         const append: any = [];
         const beforeRowKeys = selectRows.value.map((item) => combineRowKey(item));
         selectedRowKeys.forEach((key) => {
@@ -200,7 +200,7 @@ export function usePopBiz(ob, tableRef?) {
         }
         if (currColumns[0].key !== 'rowIndex') {
           currColumns.unshift({
-            title: 'SERIAL NUMBER',
+            title: 'Serial Number',
             dataIndex: 'rowIndex',
             key: 'rowIndex',
             width: 60,

@@ -3,15 +3,15 @@
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <!--插槽:table标题-->
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAdd">NEW</a-button>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
-        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
+        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAdd">New</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> Export</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">Import</j-upload-button>
         <a-dropdown v-if="showBatchBtn">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="onDeleteBatch">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                <span>DELETE</span>
+                <span>Delete</span>
               </a-menu-item>
             </a-menu>
           </template>
@@ -145,11 +145,11 @@
   }
 
   /**
-   * 操作栏
+   * Action bar
    */
   function getTableAction(record): ActionItem[] {
     //update-begin---author:wangshuai ---date:20221123  for：[VUEN-2807]消息模板加一个查看功能------------
-    return [{ label: 'VIEW', onClick: handleDetail.bind(null, record)}, { label: 'EDIT', onClick: onEdit.bind(null, record) }];
+    return [{ label: 'View', onClick: handleDetail.bind(null, record)}, { label: 'Edit', onClick: onEdit.bind(null, record) }];
     //update-end---author:wangshuai ---date:20221123  for：[VUEN-2807]消息模板加一个查看功能------------
   }
 
@@ -162,7 +162,7 @@
       { label: 'DEACTIVATED', onClick: handleNotUse.bind(null, record) },
       { label: 'Send a test', onClick: onSendTest.bind(null, record) },
       {
-        label: 'DELETE',
+        label: 'Delete',
         color: 'error',
         popConfirm: {
           title: 'Are you sure you want to delete it?？',

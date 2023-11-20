@@ -1,19 +1,19 @@
 <template>
   <BasicDrawer v-bind="$attrs" @register="registerDrawer" width="650px" destroyOnClose showFooter>
     <template #title>
-      角色权限配置
+      Configure role permissions
       <a-dropdown>
         <Icon icon="ant-design:more-outlined" class="more-icon" />
         <template #overlay>
           <a-menu @click="treeMenuClick">
-            <a-menu-item key="checkAll">选择全部</a-menu-item>
-            <a-menu-item key="cancelCheck">取消选择</a-menu-item>
+            <a-menu-item key="checkAll">Select All</a-menu-item>
+            <a-menu-item key="cancelCheck">DESELECT</a-menu-item>
             <div class="line"></div>
-            <a-menu-item key="openAll">展开全部</a-menu-item>
-            <a-menu-item key="closeAll">折叠全部</a-menu-item>
+            <a-menu-item key="openAll">Expand All</a-menu-item>
+            <a-menu-item key="closeAll">Collapse all</a-menu-item>
             <div class="line"></div>
-            <a-menu-item key="relation">层级关联</a-menu-item>
-            <a-menu-item key="standAlone">层级独立</a-menu-item>
+            <a-menu-item key="relation">Hierarchical association</a-menu-item>
+            <a-menu-item key="standAlone">Hierarchy independent</a-menu-item>
           </a-menu>
         </template>
       </a-dropdown>
@@ -27,7 +27,7 @@
       :selectedKeys="selectedKeys"
       :checkStrictly="checkStrictly"
       :clickRowToExpand="false"
-      title="所拥有的的权限"
+      title="PERMISSIONS"
       @check="onCheck"
       @select="onTreeNodeSelect"
     >
@@ -38,9 +38,9 @@
     </BasicTree>
     <!--右下角按钮-->
     <template #footer>
-      <PopConfirmButton title="确定放弃编辑？" @confirm="closeDrawer" okText="确定" cancelText="取消">取消</PopConfirmButton>
-      <a-button @click="handleSubmit(false)" type="primary" :loading="loading" ghost style="margin-right: 0.8rem">仅保存</a-button>
-      <a-button @click="handleSubmit(true)" type="primary" :loading="loading">保存并关闭</a-button>
+      <PopConfirmButton title="Are you sure to abandon editing?" @confirm="closeDrawer" okText="Are you sure" cancelText="CANCEL">CANCEL</PopConfirmButton>
+      <a-button @click="handleSubmit(false)" type="primary" :loading="loading" ghost style="margin-right: 0.8rem">Save only</a-button>
+      <a-button @click="handleSubmit(true)" type="primary" :loading="loading">Save and close</a-button>
     </template>
     <RoleDataRuleDrawer @register="registerDrawer1" />
   </BasicDrawer>
@@ -88,13 +88,13 @@
     setDrawerProps({ loading: false });
   });
   /**
-   * 点击选中
+   * Click to select
    */
   function onCheck(o) {
     checkedKeys.value = o.checked ? o.checked : o;
   }
   /**
-   * 选中节点，打开数据权限抽屉
+   * Select the node to open the data permission drawer
    */
   function onTreeNodeSelect(key) {
     if (key && key.length > 0) {
@@ -103,7 +103,7 @@
     openDataRuleDrawer(true, { functionId: unref(selectedKeys)[0], roleId: unref(roleId) });
   }
   /**
-   * 数据重置
+   * Data reset
    */
   function reset() {
     treeData.value = [];
@@ -114,7 +114,7 @@
     roleId.value = '';
   }
   /**
-   * 获取tree实例
+   * Obtain a tree instance
    */
   function getTree() {
     const tree = unref(treeRef);
@@ -136,7 +136,7 @@
     if(loading.value===false){
       await doSave(params)
     }else{
-      console.log('请等待上次执行完毕!');
+      console.log('Wait for the last execution to complete!');
     }
     if(exit){
       // 如果关闭
@@ -159,7 +159,7 @@
   //update-end-author:taoyan date:2023-2-11 for: issues/352 VUE角色授权重复保存
 
   /**
-   * 树菜单选择
+   * Tree menu selection
    * @param key
    */
   function treeMenuClick({ key }) {
@@ -180,12 +180,12 @@
 </script>
 
 <style lang="less" scoped>
-  /** 固定操作按钮 */
+  /** Fixed action buttons */
   .jeecg-basic-tree {
     position: absolute;
     width: 618px;
   }
-  //update-begin---author:wangshuai ---date:20230202  for：抽屉弹窗标题图标下拉样式------------
+  //update-begin---author:wangshuai ---date:20230202  for：Drawer pop-up header icon drop-down style------------
   .line {
     height: 1px;
     width: 100%;
@@ -202,5 +202,5 @@
   :deep(.jeecg-tree-header){
     border-bottom: none;
   }
-  //update-end---author:wangshuai ---date:20230202  for：抽屉弹窗标题图标下拉样式------------
+  //update-end---author:wangshuai ---date:20230202  for：Drawer pop-up header icon drop-down style------------
 </style>

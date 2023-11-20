@@ -12,7 +12,7 @@
   <div>
     <a-button type="dashed" style="width: 60%" @click="add">
       <PlusOutlined />
-      NEW
+      New
     </a-button>
   </div>
 </template>

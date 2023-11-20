@@ -15,7 +15,7 @@ export const columns: BasicColumn[] = [
     dataIndex: 'fieldName',
   },
   {
-    title: 'STATE',
+    title: 'Status',
     dataIndex: 'status',
     customRender({text}) {
       const find = statusOptions.find(opt => opt.value === text);
@@ -40,7 +40,7 @@ export const searchFormSchema: FormSchema[] = [
     component: 'Input',
   },
   {
-    label: 'STATE',
+    label: 'Status',
     field: 'status',
     component: 'Select',
     componentProps: {
@@ -65,7 +65,7 @@ export const formSchema: FormSchema[] = [
     helpMessage: 'Multiple are separated by commas',
   },
   {
-    label: 'STATE',
+    label: 'Status',
     field: 'status',
     component: 'Select',
     defaultValue: '1',

@@ -1,14 +1,14 @@
 <template>
   <div>
     <ol style="border: 1px solid #cccccc; width: 600px; padding: 8px">
-      <li>1. 开启 dragSort 属性之后即可实现上下拖拽排序。</li>
-      <li>2. 使用 sortKey 属性可以自定义排序保存的 key，默认为 orderNum。</li>
-      <li>3. 使用 sortBegin 属性可以自定义排序的起始值，默认为 0。</li>
-      <li>4. sortKey 定义的字段不需要定义在 columns 中也能正常获取到值。</li>
-      <li>5. 当存在 fixed 列时，拖拽排序将会失效，仅能上下排序。</li>
+      <li>1. OPEN dragSort attributes, you can drag and drop them up and down.</li>
+      <li>2. USE sortKey Properties can be saved in a custom sort key, which is default orderNum。</li>
+      <li>3. USE sortBegin The starting value of the property can be customized for sorting, which defaults 0。</li>
+      <li>4. sortKey The fields that are defined do not need to be defined in columns can also get the value normally. can also get the value normally.</li>
+      <li>5. When present fixed When a column is selected, the dragging and dropping sort will not work, and you can only sort up and down.</li>
     </ol>
 
-    <p> 以下示例开启了拖拽排序，排序值保存字段为 sortNum，排序起始值为 3<br /> </p>
+    <p> In the following example, drag-and-drop sorting is enabled, and the sorting value is saved as a field sort num, the starting value of the sort is 3<br /> </p>
 
     <JVxeTable
       ref="tableRef1"
@@ -22,16 +22,16 @@
       :dataSource="table1.data"
     >
       <template #toolbarSuffix>
-        <a-button @click="onGetData1">获取数据</a-button>
+        <a-button @click="onGetData1">Get the data</a-button>
       </template>
     </JVxeTable>
 
     <br />
-    <p>以下 fixed 表格不支持拖拽排序，仅支持点击上下排序</p>
+    <p>NOT EXCEEDING fixed The table does not support drag-and-drop sorting, only click-up and down-sorting</p>
 
     <JVxeTable ref="tableRef2" toolbar dragSort rowSelection :maxHeight="580" :columns="table2.columns" :dataSource="table2.data">
       <template #toolbarSuffix>
-        <a-button @click="onGetData2">获取数据</a-button>
+        <a-button @click="onGetData2">Get the data</a-button>
       </template>
     </JVxeTable>
   </div>
@@ -53,14 +53,14 @@
         type: JVxeTypes.normal,
       },
       {
-        title: '姓名',
+        title: 'Name',
         key: 'name',
         width: 240,
         type: JVxeTypes.input,
         defaultValue: 'new name',
       },
       {
-        title: '字段长度',
+        title: 'The length of the field',
         key: 'dbLength',
         width: 240,
         type: JVxeTypes.inputNumber,
@@ -74,10 +74,10 @@
       },
     ] as JVxeColumn[],
     data: [
-      { id: 'uuid-0001', name: '张三', dbLength: 123 },
-      { id: 'uuid-0002', name: '李四', dbLength: 777 },
-      { id: 'uuid-0003', name: '王五', dbLength: 666 },
-      { id: 'uuid-0004', name: '赵六', dbLength: 233 },
+      { id: 'uuid-0001', name: 'TOM', dbLength: 123 },
+      { id: 'uuid-0002', name: 'John doe', dbLength: 777 },
+      { id: 'uuid-0003', name: 'HARRY', dbLength: 666 },
+      { id: 'uuid-0004', name: 'Zhao Liu', dbLength: 233 },
     ],
   });
 
@@ -98,7 +98,7 @@
         defaultValue: 'new name',
       },
       {
-        title: '字段长度',
+        title: 'The length of the field',
         key: 'dbLength',
         width: 720,
         type: JVxeTypes.inputNumber,
@@ -106,22 +106,22 @@
       },
     ] as JVxeColumn[],
     data: [
-      { id: 'uuid-0001', name: '张三', dbLength: 123 },
-      { id: 'uuid-0002', name: '李四', dbLength: 777 },
-      { id: 'uuid-0003', name: '王五', dbLength: 666 },
-      { id: 'uuid-0004', name: '赵六', dbLength: 233 },
+      { id: 'uuid-0001', name: 'TOM', dbLength: 123 },
+      { id: 'uuid-0002', name: 'John doe', dbLength: 777 },
+      { id: 'uuid-0003', name: 'HARRY', dbLength: 666 },
+      { id: 'uuid-0004', name: 'Zhao Liu', dbLength: 233 },
     ],
   });
 
   const { createMessage } = useMessage();
 
   function onGetData1() {
-    createMessage.info('请看控制台');
+    createMessage.info('Take a look at the console');
     console.log(tableRef1.value!.getTableData());
   }
 
   function onGetData2() {
-    createMessage.info('请看控制台');
+    createMessage.info('Take a look at the console');
     console.log(tableRef2.value!.getTableData());
   }
 </script>

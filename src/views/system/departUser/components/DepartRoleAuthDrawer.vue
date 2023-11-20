@@ -1,10 +1,10 @@
 <template>
   <BasicDrawer
-    title="部门角色权限配置"
+    title="Configure department role permissions"
     :width="650"
     :loading="loading"
     showFooter
-    okText="保存并关闭"
+    okText="Save and close"
     @ok="onSubmit(true)"
     @close="onClose"
     @register="registerDrawer"
@@ -13,7 +13,7 @@
       <a-spin :spinning="loading">
         <template v-if="treeData.length > 0">
           <BasicTree
-            title="所拥有的部门权限"
+            title="The departmental privileges you have"
             toolbar
             checkable
             :treeData="treeData"
@@ -32,12 +32,12 @@
             </template>
           </BasicTree>
         </template>
-        <a-empty v-else description="无可配置部门权限" />
+        <a-empty v-else description="No configurable department permissions are available" />
       </a-spin>
     </div>
 
     <template #centerFooter>
-      <a-button type="primary" :loading="loading" ghost @click="onSubmit(false)">仅保存</a-button>
+      <a-button type="primary" :loading="loading" ghost @click="onSubmit(false)">Save only</a-button>
     </template>
   </BasicDrawer>
   <DepartRoleDataRuleDrawer @register="registerDataRuleDrawer" />

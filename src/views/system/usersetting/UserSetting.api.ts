@@ -17,7 +17,7 @@ enum Api {
 }
 
 /**
- * 用户编辑
+ * User editing
  * @param params
  */
 export const userEdit = (params) => {
@@ -25,7 +25,7 @@ export const userEdit = (params) => {
 }
 
 /**
- * 获取用户信息
+ * Obtain user information
  * @param params
  */
 export const getUserData = () => {
@@ -33,7 +33,7 @@ export const getUserData = () => {
 }
 
 /**
- * 获取多个职务信息
+ * Get information about multiple job titles
  * @param params
  */
 export const queryNameByCodes = (params) => {
@@ -41,7 +41,7 @@ export const queryNameByCodes = (params) => {
 }
 
 /**
- * 修改手机号
+ * Modify the mobile phone number
  * @param params
  */
 export const updateMobile = (params) => {
@@ -49,7 +49,7 @@ export const updateMobile = (params) => {
 }
 
 /**
- * 修改密码
+ * Change your password
  * @param params
  */
 export const updateUserPassword = (params) => {
@@ -57,7 +57,7 @@ export const updateUserPassword = (params) => {
 }
 
 /**
- * 通过用户id获取租户列表
+ * Obtain the tenant list by user ID
  * @param params
  */
 export const getTenantListByUserId = (params) => {
@@ -65,7 +65,7 @@ export const getTenantListByUserId = (params) => {
 };
 
 /**
- * 取消申请
+ * Cancel your application
  * @param params
  */
 export const cancelApplyTenant = (params) => {
@@ -73,7 +73,7 @@ export const cancelApplyTenant = (params) => {
 };
 
 /**
- * 用户退出租户
+ * The user exits the tenant
  * @param params
  */
 export const exitUserTenant = (params)=>{
@@ -81,7 +81,7 @@ export const exitUserTenant = (params)=>{
 }
 
 /**
- * 变更租户拥有者
+ * Change the tenant owner
  * @param params
  */
 export const changeOwenUserTenant = (params)=>{
@@ -89,7 +89,7 @@ export const changeOwenUserTenant = (params)=>{
 }
 
 /**
- * 获取账号第三方信息通过第三方类型
+ * Obtain account number third-party information through third-party type
  * @param params
  */
 export const getThirdAccountByUserId = (params) => {
@@ -97,7 +97,7 @@ export const getThirdAccountByUserId = (params) => {
 };
 
 /**
- * 根据第三方uuid绑定账号
+ * Bind the account based on the third-party UUID
  * @param params
  */
 export const bindThirdAppAccount = (params) => {
@@ -105,7 +105,7 @@ export const bindThirdAppAccount = (params) => {
 };
 
 /**
- * 根据第三方uuid绑定账号
+ * Bind the account based on the third-party UUID
  * @param params
  */
 export const deleteThirdAccount = (params) => {
@@ -113,7 +113,7 @@ export const deleteThirdAccount = (params) => {
 };
 
 /**
- * 同意和拒绝加入租户
+ * Agree and refuse to join tenants
  * @param params
  */
 export const agreeOrRefuseJoinTenant = (params) => {

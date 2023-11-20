@@ -56,7 +56,7 @@
         dataSource: data,
         actionColumn: {
           width: 160,
-          title: 'OPERATE',
+          title: 'Action',
           dataIndex: 'action',
           slots: { customRender: 'action' },
         },
@@ -101,11 +101,11 @@
         if (!record.editable) {
           return [
             {
-              label: 'EDIT',
+              label: 'Edit',
               onClick: handleEdit.bind(null, record),
             },
             {
-              label: 'DELETE',
+              label: 'Delete',
             },
           ];
         }

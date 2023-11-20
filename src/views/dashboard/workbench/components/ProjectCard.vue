@@ -1,7 +1,7 @@
 <template>
   <Card title="PROJECT" v-bind="$attrs">
     <template #extra>
-      <a-button type="link" size="small">MORE</a-button>
+      <a-button type="link" size="small">More</a-button>
     </template>
 
     <template v-for="item in items" :key="item">

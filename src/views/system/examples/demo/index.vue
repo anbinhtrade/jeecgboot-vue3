@@ -31,7 +31,7 @@
           <span style="float: left; overflow: hidden" class="table-page-search-submitButtons">
             <a-col :lg="6">
               <a-button type="primary" preIcon="ant-design:search-outlined" @click="searchQuery">INQUIRE</a-button>
-              <a-button type="primary" preIcon="ant-design:reload-outlined" @click="searchReset" style="margin-left: 8px">重置</a-button>
+              <a-button type="primary" preIcon="ant-design:reload-outlined" @click="searchReset" style="margin-left: 8px">RESET</a-button>
               <a @click="toggleSearchStatus = !toggleSearchStatus" style="margin-left: 8px">
                 {{ toggleSearchStatus ? 'COLLAPSE' : 'UNFOLD' }}
                 <Icon :icon="toggleSearchStatus ? 'ant-design:up-outlined' : 'ant-design:down-outlined'" />
@@ -48,9 +48,9 @@
         <a-input placeholder="Maximum age" type="le" v-model:value="max" style="width: calc(50% - 15px)" @change="ageChange(model, field)"></a-input>
       </template>
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">NEW</a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd">New</a-button>
         <a-upload name="file" :showUploadList="false" :customRequest="(file) => handleImportXls(file, getImportUrl, reload)">
-          <a-button preIcon="ant-design:import-outlined" type="primary">IMPORT</a-button>
+          <a-button preIcon="ant-design:import-outlined" type="primary">Import</a-button>
         </a-upload>
         <a-button preIcon="ant-design:export-outlined" type="primary" @click="handleExportXls('Singular examples', getExportUrl,exportParams)">导出</a-button>
         <a-button preIcon="ant-design:filter" type="primary" @click="">Advanced queries</a-button>
@@ -67,7 +67,7 @@
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                DELETE
+                Delete
               </a-menu-item>
             </a-menu>
           </template>
@@ -137,7 +137,7 @@
     rowKey: 'id',
     actionColumn: {
       width: 180,
-      title: 'OPERATE',
+      title: 'Action',
       dataIndex: 'action',
       slots: { customRender: 'action' },
       fixed: undefined,
@@ -171,7 +171,7 @@
   function getActions(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
       {
@@ -179,7 +179,7 @@
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),
@@ -287,7 +287,7 @@
   //自定义查询----end---------
 
   const superQueryConfig = reactive({
-    name:{ title: "NAME", view: "text", type: "string", order: 1 },
+    name:{ title: "Name", view: "text", type: "string", order: 1 },
     sex:{ title: "GENDER", view: "list", type: "string", dictCode:'sex', order: 2 },
   });
   

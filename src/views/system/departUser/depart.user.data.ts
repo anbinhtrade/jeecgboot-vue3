@@ -7,7 +7,7 @@ import { findTree } from '/@/utils/common/compUtils';
 // 用户信息 columns
 export const userInfoColumns: BasicColumn[] = [
   {
-    title: 'User Accounts',
+    title: 'User Name',
     dataIndex: 'username',
     width: 150,
   },
@@ -17,7 +17,7 @@ export const userInfoColumns: BasicColumn[] = [
     width: 180,
   },
   {
-    title: 'DEPARTMENT',
+    title: 'Department',
     dataIndex: 'orgCode',
     width: 200,
   },
@@ -37,7 +37,7 @@ export const userInfoColumns: BasicColumn[] = [
 export const userInfoSearchFormSchema: FormSchema[] = [
   {
     field: 'username',
-    label: 'User Accounts',
+    label: 'User Name',
     component: 'Input',
   },
 ];
@@ -45,22 +45,22 @@ export const userInfoSearchFormSchema: FormSchema[] = [
 // 部门角色 columns
 export const departRoleColumns: BasicColumn[] = [
   {
-    title: 'The name of the department role',
+    title: 'Role Name',
     dataIndex: 'roleName',
     width: 100,
   },
   {
-    title: 'Department role code',
+    title: 'Role Code',
     dataIndex: 'roleCode',
     width: 100,
   },
   {
-    title: 'DEPARTMENT',
+    title: 'Department',
     dataIndex: 'departId_dictText',
     width: 100,
   },
   {
-    title: 'REMARK',
+    title: 'Description',
     dataIndex: 'description',
     width: 100,
   },
@@ -70,7 +70,7 @@ export const departRoleColumns: BasicColumn[] = [
 export const departRoleSearchFormSchema: FormSchema[] = [
   {
     field: 'roleName',
-    label: 'The name of the department role',
+    label: 'Role Name',
     component: 'Input',
   },
 ];
@@ -85,7 +85,7 @@ export const departRoleModalFormSchema: FormSchema[] = [
   },
   {
     field: 'roleName',
-    label: 'The name of the department role',
+    label: 'Role Name',
     component: 'Input',
     rules: [
       { required: true, message: 'The department role name cannot be empty!' },
@@ -94,7 +94,7 @@ export const departRoleModalFormSchema: FormSchema[] = [
   },
   {
     field: 'roleCode',
-    label: 'Department role code',
+    label: 'Role Code',
     component: 'Input',
     dynamicDisabled: ({ values }) => {
       return !!values.id;
@@ -130,7 +130,7 @@ export const departRoleModalFormSchema: FormSchema[] = [
   },
   {
     field: 'description',
-    label: 'DESCRIPTION',
+    label: 'Description',
     component: 'Input',
     rules: [{ min: 0, max: 126, message: 'The length cannot be exceeded 126 CHARACTERS', trigger: 'blur' }],
   },
@@ -141,7 +141,7 @@ export function useBaseInfoForm(treeData: Ref<any[]>) {
   const descItems: DescItem[] = [
     {
       field: 'departName',
-      label: 'Name of the institution',
+      label: 'Department Name',
     },
     {
       field: 'parentId',
@@ -156,38 +156,38 @@ export function useBaseInfoForm(treeData: Ref<any[]>) {
     },
     {
       field: 'orgCode',
-      label: 'Mechanism code',
+      label: 'Org Code',
     },
     {
       field: 'orgCategory',
-      label: 'Type of institution',
+      label: 'Org Category',
       render(val) {
         if (val === '1') {
-          return 'FIRM';
+          return 'Company';
         } else if (val === '2') {
-          return 'DEPARTMENT';
+          return 'Department';
         } else if (val === '3') {
-          return 'POST';
+          return 'Position';
         }
         return val;
       },
     },
     {
       field: 'departOrder',
-      label: 'SORT',
+      label: 'Sort',
     },
 
     {
       field: 'mobile',
-      label: 'Mobile phone number',
+      label: 'Mobile Number',
     },
     {
       field: 'address',
-      label: 'ADDRESS',
+      label: 'Address',
     },
     {
       field: 'memo',
-      label: 'REMARK',
+      label: 'Memo',
     },
   ];
 

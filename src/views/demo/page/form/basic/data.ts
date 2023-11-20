@@ -4,7 +4,7 @@ export const schemas: FormSchema[] = [
   {
     field: 'title',
     component: 'Input',
-    label: 'TITLE',
+    label: 'Title',
     componentProps: {
       placeholder: 'Give the target a name',
     },
@@ -43,7 +43,7 @@ export const schemas: FormSchema[] = [
     helpMessage: 'The target client',
     subLabel: '( OPTIONAL )',
     componentProps: {
-      placeholder: 'Please describe the customers you serve，Internal customer direct @NAME／Construction No.',
+      placeholder: 'Please describe the customers you serve，Internal customer direct @Name／Construction No.',
     },
   },
   {

@@ -22,7 +22,7 @@
   const isUpdate = ref<boolean>(false);
   // 当前的弹窗数据
   const model = ref<object>({});
-  const title = computed(() => (isUpdate.value ? 'EDIT' : 'NEW'));
+  const title = computed(() => (isUpdate.value ? 'Edit' : 'New'));
 
   //注册表单
   const [registerForm, { resetFields, setFieldsValue, validate, updateSchema }] = useForm({

@@ -1,17 +1,17 @@
 <template>
-  <PageWrapper title="抽屉组件使用示例">
-    <Alert message="使用 useDrawer 进行抽屉操作" show-icon />
-    <a-button type="primary" class="my-4" @click="openDrawerLoading"> 打开Drawer </a-button>
+  <PageWrapper title="Example of drawer assembly usage">
+    <Alert message="Use useDrawer Perform drawer operations" show-icon />
+    <a-button type="primary" class="my-4" @click="openDrawerLoading"> Open the Drawer </a-button>
 
-    <Alert message="内外同时控制显示隐藏" show-icon />
-    <a-button type="primary" class="my-4" @click="openDrawer2(true)"> 打开Drawer </a-button>
-    <Alert message="自适应高度/显示footer" show-icon />
-    <a-button type="primary" class="my-4" @click="openDrawer3(true)"> 打开Drawer </a-button>
+    <Alert message="Inside and outside control at the same time show hide" show-icon />
+    <a-button type="primary" class="my-4" @click="openDrawer2(true)"> Open the Drawer </a-button>
+    <Alert message="Adaptive height/Display footer" show-icon />
+    <a-button type="primary" class="my-4" @click="openDrawer3(true)"> Open the Drawer </a-button>
 
-    <Alert message="内外数据交互" show-icon />
-    <a-button type="primary" class="my-4" @click="send"> 打开Drawer并传递数据 </a-button>
-    <Alert message="详情页模式" show-icon />
-    <a-button type="primary" class="my-4" @click="openDrawer5(true)"> 打开详情Drawer </a-button>
+    <Alert message="Internal and external data interaction" show-icon />
+    <a-button type="primary" class="my-4" @click="send"> Open the Drawer and pass the data </a-button>
+    <Alert message="Detail page mode" show-icon />
+    <a-button type="primary" class="my-4" @click="openDrawer5(true)"> Open the Details Drawer </a-button>
     <Drawer1 @register="register1" />
     <Drawer2 @register="register2" />
     <Drawer3 @register="register3" />

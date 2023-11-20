@@ -2,7 +2,7 @@
   <BasicModal v-bind="$attrs" @register="registerModal" :title="title" @ok="handleSubmit" width="800px" :showCancelBtn="false" :showOkBtn="false">
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px" v-if="showPackAddAndEdit">NEW </a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px" v-if="showPackAddAndEdit">New </a-button>
         <a-button
           v-if="selectedRowKeys.length > 0"
           preIcon="ant-design:delete-outlined"
@@ -83,11 +83,11 @@
   function getActions(record) {
     return [
       {
-        label: 'USER',
+        label: 'User',
         onClick: seeTenantPackUser.bind(null, record),
       },
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
         ifShow: ()=>{ return showPackAddAndEdit.value }
       },
@@ -102,7 +102,7 @@
   }
 
   /**
-   * EDIT
+   * Edit
    * @param record
    */
   async function handleEdit(record) {
@@ -121,7 +121,7 @@
   
   /**
    * Delete the package the package
-   * @param DELETE
+   * @param Delete
    */
   async function handleDelete(record) {
     //update-begin---author:wangshuai ---date:20230222  for: The default package cannot be deleted------------
@@ -181,7 +181,7 @@
   }
 
   /**
-   * MORE
+   * More
    * @param record
    */
   function getDropDownAction(record) {
@@ -191,7 +191,7 @@
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion of the tenant package',
           confirm: handleDelete.bind(null, record),

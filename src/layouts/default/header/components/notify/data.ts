@@ -12,7 +12,7 @@ export interface ListItem {
   clickClose?: boolean;
   extra?: string;
   color?: string;
-  // PRIORITY
+  // Priority
   priority?: string;
 }
 
@@ -147,7 +147,7 @@ export const tabListData: TabItem[] = [
       {
         id: '000000008',
         avatar: 'https://gw.alipayobjects.com/zos/rmsportal/fcHMVNCjPOsbUGdEduuv.jpeg',
-        title: 'TITLE',
+        title: 'Title',
         description:
           'Please move your mouse over here to test how extra-long messages will be handled here. In this example, the maximum number of description lines is set to 2, and descriptions that exceed 2 lines will be omitted and the full content can be viewed through tooltip',
         datetime: '2017-08-07',

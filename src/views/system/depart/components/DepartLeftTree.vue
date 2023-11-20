@@ -1,12 +1,12 @@
 <template>
   <a-card :bordered="false" style="height: 100%">
     <div class="j-table-operator" style="width: 100%">
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddDepart">NEW</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddDepart">New</a-button>
       <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddChildDepart()">Add subordinates</a-button>
       <a-upload name="file" :showUploadList="false" :customRequest="onImportXls">
-        <a-button type="primary" preIcon="ant-design:import-outlined">IMPORT</a-button>
+        <a-button type="primary" preIcon="ant-design:import-outlined">Import</a-button>
       </a-upload>
-      <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls">EXPORT</a-button>
+      <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> Export</a-button>
       <a-button type="primary" preIcon="ant-design:sync-outlined">Synchronize with the micro enterprise?</a-button>
       <a-button type="primary" preIcon="ant-design:sync-outlined">Synchronous DingTalk?</a-button>
       <template v-if="checkedKeys.length > 0">
@@ -15,7 +15,7 @@
             <a-menu>
               <a-menu-item key="1" @click="onDeleteBatch">
                 <icon icon="ant-design:delete-outlined" />
-                <span>DELETE</span>
+                <span>Delete</span>
               </a-menu-item>
             </a-menu>
           </template>
@@ -73,7 +73,7 @@
                 <a-menu @click="">
                   <a-menu-item key="1" @click="onAddChildDepart(dataRef)">Add children</a-menu-item>
                   <a-menu-item key="2" @click="visibleTreeKey = treeKey">
-                    <span style="color: red">DELETE</span>
+                    <span style="color: red">Delete</span>
                   </a-menu-item>
                 </a-menu>
               </template>

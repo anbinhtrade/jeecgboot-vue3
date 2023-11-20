@@ -3,7 +3,7 @@ import { BasicColumn } from '/@/components/Table';
 
 export const columns: BasicColumn[] = [
   {
-    title: 'NAME',
+    title: 'Name',
     dataIndex: 'realname',
     width: 150,
   },
@@ -13,7 +13,7 @@ export const columns: BasicColumn[] = [
     width: 100,
   },
   {
-    title: 'DEPARTMENT',
+    title: 'Department',
     dataIndex: 'departName',
     width: 200,
   },
@@ -24,12 +24,12 @@ export const columns: BasicColumn[] = [
     slots: { customRender: 'post' },
   },
   {
-    title: 'CELL PHONE',
+    title: 'Telephone',
     width: 150,
     dataIndex: 'telephone',
   },
   {
-    title: 'MAILBOX',
+    title: 'Email',
     width: 150,
     dataIndex: 'email',
   },
@@ -37,7 +37,7 @@ export const columns: BasicColumn[] = [
 
 export const searchFormSchema: FormSchema[] = [
   {
-    label: 'NAME',
+    label: 'Name',
     field: 'realname',
     component: 'Input',
     colProps: { span: 6 },

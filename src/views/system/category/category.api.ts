@@ -29,7 +29,7 @@ export const getImportUrl = Api.importExcel;
  */
 export const list = (params) => defHttp.get({ url: Api.list, params });
 /**
- * DELETE
+ * Delete
  */
 export const deleteCategory = (params, handleSuccess) => {
   return defHttp.delete({ url: Api.deleteCategory, params }, { joinParamsToUrl: true }).then(() => {

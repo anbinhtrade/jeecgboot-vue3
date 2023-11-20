@@ -2,7 +2,6 @@ import { BasicColumn } from '/@/components/Table';
 import { FormSchema } from '/@/components/Table';
 import { h } from 'vue';
 import { Icon } from '/@/components/Icon';
-import { duplicateCheck } from '../user/user.api';
 import { ajaxGetDictItems ,checkPermDuplication } from './menu.api';
 import { render } from '/@/utils/common/renderUtils';
 
@@ -10,7 +9,7 @@ const isDir = (type) => type === 0;
 const isMenu = (type) => type === 1;
 const isButton = (type) => type === 2;
 
-// 定义可选择的组件类型
+// Define the types of components that can be selected
 export enum ComponentTypes {
   Default = 'layouts/default/index',
   IFrame = 'sys/iframe/FrameBlank',
@@ -18,7 +17,7 @@ export enum ComponentTypes {
 
 export const columns: BasicColumn[] = [
   {
-    title: 'Menu name',
+    title: 'Menu Name',
     dataIndex: 'name',
     width: 200,
     align: 'left',
@@ -32,7 +31,7 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: 'ICON',
+    title: 'Icon',
     dataIndex: 'icon',
     width: 50,
     customRender: ({ record }) => {
@@ -40,19 +39,19 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: 'SUBASSEMBLY',
+    title: 'Component',
     dataIndex: 'component',
     align: 'left',
     width: 150,
   },
   {
-    title: 'PATH',
+    title: 'Path',
     dataIndex: 'url',
     align: 'left',
     width: 150,
   },
   {
-    title: 'SORT',
+    title: 'Sort',
     dataIndex: 'sortNo',
     width: 50,
   },
@@ -61,7 +60,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: 'Menu name',
+    label: 'Menu Name',
     component: 'Input',
     colProps: { span: 8 },
   },
@@ -83,12 +82,12 @@ export const formSchema: FormSchema[] = [
       return {
         options: [
           { label: 'Level 1 menu', value: 0 },
-          { label: 'SUBMENU', value: 1 },
+          { label: 'Sub-menu', value: 1 },
           { label: 'Buttons/Permissions', value: 2 },
         ],
         onChange: (e) => {
           const { updateSchema, clearValidate } = formActionType;
-          const label = isButton(e) ? 'Buttons/Permissions' : 'Menu name';
+          const label = isButton(e) ? 'Buttons/Permissions' : 'Menu Name';
           //清除校验
           clearValidate();
           updateSchema([
@@ -112,13 +111,13 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'name',
-    label: 'Menu name',
+    label: 'Menu Name',
     component: 'Input',
     required: true,
   },
   {
     field: 'parentId',
-    label: 'Parent menu',
+    label: 'Parent Menu',
     component: 'TreeSelect',
     required: true,
     componentProps: {
@@ -138,7 +137,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'url',
-    label: 'Access path',
+    label: 'Access Path',
     component: 'Input',
     required: true,
     //update-begin-author:liusq date:2023-06-06 for: [issues/5008]子表数据权限设置不生效
@@ -152,7 +151,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'component',
-    label: 'Front-end components',
+    label: 'Front-end Components',
     component: 'Input',
     componentProps: {
       placeholder: 'Please enter the front-end component',
@@ -163,7 +162,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'componentName',
-    label: 'The name of the component',
+    label: 'Component Name',
     component: 'Input',
     componentProps: {
       placeholder: 'Please enter a component name',
@@ -179,7 +178,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'frameSrc',
-    label: 'Iframe address',
+    label: 'Iframe Src',
     component: 'Input',
     rules: [
       { required: true, message: 'Please enter an iframe address' },
@@ -225,34 +224,34 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'permsType',
-    label: '授权策略',
+    label: 'Authorization policies',
     component: 'RadioGroup',
     defaultValue: '1',
-    helpMessage: ['可见/可访问(授权后可见/可访问)', '可编辑(未授权时禁用)'],
+    helpMessage: ['Visible/Accessible (Visible/Accessible after authorization)', 'Editable (disabled if unauthorized)'],
     componentProps: {
       options: [
-        { label: '可见/可访问', value: '1' },
-        { label: '可编辑', value: '2' },
+        { label: 'VISIBLE/ACCESSIBLE', value: '1' },
+        { label: 'EDITABLE', value: '2' },
       ],
     },
     ifShow: ({ values }) => isButton(values.menuType),
   },
   {
     field: 'status',
-    label: '状态',
+    label: 'Status',
     component: 'RadioGroup',
     defaultValue: '1',
     componentProps: {
       options: [
-        { label: '有效', value: '1' },
-        { label: '无效', value: '0' },
+        { label: 'EFFECTIVE', value: '1' },
+        { label: 'VOID', value: '0' },
       ],
     },
     ifShow: ({ values }) => isButton(values.menuType),
   },
   {
     field: 'icon',
-    label: '菜单图标',
+    label: 'MENU ICON',
     component: 'IconPicker',
     ifShow: ({ values }) => !isButton(values.menuType),
   },
@@ -269,63 +268,63 @@ export const formSchema: FormSchema[] = [
     component: 'Switch',
     defaultValue: true,
     componentProps: {
-      checkedChildren: '是',
-      unCheckedChildren: '否',
+      checkedChildren: 'BE',
+      unCheckedChildren: 'NOT',
     },
     ifShow: ({ values }) => !isButton(values.menuType),
   },
   {
     field: 'hidden',
-    label: '隐藏路由',
+    label: 'Hidden routes',
     component: 'Switch',
     defaultValue: 0,
     componentProps: {
-      checkedChildren: '是',
-      unCheckedChildren: '否',
+      checkedChildren: 'BE',
+      unCheckedChildren: 'NOT',
     },
     ifShow: ({ values }) => !isButton(values.menuType),
   },
   {
     field: 'hideTab',
-    label: '隐藏Tab',
+    label: 'Hide Tab',
     component: 'Switch',
     defaultValue: 0,
     componentProps: {
-      checkedChildren: '是',
-      unCheckedChildren: '否',
+      checkedChildren: 'BE',
+      unCheckedChildren: 'NOT',
     },
     ifShow: ({ values }) => !isButton(values.menuType),
   },
   {
     field: 'keepAlive',
-    label: '是否缓存路由',
+    label: 'Whether the route is cached',
     component: 'Switch',
     defaultValue: false,
     componentProps: {
-      checkedChildren: '是',
-      unCheckedChildren: '否',
+      checkedChildren: 'BE',
+      unCheckedChildren: 'NOT',
     },
     ifShow: ({ values }) => !isButton(values.menuType),
   },
   {
     field: 'alwaysShow',
-    label: '聚合路由',
+    label: 'Aggregate routing',
     component: 'Switch',
     defaultValue: false,
     componentProps: {
-      checkedChildren: '是',
-      unCheckedChildren: '否',
+      checkedChildren: 'BE',
+      unCheckedChildren: 'NOT',
     },
     ifShow: ({ values }) => !isButton(values.menuType),
   },
   {
     field: 'internalOrExternal',
-    label: '打开方式',
+    label: 'Open with',
     component: 'Switch',
     defaultValue: false,
     componentProps: {
-      checkedChildren: '外部',
-      unCheckedChildren: '内部',
+      checkedChildren: 'EXTERNAL',
+      unCheckedChildren: 'INSIDE',
     },
     ifShow: ({ values }) => !isButton(values.menuType),
   },
@@ -333,17 +332,17 @@ export const formSchema: FormSchema[] = [
 
 export const dataRuleColumns: BasicColumn[] = [
   {
-    title: '规则名称',
+    title: 'Rule Name',
     dataIndex: 'ruleName',
     width: 150,
   },
   {
-    title: '规则字段',
+    title: 'Rule fields',
     dataIndex: 'ruleColumn',
     width: 100,
   },
   {
-    title: '规则值',
+    title: 'Rule value',
     dataIndex: 'ruleValue',
     width: 100,
   },
@@ -352,13 +351,13 @@ export const dataRuleColumns: BasicColumn[] = [
 export const dataRuleSearchFormSchema: FormSchema[] = [
   {
     field: 'ruleName',
-    label: '规则名称',
+    label: 'Rule Name',
     component: 'Input',
     // colProps: { span: 6 },
   },
   {
     field: 'ruleValue',
-    label: '规则值',
+    label: 'Rule value',
     component: 'Input',
     // colProps: { span: 6 },
   },
@@ -373,13 +372,13 @@ export const dataRuleFormSchema: FormSchema[] = [
   },
   {
     field: 'ruleName',
-    label: '规则名称',
+    label: 'Rule Name',
     component: 'Input',
     required: true,
   },
   {
     field: 'ruleColumn',
-    label: '规则字段',
+    label: 'Rule fields',
     component: 'Input',
     ifShow: ({ values }) => {
       return values.ruleConditions !== 'USE_SQL_RULES';
@@ -387,7 +386,7 @@ export const dataRuleFormSchema: FormSchema[] = [
   },
   {
     field: 'ruleConditions',
-    label: '条件规则',
+    label: 'Conditional rules',
     required: true,
     component: 'ApiSelect',
     componentProps: {
@@ -400,19 +399,19 @@ export const dataRuleFormSchema: FormSchema[] = [
   },
   {
     field: 'ruleValue',
-    label: '规则值',
+    label: 'Rule value',
     component: 'Input',
     required: true,
   },
   {
     field: 'status',
-    label: '状态',
+    label: 'Status',
     component: 'RadioButtonGroup',
     defaultValue: '1',
     componentProps: {
       options: [
-        { label: '无效', value: '0' },
-        { label: '有效', value: '1' },
+        { label: 'VOID', value: '0' },
+        { label: 'EFFECTIVE', value: '1' },
       ],
     },
   },

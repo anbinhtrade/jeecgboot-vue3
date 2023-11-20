@@ -7,12 +7,12 @@ export const columns = [
     width: 100,
   },
   {
-    title: 'ROLE CODING',
+    title: 'Role Code',
     dataIndex: 'roleCode',
     width: 100,
   },
   {
-    title: 'CREATION TIME',
+    title: 'Creation Time',
     dataIndex: 'createTime',
     width: 100,
   },
@@ -22,15 +22,15 @@ export const columns = [
  */
 export const userColumns = [
   {
-    title: 'USER ACCOUNT',
+    title: 'User Name',
     dataIndex: 'username',
   },
   {
-    title: 'USERNAME',
+    title: 'Real Name',
     dataIndex: 'realname',
   },
   {
-    title: 'TOPSY TURVY',
+    title: 'Status',
     dataIndex: 'status_dictText',
     width: 80,
   },
@@ -44,7 +44,7 @@ export const searchFormSchema: FormSchema[] = [
   },
   {
     field: 'roleCode',
-    label: 'ROLE CODING',
+    label: 'Role Code',
     component: 'Input',
     colProps: { span: 6 },
   },
@@ -55,7 +55,7 @@ export const searchFormSchema: FormSchema[] = [
 export const searchUserFormSchema: FormSchema[] = [
   {
     field: 'username',
-    label: 'USER ACCOUNT',
+    label: 'User Name',
     component: 'Input',
     colProps: { span: 12 },
   },
@@ -76,7 +76,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'roleCode',
-    label: 'ROLE CODING',
+    label: 'Role Code',
     required: true,
     component: 'Input',
     dynamicDisabled: ({ values }) => {
@@ -122,7 +122,7 @@ export const formDescSchema = [
   },
   {
     field: 'roleCode',
-    label: 'ROLE CODING',
+    label: 'Role Code',
   },
   {
     label: 'REMARK',
@@ -138,7 +138,7 @@ export const roleIndexFormSchema: FormSchema[] = [
     show: false,
   },
   {
-    label: 'ROLE CODING',
+    label: 'Role Code',
     field: 'roleCode',
     component: 'Input',
     dynamicDisabled: true,
@@ -168,7 +168,7 @@ export const roleIndexFormSchema: FormSchema[] = [
     defaultValue: true
   },
   {
-    label: 'PRIORITY',
+    label: 'Priority',
     field: 'priority',
     component: 'InputNumber',
   },

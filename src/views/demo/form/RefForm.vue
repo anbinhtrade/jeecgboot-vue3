@@ -1,35 +1,35 @@
 <template>
-  <PageWrapper title="Ref操作示例">
+  <PageWrapper title="Example of the Ref operation">
     <div class="mb-4">
-      <a-button @click="setProps({ labelWidth: 150 })" class="mr-2"> 更改labelWidth </a-button>
-      <a-button @click="setProps({ labelWidth: 120 })" class="mr-2"> 还原labelWidth </a-button>
-      <a-button @click="setProps({ size: 'large' })" class="mr-2"> 更改Size </a-button>
-      <a-button @click="setProps({ size: 'default' })" class="mr-2"> 还原Size </a-button>
-      <a-button @click="setProps({ disabled: true })" class="mr-2"> 禁用表单 </a-button>
-      <a-button @click="setProps({ disabled: false })" class="mr-2"> 解除禁用 </a-button>
-      <a-button @click="setProps({ compact: true })" class="mr-2"> 紧凑表单 </a-button>
-      <a-button @click="setProps({ compact: false })" class="mr-2"> 还原正常间距 </a-button>
-      <a-button @click="setProps({ actionColOptions: { span: 8 } })" class="mr-2"> 操作按钮位置 </a-button>
+      <a-button @click="setProps({ labelWidth: 150 })" class="mr-2"> CHANGElabelWidth </a-button>
+      <a-button @click="setProps({ labelWidth: 120 })" class="mr-2"> RESTORElabelWidth </a-button>
+      <a-button @click="setProps({ size: 'large' })" class="mr-2"> CHANGESize </a-button>
+      <a-button @click="setProps({ size: 'default' })" class="mr-2"> RESTORESize </a-button>
+      <a-button @click="setProps({ disabled: true })" class="mr-2"> Disable the form </a-button>
+      <a-button @click="setProps({ disabled: false })" class="mr-2"> Do not release </a-button>
+      <a-button @click="setProps({ compact: true })" class="mr-2"> Compact forms </a-button>
+      <a-button @click="setProps({ compact: false })" class="mr-2"> Restore normal spacing </a-button>
+      <a-button @click="setProps({ actionColOptions: { span: 8 } })" class="mr-2"> Position of the action button </a-button>
     </div>
     <div class="mb-4">
-      <a-button @click="setProps({ showActionButtonGroup: false })" class="mr-2"> 隐藏操作按钮 </a-button>
-      <a-button @click="setProps({ showActionButtonGroup: true })" class="mr-2"> 显示操作按钮 </a-button>
-      <a-button @click="setProps({ showResetButton: false })" class="mr-2"> 隐藏重置按钮 </a-button>
-      <a-button @click="setProps({ showResetButton: true })" class="mr-2"> 显示重置按钮 </a-button>
-      <a-button @click="setProps({ showSubmitButton: false })" class="mr-2"> 隐藏查询按钮 </a-button>
-      <a-button @click="setProps({ showSubmitButton: true })" class="mr-2"> 显示查询按钮 </a-button>
+      <a-button @click="setProps({ showActionButtonGroup: false })" class="mr-2"> Hide the action button </a-button>
+      <a-button @click="setProps({ showActionButtonGroup: true })" class="mr-2"> Displays the action buttons </a-button>
+      <a-button @click="setProps({ showResetButton: false })" class="mr-2"> Hide the reset button </a-button>
+      <a-button @click="setProps({ showResetButton: true })" class="mr-2"> The reset button is displayed </a-button>
+      <a-button @click="setProps({ showSubmitButton: false })" class="mr-2"> Hide the query button </a-button>
+      <a-button @click="setProps({ showSubmitButton: true })" class="mr-2"> The query button is displayed </a-button>
       <a-button
         @click="
           setProps({
             resetButtonOptions: {
               disabled: true,
-              text: '重置New',
+              text: 'RESETNew',
             },
           })
         "
         class="mr-2"
       >
-        修改重置按钮
+        Modify the reset button
       </a-button>
       <a-button
         @click="
@@ -42,10 +42,10 @@
         "
         class="mr-2"
       >
-        修改查询按钮
+        Modify the query button
       </a-button>
     </div>
-    <CollapseContainer title="使用ref调用表单内部函数示例">
+    <CollapseContainer title="USE Example of ref calling form internal functions">
       <BasicForm :schemas="schemas" ref="formElRef" :labelWidth="100" @submit="handleSubmit" :actionColOptions="{ span: 24 }" />
     </CollapseContainer>
   </PageWrapper>
@@ -61,12 +61,12 @@
     {
       field: 'field1',
       component: 'Input',
-      label: '字段1',
+      label: 'Field 1',
       colProps: {
         span: 8,
       },
       componentProps: {
-        placeholder: '自定义placeholder',
+        placeholder: 'CUSTOMIZE placeholder',
         onChange: (e: any) => {
           console.log(e);
         },
@@ -75,7 +75,7 @@
     {
       field: 'field2',
       component: 'Input',
-      label: '字段2',
+      label: 'Field 2',
       colProps: {
         span: 8,
       },
@@ -83,7 +83,7 @@
     {
       field: 'field3',
       component: 'DatePicker',
-      label: '字段3',
+      label: 'Field 3',
       colProps: {
         span: 8,
       },
@@ -91,19 +91,19 @@
     {
       field: 'field4',
       component: 'Select',
-      label: '字段4',
+      label: 'Field 4',
       colProps: {
         span: 8,
       },
       componentProps: {
         options: [
           {
-            label: '选项1',
+            label: 'Option 1',
             value: '1',
             key: '1',
           },
           {
-            label: '选项2',
+            label: 'Option 2',
             value: '2',
             key: '2',
           },
@@ -113,18 +113,18 @@
     {
       field: 'field5',
       component: 'CheckboxGroup',
-      label: '字段5',
+      label: 'Field 5',
       colProps: {
         span: 8,
       },
       componentProps: {
         options: [
           {
-            label: '选项1',
+            label: 'Option 1',
             value: '1',
           },
           {
-            label: '选项2',
+            label: 'Option 2',
             value: '2',
           },
         ],
@@ -133,18 +133,18 @@
     {
       field: 'field7',
       component: 'RadioGroup',
-      label: '字段7',
+      label: 'Field 7',
       colProps: {
         span: 8,
       },
       componentProps: {
         options: [
           {
-            label: '选项1',
+            label: 'Option 1',
             value: '1',
           },
           {
-            label: '选项2',
+            label: 'Option 2',
             value: '2',
           },
         ],

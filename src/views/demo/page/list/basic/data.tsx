@@ -6,7 +6,7 @@ export const cardList = (() => {
       title: 'Jeecg Admin',
       description: '基于Vue Next, TypeScript, Ant Design A complete set of enterprise-level back-end management systems implemented by Vue',
       datetime: '2020-11-26 17:39',
-      extra: 'EDIT',
+      extra: 'Edit',
       icon: 'logos:vue',
       color: '#1890ff',
       author: 'Jeecg',

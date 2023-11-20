@@ -18,7 +18,7 @@
       field: 'title',
       component: 'Input',
       label: 'title',
-      defaultValue: 'TITLE',
+      defaultValue: 'Title',
       rules: [{ required: true }],
     },
     {

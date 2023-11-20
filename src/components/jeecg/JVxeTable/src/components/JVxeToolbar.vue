@@ -6,7 +6,7 @@
         <div :class="`${prefixCls}-button div`" :size="btnSize">
           <slot v-if="showPrefix" name="toolbarPrefix" :size="btnSize" />
           <a-button v-if="showAdd" type="primary" preIcon="ant-design:plus-outlined" :disabled="disabled" @click="trigger('add')">
-            <span>NEW</span>
+            <span>New</span>
           </a-button>
           <a-button v-if="showSave" preIcon="ant-design:save-outlined" :disabled="disabled" @click="trigger('save')">
             <span>保存</span>

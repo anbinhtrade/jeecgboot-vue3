@@ -5,7 +5,7 @@ import { useTableContext } from './useTableContext';
 import { useMessage } from '/@/hooks/web/useMessage';
 
 /**
- * 列表配置缓存
+ * List configuration caching
  */
 export function useColumnsCache(opt, setColumns, handleColumnFixed) {
   let isInit = false;
@@ -90,7 +90,7 @@ export function useColumnsCache(opt, setColumns, handleColumnFixed) {
     return fixedColumns;
   }
 
-  /** 保存列配置 */
+  /** Save the column configuration */
   function saveSetting() {
     const { checkedList } = opt.state;
     const sortedList = unref(opt.plainSortOptions).map((item) => item.value);
@@ -106,7 +106,7 @@ export function useColumnsCache(opt, setColumns, handleColumnFixed) {
       // 固定列
       fixedColumns: getFixedColumns(),
     });
-    $message.success('保存成功');
+    $message.success('The save was successful');
     // 保存之后直接关闭
     opt.popoverVisible.value = false;
   }
@@ -116,7 +116,7 @@ export function useColumnsCache(opt, setColumns, handleColumnFixed) {
     // 重置固定列
     await resetFixedColumn();
     $ls.remove(cacheKey.value);
-    $message.success('重置成功');
+    $message.success('The reset was successful');
   }
 
   async function resetFixedColumn() {

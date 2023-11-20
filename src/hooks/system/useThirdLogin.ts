@@ -92,8 +92,8 @@ export function useThirdLogin() {
 
   function requestFailed(err) {
     notification.error({
-      message: '登录失败',
-      description: ((err.response || {}).data || {}).message || err.message || '请求出现错误，请稍后再试',
+      message: 'Login failed',
+      description: ((err.response || {}).data || {}).message || err.message || 'There was an error on the request, please try again later',
       duration: 4,
     });
   }
@@ -151,10 +151,10 @@ export function useThirdLogin() {
   //绑定手机号点击确定按钮
   function thirdHandleOk() {
     if (!unref(thirdPhone)) {
-      cmsFailed('请输入手机号');
+      cmsFailed('Please enter your mobile phone number');
     }
     if (!unref(thirdCaptcha)) {
-      cmsFailed('请输入验证码');
+      cmsFailed('Please enter a verification code');
     }
     let params = {
       mobile: unref(thirdPhone),

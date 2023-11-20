@@ -5,13 +5,13 @@
         v-if="messageList && messageList.length > 0 && !loadEndStatus && !loadingMoreStatus"
         :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }"
       >
-        <a-button @click="onLoadMore">加载更多</a-button>
+        <a-button @click="onLoadMore">Load more</a-button>
       </div>
       <div
         v-if="messageList && messageList.length > 0 && loadEndStatus"
         :style="{ textAlign: 'center', marginTop: '12px', height: '32px', lineHeight: '32px' }"
       >
-        没有更多了
+        No more
       </div>
     </template>
 
@@ -25,7 +25,7 @@
           <template #title>
             <div style="position: relative">
            <!--   <span style="display: inline-block; position: absolute; left: -16px">
-                <exclamation-outlined v-if="noRead(item)" title="未读消息" style="color: red" />
+                <exclamation-outlined v-if="noRead(item)" title="Unread Messages" style="color: red" />
               </span>-->
 
               <span>{{ getMsgCategory(item) }}</span>
@@ -38,34 +38,34 @@
                 {{ item.titile }}
               </a-tooltip>
 
-              <a @click="showMessageDetail(item)" style="margin-left: 16px">查看详情</a>
+              <a @click="showMessageDetail(item)" style="margin-left: 16px">Find out more</a>
             </div>
           </template>
           <template #avatar>
             <template v-if="item.busType=='email'">
               <a-badge dot v-if="noRead(item)" class="msg-no-read">
-                <a-avatar style="background: #79919d"><mail-outlined style="font-size: 16px" title="未读消息"/></a-avatar>
+                <a-avatar style="background: #79919d"><mail-outlined style="font-size: 16px" title="Unread messages"/></a-avatar>
               </a-badge>
               <a-avatar v-else style="background: #79919d"><mail-outlined style="font-size: 16px"/></a-avatar>
             </template>
 
             <template v-else-if="item.busType=='bpm_task'">
               <a-badge dot v-if="noRead(item)" class="msg-no-read">
-                <a-avatar style="background: #79919d"><interaction-outlined style="font-size: 16px" title="未读消息"/></a-avatar>
+                <a-avatar style="background: #79919d"><interaction-outlined style="font-size: 16px" title="Unread messages"/></a-avatar>
               </a-badge>
               <a-avatar v-else style="background: #79919d"><interaction-outlined style="font-size: 16px"/></a-avatar>
             </template>
 
             <template v-else-if="item.busType=='bpm'">
               <a-badge dot v-if="noRead(item)" class="msg-no-read">
-                <a-avatar style="background: #79919d"><alert-outlined style="font-size: 16px" title="未读消息"/></a-avatar>
+                <a-avatar style="background: #79919d"><alert-outlined style="font-size: 16px" title="Unread messages"/></a-avatar>
               </a-badge>
               <a-avatar v-else style="background: #79919d"><alert-outlined style="font-size: 16px"/></a-avatar>
             </template>
             
             <template v-else>
               <a-badge dot v-if="noRead(item)" class="msg-no-read">
-                <a-avatar style="background: #79919d"><bell-filled style="font-size: 16px" title="未读消息"/></a-avatar>
+                <a-avatar style="background: #79919d"><bell-filled style="font-size: 16px" title="Unread messages"/></a-avatar>
               </a-badge>
               <a-avatar v-else style="background: #79919d"><bell-filled style="font-size: 16px" /></a-avatar>
             </template>

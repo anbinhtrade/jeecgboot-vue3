@@ -2,7 +2,7 @@
   <BasicModal v-bind="$attrs" @register="registerModal" :title="title" @ok="handleSubmit" width="800px">
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button v-if="selectedRowKeys.length>0" preIcon="ant-design:delete-outlined" type="primary" @click="handleLeaveBatch" style="margin-right: 5px">批量请离</a-button>
+        <a-button v-if="selectedRowKeys.length>0" preIcon="ant-design:delete-outlined" type="primary" @click="handleLeaveBatch" style="margin-right: 5px">Please leave in batches</a-button>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getActions(record)" />
@@ -56,7 +56,7 @@ const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data
   success();
 });
 //设置标题
-const title = '成员';
+const title = 'Member';
 //表单提交事件
 async function handleSubmit(v) {
   closeModal();
@@ -65,7 +65,7 @@ async function handleSubmit(v) {
 function getActions(record) {
   return [
     {
-      label: '移除',
+      label: 'Remove',
       onClick: handleLeave.bind(null, record.id),
     },
   ]

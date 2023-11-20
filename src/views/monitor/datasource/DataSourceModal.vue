@@ -4,10 +4,10 @@
       <template #pwd="{ model, field }">
         <a-row :gutter="8">
           <a-col :sm="15" :md="16" :lg="17" :xl="19">
-            <a-input-password v-model:value="model[field]" placeholder="请输入密码" />
+            <a-input-password v-model:value="model[field]" placeholder="Please enter your password" />
           </a-col>
           <a-col :sm="9" :md="7" :lg="7" :xl="5">
-            <a-button type="primary" style="width: 100%" @click="handleTest">测试</a-button>
+            <a-button type="primary" style="width: 100%" @click="handleTest">TEST</a-button>
           </a-col>
         </a-row>
       </template>
@@ -48,20 +48,20 @@
     }
   });
   //设置标题
-  const title = computed(() => (!unref(isUpdate) ? '新增数据源' : '编辑数据源'));
+  const title = computed(() => (!unref(isUpdate) ? 'A new data source is added' : 'Edit the data source'));
 
   async function handleTest() {
     let keys = ['dbType', 'dbDriver', 'dbUrl', 'dbName', 'dbUsername', 'dbPassword'];
-    // 获取以上字段的值，并清除校验状态
+    // Obtain the values of the preceding fields and clear the check status
     let fieldsValues = getFieldsValue(keys);
     let setFields = {};
     keys.forEach((key) => (setFields[key] = { value: fieldsValues[key], errors: null }));
     await validateFields(keys).then((values) => {
-      let loading = createMessage.loading('连接中....', 0);
+      let loading = createMessage.loading('CONNECTING....', 0);
       testConnection(values)
         .then((data) => {
           if (data.success) {
-            createMessage.success('连接成功');
+            createMessage.success('The connection is successful');
           }
         })
         .catch((error) => {})
@@ -69,16 +69,16 @@
     });
   }
 
-  //表单提交事件
+  //Form submission events
   async function handleSubmit(v) {
     try {
       let values = await validate();
       setModalProps({ confirmLoading: true });
-      //提交表单
+      //Submit the form
       await saveOrUpdateDataSource(values, isUpdate.value);
-      //关闭弹窗
+      //Close the pop-up window
       closeModal();
-      //刷新列表
+      //Refresh the list
       emit('success');
     } finally {
       setModalProps({ confirmLoading: false });

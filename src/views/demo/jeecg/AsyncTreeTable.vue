@@ -24,9 +24,9 @@
     isTreeTable: true,
     showIndexColumn: true,
     columns: [
-      { title: 'NAME', dataIndex: 'name' },
-      { title: 'SUBASSEMBLY', dataIndex: 'component' },
-      { title: 'SORT', dataIndex: 'orderNum' },
+      { title: 'Name', dataIndex: 'name' },
+      { title: 'Subassembly', dataIndex: 'component' },
+      { title: 'Sort', dataIndex: 'orderNum' },
     ],
   });
 

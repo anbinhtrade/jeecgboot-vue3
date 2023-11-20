@@ -1,18 +1,18 @@
 <template>
-  <a-card title="无痕刷新示例" :bordered="false">
+  <a-card title="An example of an incognito refresh" :bordered="false">
     <div style="margin-bottom: 8px">
-      <span>启用数据变动特效：</span>
+      <span>Enables the Data Change effect：</span>
       <a-switch v-model:checked="reloadEffect" />
     </div>
 
     <!--
-      【无痕刷新大体思路】：
-      1. 该功能依赖于【即时保存】功能，请先看即时保存示例
-      2. 必须要有 socket-reload 属性，且设为 true
-      3. 必须要有 socket-key 属性，该属性为当前表格的唯一标识，
-         系统会自动更新所有 socket-key 相同的表格
-      4. 在局部保存 edit-closed 事件中，
-         保存成功后调用 socketSendUpdateRow 方法，将当前 row 传递过去即可 （见第 102 行）
+      【Leave no trace to refresh the general idea】：
+      1. This function depends on the [Instant Save] function, please look at the instant save example first
+      2. The socket-reload property must be set to true
+      3. There must be a socket-key attribute, which is the unique identifier of the current table，
+         The system will automatically update all tables with the same socket-key
+      4. In the edit-closed event, which is saved locally，
+         After saving successfully, call the socketSendUpdateRow method and pass the current row past (see line 102)
     -->
     <JVxeTable
       ref="tableRef"
@@ -41,31 +41,31 @@
 
   const { createMessage } = useMessage();
   const tableRef = ref<JVxeTableInstance>();
-  // 是否启用日历刷新效果
+  // Whether to enable the calendar refresh effect
   const reloadEffect = ref(true);
   const loading = ref(false);
   const dataSource = ref<Recordable[]>([]);
   const columns = ref<JVxeColumn[]>([
-    { key: 'num', title: '序号', width: 80 },
-    { key: 'enabled', title: '启用', width: 80, type: JVxeTypes.checkbox },
-    { key: 'ship_name', title: '船名', width: 180, type: JVxeTypes.input },
-    { key: 'call', title: '呼叫', width: 80, type: JVxeTypes.input },
-    { key: 'len', title: '长', width: 80, type: JVxeTypes.input },
-    { key: 'ton', title: '吨', width: 120, type: JVxeTypes.input },
-    { key: 'payer', title: '付款方', width: 120, type: JVxeTypes.input },
-    { key: 'count', title: '数', width: 40 },
-    { key: 'company', title: '公司', minWidth: 180, type: JVxeTypes.input },
-    { key: 'trend', title: '动向', width: 120, type: JVxeTypes.input },
+    { key: 'num', title: 'Serial Number', width: 80 },
+    { key: 'enabled', title: 'Enable', width: 80, type: JVxeTypes.checkbox },
+    { key: 'ship_name', title: 'Ship Name', width: 180, type: JVxeTypes.input },
+    { key: 'call', title: 'CALL', width: 80, type: JVxeTypes.input },
+    { key: 'len', title: 'LONG', width: 80, type: JVxeTypes.input },
+    { key: 'ton', title: 'TON', width: 120, type: JVxeTypes.input },
+    { key: 'payer', title: 'Payer', width: 120, type: JVxeTypes.input },
+    { key: 'count', title: 'Count', width: 40 },
+    { key: 'company', title: 'Company', minWidth: 180, type: JVxeTypes.input },
+    { key: 'trend', title: 'Trend', width: 120, type: JVxeTypes.input },
   ]);
 
-  // 查询url地址
+  // Query the URL address
   enum Api {
     getData = '/mock/vxe/getData',
   }
 
   loadData();
 
-  // 加载数据
+  // Load the data
   function loadData() {
     loading.value = true;
     defHttp
@@ -81,10 +81,10 @@
       });
   }
 
-  /** 单元格值变化时触发的事件 */
+  /** An event that is triggered when a cell value changes */
   function onValueChange(event) {
     switch (event.type) {
-      // 所有不能触发 editClosed 事件的组件，都需要定义在这里，可以安装你自己的业务需求来完善此处的case
+      // All components that can't trigger the editClosed event need to be defined here, and you can install your own business requirements to complete the case here
       case JVxeTypes.radio:
       case JVxeTypes.checkbox:
         doSendUpdateRow(event);
@@ -92,29 +92,29 @@
     }
   }
 
-  // 单元格编辑完成之后触发的事件
+  // An event that is triggered after the cell is edited
   function handleEditClosed(event) {
     doSendUpdateRow(event);
   }
 
-  // 发送变更行请求
+  // Send a changeline request
   function doSendUpdateRow(event) {
     let { $table, row, column } = event;
     let field = column.property;
-    // 判断单元格值是否被修改
+    // Determine whether the cell value has been modified
     if ($table.isUpdateByRow(row, field)) {
-      // 校验当前行
+      // Verify the current line
       $table.validate(row).then((errMap) => {
-        // 校验通过
+        // The verification passes
         if (!errMap) {
-          // 【模拟保存】（此处需要替换成真实的请求）
-          let hideLoading = createMessage.loading(`正在保存"${column.title}"`, 0);
+          // [Mock Save] (here you need to replace it with a real request)
+          let hideLoading = createMessage.loading(`SAVING"${column.title}"`, 0);
           setTimeout(() => {
             hideLoading();
-            createMessage.success(`"${column.title}"保存成功！`);
-            // 局部更新单元格为已保存状态
+            createMessage.success(`"${column.title}"The save was successful！`);
+            // Partially update the cell to a saved state
             $table.reloadRow(row, null, field);
-            // 发送更新消息
+            // Send an update message
             tableRef.value?.socketSendUpdateRow(row);
           }, 555);
         }

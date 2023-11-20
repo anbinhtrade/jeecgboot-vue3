@@ -32,7 +32,7 @@
     setProps({ disabled: !attrs.showFooter });
   });
   /**
-   * TITLE
+   * Title
    */
   const getTitle = computed(() => (!unref(isUpdate) ? 'New characters' : 'Edit the role'));
   /**

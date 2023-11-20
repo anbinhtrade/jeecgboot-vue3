@@ -74,7 +74,7 @@
       const tableProps = {
         columns: [
           {
-            title: 'User Accounts',
+            title: 'User Name',
             dataIndex: 'username',
             width: 180,
           },
@@ -122,7 +122,7 @@
           //update-end-author:liusq date:2023-10-30 for: [issues/5514]组件页面显示错位
           schemas: [
             {
-              label: 'ACCOUNT',
+              label: 'User Name',
               field: 'username',
               component: 'Input',
             },

@@ -1,12 +1,12 @@
 <template>
-  <BasicModal v-bind="$attrs" @register="registerModal" title="查看详情" :minHeight="600" :showCancelBtn="false" :showOkBtn="false" :height="88" :destroyOnClose="true">
+  <BasicModal v-bind="$attrs" @register="registerModal" title="Find out more" :minHeight="600" :showCancelBtn="false" :showOkBtn="false" :height="88" :destroyOnClose="true">
     <a-card class="daily-article">
-      <a-card-meta :title="content.titile" :description="'发布人：' + content.sender + ' 发布时间： ' + content.sendTime"> </a-card-meta>
+      <a-card-meta :title="content.titile" :description="'Publisher:' + content.sender + ' Release time: ' + content.sendTime"> </a-card-meta>
       <a-divider />
       <span v-html="content.msgContent" class="article-content"></span>
       
       <div>
-        <a-button v-if="hasHref" @click="jumpToHandlePage">前往办理<ArrowRightOutlined /></a-button>
+        <a-button v-if="hasHref" @click="jumpToHandlePage">Go to Processing<ArrowRightOutlined /></a-button>
       </div>
     </a-card>
   </BasicModal>
@@ -22,7 +22,7 @@
   import { ref, unref } from 'vue';
   const isUpdate = ref(true);
   const content = ref({});
-  //表单赋值
+  //Form assignment
   const [registerModal, { setModalProps, closeModal }] = useModalInner(async (data) => {
     isUpdate.value = !!data?.isUpdate;
     if (unref(isUpdate)) {
@@ -38,17 +38,17 @@
   });
   
   const hasHref = ref(false)
-  //查看消息详情可以跳转
+  //You can view the message details
   function showHrefButton(){
     if(content.value.busId){
       hasHref.value = true;
     }
   }
-  //跳转至办理页面
+  //Jump to the application page
   function jumpToHandlePage(){
     let temp:any = content.value
     if(temp.busId){
-      //这个busId是 任务ID 
+      //This busId is the task ID
       let jsonStr = temp.msgAbstract;
       let query = {};
       try {
@@ -61,7 +61,7 @@
           }
         }
       }catch(e){
-        console.log('参数解析异常', e)
+        console.log('The parameter parsing is abnormal', e)
       }
       
       console.log('query', query, jsonStr)

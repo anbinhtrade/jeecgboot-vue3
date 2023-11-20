@@ -6,7 +6,7 @@ import { Icon } from '/@/components/Icon';
 
 export const columns: BasicColumn[] = [
   {
-    title: 'Menu name',
+    title: 'Menu Name',
     dataIndex: 'menuName',
     width: 200,
     align: 'left',
@@ -34,7 +34,7 @@ export const columns: BasicColumn[] = [
     width: 50,
   },
   {
-    title: 'STATE',
+    title: 'Status',
     dataIndex: 'status',
     width: 80,
     customRender: ({ record }) => {
@@ -59,13 +59,13 @@ const isButton = (type: string) => type === '2';
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'menuName',
-    label: 'Menu name',
+    label: 'Menu Name',
     component: 'Input',
     colProps: { span: 8 },
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'Select',
     componentProps: {
       options: [
@@ -94,7 +94,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'menuName',
-    label: 'Menu name',
+    label: 'Menu Name',
     component: 'Input',
     required: true,
   },
@@ -148,7 +148,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'RadioButtonGroup',
     defaultValue: '0',
     componentProps: {

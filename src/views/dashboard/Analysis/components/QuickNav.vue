@@ -1,5 +1,5 @@
 <template>
-  <Card title="快捷导航" v-bind="$attrs">
+  <Card title="Quick navigation" v-bind="$attrs">
     <template v-for="item in navItems" :key="item">
       <CardGrid @click="goPage">
         <span class="flex flex-col items-center">
@@ -19,38 +19,38 @@
   const $message = useMessage();
   const navItems = [
     {
-      title: '业务受理',
+      title: 'Business acceptance',
       icon: 'ion:home-outline',
       color: '#1fdaca',
     },
     {
-      title: '业务管理',
+      title: 'Business management',
       icon: 'ion:grid-outline',
       color: '#bf0c2c',
     },
     {
-      title: '文件管理',
+      title: 'File management',
       icon: 'ion:layers-outline',
       color: '#e18525',
     },
     {
-      title: '信息查询',
+      title: 'Information inquiry',
       icon: 'ion:settings-outline',
       color: '#3fb27f',
     }, 
 		{
-				title: '通知公告',
+				title: 'Notification Announcement',
 				icon: 'ion:notifications',
 				color: '#13b0ff',
 		}, 
 		{
-				title: '我的任务',
+				title: 'My task',
 				icon: 'ion:person-stalker',
 				color: '#b27315',
 		}
   ];
 
   function goPage() {
-    $message.createMessage.success('根据业务自行处理跳转页面!');
+    $message.createMessage.success('Process the jump page according to the business!');
   }
 </script>

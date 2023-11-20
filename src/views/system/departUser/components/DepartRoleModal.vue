@@ -24,7 +24,7 @@
   const isUpdate = ref<boolean>(true);
   // The current pop-up data
   const model = ref<object>({});
-  const title = computed(() => (isUpdate.value ? 'EDIT' : 'NEW'));
+  const title = computed(() => (isUpdate.value ? 'Edit' : 'New'));
 
   //Sign-up forms
   const [registerForm, { resetFields, setFieldsValue, validate, updateSchema }] = useForm({

@@ -103,7 +103,7 @@ export const checkPermDuplication=(model, schema, required?)=>{
           return Promise.resolve();
         }
         if (!value && required) {
-          return Promise.reject(`请输入${schema.label}`);
+          return Promise.reject(`Please enter ${schema.label}`);
         }
         return new Promise<void>((resolve, reject) => {
           getCheckPermDuplication({
@@ -111,9 +111,9 @@ export const checkPermDuplication=(model, schema, required?)=>{
             url:model.url,
             alwaysShow:model.alwaysShow
           }).then((res) => {
-              res.success ? resolve() : reject(res.message || '校验失败');
+              res.success ? resolve() : reject(res.message || 'The verification failed');
           }).catch((err) => {
-              reject(err.message || '验证失败');
+              reject(err.message || 'Validation failed');
           });
         });
       },

@@ -46,7 +46,7 @@
       @change="handleChangeInTable"
     >
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> EXPORT</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> Export</a-button>
       </template>
     </BasicTable>
 
@@ -191,7 +191,7 @@
       }
 
       /**
-       * 重置
+       * RESET
        */
       function searchReset() {
         queryParam.value = {};

@@ -20,8 +20,8 @@ export async function registerJVxeCustom() {
   await registerAsyncComponent(JVxeTypes.image, import('./src/components/JVxeImageCell.vue'));
   // 注册【用户选择】组件
   await registerAsyncComponent(JVxeTypes.userSelect, import('./src/components/JVxeUserSelectCell.vue'));
-  // 注册【部门选择】组件
+  // Register the Department Selection component
   await registerAsyncComponent(JVxeTypes.departSelect, import('./src/components/JVxeDepartSelectCell.vue'));
-  // 注册【省市区选择】组件
+  // Register the Province and City Selection component
   await registerAsyncComponent(JVxeTypes.pca, import('./src/components/JVxePcaCell.vue'));
 }

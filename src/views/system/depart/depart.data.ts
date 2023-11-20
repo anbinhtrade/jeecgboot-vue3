@@ -81,10 +81,10 @@ export function useBasicFormSchema() {
 // Institution Type Options
 export const orgCategoryOptions = {
   // 一级部门
-  root: [{ value: '1', label: 'FIRM' }],
+  root: [{ value: '1', label: 'Company' }],
   // Sub-divisions
   child: [
-    { value: '2', label: 'DEPARTMENT' },
-    { value: '3', label: 'POST' },
+    { value: '2', label: 'Department' },
+    { value: '3', label: 'Position' },
   ],
 };

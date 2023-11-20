@@ -22,7 +22,7 @@
             <a-input ref="accountNameEdit" :maxlength="100" v-model:value="userInfo.realname" @blur="editRealName" />
           </div>
           <div class="use-day">
-            使用：<span>{{userInfo.createTimeText}}</span>
+            Use：<span>{{userInfo.createTimeText}}</span>
           </div>
         </div>
       </div>
@@ -30,33 +30,33 @@
     <div class="account-data">
       <!-- 详细资料 -->
       <div class="account-detail">
-        <div class="font-size-15 font-bold font-color-gray" style="margin-bottom: 16px">详细资料</div>
+        <div class="font-size-15 font-bold font-color-gray" style="margin-bottom: 16px">Details:</div>
         <div class="margin-bottom-10 font-size-13">
-          <span class="gray-75 item-label">生日</span>
+          <span class="gray-75 item-label">Birthday</span>
           <span class="gray-3">{{ userInfo.birthday }}</span>
         </div>
         <div class="margin-bottom-10 font-size-13">
-          <span class="gray-75 item-label">性别</span>
+          <span class="gray-75 item-label">Gender</span>
           <span class="gray-3">{{ userInfo.sexText }}</span>
         </div>
         <div class="margin-bottom-10 nowarp font-size-13">
-          <span class="gray-75 item-label">职位</span>
+          <span class="gray-75 item-label">Posts</span>
           <span class="gray-3">{{ userInfo.postText ? userInfo.postText : "Not filled" }}</span>
         </div>
         <div class="font-size-13">
           <span class="item-label"></span>
-          <span class="item-label pointer" style="color:#1e88e5" @click="openEditModal">EDIT</span>
+          <span class="item-label pointer" style="color:#1e88e5" @click="openEditModal">Edit</span>
         </div>
       </div>
       <!-- Contact Information -->
       <div class="account-info">
         <div class="font-size-15 font-bold font-color-gray" style="margin-bottom: 16px">Contact Information</div>
         <div class="margin-bottom-10 font-size-13">
-          <span class="gray-75 item-label">MAILBOX</span>
+          <span class="gray-75 item-label">Email</span>
           <span class="gray-3">{{ userInfo.email ? userInfo.email : "Not filled" }}</span>
         </div>
         <div class="margin-bottom-10 font-size-13">
-          <span class="gray-75 item-label">CELL PHONE</span>
+          <span class="gray-75 item-label">Phone</span>
           <span class="gray-3">{{ userInfo.phone ? userInfo.phone : "Not filled" }}</span>
         </div>
       </div>
@@ -81,12 +81,12 @@ import UserAccountModal from './commponents/UserAccountModal.vue';
 import { useModal } from '/@/components/Modal';
 import { cloneDeep } from 'lodash-es';
 import { useDesign } from '/@/hooks/web/useDesign';
-//TODO 当字典租户隔离时，数据会查不到，默认一个
-const sexOption = getDictItemsByCode("sex") || [{text:'男',value:'1'},{text:'女',value:'2'}];
+//TODO When the dictionary tenant is isolated, the data cannot be found, and the default is one
+const sexOption = getDictItemsByCode("sex") || [{text:'Male',value:'1'},{text:'Female',value:'2'}];
 const { createMessage } = useMessage();
 const userStore = useUserStore();
   const { prefixCls } = useDesign('j-base-setting-container');
-//是否编辑
+//Edit or not
 const isEdit = ref<boolean>(false);
 //用户信息
 const userInfo = ref<any>({});

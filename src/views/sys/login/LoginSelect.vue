@@ -1,25 +1,25 @@
 <template>
   <BasicModal v-bind="config" @register="registerModal" :title="currTitle" wrapClassName="loginSelectModal" v-model:visible="visible">
     <a-form ref="formRef" :model="formState" :rules="rules" v-bind="layout" :colon="false" class="loginSelectForm">
-      <!--多租户选择-->
+      <!--Multi-tenant selection-->
       <a-form-item v-if="isMultiTenant" name="tenantId" :validate-status="validate_status">
-        <!--label内容-->
+        <!--label-->
         <template #label>
           <a-tooltip placement="topLeft">
             <template #title>
-              <span>您隶属于多租户，请选择登录租户</span>
+              <span>You belong to a multi-tenant, select Sign-in tenant</span>
             </template>
-            <a-avatar style="background-color: #87d068" :size="30"> 租户 </a-avatar>
+            <a-avatar style="background-color: #87d068" :size="30"> Tenant </a-avatar>
           </a-tooltip>
         </template>
         <template #extra v-if="validate_status == 'error'">
-          <span style="color: #ed6f6f">请选择登录租户</span>
+          <span style="color: #ed6f6f">Select Sign in to your tenant</span>
         </template>
-        <!--租户下拉内容-->
+        <!--Tenant drop-down content-->
         <a-select
           v-model:value="formState.tenantId"
           @change="handleTenantChange"
-          placeholder="请选择登录租户"
+          placeholder="Select Sign in to your tenant"
           :class="{ 'valid-error': validate_status == 'error' }"
         >
           <template v-for="tenant in tenantList" :key="tenant.id">
@@ -27,25 +27,25 @@
           </template>
         </a-select>
       </a-form-item>
-      <!--多部门选择-->
+      <!--Multi-sector selection-->
       <a-form-item v-if="isMultiDepart" :validate-status="validate_status1" :colon="false">
-        <!--label内容-->
+        <!--Label-->
         <template #label>
           <a-tooltip placement="topLeft">
             <template #title>
-              <span>您隶属于多部门，请选择登录部门</span>
+              <span>You belong to more than one department, please select the department you are logged into</span>
             </template>
-            <a-avatar style="background-color: rgb(104, 208, 203)" :size="30"> 部门 </a-avatar>
+            <a-avatar style="background-color: rgb(104, 208, 203)" :size="30"> Department </a-avatar>
           </a-tooltip>
         </template>
         <template #extra v-if="validate_status1 == 'error'">
-          <span style="color: #ed6f6f">请选择登录部门</span>
+          <span style="color: #ed6f6f">Please select the department you want to log in</span>
         </template>
         <!--部门下拉内容-->
         <a-select
           v-model:value="formState.orgCode"
           @change="handleDepartChange"
-          placeholder="请选择登录部门"
+          placeholder="Please select the department you want to log in"
           :class="{ 'valid-error': validate_status1 == 'error' }"
         >
           <template v-for="depart in departList" :key="depart.orgCode">
@@ -56,7 +56,7 @@
     </a-form>
 
     <template #footer>
-      <a-button @click="handleSubmit" type="primary">确认</a-button>
+      <a-button @click="handleSubmit" type="primary">Confirm</a-button>
     </template>
   </BasicModal>
 </template>
@@ -82,21 +82,21 @@
     setup(props, { emit }) {
       const userStore = useUserStore();
       const { notification } = useMessage();
-      //租户配置
+      //Tenant configuration
       const isMultiTenant = ref(false);
       const tenantList = ref([]);
       const validate_status = ref('');
-      //部门配置
+      //Department configuration
       const isMultiDepart = ref(false);
       const departList = ref([]);
       const validate_status1 = ref('');
-      //弹窗显隐
+      //The pop-up window is hidden
       const visible = ref(false);
-      //登录用户
+      //Logged-in user
       const username = ref('');
-      //表单
+      //forms
       const formRef = ref();
-      //选择的租户部门信息
+      //The selected tenant department information
       const formState: UnwrapRef<FormState> = reactive({
         orgCode: undefined,
         tenantId: null,
@@ -116,17 +116,17 @@
       //当前标题
       const currTitle = computed(() => {
         if (unref(isMultiDepart) && unref(isMultiTenant)) {
-          return '请选择租户和部门';
+          return 'Please select a tenant and department';
         } else if (unref(isMultiDepart) && !unref(isMultiTenant)) {
-          return '请选择部门';
+          return 'Please select a department';
         } else if (!unref(isMultiDepart) && unref(isMultiTenant)) {
-          return '请选择租户';
+          return 'Please select a tenant';
         }
       });
 
       const rules = ref({
-        tenantId: [{ required: unref(isMultiTenant), type: 'number', message: '请选择租户', trigger: 'change' }],
-        orgCode: [{ required: unref(isMultiDepart), message: '请选择部门', trigger: 'change' }],
+        tenantId: [{ required: unref(isMultiTenant), type: 'number', message: 'Please select a tenant', trigger: 'change' }],
+        orgCode: [{ required: unref(isMultiDepart), message: 'Please select a department', trigger: 'change' }],
       });
 
       const layout = {
@@ -134,10 +134,10 @@
         wrapperCol: { span: 18 },
       };
       /**
-       * 处理部门情况
+       * Dealing with departmental situations
        */
       function bizDepart(loginResult) {
-        //如果登录接口返回了用户上次登录租户ID，则不需要重新选择
+        //If the login interface returns the last login tenant ID of the user, you do not need to select it again
         if(loginResult.userInfo?.orgCode && loginResult.userInfo?.orgCode!==''){
           isMultiDepart.value = false;
           return;
@@ -147,8 +147,8 @@
         //0:无部门 1:一个部门 2:多个部门
         if (multi_depart == 0) {
           notification.warn({
-            message: '提示',
-            description: `您尚未归属部门,请确认账号信息`,
+            message: 'Prompt',
+            description: `If you are not in a department, please confirm your account information`,
             duration: 3,
           });
           isMultiDepart.value = false;
@@ -161,7 +161,7 @@
       }
 
       /**
-       * 处理租户情况
+       * Handle tenant situations
        */
       function bizTenantList(loginResult) {
         //如果登录接口返回了用户上次登录租户ID，则不需要重新选择
@@ -207,18 +207,18 @@
                 emit('success');
               })
               .catch((e) => {
-                console.log('登录选择出现问题', e);
+                console.log('There was a problem with the sign-in selection', e);
               })
               .finally(() => {
                 close();
               });
           })
           .catch((err) => {
-            console.log('表单校验未通过error', err);
+            console.log('The form verification failed error', err);
           });
       }
       /**
-       *切换选择部门
+       *Toggle to select a department
        */
       function departResolve() {
         return new Promise((resolve, reject) => {
@@ -241,25 +241,25 @@
       }
 
       /**
-       * 请求失败处理
+       * Request failure processing
        */
       function requestFailed(err) {
         notification.error({
-          message: '登录失败',
-          description: ((err.response || {}).data || {}).message || err.message || '请求出现错误，请稍后再试',
+          message: 'Login failed',
+          description: ((err.response || {}).data || {}).message || err.message || 'There was an error on the request, please try again later',
           duration: 4,
         });
       }
 
       /**
-       * 关闭model
+       * Close the model
        */
       function close() {
         closeModal();
         reset();
       }
       /**
-       * 弹窗打开前处理
+       * The pop-up window opens for pre-processing
        */
       async function show(loginResult) {
         if (loginResult) {
@@ -279,7 +279,7 @@
       }
 
       /**
-       *重置数据
+       *Reset the data
        */
       function reset() {
         tenantList.value = [];

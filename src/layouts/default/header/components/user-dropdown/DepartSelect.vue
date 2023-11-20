@@ -2,17 +2,17 @@
   <BasicModal v-bind="config" :title="currTitle" v-model:visible="visible" wrapClassName="loginSelectModal">
     <a-form ref="formRef" v-bind="layout" :colon="false" class="loginSelectForm">
       <a-form-item v-if="isMultiTenant" :validate-status="validate_status">
-        <!--label内容-->
+        <!--LABEL-->
         <template #label>
           <a-tooltip placement="topLeft">
             <template #title>
-              <span>您隶属于多租户，请选择当前所属租户</span>
+              <span>If you belong to a multi-tenant, select the tenant to which you belong to</span>
             </template>
-            <a-avatar style="background-color: #87d068" :size="30"> 租户 </a-avatar>
+            <a-avatar style="background-color: #87d068" :size="30"> Tenant </a-avatar>
           </a-tooltip>
         </template>
-        <!--部门下拉内容-->
-        <a-select v-model:value="tenantSelected" placeholder="请选择登录部门" :class="{ 'valid-error': validate_status == 'error' }">
+        <!--Department drop-down content-->
+        <a-select v-model:value="tenantSelected" placeholder="Please select the department you want to log in" :class="{ 'valid-error': validate_status == 'error' }">
           <template #suffixIcon>
             <Icon icon="ant-design:gold-outline" />
           </template>
@@ -22,17 +22,17 @@
         </a-select>
       </a-form-item>
       <a-form-item v-if="isMultiDepart" :validate-status="validate_status1">
-        <!--label内容-->
+        <!--LABEL-->
         <template #label>
           <a-tooltip placement="topLeft">
             <template #title>
-              <span>您隶属于多部门，请选择当前所在部门</span>
+              <span>You belong to more than one department, please select the department you are currently in</span>
             </template>
-            <a-avatar style="background-color: rgb(104, 208, 203)" :size="30"> 部门 </a-avatar>
+            <a-avatar style="background-color: rgb(104, 208, 203)" :size="30"> Department </a-avatar>
           </a-tooltip>
         </template>
-        <!--部门下拉内容-->
-        <a-select v-model:value="departSelected" placeholder="请选择登录部门" :class="{ 'valid-error': validate_status1 == 'error' }">
+        <!--Department drop-down content-->
+        <a-select v-model:value="departSelected" placeholder="Please select the department you want to log in" :class="{ 'valid-error': validate_status1 == 'error' }">
           <template #suffixIcon>
             <Icon icon="ant-design:gold-outline" />
           </template>
@@ -44,8 +44,8 @@
     </a-form>
 
     <template #footer>
-      <a-button @click="close">关闭</a-button>
-      <a-button @click="handleSubmit" type="primary">确认</a-button>
+      <a-button @click="close">Shut down</a-button>
+      <a-button @click="handleSubmit" type="primary">Confirm</a-button>
     </template>
   </BasicModal>
 </template>
@@ -61,7 +61,7 @@
   const userStore = useUserStore();
   const { createMessage, notification } = useMessage();
   const props = defineProps({
-    title: { type: String, default: '部门选择' },
+    title: { type: String, default: 'Department selection' },
     closable: { type: Boolean, default: false },
     username: { type: String, default: '' },
   });
@@ -95,30 +95,30 @@
   //弹窗显隐
   const visible = ref(false);
   /**
-   * 弹窗打开前处理
+   * The pop-up window opens for pre-processing
    */
   async function show() {
-    //加载部门
+    //Load the department
     await loadDepartList();
-    //加载租户
+    //Load the tenant
     await loadTenantList();
-    //标题配置
+    //Header configuration
     if (unref(isMultiTenant) && unref(isMultiDepart)) {
-      currTitle.value = '切换租户和部门';
+      currTitle.value = 'Switch Tenants And Departments';
     } else if (unref(isMultiTenant)) {
       currTitle.value =
-        unref(currentTenantName) && unref(currentTenantName).length > 0 ? `租户切换（当前租户 :${unref(currentTenantName)}）` : props.title;
+        unref(currentTenantName) && unref(currentTenantName).length > 0 ? `Tenant Switchover (current Tenant :${unref(currentTenantName)}）` : props.title;
     } else if (unref(isMultiDepart)) {
       currTitle.value =
-        unref(currentDepartName) && unref(currentDepartName).length > 0 ? `部门切换（当前部门 :${unref(currentDepartName)}）` : props.title;
+        unref(currentDepartName) && unref(currentDepartName).length > 0 ? `Department Switch (Current Department.) :${unref(currentDepartName)}）` : props.title;
     }
-    //model显隐
+    //The model is hidden
     if (unref(isMultiTenant) || unref(isMultiDepart)) {
       visible.value = true;
     }
   }
   /**
-   *加载部门信息
+   *Load department information
    */
   async function loadDepartList() {
     const result = await getUserDeparts();
@@ -164,13 +164,13 @@
         if (unref(isMultiTenant)) {
           userStore.setTenant(unref(tenantSelected));
         }
-        createMessage.success('切换成功');
+        createMessage.success('The switchover was successful');
         
         //切换租户后要刷新首页
         window.location.reload();
       })
       .catch((e) => {
-        console.log('登录选择出现问题', e);
+        console.log('There was a problem with the sign-in selection', e);
       })
       .finally(() => {
         if (unref(isMultiTenant)) {
@@ -180,7 +180,7 @@
       });
   }
   /**
-   *切换选择部门
+   *Toggle to select a department
    */
   function departResolve() {
     return new Promise(async (resolve, reject) => {
@@ -205,24 +205,24 @@
     });
   }
   /**
-   * 请求失败处理
+   * Request failure processing
    */
   function requestFailed(err) {
     notification.error({
-      message: '登录失败',
-      description: ((err.response || {}).data || {}).message || err.message || '请求出现错误，请稍后再试',
+      message: 'Login failed',
+      description: ((err.response || {}).data || {}).message || err.message || 'There was an error on the request, please try again later',
       duration: 4,
     });
   }
   /**
-   * 关闭model
+   * Close the model
    */
   function close() {
     departClear();
   }
 
   /**
-   *初始化数据
+   *Initialize the data
    */
   function departClear() {
     currTitle.value = '';
@@ -243,7 +243,7 @@
   }
 
   /**
-   * 监听username
+   * Listening Username
    */
   watch(
     () => props.username,

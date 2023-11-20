@@ -1,19 +1,19 @@
 /*
  *
- * 这里填写用户自定义的表达式
- * 可用在Online表单的默认值表达式中使用
- * 需要外部使用的变量或方法一定要 export，否则无法识别
+ * Fill in the user-defined expression here
+ * Can be used in default expressions for online forms
+ * Variables or methods that need to be used externally must be export, otherwise it is not recognized
  * 示例：
- *   export const name = '张三'; // const 是常量
- *   export let age = 17; // 看情况 export const 还是 let ，两者都可正常使用
- *   export function content(arg) { // export 方法，可传参数，使用时要加括号，值一定要return回去，可以返回Promise
+ *   export const name = zhangSan // const is the constant IS A CONSTANT
+ *   export let age = 17; // It depends export const Still is let , both of which work fine
+ *   export function content(arg) { // export Method, can be passed parameters, use to add parentheses, value must be returned back, can return Promise
  *     return 'content' + arg;
  *   }
- *   export const address = (arg) => content(arg) + ' | 北京市'; // export 箭头函数也可以
+ *   export const address = (arg) => content(arg) + ' | Beijing City'; // export Arrow functions are also available
  *
  */
 
-/** 字段默认值官方示例：获取地址 */
+/** Official example of field default: Get address */
 export function demoFieldDefVal_getAddress(arg) {
   if (!arg) {
     arg = '朝阳区';

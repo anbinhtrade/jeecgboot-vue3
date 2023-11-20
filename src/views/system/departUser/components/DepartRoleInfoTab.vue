@@ -11,7 +11,7 @@
             <a-menu>
               <a-menu-item key="1" @click="onDeleteDepartRoleBatch">
                 <icon icon="ant-design:delete-outlined" />
-                <span>DELETE</span>
+                <span>Delete</span>
               </a-menu-item>
             </a-menu>
           </template>
@@ -174,7 +174,7 @@
    * 操作栏
    */
   function getTableAction(record): ActionItem[] {
-    return [{ label: 'EDIT', onClick: editDepartRole.bind(null, record) }];
+    return [{ label: 'Edit', onClick: editDepartRole.bind(null, record) }];
   }
 
   /**
@@ -184,7 +184,7 @@
     return [
       { label: 'AUTHORIZATION', onClick: permissionDepartRole.bind(null, record) },
       {
-        label: 'DELETE',
+        label: 'Delete',
         color: 'error',
         popConfirm: {
           title: 'Are you sure you want to delete it?',

@@ -43,7 +43,7 @@ const [registerModal, {setModalProps, closeModal}] = useModalInner(async (data) 
   }
 });
 //设置标题
-const title = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
+const title = computed(() => (!unref(isUpdate) ? 'New' : 'Edit'));
 
 //表单提交事件
 async function handleSubmit(v) {

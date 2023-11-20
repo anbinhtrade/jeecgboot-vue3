@@ -56,7 +56,7 @@
         showIndexColumn: false,
         actionColumn: {
           width: 80,
-          title: 'OPERATE',
+          title: 'Action',
           dataIndex: 'action',
           slots: { customRender: 'action' },
           fixed: undefined,

@@ -12,7 +12,7 @@
     @template="handleTemplate"
   >
     <template #header>
-      <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleCreate">NEW</a-button>
+      <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleCreate">New</a-button>
     </template>
     <template #cardTitle>
       <a-tabs defaultActiveKey="1" @change="tabChange" size="small">
@@ -81,7 +81,7 @@
   }
 
   /**
-   * EDIT
+   * Edit
    */
   function handleEdit(record: Recordable) {
     //Determine whether there is a protected password

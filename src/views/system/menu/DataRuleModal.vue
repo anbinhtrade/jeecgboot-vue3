@@ -32,20 +32,20 @@
     }
   });
 
-  //设置标题
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增规则' : '编辑规则'));
+  //Set the title
+  const getTitle = computed(() => (!unref(isUpdate) ? 'New Rule' : 'Edit Rule'));
 
-  //表单提交事件
+  //Form submission events
   async function handleSubmit() {
     try {
       const values = await validate();
       values.permissionId = props.permissionId;
       setModalProps({ confirmLoading: true });
-      //提交表单
+      //Submit the form
       await saveOrUpdateRule(values, isUpdate.value);
-      //关闭弹窗
+      //Close the pop-up window
       closeModal();
-      //刷新列表
+      //Refresh the list
       emit('success');
     } finally {
       setModalProps({ confirmLoading: false });

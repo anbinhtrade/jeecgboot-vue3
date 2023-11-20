@@ -3,72 +3,72 @@
     <a-form class="antd-modal-form" ref="formRef" :model="formState" :rules="validatorRules">
       <a-row>
         <a-col :span="24">
-          <a-form-item label="文本" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.name">
-            <a-input v-model:value="formState.name" placeholder="请输入文本"></a-input>
+          <a-form-item label="TEXT" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.name">
+            <a-input v-model:value="formState.name" placeholder="Please enter text"></a-input>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="密码" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.miMa">
-            <a-input-password v-model:value="formState.miMa" placeholder="请输入密码" />
+          <a-form-item label="PASSWORD" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.miMa">
+            <a-input-password v-model:value="formState.miMa" placeholder="Please enter your password" />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="字典下拉" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.xiala">
-            <JDictSelectTag type="select" v-model:value="formState.xiala" dictCode="sex" placeholder="请选择字典下拉" />
+          <a-form-item label="Dictionary drop-down" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.xiala">
+            <JDictSelectTag type="select" v-model:value="formState.xiala" dictCode="sex" placeholder="Please select the Dictionary drop-down" />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="字典单选" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.danxuan">
-            <JDictSelectTag type="radio" v-model:value="formState.danxuan" dictCode="sex" placeholder="请选择字典单选" />
+          <a-form-item label="Dictionary single-select" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.danxuan">
+            <JDictSelectTag type="radio" v-model:value="formState.danxuan" dictCode="sex" placeholder="Please select Dictionary Radio" />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="字典多选" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.duoxuan">
-            <JCheckbox v-model:value="formState.duoxuan" dictCode="urgent_level" placeholder="请选择字典多选" />
+          <a-form-item label="Dictionary multi-select" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.duoxuan">
+            <JCheckbox v-model:value="formState.duoxuan" dictCode="urgent_level" placeholder="Please select a dictionary to select more" />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="开关" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.kaiguan">
+          <a-form-item label="SWITCH" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.kaiguan">
             <JSwitch v-model:value="formState.kaiguan" :options="['1', '0']"></JSwitch>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="日期" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.riqi">
-            <a-date-picker placeholder="请选择日期" format="YYYY-MM-DD" valueFormat="YYYY-MM-DD" v-model:value="formState.riqi" style="width: 100%" />
+          <a-form-item label="DATE" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.riqi">
+            <a-date-picker placeholder="Please select a date" format="YYYY-MM-DD" valueFormat="YYYY-MM-DD" v-model:value="formState.riqi" style="width: 100%" />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="年月日时分秒" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.nyrsfm">
+          <a-form-item label="Year, month, day, hour, minute, second" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.nyrsfm">
             <a-date-picker show-time v-model:value="formState.nyrsfm" style="width: 100%" valueFormat="YYYY-MM-DD HH:mm:ss" />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="时间" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.shijian">
-            <TimePicker placeholder="请选择时间" v-model:value="formState.shijian" style="width: 100%" />
+          <a-form-item label="TIME" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.shijian">
+            <TimePicker placeholder="Please select a time" v-model:value="formState.shijian" style="width: 100%" />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="文件" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.wenjian">
+          <a-form-item label="FILE" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.wenjian">
             <JUpload v-model:value="formState.wenjian"></JUpload>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="图片" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.tupian">
+          <a-form-item label="IMAGE" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.tupian">
             <JImageUpload :fileMax="2" v-model:value="formState.tupian"></JImageUpload>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="多行文本框" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.dhwb">
-            <a-textarea v-model:value="formState.dhwb" rows="4" placeholder="请输入多行文本框" />
+          <a-form-item label="Multi-line text box" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.dhwb">
+            <a-textarea v-model:value="formState.dhwb" rows="4" placeholder="Please enter a multi-line text box" />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="字典表下拉搜索框" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.xlss">
+          <a-form-item label="Dictionary table drop-down search box" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.xlss">
             <JSearchSelect v-model:value="formState.xlss" dict="sys_user,realname,username" />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="popup弹窗" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.popup">
+          <a-form-item label="pop-ups" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.popup">
             <JPopup
               v-model:value="formState.popup"
               :fieldConfig="[
@@ -87,17 +87,17 @@
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="分类字典树" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.flzds">
+          <a-form-item label="Classification dictionary tree" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.flzds">
             <JCategorySelect
               @change="(value) => handleFormChange('flzds', value)"
               v-model:value="formState.flzds"
               pcode="B02"
-              placeholder="请选择分类字典树"
+              placeholder="Please select the Classification Dictionary Tree"
             />
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="部门选择" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.bmxz">
+          <a-form-item label="Department selection" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.bmxz">
             <JSelectDept v-model:value="formState.bmxz" :multi="true" type="array" />
           </a-form-item>
         </a-col>
@@ -153,7 +153,7 @@
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="USER" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.yongHu">
+          <a-form-item label="User" :labelCol="labelCol" :wrapperCol="wrapperCol" v-bind="validateInfos.yongHu">
             <JSelectUser v-model:value="formState.yongHu" placeholder="Please select a user"></JSelectUser>
           </a-form-item>
         </a-col>
@@ -307,7 +307,7 @@
   const validatorRules = {
     name: [{ required: false, message: 'Please enter text!' }],
     miMa: [{ required: false, message: 'Please enter your password!' }],
-    ywzz: [{ required: false }, { pattern: '^[a-z|A-Z]{2,10}$', message: '不符合校验规则!' }],
+    ywzz: [{ required: false }, { pattern: '^[a-z|A-Z]{2,10}$', message: 'Doesn\'t meet the validation rules!' }],
     xiala: [{ required: false, message: 'Please select a drop-down component!' }],
     danxuan: [{ required: false, message: 'Please select a radio portlet!' }],
     duoxuan: [{ required: false, message: 'Please select a multi-select component!' }],
@@ -341,19 +341,19 @@
   const { resetFields, validate, validateInfos } = useForm(formState, validatorRules, { immediate: false });
   //update-end---author:wangshuai ---date:20220616  for：报表示例验证修改------------
   const ldzjsOptions = ref([
-    { label: '男', value: '1' },
-    { label: '女', value: '2' },
+    { label: 'Male', value: '1' },
+    { label: 'Female', value: '2' },
   ]);
 
   /**
-   * NEW
+   * New
    */
   function add() {
     edit({});
   }
 
   /**
-   * EDIT
+   * Edit
    */
   function edit(record) {
     nextTick(() => {
@@ -433,7 +433,7 @@
   }
 
   /**
-   * 值改变事件触发
+   * The value change event is triggered
    * @param key
    * @param value
    */

@@ -160,7 +160,7 @@
       //定义表格列
       const columns = [
         {
-          title: 'User Accounts',
+          title: 'User Name',
           dataIndex: 'username',
           width: 120,
           align: 'left',
@@ -181,12 +181,12 @@
           width: 120,
         },
         {
-          title: 'MAILBOX',
+          title: 'Email',
           dataIndex: 'email',
           // width: 40,
         },
         {
-          title: 'STATE',
+          title: 'Status',
           dataIndex: 'status_dictText',
           width: 80,
         },
@@ -207,7 +207,7 @@
             width: 40,
           },
           {
-            title: 'OPERATE',
+            title: 'Action',
             dataIndex: 'action',
             align: 'center',
             width: 40,

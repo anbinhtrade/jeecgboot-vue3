@@ -1,8 +1,8 @@
 <template>
-  <BasicDrawer @register="registerBaseDrawer" title="ROLE USER" width="800" destroyOnClose>
+  <BasicDrawer @register="registerBaseDrawer" title="Role User" width="800" destroyOnClose>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button type="primary" @click="handleCreate" v-if="!disableUserEdit"> New users</a-button>
+        <a-button type="primary" @click="handleCreate" v-if="!disableUserEdit"> New user</a-button>
         <a-button type="primary" @click="handleSelect"> Already have users</a-button>
 
         <a-dropdown v-if="checkedKeys.length > 0">
@@ -58,7 +58,7 @@
   //Register drawer
   const [registerModal, { openModal }] = useModal();
   const [registerTable, { reload, updateTableDataRecord, setProps }] = useTable({
-    title: 'USER LIST',
+    title: 'User List',
     api: userList,
     columns: userColumns,
     formConfig: {
@@ -79,7 +79,7 @@
     rowKey: 'id',
     actionColumn: {
       width: 180,
-      title: 'MANIPULATE',
+      title: 'Manipulate',
       dataIndex: 'action',
       slots: { customRender: 'action' },
       fixed: undefined,
@@ -87,7 +87,7 @@
   });
 
   /**
-   * Select column configuration
+   * Select Column Configuration
    */
   const rowSelection = {
     type: 'checkbox',
@@ -104,7 +104,7 @@
   }
 
   /**
-   * NEW
+   * New
    */
   function handleCreate() {
     openDrawer(true, {
@@ -114,7 +114,7 @@
     });
   }
   /**
-   * COMPILER
+   * Compiler
    */
   async function handleEdit(record: Recordable) {
     try {
@@ -133,7 +133,7 @@
   }
 
   /**
-   * DELETE EVENT
+   * Delete Event
    */
   async function handleDelete(record) {
     await deleteUserRole({ userId: record.id, roleId: roleId.value }, reload);
@@ -147,7 +147,7 @@
   }
 
   /**
-   * SUCCESSFUL CALLBACK
+   * Successful Callback
    */
   function handleSuccess({ isUpdate, values }) {
     isUpdate ? updateTableDataRecord(values.id, values) : reload();
@@ -170,12 +170,12 @@
   function getTableAction(record) {
     return [
       {
-        label: 'COMPILER',
+        label: 'Compiler',
         onClick: handleEdit.bind(null, record),
         ifShow: () => !props.disableUserEdit,
       },
       {
-        label: 'DISASSOCIATE',
+        label: 'Disassociate',
         popConfirm: {
           title: 'Confirm to cancel the association?',
           confirm: handleDelete.bind(null, record),

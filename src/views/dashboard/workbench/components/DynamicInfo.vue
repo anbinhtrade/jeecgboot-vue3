@@ -1,7 +1,7 @@
 <template>
   <Card title="What's new" v-bind="$attrs">
     <template #extra>
-      <a-button type="link" size="small">MORE</a-button>
+      <a-button type="link" size="small">More</a-button>
     </template>
     <List item-layout="horizontal" :data-source="dynamicInfoItems">
       <template #renderItem="{ item }">

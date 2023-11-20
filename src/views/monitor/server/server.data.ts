@@ -9,7 +9,7 @@ export const columns: BasicColumn[] = [
     slots: { customRender: 'param' },
   },
   {
-    title: 'DESCRIPTION',
+    title: 'Description',
     dataIndex: 'text',
     slots: { customRender: 'text' },
     width: 80,

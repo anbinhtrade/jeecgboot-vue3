@@ -57,8 +57,8 @@
               <a-col :span="5">
                 <a-form-item>
                   <a-select placeholder="GENDER" v-model:value="item.sex">
-                    <a-select-option value="1">MAN</a-select-option>
-                    <a-select-option value="2">WOMAN</a-select-option>
+                    <a-select-option value="1">Male</a-select-option>
+                    <a-select-option value="2">Female</a-select-option>
                   </a-select>
                 </a-form-item>
               </a-col>
@@ -178,7 +178,7 @@
           orderMainModel.jeecgOrderTicketList = ticketList;
         }
       });
-      const getTitle = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
+      const getTitle = computed(() => (!unref(isUpdate) ? 'New' : 'Edit'));
 
       //动态添加行
       function addRowCustom() {

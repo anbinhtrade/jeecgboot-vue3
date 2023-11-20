@@ -1,25 +1,25 @@
 <template>
   <div :class="[`${prefixCls}`]">
-    <div class="my-account">账户</div>
+    <div class="my-account">Account</div>
     <div class="account-row-item clearfix">
-      <div class="account-label gray-75">手机</div>
-      <span class="gray">{{ userDetail.phone ? userDetail.phone : '未填写' }}</span>
-      <span class="pointer blue-e5 phone-margin" @click="updatePhone" v-if="userDetail.phone">修改</span>
+      <div class="account-label gray-75">Telephone</div>
+      <span class="gray">{{ userDetail.phone ? userDetail.phone : 'Not Filled' }}</span>
+      <span class="pointer blue-e5 phone-margin" @click="updatePhone" v-if="userDetail.phone">Revise</span>
       <!--      <span class="pointer blue-e5" @click="unbindPhone" v-if="userDetail.phone">解绑?</span>-->
       <!--      <span class="pointer blue-e5" @click="unbindPhone" v-else>绑定?</span>-->
     </div>
     <div class="account-row-item clearfix">
-      <div class="account-label gray-75">邮箱</div>
-      <span class="gray">{{ userDetail.email ? userDetail.email : '未填写' }}</span>
-      <span class="pointer blue-e5 phone-margin" @click="updateEmail">修改</span>
+      <div class="account-label gray-75">Email</div>
+      <span class="gray">{{ userDetail.email ? userDetail.email : 'Not Filled' }}</span>
+      <span class="pointer blue-e5 phone-margin" @click="updateEmail">Revise</span>
       <!--      <span class="pointer blue-e5" @click="unbindEmail" v-if="userDetail.email">解绑?</span>-->
       <!--      <span class="pointer blue-e5" @click="unbindEmail" v-else>绑定?</span>-->
       <!--      <span class="pointer blue-e5" style="margin-left:5px" @click="checkEmail" v-if="userDetail.email">验证?</span>-->
     </div>
     <div class="account-row-item">
-      <div class="account-label gray-75">密码</div>
+      <div class="account-label gray-75">Password</div>
       <Icon icon="ant-design:lock-outlined" style="color: #9e9e9e" />
-      <span class="pointer blue-e5" style="margin-left: 10px" @click="updatePassWord">修改</span>
+      <span class="pointer blue-e5" style="margin-left: 10px" @click="updatePassWord">Revise</span>
     </div>
 
     <!--    <div class="account-row-item clearfix">-->
@@ -54,7 +54,7 @@
 
   const wechatData = reactive<any>({
     bindWechat: false,
-    name: '昵称',
+    name: 'Nickname',
   });
 
   /**
@@ -100,28 +100,28 @@
    * 手机号解绑
    */
   function unbindPhone() {
-    console.log('手机号解绑');
+    console.log('Unbind your mobile phone number');
   }
 
   /**
    * 邮箱解绑
    */
   function unbindEmail() {
-    console.log('邮箱解绑');
+    console.log('Unbind the mailbox');
   }
 
   /**
    * 邮箱验证
    */
   function checkEmail() {
-    console.log('邮箱验证');
+    console.log('Email verification');
   }
 
   /**
    * 微信绑定解绑事件
    */
   function wechatBind() {
-    console.log('微信绑定解绑事件');
+    console.log('WeChat binding and unbinding event');
   }
 
   /**

@@ -115,8 +115,8 @@ export function getOrderCustomerFormSchema(formData) {
       component: 'Select',
       componentProps: {
         options: [
-          { label: 'MAN', value: '1', key: '1' },
-          { label: 'WOMAN', value: '2', key: '2' },
+          { label: 'Male', value: '1', key: '1' },
+          { label: 'Female', value: '2', key: '2' },
         ],
       },
     },

@@ -3,12 +3,12 @@ import { render } from '/@/utils/common/renderUtils';
 
 export const columns: BasicColumn[] = [
   {
-    title: 'TITLE',
+    title: 'Title',
     width: 150,
     dataIndex: 'titile',
   },
   {
-    title: 'The type of message',
+    title: 'Msg Category',
     dataIndex: 'msgCategory',
     width: 100,
     customRender: ({ text }) => {
@@ -16,12 +16,12 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: 'PUBLISHER',
+    title: 'Publisher',
     width: 100,
     dataIndex: 'sender',
   },
   {
-    title: 'PRIORITY',
+    title: 'Priority',
     dataIndex: 'priority',
     width: 70,
     customRender: ({ text }) => {
@@ -30,7 +30,7 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: 'Notification object',
+    title: 'Msg Type',
     dataIndex: 'msgType',
     width: 100,
     customRender: ({ text }) => {
@@ -38,7 +38,7 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: 'Publishing status',
+    title: 'Send Status',
     dataIndex: 'sendStatus',
     width: 70,
     customRender: ({ text }) => {
@@ -47,12 +47,12 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: 'RELEASED',
+    title: 'Send Time',
     width: 100,
     dataIndex: 'sendTime',
   },
   {
-    title: 'Revocation time',
+    title: 'Cancel time',
     width: 100,
     dataIndex: 'cancelTime',
   },
@@ -61,7 +61,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'titile',
-    label: 'TITLE',
+    label: 'Title',
     component: 'JInput',
     colProps: { span: 8 },
   },
@@ -76,7 +76,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'msgCategory',
-    label: 'The type of message',
+    label: 'Msg Category',
     required: true,
     component: 'JDictSelectTag',
     defaultValue: '1',
@@ -88,7 +88,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'titile',
-    label: 'TITLE',
+    label: 'Title',
     component: 'Input',
     required: true,
     componentProps: {
@@ -97,7 +97,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'msgAbstract',
-    label: 'SUMMARY',
+    label: 'Summary',
     component: 'InputTextArea',
     required: true,
   },
@@ -114,7 +114,7 @@ export const formSchema: FormSchema[] = [
   // },
   {
     field: 'msgType',
-    label: 'Receiving users',
+    label: 'Msg Type',
     defaultValue: 'ALL',
     component: 'JDictSelectTag',
     required: true,
@@ -126,7 +126,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'userIds',
-    label: 'Specify the user',
+    label: 'User Ids',
     component: 'JSelectUser',
     required: true,
     componentProps: {
@@ -137,7 +137,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'priority',
-    label: 'PRIORITY',
+    label: 'Priority',
     defaultValue: 'H',
     component: 'JDictSelectTag',
     componentProps: {
@@ -148,7 +148,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'msgContent',
-    label: 'CONTENT',
+    label: 'Content',
     component: 'Input',
     render: render.renderTinymce,
   },

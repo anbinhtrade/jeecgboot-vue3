@@ -1,5 +1,5 @@
 <template>
-  <BasicModal v-bind="$attrs" @register="registerModal" title="修改密码" @ok="handleSubmit" width="600px">
+  <BasicModal v-bind="$attrs" @register="registerModal" title="Change your password" @ok="handleSubmit" width="600px">
     <BasicForm @register="registerForm" />
   </BasicModal>
 </template>
@@ -20,27 +20,27 @@
   const [registerForm, { resetFields, validate, clearValidate }] = useForm({
     schemas: [
       {
-        label: '旧密码',
+        label: 'Old Password',
         field: 'oldpassword',
         component: 'InputPassword',
         required: true,
       },
       {
-        label: '新密码',
+        label: 'New Password',
         field: 'password',
         component: 'StrengthMeter',
         componentProps: {
-          placeholder: '请输入新密码',
+          placeholder: 'Please enter a new password',
         },
         rules: [
           {
             required: true,
-            message: '请输入新密码',
+            message: 'Please enter a new password',
           },
         ],
       },
       {
-        label: '确认新密码',
+        label: 'Confirm Password',
         field: 'confirmpassword',
         component: 'InputPassword',
         dynamicRules: ({ values }) => rules.confirmPassword(values, true),
@@ -74,7 +74,7 @@
 
   async function show(name) {
     if (!name) {
-      $message.createMessage.warning('当前系统无登录用户!');
+      $message.createMessage.warning('There are no logged-in users in the current system!');
       return;
     } else {
       username.value = name;

@@ -99,7 +99,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: 'The name of the data source',
+    label: 'Data Source',
     component: 'Input',
     colProps: { span: 8 },
   },
@@ -134,7 +134,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'name',
-    label: 'The name of the data source',
+    label: 'Data Source',
     component: 'Input',
     required: true,
   },
@@ -160,7 +160,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'dbUrl',
-    label: 'The address of the data source',
+    label: 'DB Url',
     required: true,
     component: 'Input',
   },

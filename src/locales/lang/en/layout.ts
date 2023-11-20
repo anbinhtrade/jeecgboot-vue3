@@ -4,7 +4,7 @@ export default {
     // user dropdown
     dropdownItemDoc: 'Document',
     dropdownItemLoginOut: 'Login Out',
-    dropdownItemSwitchPassword: 'Password Change',
+    dropdownItemSwitchPassword: 'Change Password',
     dropdownItemSwitchDepart: 'Switch Department',
     dropdownItemRefreshCache: 'Clean cache',
     dropdownItemSwitchAccount: 'Account Setting',

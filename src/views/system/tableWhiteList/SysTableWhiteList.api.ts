@@ -12,7 +12,7 @@ enum Api {
 }
 
 /**
- * EXPORT api
+ * Export api
  * @param params
  */
 export const getExportUrl = Api.exportXls;

@@ -1,8 +1,8 @@
 <template>
   <div class="tenant-padding" :class="[`${prefixCls}`]">
     <div class="my-tenant">
-      <span style="flex: 1">我的租户</span>
-      <span class="invited" @click="invitedClick">我的受邀信息<span class="approved-count" v-if="invitedCount>0">{{invitedCount}}</span></span>
+      <span style="flex: 1">My Tenants</span>
+      <span class="invited" @click="invitedClick">My Invitation Information<span class="approved-count" v-if="invitedCount>0">{{invitedCount}}</span></span>
     </div>
     <div class="tenant-list" v-if="dataSource.length>0">
       <div v-for="item in dataSource" class="tenant-list-item" @click="drownClick(item)">
@@ -11,19 +11,19 @@
             <div class="item-name">{{ item.name }}</div>
             <div class="item-house" @click.stop="copyClick(item.houseNumber)">
               <span>
-                组织门牌号：{{ item.houseNumber }}
+                Organization house number: {{ item.houseNumber }}
                 <Icon icon="ant-design:copy-outlined" style="font-size: 13px; margin-left: 2px" />
               </span>
             </div>
           </div>
           <div class="item-right">
             <span v-if="item.userTenantStatus === '3'">
-              <span class="pointer examine">待审核</span>
-              <span class="pointer cancel-apply" @click.stop="cancelApplyClick(item.tenantUserId)">取消申请</span>
+              <span class="pointer examine">To be reviewed</span>
+              <span class="pointer cancel-apply" @click.stop="cancelApplyClick(item.tenantUserId)">Cancel your application</span>
             </span>
             <span v-else-if="item.userTenantStatus === '5'">
-              <span class="pointer examine" @click="joinOrRefuseClick(item.tenantUserId,'1')">加入</span>
-              <span class="pointer cancel-apply" @click.stop="joinOrRefuseClick(item.tenantUserId,'4')">拒绝</span>
+              <span class="pointer examine" @click="joinOrRefuseClick(item.tenantUserId,'1')">JOIN</span>
+              <span class="pointer cancel-apply" @click.stop="joinOrRefuseClick(item.tenantUserId,'4')">REFUSE</span>
             </span>
             <div v-else style="width: 75px"></div>
             <span style="margin-left: 24px">
@@ -37,13 +37,13 @@
             <div class="content-name"> Organize business cards </div>
             <div class="content-desc">
               <div class="flex-flow">
-                <div class="content-des-text">NAME</div>
+                <div class="content-des-text">Name</div>
                 <div style="font-size: 13px;color: #000000">
                   {{ userDetail.realname }}
                 </div>
               </div>
               <div class="flex-flow">
-                <div class="content-des-text">DEPARTMENT</div>
+                <div class="content-des-text">Department</div>
                 <div style="font-size: 13px">
                   {{ userDetail.orgCodeTxt ? userDetail.orgCodeTxt : 'Not filled' }}
                 </div>
@@ -121,7 +121,7 @@
         </div>
       </div>
     </div>
-    <a-empty v-else description="暂无数据" style="position: relative;top: 50px;"/>
+    <a-empty v-else description="No data yet" style="position: relative;top: 50px;"/>
   </div>
   <a-modal v-model:visible="tenantVisible" width="400px" wrapClassName="edit-tenant-setting">
     <template #title>
@@ -129,9 +129,9 @@
       <div style="color: #9e9e9e; margin-top: 10px; font-size: 13px"> A business card is your personal information under the organization and is only displayed in the organization. </div>
     </template>
     <div style="margin-top: 24px; font-size: 13px; padding: 0 24px">
-      <div class="font-color75">NAME</div>
+      <div class="font-color75">Name</div>
       <div class="margin-top6 margin-bottom-16">{{ userDetail.realname }}</div>
-      <div>DEPARTMENT</div>
+      <div>Department</div>
       <div class="margin-top6 margin-bottom-16">{{ userDetail.orgCodeTxt ? userDetail.orgCodeTxt : 'Not filled' }}</div>
       <div>POSTS</div>
       <div class="margin-top6 margin-bottom-16">{{ userDetail.postText ? userDetail.postText : 'Not filled' }}</div>
@@ -142,19 +142,19 @@
     </div>
   </a-modal>
 
-  <!-- 退出租户 -->
+  <!-- Exit the tenant -->
   <a-modal v-model:visible="cancelVisible" width="800" destroy-on-close>
     <template #title>
       <div class="cancellation">
         <Icon icon="ant-design:warning-outlined" style="font-size: 20px;color: red"/>
-        退出租户 {{myTenantInfo.name}}
+        Exit the tenant {{myTenantInfo.name}}
       </div>
     </template>
     <a-form :model="formCancelState" ref="cancelTenantRef">
       <a-form-item name="tenantName">
         <a-row :span="24" style="padding: 20px 20px 0;font-size: 13px">
           <a-col :span="24">
-            请输入租户名称
+            Please enter a tenant name
           </a-col>
           <a-col :span="24" style="margin-top: 10px">
             <a-input v-model:value="formCancelState.tenantName" @change="tenantNameChange"/>
@@ -164,7 +164,7 @@
       <a-form-item name="loginPassword">
         <a-row :span="24" style="padding: 0 20px;font-size: 13px">
           <a-col :span="24">
-            请输入您的登录密码
+            Please enter your login password
           </a-col>
           <a-col :span="24" style="margin-top: 10px">
             <a-input-password v-model:value="formCancelState.loginPassword" />
@@ -173,13 +173,13 @@
       </a-form-item>
     </a-form>
     <template #footer>
-      <a-button type="primary" @click="handleOutClick" :disabled="outBtnDisabled">确定</a-button>
-      <a-button @click="handleCancelOutClick">取消</a-button>
+      <a-button type="primary" @click="handleOutClick" :disabled="outBtnDisabled">Are you sure</a-button>
+      <a-button @click="handleCancelOutClick">CANCEL</a-button>
     </template>
   </a-modal>
 
   <a-modal
-    title="变更拥有者"
+    title="Change of Owner"
     v-model:visible="owenVisible"
     width="800"
     destroy-on-close
@@ -188,7 +188,7 @@
       <div style="padding: 20px">
         <a-row :span="24">
           <div class="change-owen">
-            只有变更拥有着之后,才能退出
+            You can only exit after you have the change
           </div>
         </a-row>
         <a-row :span="24" style="margin-top: 10px">
@@ -197,14 +197,14 @@
       </div>
   </a-modal>
   
-  <!-- begin 我的受邀信息 -->
-  <a-modal title="我的受邀信息" v-model:visible="invitedVisible" :footer="null">
+  <!-- begin My invitation information -->
+  <a-modal title="My Invitation Information" v-model:visible="invitedVisible" :footer="null">
       <a-row :span="24" class="invited-row">
         <a-col :span="16">
-          组织
+          Organization
         </a-col>
         <a-col :span="8">
-          操作
+          Operation
         </a-col>
       </a-row>
     <a-row :span="24" class="invited-row-list" v-for="item in invitedList">
@@ -212,13 +212,13 @@
         {{item.name}}
       </a-col>
       <a-col :span="8">
-        <span class="common" @click="joinOrRefuseClick(item.tenantUserId,'1')">加入</span>
-        <span class="common refuse" @click="joinOrRefuseClick(item.tenantUserId,'4')">拒绝</span>
+        <span class="common" @click="joinOrRefuseClick(item.tenantUserId,'1')">Join</span>
+        <span class="common refuse" @click="joinOrRefuseClick(item.tenantUserId,'4')">Refuse</span>
       </a-col>
     </a-row>
     <div style="height: 20px"></div>
   </a-modal>
-  <!-- end 我的受邀信息 -->
+  <!-- end My invitation information -->
 </template>
 
 <script lang="ts" name="tenant-setting" setup>
@@ -315,23 +315,23 @@ const userDetail = ref({
     document.execCommand('copy');
     // 删除input元素
     document.body.removeChild(el);
-    createMessage.success('复制成功');
+    createMessage.success('The replication is successful');
   };
 
   /**
-   * 取消申请
+   * Cancel your application
    * @param id
    */
   function cancelApplyClick(id) {
     Modal.confirm({
-      title: '取消申请',
-      content: '是否取消申请',
-      okText: '确认',
-      cancelText: '取消',
+      title: 'Cancel your application',
+      content: 'Whether or not to cancel the application',
+      okText: 'CONFIRM',
+      cancelText: 'CANCEL',
       onOk: () => {
         cancelApplyTenant({ tenantId: id }).then((res) => {
           if (res.success) {
-            createMessage.success('取消申请成功');
+            createMessage.success('The cancellation application was successful');
             initDataSource();
           }else{
             createMessage.warning(res.message);
@@ -344,7 +344,7 @@ const userDetail = ref({
   };
 
   /**
-   * 展开关闭事件
+   * Expand the closing event
    */
   function drownClick(value) {
     if (!value.show) {
@@ -355,7 +355,7 @@ const userDetail = ref({
   };
 
   /**
-   * 获取部门文本
+   * Get departmental text
    * @param value
    */
   function getDepartText(value) {
@@ -365,11 +365,11 @@ const userDetail = ref({
     if (arr && arr.length > 0) {
       return arr[0].label;
     }
-    return '未填写';
+    return 'Not filled';
   };
 
   /**
-   * 底部文本点击事件
+   * Bottom text click events
    */
   function footerClick(type, item) {
     userData.value = item;
@@ -416,7 +416,7 @@ const userDetail = ref({
    */
   async function handleOutClick() {
     if(!unref(formCancelState).loginPassword){
-        createMessage.warning("请输入登录密码");
+        createMessage.warning("Please enter your login password");
         return;
     }
     console.log("myTenantInfo::::",myTenantInfo);
@@ -439,11 +439,11 @@ const userDetail = ref({
           cancelVisible.value = false;
           let fullPath = router.currentRoute.value.fullPath;
           Modal.confirm({
-            title: '您是该组织的拥有者',
-            content: '该组织下没有其他成员，需要您前往注销',
-            okText: '前往注销',
+            title: 'You are the owner of the organization',
+            content: 'There are no other members of the organization and you will need to go to cancel it',
+            okText: 'Go to Sign out',
             okType: 'danger',
-            cancelText: '取消',
+            cancelText: 'CANCEL',
             onOk: () => {
               if(fullPath === '/system/usersetting'){
                 return;
@@ -462,7 +462,7 @@ const userDetail = ref({
   }
 
   /**
-   * 退出租户取消事件
+   * Exit tenant cancellation event
    */
   function handleCancelOutClick() {
     cancelVisible.value = false;
@@ -470,18 +470,18 @@ const userDetail = ref({
   }
 
   /**
-   * 变更拥有着
+   * Change possession
    */
   function changeOwen() {
     if(!unref(tenantOwen)){
-      createMessage.warning("请选择变更拥有者");
+      createMessage.warning("Please select Change Owner");
       return;
     }
     changeOwenUserTenant({ userId:unref(tenantOwen), tenantId:unref(myTenantInfo).tenantUserId }).then((res) =>{
       if(res.success){
         createMessage.success(res.message);
         userStore.setTenant(null);
-        //切换租户后要刷新首页
+        //After you switch tenants, refresh the home page
         window.location.reload();
       } else {
         createMessage.warning(res.message);
@@ -489,22 +489,22 @@ const userDetail = ref({
     })
   }
   
-  //邀请数量
+  //Number of invitations
   const invitedCount = ref<number>(0);
-  //受邀信息
+  //Invitation information
   const invitedList = ref<any>([]);
-  //受邀信息弹窗
+  //Invitation information pop-up
   const invitedVisible = ref<boolean>(false);
 
   /**
-   * 受邀信息点击事件
+   * Invited information click events
    */
   function invitedClick() {
     invitedVisible.value = true;
   }
 
   /**
-   * 加入组织点击事件
+   * Join an organization click event
    */
   async function joinOrRefuseClick(tenantId,status) {
     await agreeOrRefuseJoinTenant( { tenantId:Number.parseInt(tenantId), status:status });
@@ -626,7 +626,7 @@ const userDetail = ref({
 }
 
 .footer-box {
-  /*begin 兼容暗夜模式*/
+  /*begin Compatible with dark night mode*/
   border-top: 1px solid @border-color-base;
   /*end 兼容暗夜模式*/
   box-sizing: border-box;
@@ -639,7 +639,7 @@ const userDetail = ref({
   margin-right: 40px;
 }
 
-/*begin 兼容暗夜模式*/
+/*begin Compatible with dark night mode*/
 .font-color333 {
   color: @text-color;
   font-weight: normal;
@@ -688,7 +688,7 @@ const userDetail = ref({
   font-size: 14px;
   font-weight: 700;
 }
-//update-begin---author:wangshuai ---date:20230704  for：被邀弹窗样式------------
+//update-begin---author:wangshuai ---date:20230704  for：Invited pop-up style------------
 .approved-count{
   background: #ffd2d2;
   border-radius: 19px;
@@ -726,7 +726,7 @@ const userDetail = ref({
 <style lang="less">
   // update-begin-author:liusq date:20230625 for: [issues/563]暗色主题部分失效
 @prefix-cls: ~'@{namespace}-j-user-tenant-setting-container';
-/*begin 兼容暗夜模式*/
+/*begin Compatible with dark night mode*/
 .@{prefix-cls} {
 
   .my-tenant{
@@ -759,7 +759,7 @@ const userDetail = ref({
     border-top: 1px solid @border-color-base;
   }
 
-  /*begin 兼容暗夜模式*/
+  /*begin Compatible with dark night mode*/
   .font-color333 {
     color: @text-color;
   }
@@ -772,6 +772,6 @@ const userDetail = ref({
     color: @text-color;
   }
 }
-/*end 兼容暗夜模式*/
+/*end Compatible with dark night mode*/
   // update-end-author:liusq date:20230625 for: [issues/563]暗色主题部分失效
 </style>

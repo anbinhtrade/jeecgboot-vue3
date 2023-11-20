@@ -1,4 +1,4 @@
-<!--邀请用户加入租户弹窗-->
+<!--Invite users to join the tenant pop-up-->
 <template>
   <BasicModal @register="registerModal" :width="500" :title="title" @ok="handleSubmit">
     <BasicForm @register="registerForm" />
@@ -16,17 +16,17 @@ export default defineComponent({
     BasicForm,
   },
   setup(props, { emit }) {
-    const title = ref<string>('邀请成员');
+    const title = ref<string>('Invite members');
     const [registerForm, { resetFields, validate }] = useForm({
       schemas: [
         {
-          label: '手机号',
+          label: 'Mobile phone number',
           field: 'phone',
           component: 'Input',
           dynamicRules: () => {
             return [
-              { required: true, message: '请填写手机号' },
-              { pattern: /^1[3456789]\d{9}$/, message: '手机号码格式有误' },
+              { required: true, message: 'Please fill in your mobile phone number' },
+              { pattern: /^1[3456789]\d{9}$/, message: 'The format of the mobile phone number is incorrect' },
             ];
           },
         },
@@ -43,7 +43,7 @@ export default defineComponent({
     });
 
     /**
-     * 提交，返回给租户list页面
+     * Submit it to the tenant list page
      */
     async function handleSubmit() {
       let values = await validate();

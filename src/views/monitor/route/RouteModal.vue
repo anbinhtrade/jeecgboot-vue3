@@ -8,7 +8,7 @@
         <a-input v-model:value="router.name" placeholder="Route name" />
       </a-form-item>
       <a-form-item label="Route URI" name="uri">
-        <a-input v-model:value="router.uri" placeholder="Route URLs" />
+        <a-input v-model:value="router.uri" placeholder="Route Url" />
       </a-form-item>
       <a-form-item label="Route status" name="status">
         <a-switch default-checked :checked-value="1" :un-checked-value="0" v-model:checked="router.status" />
@@ -105,7 +105,7 @@
           </a-dropdown>
         </p>
       </a-form-item>
-      <a-form-item name="predicates" label="FILTER">
+      <a-form-item name="predicates" label="Filter">
         <div v-for="(item, index) in router.filters">
           <a-divider
             >{{ item.name }}
@@ -240,7 +240,7 @@
     }
   });
   /**
-   * TITLE
+   * Title
    */
   const getTitle = computed(() => (!unref(isUpdate) ? 'Routes are added' : 'Edit the route'));
 

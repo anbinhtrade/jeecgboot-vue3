@@ -14,7 +14,7 @@
       <!--  update-end---author:wangshuai ---date: 20230829 for：性能监控切换到磁盘监控再切回来报错列为空，不能用if判断------------>
         <template #tableTitle>
           <div slot="message"
-            >上次更新时间：{{ lastUpdateTime }}
+            >Last updated：{{ lastUpdateTime }}
             <a-divider type="vertical" />
             <a @click="handleUpdate">Update now</a></div
           >

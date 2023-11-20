@@ -95,7 +95,7 @@
         };
       }
 
-      // 获取系统消息
+      // Get system messages
       async function loadData() {
         try {
           let { anntMsgList, sysMsgList, anntMsgTotal, sysMsgTotal } = await listCementByUser({
@@ -106,7 +106,7 @@
           listData.value[0].count = anntMsgTotal;
           listData.value[1].count = sysMsgTotal;
         } catch (e) {
-          console.warn('系统消息通知异常：', e);
+          console.warn('The system message notifies the abnormal：', e);
         }
       }
 

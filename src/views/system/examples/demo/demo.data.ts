@@ -4,7 +4,7 @@ import { render } from '/@/utils/common/renderUtils';
 
 export const columns: BasicColumn[] = [
   {
-    title: '姓名',
+    title: 'Name',
     dataIndex: 'name',
     width: 170,
     align: 'left',
@@ -14,19 +14,19 @@ export const columns: BasicColumn[] = [
     }
   },
   {
-    title: '关键词',
+    title: 'KEYWORD',
     dataIndex: 'keyWord',
     width: 130,
     resizable: true,
   },
   {
-    title: '打卡时间',
+    title: 'Clock-in time',
     dataIndex: 'punchTime',
     width: 140,
     resizable: true,
   },
   {
-    title: '工资',
+    title: 'WAGES',
     dataIndex: 'salaryMoney',
     width: 140,
     resizable: true,
@@ -35,13 +35,13 @@ export const columns: BasicColumn[] = [
     }
   },
   {
-    title: '奖金',
+    title: 'BONUS',
     dataIndex: 'bonusMoney',
     width: 140,
     resizable: true,
   },
   {
-    title: '性别',
+    title: 'GENDER',
     dataIndex: 'sex',
     sorter: {
       multiple: 3
@@ -55,19 +55,19 @@ export const columns: BasicColumn[] = [
     resizable: true,
   },
   {
-    title: '生日',
+    title: 'BIRTHDAY',
     dataIndex: 'birthday',
     width: 120,
     resizable: true,
   },
   {
-    title: '邮箱',
+    title: 'Email',
     dataIndex: 'email',
     width: 120,
     resizable: true,
   },
   {
-    title: '个人简介',
+    title: 'BIOGRAPHY',
     dataIndex: 'content',
     width: 120,
     resizable: true,
@@ -77,7 +77,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: '姓名',
+    label: 'Name',
     component: 'Input',
     componentProps: {
       trim: true,
@@ -86,7 +86,7 @@ export const searchFormSchema: FormSchema[] = [
   },
   {
     field: 'birthday',
-    label: '生日',
+    label: 'BIRTHDAY',
     component: 'RangePicker',
     componentProps: {
       valueType: 'Date'
@@ -95,19 +95,19 @@ export const searchFormSchema: FormSchema[] = [
   },
   {
     field: 'age',
-    label: '年龄',
+    label: 'AGE',
     component: 'Input',
     slot: 'age',
     colProps: { span: 8 },
   },
   {
     field: 'sex',
-    label: '性别',
+    label: 'GENDER',
     colProps: { span: 8 },
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'sex',
-      placeholder: '请选择性别',
+      placeholder: 'Please select a gender',
     },
   },
 ];
@@ -133,90 +133,90 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'name',
-    label: '名字',
+    label: 'Name',
     component: 'Input',
     required: true,
     componentProps: {
-      placeholder: '请输入名字',
+      placeholder: 'Please enter a first name',
     },
   },
   {
     field: 'keyWord',
-    label: '关键词',
+    label: 'KEYWORD',
     component: 'Input',
     componentProps: {
-      placeholder: '请输入关键词',
+      placeholder: 'Please enter a keyword',
     },
   },
   {
     field: 'punchTime',
-    label: '打卡时间',
+    label: 'Clock-in time',
     component: 'DatePicker',
     componentProps: {
       showTime: true,
       valueFormat: 'YYYY-MM-DD HH:mm:ss',
-      placeholder: '请选择打卡时间',
+      placeholder: 'Please select a clock-in time',
     },
   },
   {
     field: 'salaryMoney',
-    label: '工资',
+    label: 'WAGES',
     component: 'Input',
     componentProps: {
-      placeholder: '请输入工资',
+      placeholder: 'Please enter your salary',
     },
   },
   {
     field: 'sex',
-    label: '性别',
+    label: 'GENDER',
     component: 'JDictSelectTag',
     defaultValue: '1',
     componentProps: {
       type: 'radio',
       dictCode: 'sex',
-      placeholder: '请选择性别',
+      placeholder: 'Please select a gender',
     },
   },
   {
     field: 'age',
-    label: '年龄',
+    label: 'AGE',
     component: 'InputNumber',
     defaultValue: 1,
     componentProps: {
-      placeholder: '请输入年龄',
+      placeholder: 'Please enter your age',
     },
   },
   {
     field: 'birthday',
-    label: '生日',
+    label: 'BIRTHDAY',
     component: 'DatePicker',
     defaultValue: '',
     componentProps: {
       valueFormat: 'YYYY-MM-DD',
-      placeholder: '请选择生日',
+      placeholder: 'Please select a date of birth',
     },
   },
   {
     field: 'email',
-    label: '邮箱',
+    label: 'Email',
     component: 'Input',
-    rules: [{ required: false, type: 'email', message: '邮箱格式不正确', trigger: 'blur' }],
+    rules: [{ required: false, type: 'email', message: 'The mailbox is incorrectly formatted', trigger: 'blur' }],
     componentProps: {
-      placeholder: '请输入邮箱',
+      placeholder: 'Please enter your email address',
     },
   },
   {
     field: 'content',
-    label: '个人简介 - To introduce myself',
+    label: 'BIOGRAPHY - To introduce myself',
     component: 'InputTextArea',
     labelLength: 4,
     componentProps: {
-      placeholder: '请输入个人简介',
+      placeholder: 'Please enter a bio',
     },
   },
   {
     field: 'updateCount',
-    label: '乐观锁',
+    label: 'Optimistic locks',
     show: false,
     component: 'Input',
   },

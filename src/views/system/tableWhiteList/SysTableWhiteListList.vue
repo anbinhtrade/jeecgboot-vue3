@@ -8,10 +8,10 @@
           New
         </a-button>
 <!--        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls">-->
-<!--          EXPORT-->
+<!--          Export-->
 <!--        </a-button>-->
 <!--        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">-->
-<!--          IMPORT-->
+<!--          Import-->
 <!--        </j-upload-button>-->
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
@@ -139,7 +139,7 @@ function handleSuccess({isUpdate, values}) {
 function getTableAction(record) {
   return [
     {
-      label: 'EDIT',
+      label: 'Edit',
       onClick: handleEdit.bind(null, record),
     }
   ]
@@ -154,7 +154,7 @@ function getDropDownAction(record) {
       label: 'DETAIL',
       onClick: handleDetail.bind(null, record),
     }, {
-      label: 'DELETE',
+      label: 'Delete',
       popConfirm: {
         title: 'Whether to confirm the deletion',
         confirm: handleDelete.bind(null, record),

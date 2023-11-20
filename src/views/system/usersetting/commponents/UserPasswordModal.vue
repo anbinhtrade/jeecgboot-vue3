@@ -1,21 +1,21 @@
 <template>
-  <BasicModal v-bind="$attrs" @register="registerModal" title="修改密码" @ok="handleSubmit">
+  <BasicModal v-bind="$attrs" @register="registerModal" title="Change your password" @ok="handleSubmit">
     <a-form class="antd-modal-form" ref="formRef" :model="formState" :rules="validatorRules">
       <a-form-item name="oldpassword">
-        <div class="black font-size-13">原有密码</div>
+        <div class="black font-size-13">Original password</div>
         <div class="pass-padding">
-          <a-input-password v-model:value="formState.oldpassword" placeholder="原有密码" />
+          <a-input-password v-model:value="formState.oldpassword" placeholder="Original password" />
         </div>
         <div style="display: block">
-          <span class="gray-9e float-left font-size-13">进入网站的登录密码</span>
+          <span class="gray-9e float-left font-size-13">Login password to access the website</span>
         </div>
       </a-form-item>
       <a-form-item name="password">
-        <span class="black font-size-13">新密码</span>
+        <span class="black font-size-13">New passwords</span>
         <div class="pass-padding">
-          <a-input-password v-model:value="formState.password" placeholder="新密码" />
+          <a-input-password v-model:value="formState.password" placeholder="New passwords" />
         </div>
-        <span class="gray-9e font-size-13">8-20位，需包含字母和数字</span>
+        <span class="gray-9e font-size-13">8-20 digits, including letters and numbers</span>
       </a-form-item>
     </a-form>
   </BasicModal>
@@ -29,7 +29,7 @@
   import { useUserStore, useUserStoreWithOut } from "/@/store/modules/user";
 
   const $message = useMessage();
-  //用户名
+  //USERNAME
   const username = ref<string>('')
   const formRef = ref();
   const formState = reactive({
@@ -45,8 +45,8 @@
   });
   const userStore = useUserStore();
   const validatorRules: Record<string, Rule[]> = {
-    password: [{ required: true, validator:checkPassword},{ pattern:/^(?=.*[0-9])(?=.*[a-zA-Z])(.{8,20})$/,message:'8-20位，需包含字母和数字'}],
-    oldpassword: [{ required: true, message: '请输入原有密码' }],
+    password: [{ required: true, validator:checkPassword},{ pattern:/^(?=.*[0-9])(?=.*[a-zA-Z])(.{8,20})$/,message:'8-20BIT，Must contain letters and numbers'}],
+    oldpassword: [{ required: true, message: 'Please enter your original password' }],
   };
 
   //表单提交事件
@@ -60,7 +60,7 @@
       await updateUserPassword(values).then((res) =>{
         if(res.success){
           $message.createMessage.info({
-            content:'密码修改成功，请重新登录！3s后自动退出登录',
+            content:'The password has been changed successfully, please log in again! Automatically log out after 3 s',
             duration: 3
           })
           //3s后返回登录页面
@@ -79,11 +79,11 @@
   }
 
   /**
-   * 验证新密码是否为空
+   * Verify that the new password is empty
    */
   function checkPassword(_rule: Rule, value: string) {
     if(value === ''){
-      return Promise.reject('请输入新密码');
+      return Promise.reject('Please enter a new password');
     }
     return Promise.resolve();
   }

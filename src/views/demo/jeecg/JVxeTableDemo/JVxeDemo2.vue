@@ -90,8 +90,8 @@
       type: JVxeTypes.radio,
       width: 130,
       options: [
-        { text: 'MAN', value: '1' },
-        { text: 'WOMAN', value: '2' },
+        { text: 'Male', value: '1' },
+        { text: 'Female', value: '2' },
       ],
       // 允许清除选择（再点一次取消选择）
       allowClear: false,

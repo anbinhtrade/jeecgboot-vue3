@@ -107,12 +107,12 @@
   // 注册用户选择 modal
   const [registerSelUserModal, selUserModal] = useModal();
 
-  // 清空选择的行
+  // Clear the selected rows
   function clearSelection() {
     selectedRowKeys.value = [];
   }
 
-  // 查看部门角色
+  // View department roles
   function showDepartRole(record) {
     userAuthDrawer.openDrawer(true, { userId: record.id, departId });
   }
@@ -125,7 +125,7 @@
       openDrawer(true, {
         isUpdate: false,
         departDisabled: true,
-        // 初始化负责部门
+        // Initialize the responsible department
         nextDepartOptions: { value: props.data?.key, label: props.data?.title },
         record: {
           activitiSync: 1,
@@ -146,7 +146,7 @@
     });
   }
 
-  // 编辑用户信息
+  // Edit user information
   function editUserInfo(record) {
     openDrawer(true, { isUpdate: true, record, departDisabled: true });
   }
@@ -173,16 +173,16 @@
     return Promise.reject();
   }
 
-  // 批量取消关联事件
+  // Unassociate events in bulk
   async function onUnlinkDepartUserBatch() {
     try {
       await unlinkDepartUser(selectedRowKeys, true);
-      // 批量删除成功后清空选择
+      // After the batch deletion is successful, the selection is cleared
       clearSelection();
     } catch (e) {}
   }
 
-  // 选择用户成功
+  // Select User Success
   async function onSelectUserOk(options, userIdList) {
     if (userIdList.length > 0) {
       try {
@@ -203,14 +203,14 @@
   }
 
   /**
-   * 操作栏
+   * Action bar
    */
   function getTableAction(record): ActionItem[] {
-    return [{ label: 'EDIT', onClick: editUserInfo.bind(null, record) }];
+    return [{ label: 'Edit', onClick: editUserInfo.bind(null, record) }];
   }
 
   /**
-   * 下拉操作栏
+   * Drop down the action bar
    */
   function getDropDownAction(record): ActionItem[] {
     return [

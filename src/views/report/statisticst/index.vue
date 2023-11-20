@@ -2,12 +2,12 @@
   <div class="p-4">
     <a-card :bordered="false" style="height: 100%">
       <a-tabs v-model:activeKey="activeKey" animated @change="tabChange">
-        <a-tab-pane key="bar" tab="HISTOGRAM">
+        <a-tab-pane key="bar" tab="Histogram">
           <a-row>
             <a-col :span="10">
               <a-radio-group v-model:value="barType" @change="statisticst">
-                <a-radio-button value="year">Calculated on an annual basis</a-radio-button>
-                <a-radio-button value="month">MONTHLY</a-radio-button>
+                <a-radio-button value="year">Annual</a-radio-button>
+                <a-radio-button value="month">Monthly</a-radio-button>
                 <a-radio-button value="category">Statistics by category</a-radio-button>
                 <a-radio-button value="cabinet">Statistics by cabinet number</a-radio-button>
               </a-radio-group>

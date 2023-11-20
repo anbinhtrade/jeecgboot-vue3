@@ -24,7 +24,7 @@
                   class="ant-tabs-tab"
                   :class="{ 'ant-tabs-tab-active': activeKey == 'all' }"
                 >
-                  全部消息
+                  All messages
                 </div>
                 <div
                   @click="(e) => handleChangeTab(e, 'star')"
@@ -34,7 +34,7 @@
                   class="ant-tabs-tab"
                   :class="{ 'ant-tabs-tab-active': activeKey == 'star' }"
                 >
-                  标星消息
+                  Star messages
                 </div>
               </div>
               <div
@@ -50,13 +50,13 @@
           </div>
         </div>
 
-        <!-- 头部图标 -->
+        <!-- Head icon -->
         <div class="icon-right">
           <div class="icons">
             <a-popover placement="bottomRight" :overlayStyle="{ width: '400px' }" trigger="click" v-model:visible="showSearch">
               <template #content>
                 <div>
-                  <span class="search-label">回复、提到我的人?：</span>
+                  <span class="search-label">Reply,Someone who mentioned me?：</span>
                   <span style="display: inline-block;">
                     <div v-if="searchParams.fromUser" class="selected-user">
                       <span>{{searchParams.realname}}</span>
@@ -69,7 +69,7 @@
                   </span>
                 </div>
                 <div class="search-date">
-                  <div class="date-label">时间：</div>
+                  <div class="date-label">Time:</div>
                   <div class="date-tags">
                     <div class="tags-container">
                       <div v-for="item in dateTags" :class="item.active == true ? 'tag active' : 'tag'" @click="handleClickDateTag(item)">{{
@@ -102,12 +102,12 @@
           <div></div>
         </template>
 
-        <a-tab-pane tab="全部消息" key="all" forceRender>
+        <a-tab-pane tab="All messages" key="all" forceRender>
           <sys-message-list ref="allMessageRef" @close="hrefThenClose" @detail="showDetailModal"/>
         </a-tab-pane>
 
         <!-- 标星 -->
-        <a-tab-pane tab="标星消息" key="star" forceRender>
+        <a-tab-pane tab="Star messages" key="star" forceRender>
           <sys-message-list ref="starMessageRef" star @close="hrefThenClose" @detail="showDetailModal"/>
         </a-tab-pane>
       </a-tabs>
@@ -155,7 +155,7 @@
         activeKey.value = key;
       }
       
-      // 查询区域存储值
+      // Query the regional store value
       const searchParams = reactive({
         fromUser: '',
         realname: '',
@@ -178,27 +178,27 @@
       
       //useModalInner
       const [registerModal, { closeModal }] = useModalInner(async (data) => {
-        //每次弹窗打开 加载最新的数据
+        //Each time the pop-up window opens, load the latest data
         loadData();
       });
       
       const showSearch = ref(false);
       
       function handleChangeSearchPerson(value, a) {
-        console.log('选择改变', value, a);
+        console.log('Select Change', value, a);
         showSearch.value = true;
       }
 
       const dateTags = reactive([
-        { key: 'jt', text: '今天', active: false },
-        { key: 'zt', text: '昨天', active: false },
-        { key: 'qt', text: '前天', active: false },
-        { key: 'bz', text: '本周', active: false },
-        { key: 'sz', text: '上周', active: false },
-        { key: 'by', text: '本月', active: false },
-        { key: 'sy', text: '上月', active: false },
-        { key: '7day', text: '七日', active: true },
-        { key: 'zdy', text: '自定义', active: false },
+        { key: 'jt', text: 'TODAY', active: false },
+        { key: 'zt', text: 'YESTERDAY', active: false },
+        { key: 'qt', text: 'Day before yesterday', active: false },
+        { key: 'bz', text: 'WEEK', active: false },
+        { key: 'sz', text: 'Last week', active: false },
+        { key: 'by', text: 'MONTH', active: false },
+        { key: 'sy', text: 'KAMIZUKI', active: false },
+        { key: '7day', text: 'Seven days', active: true },
+        { key: 'zdy', text: 'CUSTOMIZE', active: false },
       ]);
       function handleClickDateTag(item) {
         for (let a of dateTags) {
@@ -213,7 +213,7 @@
           searchParams.rangeDateKey = item.key;
         }
         if (item.key == 'zdy') {
-          // 自定义日期查询走的是 handleChangeSearchDate
+          // Custom date queries go yes handleChangeSearchDate
           if(item.active == false){
             searchParams.rangeDate = []
             loadData();
@@ -225,7 +225,7 @@
       const showRangeDate = computed(() => {
         let temp = dateTags.filter((i) => i.active == true);
         if (temp && temp.length > 0) {
-          if (temp[0].text == '自定义') {
+          if (temp[0].text == 'CUSTOMIZE') {
             return true;
           }
         }

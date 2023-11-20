@@ -38,7 +38,7 @@
     }
   });
   //设置标题
-  const title = computed(() => (!unref(isUpdate) ? '新增租户' : '编辑租户'));
+  const title = computed(() => (!unref(isUpdate) ? 'Add a new tenant' : 'Edit the tenant'));
   //表单提交事件
   async function handleSubmit(v) {
     try {

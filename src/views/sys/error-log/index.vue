@@ -68,7 +68,7 @@
   if (import.meta.env.DEV) {
     createMessage.info(t('sys.errorLog.enableMessage'));
   }
-  // 查看详情
+  // Find out more
   function handleDetail(row: ErrorLogInfo) {
     rowInfo.value = row;
     openModal(true);

@@ -4,25 +4,25 @@
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <!--插槽:table标题-->
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
-        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" :disabled="isDisabledAuth('system:user:export')"> EXPORT</a-button>
-        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">IMPORT</j-upload-button>
-        <a-button type="primary" @click="openModal(true, {})" preIcon="ant-design:hdd-outlined"> RECYCLE BIN</a-button>
+        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> New</a-button>
+        <a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls" :disabled="isDisabledAuth('system:user:export')"> Export</a-button>
+        <j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">Import</j-upload-button>
+        <a-button type="primary" @click="openModal(true, {})" preIcon="ant-design:hdd-outlined"> Recycle Bin</a-button>
 <!--        <JThirdAppButton biz-type="user" :selected-row-keys="selectedRowKeys" syncToApp syncToLocal @sync-finally="onSyncFinally" />-->
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                DELETE
+                Delete
               </a-menu-item>
               <a-menu-item key="2" @click="batchFrozen(2)">
                 <Icon icon="ant-design:lock-outlined"></Icon>
-                FREEZE
+                Freeze
               </a-menu-item>
               <a-menu-item key="3" @click="batchFrozen(1)">
                 <Icon icon="ant-design:unlock-outlined"></Icon>
-                THAW
+                Thaw
               </a-menu-item>
             </a-menu>
           </template>
@@ -39,11 +39,11 @@
     </BasicTable>
     <!--用户抽屉-->
     <UserDrawer @register="registerDrawer" @success="handleSuccess" />
-    <!--修改密码-->
+    <!--Change your password-->
     <PasswordModal @register="registerPasswordModal" @success="reload" />
-    <!--用户代理-->
+    <!--User Agent-->
     <UserAgentModal @register="registerAgentModal" @success="reload" />
-    <!--回收站-->
+    <!--RECYCLE BIN-->
     <UserRecycleBinModal @register="registerModal" @success="reload" />
     <!-- 离职受理人弹窗 -->
     <UserQuitAgentModal @register="registerQuitAgentModal" @success="reload" />
@@ -53,7 +53,7 @@
 </template>
 
 <script lang="ts" name="system-user" setup>
-  //ts语法
+  //ts Syntax
   import { ref, computed, unref } from 'vue';
   import { BasicTable, TableAction, ActionItem } from '/@/components/Table';
   import UserDrawer from './UserDrawer.vue';
@@ -238,7 +238,7 @@
   function getTableAction(record): ActionItem[] {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
         // ifShow: () => hasPermission('system:user:edit'),
       },
@@ -259,7 +259,7 @@
         onClick: handleChangePassword.bind(null, record.username),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),

@@ -2,7 +2,7 @@
   <div class="p-4">
     <a-card :bordered="false" style="height: 100%">
       <a-tabs v-model:activeKey="activeKey" animated @change="tabChange">
-        <a-tab-pane key="1" tab="HISTOGRAM">
+        <a-tab-pane key="1" tab="Histogram">
           <a-row>
             <a-col :span="24">
               <Bar :chartData="barDataSource" height="50vh" :option="{ title: { text: 'Top sales', left: 'center' } }"></Bar>
@@ -43,7 +43,7 @@
         <a-tab-pane key="11" tab="Ranked lists">
           <RankList title="Store sales leaderboard" :list="rankList" style="width: 600px; margin: 0 auto"></RankList>
         </a-tab-pane>
-        <a-tab-pane key="13" tab="TREND">
+        <a-tab-pane key="13" tab="Trend">
           <trend title="Trend" term="Trend：" :percentage="30" />
         </a-tab-pane>
         <!--暂无-->

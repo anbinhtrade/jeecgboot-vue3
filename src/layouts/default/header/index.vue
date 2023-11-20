@@ -10,8 +10,8 @@
         :sider="false"
       />
       <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getHeaderTheme" />
-      <!-- 欢迎语 -->
-      <span v-if="getShowContent && getShowBreadTitle && !getIsMobile" :class="[prefixCls, `${prefixCls}--${getHeaderTheme}`,'headerIntroductionClass']"> 欢迎进入 {{ title }} </span>
+      <!-- WELCOME -->
+      <span v-if="getShowContent && getShowBreadTitle && !getIsMobile" :class="[prefixCls, `${prefixCls}--${getHeaderTheme}`,'headerIntroductionClass']"> Welcome in {{ title }} </span>
     </div>
     <!-- left end -->
 
@@ -160,7 +160,7 @@
       });
 
       /**
-       * 首页多租户部门弹窗逻辑
+       * The pop-up logic of the multi-tenant department on the home page
        */
       const loginSelectRef = ref();
 
@@ -175,7 +175,7 @@
       }
 
       function loginSelectOk() {
-        console.log('成功。。。。。');
+        console.log('Success.....');
       }
 
       onMounted(() => {

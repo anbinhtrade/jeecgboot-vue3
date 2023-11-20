@@ -5,12 +5,12 @@
         <TableAction
           :actions="[
             {
-              label: 'EDIT',
+              label: 'Edit',
               onClick: handleEdit.bind(null, record),
               auth: 'other', // 根据权限控制是否显示: 无权限，不显示
             },
             {
-              label: 'DELETE',
+              label: 'Delete',
               icon: 'ic:outline-delete-outline',
               onClick: handleDelete.bind(null, record),
               auth: 'super', // 根据权限控制是否显示: 有权限，会显示
@@ -24,7 +24,7 @@
                 confirm: handleOpen.bind(null, record),
               },
               ifShow: (_action) => {
-                return record.status !== 'enable'; // 根据业务控制是否显示: 非enable状态的不显示启用按钮
+                return record.status !== 'enable'; // Whether the enable button is displayed or not based on the business control: The enable button is not displayed if it is not enabled
               },
             },
             {
@@ -34,7 +34,7 @@
                 confirm: handleOpen.bind(null, record),
               },
               ifShow: () => {
-                return record.status === 'enable'; // 根据业务控制是否显示: enable状态的显示禁用按钮
+                return record.status === 'enable'; // Disable the display of enable status based on whether the service control displays
               },
             },
             {
@@ -43,7 +43,7 @@
                 title: 'Whether it is displayed dynamically？',
                 confirm: handleOpen.bind(null, record),
               },
-              auth: 'super', // 同时根据权限和业务控制是否显示
+              auth: 'super', // At the same time, it is displayed according to the permission and business control
               ifShow: () => {
                 return true;
               },
@@ -66,12 +66,12 @@
       width: 100,
     },
     {
-      title: 'NAME',
+      title: 'Name',
       dataIndex: 'name',
-      auth: 'test', // 根据权限控制是否显示: 无权限，不显示
+      auth: 'test', // Permission control whether to display: No permissions, not displayed
     },
     {
-      title: 'STATE',
+      title: 'Status',
       dataIndex: 'status',
     },
     {

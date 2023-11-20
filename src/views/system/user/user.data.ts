@@ -5,23 +5,23 @@ import { rules } from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
 export const columns: BasicColumn[] = [
   {
-    title: 'User Accounts',
+    title: 'User Name',
     dataIndex: 'username',
     width: 120,
   },
   {
-    title: 'User name',
+    title: 'User Name',
     dataIndex: 'realname',
     width: 100,
   },
   {
-    title: 'AVATAR',
+    title: 'Avatar',
     dataIndex: 'avatar',
     width: 120,
     customRender: render.renderAvatar,
   },
   {
-    title: 'GENDER',
+    title: 'Gender',
     dataIndex: 'sex',
     width: 80,
     sorter: true,
@@ -30,17 +30,17 @@ export const columns: BasicColumn[] = [
     },
   },
   {
-    title: 'BIRTHDAY',
+    title: 'Birthday',
     dataIndex: 'birthday',
     width: 100,
   },
   {
-    title: 'Mobile phone number',
+    title: 'Phone Number',
     dataIndex: 'phone',
     width: 100,
   },
   {
-    title: 'DEPARTMENT',
+    title: 'Department',
     width: 150,
     dataIndex: 'orgCodeTxt',
   },
@@ -50,7 +50,7 @@ export const columns: BasicColumn[] = [
     dataIndex: 'departIds_dictText',
   },
   {
-    title: 'STATE',
+    title: 'State',
     dataIndex: 'status_dictText',
     width: 80,
   },
@@ -58,23 +58,23 @@ export const columns: BasicColumn[] = [
 
 export const recycleColumns: BasicColumn[] = [
   {
-    title: 'User Accounts',
+    title: 'User Name',
     dataIndex: 'username',
     width: 100,
   },
   {
-    title: 'User name',
+    title: 'Real Name',
     dataIndex: 'realname',
     width: 100,
   },
   {
-    title: 'AVATAR',
+    title: 'Avatar',
     dataIndex: 'avatar',
     width: 80,
     customRender: render.renderAvatar,
   },
   {
-    title: 'GENDER',
+    title: 'Gender',
     dataIndex: 'sex',
     width: 80,
     sorter: true,
@@ -86,19 +86,19 @@ export const recycleColumns: BasicColumn[] = [
 
 export const searchFormSchema: FormSchema[] = [
   {
-    label: 'ACCOUNT',
+    label: 'Username',
     field: 'username',
     component: 'JInput',
     //colProps: { span: 6 },
   },
   {
-    label: 'NAME',
+    label: 'Name',
     field: 'realname',
     component: 'JInput',
    //colProps: { span: 6 },
   },
   {
-    label: 'GENDER',
+    label: 'Gender',
     field: 'sex',
     component: 'JDictSelectTag',
     componentProps: {
@@ -109,13 +109,13 @@ export const searchFormSchema: FormSchema[] = [
     //colProps: { span: 6 },
   },
   {
-    label: 'Mobile phone number',
+    label: 'Phone Number',
     field: 'phone',
     component: 'Input',
     //colProps: { span: 6 },
   },
   {
-    label: 'User status',
+    label: 'Status',
     field: 'status',
     component: 'JDictSelectTag',
     componentProps: {
@@ -135,7 +135,7 @@ export const formSchema: FormSchema[] = [
     show: false,
   },
   {
-    label: 'User Accounts',
+    label: 'User Name',
     field: 'username',
     component: 'Input',
     dynamicDisabled: ({ values }) => {
@@ -144,7 +144,7 @@ export const formSchema: FormSchema[] = [
     dynamicRules: ({ model, schema }) => rules.duplicateCheckRule('sys_user', 'username', model, schema, true),
   },
   {
-    label: 'Login password',
+    label: 'Login Password',
     field: 'password',
     component: 'StrengthMeter',
     rules: [
@@ -155,26 +155,26 @@ export const formSchema: FormSchema[] = [
     ],
   },
   {
-    label: 'Confirm your password',
+    label: 'Confirm Password',
     field: 'confirmPassword',
     component: 'InputPassword',
     dynamicRules: ({ values }) => rules.confirmPassword(values, true),
   },
   {
-    label: 'User name',
+    label: 'Real Name',
     field: 'realname',
     required: true,
     component: 'Input',
   },
   {
-    label: 'Construction No.',
+    label: 'Work No.',
     field: 'workNo',
     required: true,
     component: 'Input',
     dynamicRules: ({ model, schema }) => ({ ...rules.duplicateCheckRule('sys_user', 'work_no', model, schema, true), trigger: 'blur' }),
   },
   {
-    label: 'OFFICE',
+    label: 'Position',
     field: 'post',
     required: false,
     component: 'JSelectPosition',
@@ -183,7 +183,7 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: 'ROLE',
+    label: 'Role',
     field: 'selectedroles',
     component: 'ApiSelect',
     componentProps: {
@@ -195,7 +195,7 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: 'AFFILIATION',
+    label: 'Department',
     field: 'selecteddeparts',
     component: 'JSelectDept',
     componentProps: ({ formActionType, formModel }) => {
@@ -220,7 +220,7 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: 'TENANT',
+    label: 'Tenant',
     field: 'relTenantIds',
     component: 'ApiSelect',
     componentProps: {
@@ -233,7 +233,7 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: 'IDENTITY',
+    label: 'Identity',
     field: 'userIdentity',
     component: 'RadioGroup',
     defaultValue: 1,
@@ -241,7 +241,7 @@ export const formSchema: FormSchema[] = [
       return {
         options: [
           { label: 'Regular users', value: 1, key: '1' },
-          { label: 'SUPERIOR', value: 2, key: '2' },
+          { label: 'Superior', value: 2, key: '2' },
         ],
         onChange: () => {
           formModel.userIdentity == 1 && (formModel.departIds = []);
@@ -250,7 +250,7 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: 'Responsible department',
+    label: 'Department Ids',
     field: 'departIds',
     component: 'Select',
     componentProps: {
@@ -259,7 +259,7 @@ export const formSchema: FormSchema[] = [
     ifShow: ({ values }) => values.userIdentity == 2,
   },
   {
-    label: 'AVATAR',
+    label: 'Avatar',
     field: 'avatar',
     component: 'JImageUpload',
     componentProps: {
@@ -267,22 +267,22 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: 'BIRTHDAY',
+    label: 'Birthday',
     field: 'birthday',
     component: 'DatePicker',
   },
   {
-    label: 'GENDER',
+    label: 'Gender',
     field: 'sex',
     component: 'JDictSelectTag',
     componentProps: {
       dictCode: 'sex',
-      placeholder: '请选择性别',
+      placeholder: 'Please select a gender',
       stringToNumber: true,
     },
   },
   {
-    label: 'MAILBOX',
+    label: 'Mailbox',
     field: 'email',
     component: 'Input',
     dynamicRules: ({ model, schema }) => {
@@ -293,7 +293,7 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: 'Mobile phone number',
+    label: 'Phone Number',
     field: 'phone',
     component: 'Input',
     dynamicRules: ({ model, schema }) => {
@@ -304,13 +304,13 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: 'LANDLINE',
+    label: 'Landline',
     field: 'telephone',
     component: 'Input',
     rules: [{ pattern: /^0\d{2,3}-[1-9]\d{6,7}$/, message: 'Please enter the correct landline number' }],
   },
   {
-    label: 'Workflow engine',
+    label: 'Workflow',
     field: 'activitiSync',
     defaultValue: 1,
     component: 'JDictSelectTag',
@@ -324,7 +324,7 @@ export const formSchema: FormSchema[] = [
 
 export const formPasswordSchema: FormSchema[] = [
   {
-    label: 'User Accounts',
+    label: 'User Name',
     field: 'username',
     component: 'Input',
     componentProps: { readOnly: true },
@@ -344,7 +344,7 @@ export const formPasswordSchema: FormSchema[] = [
     ],
   },
   {
-    label: 'Confirm your password',
+    label: 'Confirm Password',
     field: 'confirmPassword',
     component: 'InputPassword',
     dynamicRules: ({ values }) => rules.confirmPassword(values, true),
@@ -360,7 +360,7 @@ export const formAgentSchema: FormSchema[] = [
   },
   {
     field: 'userName',
-    label: 'USERNAME',
+    label: 'Username',
     component: 'Input',
     componentProps: {
       readOnly: true,
@@ -369,7 +369,7 @@ export const formAgentSchema: FormSchema[] = [
   },
   {
     field: 'agentUserName',
-    label: 'Proxy username',
+    label: 'Agent Username',
     required: true,
     component: 'JSelectUser',
     componentProps: {
@@ -380,7 +380,7 @@ export const formAgentSchema: FormSchema[] = [
   },
   {
     field: 'startTime',
-    label: 'Agent start time',
+    label: 'Agent Start Time',
     component: 'DatePicker',
     required: true,
     componentProps: {
@@ -392,7 +392,7 @@ export const formAgentSchema: FormSchema[] = [
   },
   {
     field: 'endTime',
-    label: 'Agent end time',
+    label: 'Agent End Time',
     component: 'DatePicker',
     required: true,
     componentProps: {
@@ -404,7 +404,7 @@ export const formAgentSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'JDictSelectTag',
     defaultValue: '1',
     componentProps: {
@@ -423,7 +423,7 @@ export const formQuitAgentSchema: FormSchema[] = [
   },
   {
     field: 'userName',
-    label: 'USERNAME',
+    label: 'Username',
     component: 'Input',
     componentProps: {
       readOnly: true,
@@ -432,7 +432,7 @@ export const formQuitAgentSchema: FormSchema[] = [
   },
   {
     field: 'agentUserName',
-    label: 'Handover personnel',
+    label: 'Agent Username',
     required: true,
     component: 'JSelectUser',
     componentProps: {
@@ -443,7 +443,7 @@ export const formQuitAgentSchema: FormSchema[] = [
   },
   {
     field: 'startTime',
-    label: 'Handover start time',
+    label: 'Start Time',
     component: 'DatePicker',
     required: true,
     componentProps: {
@@ -455,7 +455,7 @@ export const formQuitAgentSchema: FormSchema[] = [
   },
   {
     field: 'endTime',
-    label: 'Handover end time',
+    label: 'End Time',
     component: 'DatePicker',
     required: true,
     componentProps: {
@@ -467,7 +467,7 @@ export const formQuitAgentSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'JDictSelectTag',
     defaultValue: '1',
     componentProps: {
@@ -480,42 +480,42 @@ export const formQuitAgentSchema: FormSchema[] = [
 //A list of tenant users
 export const userTenantColumns: BasicColumn[] = [
   {
-    title: 'User Accounts',
+    title: 'User Name',
     dataIndex: 'username',
     width: 120,
   },
   {
-    title: 'User name',
+    title: 'Real Name',
     dataIndex: 'realname',
     width: 100,
   },
   {
-    title: 'AVATAR',
+    title: 'Avatar',
     dataIndex: 'avatar',
     width: 120,
     customRender: render.renderAvatar,
   },
   {
-    title: 'Mobile phone number',
+    title: 'Phone Number',
     dataIndex: 'phone',
     width: 100,
   },
   {
-    title: 'DEPARTMENT',
+    title: 'Department',
     width: 150,
     dataIndex: 'orgCodeTxt',
   },
   {
-    title: 'STATE',
+    title: 'Status',
     dataIndex: 'status',
     width: 80,
     customRender: ({ text }) => {
       if (text === '1') {
-        return 'NORMAL';
+        return 'Normal';
       } else if (text === '3') {
-        return 'Under approval';
+        return 'Under Approval';
       } else {
-        return 'REJECTED';
+        return 'Rejected';
       }
     },
   },
@@ -524,19 +524,19 @@ export const userTenantColumns: BasicColumn[] = [
 //用户租户搜索表单
 export const userTenantFormSchema: FormSchema[] = [
   {
-    label: 'ACCOUNT',
+    label: 'Account',
     field: 'username',
     component: 'Input',
     colProps: { span: 6 },
   },
   {
-    label: 'NAME',
+    label: 'Real Name',
     field: 'realname',
     component: 'Input',
     colProps: { span: 6 },
   },
   {
-    label: 'GENDER',
+    label: 'Gender',
     field: 'sex',
     component: 'JDictSelectTag',
     componentProps: {

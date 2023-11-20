@@ -126,9 +126,9 @@
           const res = await queryAllDictItems();
           removeAuthCache(DB_DICT_DATA_KEY);
           setAuthCache(DB_DICT_DATA_KEY, res.result);
-          createMessage.success('刷新缓存完成！');
+          createMessage.success('Flush cache complete!');
         } else {
-          createMessage.error('刷新缓存失败！');
+          createMessage.error('Failed to flush cache!');
         }
       }
       // 切换部门

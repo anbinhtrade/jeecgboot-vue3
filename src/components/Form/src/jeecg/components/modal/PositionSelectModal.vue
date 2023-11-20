@@ -54,7 +54,7 @@
   export default defineComponent({
     name: 'PositionSelectModal',
     components: {
-      //此处需要异步加载BasicTable
+      //The Basic Table needs to be loaded asynchronously
       BasicModal,
       BasicTable: createAsyncComponent(() => import('/@/components/Table/src/BasicTable.vue'), {
         loading: true,
@@ -62,7 +62,7 @@
     },
     props: {
       ...selectProps,
-      //选择框标题
+      //Select the box title
       modalTitle: {
         type: String,
         default: 'Job selection',
@@ -78,7 +78,7 @@
         canResize: false,
         bordered: true,
         size: 'small',
-        //改成读取rowKey,自定义传递参数
+        //Changed to read row key and customize the pass parameters
         rowKey: props.rowKey,
       };
       const getBindValue = Object.assign({}, unref(props), unref(attrs), config);
@@ -87,7 +87,7 @@
         getBindValue
       );
       const searchInfo = ref(props.params);
-      //查询form
+      //Query form
       const formConfig = {
         labelCol: {
           span: 8,
@@ -112,33 +112,33 @@
         //update-end-author:liusq date:2023-10-30 for: [issues/5514]组件页面显示错位
         schemas: [
           {
-            label: '职务名称',
+            label: 'Job title',
             field: 'name',
             component: 'JInput',
             colProps: { span: 10 },
           },
         ],
       };
-      //定义表格列
+      //Define table columns
       const columns = [
         {
-          title: '职务编码',
+          title: 'Job title code',
           dataIndex: 'code',
           width: 180,
           align: 'left',
         },
         {
-          title: '职务名称',
+          title: 'Job title',
           dataIndex: 'name',
           // width: 180,
         },
         {
-          title: '职务等级',
+          title: 'Job Title',
           dataIndex: 'postRank_dictText',
           width: 180,
         },
       ];
-      //已选择的table信息
+      //Information about the selected table
       const selectedTable = {
         pagination: false,
         showIndexColumn: false,
@@ -149,12 +149,12 @@
         rowKey: 'id',
         columns: [
           {
-            title: '职务名称',
+            title: 'Job title',
             dataIndex: 'name',
             width: 40,
           },
           {
-            title: '操作',
+            title: 'OPERATION',
             dataIndex: 'action',
             align: 'center',
             width: 40,
@@ -163,13 +163,13 @@
         ],
       };
       /**
-       * 确定选择
+       * Confirm the selection
        */
       function handleOk() {
         getSelectResult((options, values) => {
-          //回传选项和已选择的值
+          //Postback options and selected values
           emit('getSelectResult', options, values);
-          //关闭弹窗
+          //Close the pop-up window
           closeModal();
         });
       }

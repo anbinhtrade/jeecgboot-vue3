@@ -1,5 +1,5 @@
 <template>
-  <BasicModal v-bind="$attrs" @register="registerModal" title="修改密码" @ok="handleSubmit">
+  <BasicModal v-bind="$attrs" @register="registerModal" title="Change your password" @ok="handleSubmit">
     <BasicForm @register="registerForm" />
   </BasicModal>
 </template>

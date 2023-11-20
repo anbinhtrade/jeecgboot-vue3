@@ -31,14 +31,14 @@
       function getRightMenuList(node: any): ContextMenuItem[] {
         return [
           {
-            label: 'NEW',
+            label: 'New',
             handler: () => {
               console.log('Click Add New', node);
             },
             icon: 'bi:plus',
           },
           {
-            label: 'DELETE',
+            label: 'Delete',
             handler: () => {
               console.log('Clicked Delete', node);
             },

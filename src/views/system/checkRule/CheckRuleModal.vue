@@ -3,14 +3,14 @@
     <BasicForm @register="registerForm" />
 
     <a-tabs v-model:activeKey="activeKey" animated>
-      <a-tab-pane tab="局部规则" key="1" :forceRender="true">
+      <a-tab-pane tab="Local rules" key="1" :forceRender="true">
         <JVxeTable ref="vTable1" toolbar rowNumber dragSort rowSelection :maxHeight="580" :dataSource="dataSource1" :columns="columns1">
           <template #toolbarAfter>
-            <a-alert type="info" showIcon message="局部规则按照你输入的位数有序的校验" style="margin-bottom: 8px" />
+            <a-alert type="info" showIcon message="Local rules are checked in order according to the number of digits you entered" style="margin-bottom: 8px" />
           </template>
         </JVxeTable>
       </a-tab-pane>
-      <a-tab-pane tab="全局规则" key="2" :forceRender="true">
+      <a-tab-pane tab="Global rules" key="2" :forceRender="true">
         <JVxeTable
           ref="vTable2"
           toolbar
@@ -23,7 +23,7 @@
           :columns="columns2"
         >
           <template #toolbarAfter>
-            <a-alert type="info" showIcon message="全局规则可校验用户输入的所有字符；全局规则的优先级比局部规则的要高。" style="margin-bottom: 8px" />
+            <a-alert type="info" showIcon message="A global rule validates all characters entered by the user; the global rule takes precedence over the local rule." style="margin-bottom: 8px" />
           </template>
         </JVxeTable>
       </a-tab-pane>
@@ -41,7 +41,7 @@
   import { pick } from 'lodash-es';
 
   //设置标题
-  const title = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
+  const title = computed(() => (!unref(isUpdate) ? 'New' : 'Edit'));
   // 声明Emits
   const emit = defineEmits(['register', 'success']);
   const isUpdate = ref(true);
@@ -192,12 +192,12 @@
 
   const columns1 = ref<JVxeColumn[]>([
     {
-      title: '位数',
+      title: 'RANK',
       key: 'digits',
       type: JVxeTypes.inputNumber,
       minWidth: 180,
       validateRules: [
-        { required: true, message: '${title}不能为空' },
+        { required: true, message: '${title} It can\'t be empty' },
         { pattern: /^[1-9]\d*$/, message: 'Please enter a positive integer above zero' },
       ],
     },
@@ -219,7 +219,7 @@
 
   const columns2 = ref<JVxeColumn[]>([
     {
-      title: 'PRIORITY',
+      title: 'Priority',
       key: 'priority',
       type: JVxeTypes.select,
       defaultValue: '1',

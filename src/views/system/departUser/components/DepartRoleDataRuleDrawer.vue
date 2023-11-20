@@ -11,7 +11,7 @@
               <a-col :span="24">
                 <div style="width: 100%; margin-top: 15px">
                   <a-button type="primary" :loading="loading" :size="'small'" preIcon="ant-design:save-filled" @click="saveDataRuleForRole">
-                    <span>点击保存</span>
+                    <span>Save</span>
                   </a-button>
                 </div>
               </a-col>

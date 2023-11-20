@@ -32,7 +32,7 @@ enum Api {
   getUserTenantPageList='/sys/tenant/getUserTenantPageList',
 }
 /**
- * EXPORT api
+ * Export api
  * @param params
  */
 export const getExportUrl = Api.exportXls;
@@ -148,14 +148,14 @@ export const deleteRecycleBin = (params, handleSuccess) => {
   });
 };
 /**
- * 修改密码
+ * Change your password
  * @param params
  */
 export const changePassword = (params) => {
   return defHttp.put({ url: Api.changePassword, params });
 };
 /**
- * 冻结解冻
+ * Freeze and thaw
  * @param params
  */
 export const frozenBatch = (params, handleSuccess) => {

@@ -189,7 +189,7 @@ export default {
     refTable: 'RefTable',
     multipleHeader: 'MultiLevel header',
     mergeHeader: 'Merge cells',
-    expandTable: 'Expandable table',
+    expandTable: 'Expandable Table',
     fixedHeight: 'Fixed height',
     footerTable: 'Footer',
     editCellTable: 'Editable cell',

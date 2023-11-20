@@ -12,7 +12,7 @@
         </template>
       </template>
       <template #tableTitle>
-        <a-button preIcon="ant-design:usergroup-add-outlined" type="primary" @click="addUser">邀请成员</a-button>
+        <a-button preIcon="ant-design:usergroup-add-outlined" type="primary" @click="addUser">Invite members</a-button>
       </template>
       <!--操作栏-->
       <template #action="{ record }">
@@ -53,7 +53,7 @@
       });
       const { createMessage } = useMessage();
       //设置标题
-      const title = ref<string>('用户');
+      const title = ref<string>('User');
       //注册table数据
       const { tableContext } = useListPage({
         tableProps: {
@@ -78,7 +78,7 @@
       const [registerTable, { reload }, { rowSelection, selectedRowKeys }] = tableContext;
 
       /**
-       * 获取部门/职务名称
+       * Get the department/job title
        * @param value
        */
       function getName(value) {
@@ -86,15 +86,15 @@
       }
 
       /**
-       * 表格操作列
+       * Table action columns
        * @param record
        */
       function getTableAction(record) {
         return [
           {
-            label: '移除',
+            label: 'REMOVE',
             popConfirm: {
-              title: '是否确认移除',
+              title: 'Whether or not to confirm the removal',
               confirm: handleDelete.bind(null, record),
             }
           },
@@ -102,7 +102,7 @@
       }
 
       /**
-       * 删除
+       * Delete
        */
       async function handleDelete(record) {
         let params = {
@@ -117,7 +117,7 @@
       }
 
       /**
-       * 添加用户弹窗
+       * Add User pop-up window
        */
       function addUser() {
         openUserModal(true, {
@@ -126,7 +126,7 @@
       }
 
       /**
-       * 邀请人回调事件
+       * The inviter callback event
        * @param arr
        */
       async function onSelected(arr) {

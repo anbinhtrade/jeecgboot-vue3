@@ -145,7 +145,7 @@
       });
 
       const validatorRules = { orderCode: [{ required: true, message: 'The order number cannot be empty', trigger: 'blur' }] };
-      const getTitle = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
+      const getTitle = computed(() => (!unref(isUpdate) ? 'New' : 'Edit'));
 
       function classifyIntoFormData(allValues) {
         let orderMain = Object.assign(orderMainModel, allValues.formValue);

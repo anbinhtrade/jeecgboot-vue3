@@ -26,7 +26,7 @@
   const emit = defineEmits(['register', 'ok']);
 
   function add() {
-    title.value = 'NEW';
+    title.value = 'New';
     visible.value = true;
     nextTick(() => {
       realForm.value.add();
@@ -34,7 +34,7 @@
   }
 
   function edit(record) {
-    title.value = disableSubmit.value ? 'DETAIL' : 'EDIT';
+    title.value = disableSubmit.value ? 'DETAIL' : 'Edit';
     visible.value = true;
     nextTick(() => {
       realForm.value.edit(record);

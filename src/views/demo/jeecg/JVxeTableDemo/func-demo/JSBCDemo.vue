@@ -35,55 +35,55 @@
   import { useMessage } from '/@/hooks/web/useMessage';
 
   const { createMessage } = useMessage();
-  // 工具栏的按钮配置
+  // Button configuration for the toolbar
   const toolbarConfig = reactive({
-    // add 新增按钮；remove 删除按钮；clearSelection 清空选择按钮
+    // add Added buttons；remove 删除按钮；clearSelection Clear the selection button
     btn: ['add', 'save', 'remove', 'clearSelection'],
   });
-  // 是否正在加载
+  // Whether it is loading
   const loading = ref(false);
-  // 分页器参数
+  // Paginer parameters
   const pagination = reactive({
-    // 当前页码
+    // The current page number
     current: 1,
-    // 每页的条数
+    // Number of entries per page
     pageSize: 200,
-    // 可切换的条数
+    // The number of records that can be switched
     pageSizeOptions: ['10', '20', '30', '100', '200'],
-    // 数据总数（目前并不知道真实的总数，所以先填写0，在后台查出来后再赋值）
+    // The total number of data (the real total is not known at present, so fill in 0 first, and then assign the value after checking it in the background)
     total: 0,
   });
-  // 选择的行
+  // Selected rows
   const selectedRows = ref<Recordable[]>([]);
-  // 数据源，控制表格的数据
+  // Data source, which controls the data in the table
   const dataSource = ref<Recordable[]>([]);
-  // 列配置，控制表格显示的列
+  // Column configuration to control the columns displayed in the table
   const columns = ref<JVxeColumn[]>([
-    { key: 'num', title: '序号', width: 80, type: JVxeTypes.normal },
+    { key: 'num', title: 'Serial Number', width: 80, type: JVxeTypes.normal },
     {
-      // 字段key，跟后台数据的字段名匹配
+      // The field key matches the field name of the background data
       key: 'ship_name',
-      // 列的标题
-      title: '船名',
-      // 列的宽度
+      // The title of the column
+      title: 'Ship Name',
+      // The width of the column
       width: 180,
-      // 如果加上了该属性，就代表当前单元格是可编辑的，type就是表单的类型，input就是简单的输入框
+      // If this attribute is added, it means that the current cell is editable, type is the type of form, and input is a simple input box
       type: JVxeTypes.input,
     },
-    { key: 'call', title: 'CALL', width: 80, type: JVxeTypes.input },
-    { key: 'len', title: 'LONG', width: 80, type: JVxeTypes.input },
-    { key: 'ton', title: 'TON', width: 120, defaultValue: 233, type: JVxeTypes.input },
-    { key: 'payer', title: 'PAYER', width: 120, defaultValue: 'TOM', type: JVxeTypes.input },
-    { key: 'count', title: 'NUMBER', width: 40, type: JVxeTypes.normal },
+    { key: 'call', title: 'Call', width: 80, type: JVxeTypes.input },
+    { key: 'len', title: 'Long', width: 80, type: JVxeTypes.input },
+    { key: 'ton', title: 'Ton', width: 120, defaultValue: 233, type: JVxeTypes.input },
+    { key: 'payer', title: 'Payer', width: 120, defaultValue: 'TOM', type: JVxeTypes.input },
+    { key: 'count', title: 'Number', width: 40, type: JVxeTypes.normal },
     {
       key: 'company',
-      title: 'FIRM',
-      // 最小宽度，与宽度不同的是，这个不是固定的宽度，如果表格有多余的空间，会平均分配给设置了 minWidth 的列
-      // 如果要做占满表格的列可以这么写
+      title: 'Company',
+      // The minimum width, unlike the width, is not a fixed width, and if there is extra space in the table, it is evenly distributed to the columns with minWidth set
+      // If you want to fill the table with columns, you can write it like this
       minWidth: 180,
       type: JVxeTypes.input,
     },
-    { key: 'trend', title: 'TREND', width: 120, type: JVxeTypes.input },
+    { key: 'trend', title: 'Trend', width: 120, type: JVxeTypes.input },
   ]);
 
   // Query the URL address
@@ -112,15 +112,15 @@
         },
       })
       .then((result) => {
-        // 后台查询回来的 total，数据总数量
+        // The total amount of data queried back in the background
         pagination.total = result.total;
         // 将查询的数据赋值给 dataSource
         dataSource.value = result.records;
-        // 重置选择
+        // Reset the selection
         selectedRows.value = [];
       })
       .finally(() => {
-        // 这里是无论成功或失败都会执行的方法，在这里关闭loading
+        // Here's how it will be executed regardless of success or failure, and here it's off loading
         loading.value = false;
       });
   }
@@ -133,13 +133,13 @@
       if (!errMap) {
         // 获取所有数据
         let tableData = target.getTableData();
-        console.log('当前保存的数据是：', tableData);
+        console.log('The currently saved data is:', tableData);
         // 获取新增的数据
         let newData = target.getNewData();
-        console.log('-- 新增的数据：', newData);
+        console.log('-- New data:', newData);
         // 获取删除的数据
         let deleteData = target.getDeleteData();
-        console.log('-- 删除的数据：', deleteData);
+        console.log('-- Deleted data:', deleteData);
         // 【模拟保存】
         loading.value = true;
         defHttp
@@ -148,7 +148,7 @@
             params: tableData,
           })
           .then(() => {
-            createMessage.success(`保存成功！`);
+            createMessage.success(`Save successfully!`);
           })
           .finally(() => {
             loading.value = false;
@@ -160,10 +160,10 @@
   // 触发单元格删除事件
   function handleTableRemove(event) {
     // 把 event.deleteRows 传给后台进行删除（注意：这里不会传递前端逻辑新增的数据，因为不需要请求后台删除）
-    console.log('待删除的数据: ', event.deleteRows);
+    console.log('Data to be deleted: ', event.deleteRows);
     // 也可以只传ID，因为可以根据ID删除
     let deleteIds = event.deleteRows.map((row) => row.id);
-    console.log('待删除的数据ids: ', deleteIds);
+    console.log('Data IDs to be deleted: ', deleteIds);
 
     // 模拟请求后台删除
     loading.value = true;
@@ -175,18 +175,18 @@
     }, 1000);
   }
 
-  // 单元格编辑完成之后触发的事件
+  // An event that is triggered after the cell is edited
   function handleEditClosed(event) {
     let { $table, row, column } = event;
     let field = column.property;
-    // 判断单元格值是否被修改
+    // Determine whether the cell value has been modified
     if ($table.isUpdateByRow(row, field)) {
-      // 校验当前行
+      // Verify the current line
       $table.validate(row).then((errMap) => {
-        // 校验通过
+        // The verification passes
         if (!errMap) {
-          // 【模拟保存】
-          let hideLoading = createMessage.loading(`SAVING"${column.title}"`, 0);
+          // 【Simulation Save】
+          let hideLoading = createMessage.loading(`Saving "${column.title}"`, 0);
           console.log('Save data instantly：', row);
           defHttp
             .put({
@@ -206,16 +206,16 @@
     }
   }
 
-  // 当分页参数变化时触发的事件
+  // An event that is triggered when a pagination parameter changes
   function handlePageChange(event) {
-    // 重新赋值
+    // Re-assignment
     pagination.current = event.current;
     pagination.pageSize = event.pageSize;
-    // 查询数据
+    // Query the data
     loadData();
   }
 
-  // 当选择的行变化时触发的事件
+  // An event that is triggered when the selected row changes
   function handleSelectRowChange(event) {
     selectedRows.value = event.selectedRows;
   }

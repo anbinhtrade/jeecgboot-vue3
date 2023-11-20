@@ -30,7 +30,7 @@ export const getCheckRuleList = (params) => {
 };
 
 /**
- * DELETE
+ * Delete
  * @param params
  * @param handleSuccess
  */

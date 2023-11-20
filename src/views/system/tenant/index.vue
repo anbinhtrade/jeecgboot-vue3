@@ -2,13 +2,13 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">NEW</a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">New</a-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                DELETE
+                Delete
               </a-menu-item>
             </a-menu>
           </template>
@@ -33,7 +33,7 @@
           :disabled="selectedRowKeys.length === 0"
           >PACKAGE</a-button
         >
-        <a-button type="primary" @click="recycleBinClick" preIcon="ant-design:hdd-outlined">RECYCLE BIN</a-button>
+        <a-button type="primary" @click="recycleBinClick" preIcon="ant-design:hdd-outlined">Recycle Bin</a-button>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getActions(record)" />
@@ -42,9 +42,9 @@
     <TenantModal @register="registerModal" @success="reload" />
     <TenantInviteUserModal @register="registerSelUserModal" @inviteOk="handleInviteUserOk"/>
     <TenantUserModal @register="registerTenUserModal" />
-    <!--  产品包  -->
+    <!--  Product Packages  -->
     <TenantPackList @register="registerPackModal" />
-    <!--  租户回收站  -->
+    <!--  Tenant Recycle Bin  -->
     <TenantRecycleBinModal @register="registerRecycleBinModal" @success="reload" />
   </div>
 </template>
@@ -69,7 +69,7 @@
   const [registerPackModal, { openModal: packModal }] = useModal();
   const [registerRecycleBinModal, { openModal: recycleBinModal }] = useModal();
 
-  // 列表页面公共参数、方法
+  // Common parameters and methods on the list page
   const { prefixCls, tableContext } = useListPage({
     designScope: 'tenant-template',
     tableProps: {
@@ -89,17 +89,17 @@
   const [registerTable, { reload }, { rowSelection, selectedRowKeys, selectedRows }] = tableContext;
 
   /**
-   * 操作列定义
+   * Action column definition
    * @param record
    */
   function getActions(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion',
           placement: 'left',
@@ -107,7 +107,7 @@
         },
       },
       {
-        label: 'USER',
+        label: 'User',
         onClick: handleSeeUser.bind(null, record.id),
       },
     ];
@@ -147,14 +147,14 @@
   }
 
   /**
-   * 邀请用户加入租户
+   * Invite users to join the tenant
    */
   function handleInvitation() {
     userOpenModal(true, {});
   }
 
   /**
-   * 用户选择回调事件
+   * The user selects the callback event
    * @param options
    * @param value
    */
@@ -167,7 +167,7 @@
   }
 
   /**
-   * 查看用户
+   * View users
    * @param id
    */
   function handleSeeUser(id) {
@@ -177,7 +177,7 @@
   }
 
   /**
-   * 新增产品包
+   * A new product package has been added
    */
   function handlePack() {
     if (unref(selectedRowKeys).length > 1) {
@@ -186,20 +186,20 @@
     }
     packModal(true, {
       tenantId: unref(selectedRowKeys.value.join(',')),
-      //我的租户显示新增和编辑产品包
+      //My Tenant shows New and Edit Packages
       showPackAddAndEdit: true
     });
   }
 
   /**
-   * 回收站
+   * Recycle Bin
    */
   function recycleBinClick() {
     recycleBinModal(true, {});
   }
 
   /**
-   * 删除成功之后回调事件
+   * After the deletion is successful, the event is called
    */
   function handleSuccess() {
     (selectedRowKeys.value = []) && reload();

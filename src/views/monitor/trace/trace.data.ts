@@ -29,7 +29,7 @@ export const columns: BasicColumn[] = [
       if (value === 'PUT') {
         color = '#ffba5a';
       }
-      if (value === 'DELETE') {
+      if (value === 'Delete') {
         color = '#ff5500';
       }
       return h(Tag, { color }, () => value);

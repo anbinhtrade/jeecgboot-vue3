@@ -2,10 +2,10 @@
   <div class="bg-white m-4 mr-0 overflow-hidden">
     <a-spin :spinning="loading">
       <template v-if="userIdentity === '2'">
-        <!--组织机构树-->
+        <!--Organization tree-->
         <BasicTree
           v-if="!treeReloading"
-          title="部门列表"
+          title="List of departments"
           toolbar
           search
           showLine
@@ -20,7 +20,7 @@
           @search="onSearch"
         />
       </template>
-      <a-empty v-else description="普通员工无此权限" />
+      <a-empty v-else description="Regular employees do not have this permission" />
     </a-spin>
   </div>
 </template>
@@ -70,7 +70,7 @@
 
   loadDepartTreeData();
 
-  // 自动展开父节点，只展开一级
+  // Automatically expands the parent node, expanding only one level
   function autoExpandParentNode() {
     let keys: Array<any> = [];
     treeData.value.forEach((item, index) => {
@@ -78,7 +78,7 @@
         keys.push(item.key);
       }
       if (index === 0) {
-        // 默认选中第一个
+        // The first one is selected by default
         setSelectedKey(item.id, item);
       }
     });
@@ -88,7 +88,7 @@
     }
   }
 
-  // 重新加载树组件，防止无法默认展开数据
+  // Reload the tree component to prevent the data from being expanded by default
   async function reloadTree() {
     await nextTick();
     treeReloading.value = true;
@@ -97,7 +97,7 @@
   }
 
   /**
-   * 设置当前选中的行
+   * Sets the currently selected rows
    */
   function setSelectedKey(key: string, data?: object) {
     selectedKeys.value = [key];
@@ -115,7 +115,7 @@
           if (Array.isArray(result)) {
             treeData.value = result;
           } else {
-            createMessage.warning('未查询到部门信息');
+            createMessage.warning('No department information was found');
             treeData.value = [];
           }
         })
@@ -125,24 +125,24 @@
     }
   }
 
-  // 树选择事件
+  // Tree selection events
   function onSelect(selKeys, event) {
     if (selKeys.length > 0 && selectedKeys.value[0] !== selKeys[0]) {
       setSelectedKey(selKeys[0], event.selectedNodes[0]);
     } else {
-      // 这样可以防止用户取消选择
+      // This prevents the user from deselecting
       setSelectedKey(selectedKeys.value[0]);
     }
   }
 
-  // 树展开事件
+  // Tree expansion event
   function onExpand(keys) {
     expandedKeys.value = keys;
     autoExpandParent.value = false;
   }
 </script>
 <style lang="less" scoped>
-  /*升级antd3后，查询框与树贴的太近，样式优化*/
+  /*After upgrading antd 3, the query box is too close to the tree sticker, and the style is optimized*/
   :deep(.jeecg-tree-header) {
     margin-bottom: 6px;
   }

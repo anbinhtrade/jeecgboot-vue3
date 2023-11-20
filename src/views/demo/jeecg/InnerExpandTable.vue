@@ -2,7 +2,7 @@
   <a-card :bordered="false">
     <BasicTable @register="registerTable" :expandedRowKeys="expandedRowKeys" :rowSelection="rowSelection" @expand="handleExpand">
       <template #tableTitle>
-        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> NEW</a-button>
+        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> New</a-button>
       </template>
       <template #expandedRowRender>
         <BasicTable bordered size="middle" rowKey="id" :canResize="false" :columns="innerColumns" :dataSource="innerData" :pagination="false">
@@ -95,9 +95,9 @@
         //console.log(typeof  text )
         //console.log(text)
         if (text.value == '1') {
-          return 'MAN';
+          return 'Male';
         } else if (text.value == '2') {
-          return 'WOMAN';
+          return 'Female';
         } else {
           return text;
         }
@@ -196,11 +196,11 @@
   function getTableAction(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),

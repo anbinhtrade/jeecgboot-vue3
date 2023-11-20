@@ -18,7 +18,7 @@ const { prefixCls, tableContext, onImportXls, onExportXls } = useListPage({
   tableProps: {
     //在线用户rowKey默认id会造成key重复，导致页面出现重复数据
     rowKey:'token',
-    title: '在线用户',
+    title: 'Online users',
     api: list,
     columns: columns,
     formConfig: {
@@ -37,9 +37,9 @@ const $message = useMessage();
 function getTableAction(record) {
   return [
     {
-      label: '强退',
+      label: 'Forced retreat',
       popConfirm: {
-        title: '强制退出用户？',
+        title: 'Force quit user?',
         confirm: handleForce.bind(null, record),
       },
     },
@@ -47,14 +47,14 @@ function getTableAction(record) {
 }
 
 /**
- * 强退
+ * Forced retreat
  * @param record
  */
 function handleForce(record) {
    forceLogout({ token: record.token }).then((res)=>{
      if(res.success){
        reload();
-       $message.createMessage.success('强制退出用户”'+record.realname+'“成功！');
+       $message.createMessage.success('Force quit user"'+record.realname+'"Success!');
      }else{
        $message.createMessage.warn(res.message);
      }

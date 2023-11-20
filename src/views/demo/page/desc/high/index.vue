@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="NUMBER：234231029431" contentBackground>
+  <PageWrapper title="Number：234231029431" contentBackground>
     <template #extra>
       <a-button> Operation 1 </a-button>
       <a-button> Operation two </a-button>
@@ -62,7 +62,7 @@
             <a-descriptions-item label="Character code"> 1234567 </a-descriptions-item>
             <a-descriptions-item label="AFFILIATION"> XX公司 - YY部 </a-descriptions-item>
             <a-descriptions-item label="Expiration time"> 2017-08-08 </a-descriptions-item>
-            <a-descriptions-item label="DESCRIPTION" :span="2"> This description is long, long </a-descriptions-item>
+            <a-descriptions-item label="Description" :span="2"> This description is long, long </a-descriptions-item>
           </a-descriptions>
           <a-divider />
           <a-descriptions title="The name of the group" :column="1">

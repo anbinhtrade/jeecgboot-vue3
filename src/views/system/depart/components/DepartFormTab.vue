@@ -3,8 +3,8 @@
     <BasicForm @register="registerForm" />
     <div class="j-box-bottom-button offset-20" style="margin-top: 30px">
       <div class="j-box-bottom-button-float" :class="[`${prefixCls}`]">
-        <a-button preIcon="ant-design:sync-outlined" @click="onReset">重置</a-button>
-        <a-button type="primary" preIcon="ant-design:save-filled" @click="onSubmit">保存</a-button>
+        <a-button preIcon="ant-design:sync-outlined" @click="onReset">RESET</a-button>
+        <a-button type="primary" preIcon="ant-design:save-filled" @click="onSubmit">SAVE</a-button>
       </div>
     </div>
   </a-spin>
@@ -25,12 +25,12 @@
     rootTreeData: { type: Array, default: () => [] },
   });
   const loading = ref<boolean>(false);
-  // 当前是否是更新模式
+  // Whether it is currently in update mode
   const isUpdate = ref<boolean>(true);
-  // 当前的弹窗数据
+  // The current pop-up data
   const model = ref<object>({});
 
-  //注册表单
+  //Sign-up forms
   const [registerForm, { resetFields, setFieldsValue, validate, updateSchema }] = useForm({
     schemas: useBasicFormSchema().basicFormSchema,
     showActionButtonGroup: false,
@@ -45,12 +45,12 @@
   });
 
   onMounted(() => {
-    // 禁用字段
+    // Disable the field
     updateSchema([
       { field: 'parentId', componentProps: { disabled: true } },
       { field: 'orgCode', componentProps: { disabled: true } },
     ]);
-    // data 变化，重填表单
+    // data Change, refill the form
     watch(
       () => props.data,
       async () => {
@@ -64,7 +64,7 @@
       },
       { deep: true, immediate: true }
     );
-    // 更新 父部门 选项
+    // Update the Parent Department option
     watch(
       () => props.rootTreeData,
       async () => {
@@ -77,7 +77,7 @@
       },
       { deep: true, immediate: true }
     );
-    // 监听并更改 orgCategory options
+    // Listen and change orgCategory options
     watch(
       categoryOptions,
       async () => {
@@ -92,21 +92,21 @@
     );
   });
 
-  // 重置表单
+  // Reset the form
   async function onReset() {
     await resetFields();
     await setFieldsValue({ ...model.value });
   }
 
-  // 提交事件
+  // Submit an event
   async function onSubmit() {
     try {
       loading.value = true;
       let values = await validate();
       values = Object.assign({}, model.value, values);
-      //提交表单
+      //Submit the form
       await saveOrUpdateDepart(values, isUpdate.value);
-      //刷新列表
+      //Refresh the list
       emit('success');
       Object.assign(model.value, values);
     } finally {
@@ -118,11 +118,11 @@
   // update-begin-author:liusq date:20230625 for: [issues/563]暗色主题部分失效
 
   @prefix-cls: ~'@{namespace}-j-depart-form-content';
-  /*begin 兼容暗夜模式*/
+  /*begin Compatible with dark night mode*/
   .@{prefix-cls} {
     background: @component-background;
     border-top: 1px solid @border-color-base;
   }
-  /*end 兼容暗夜模式*/
+  /*end Compatible with dark night mode*/
   // update-end-author:liusq date:20230625 for: [issues/563]暗色主题部分失效
 </style>

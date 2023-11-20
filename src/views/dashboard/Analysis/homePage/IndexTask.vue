@@ -11,8 +11,7 @@
           </template>
 
           <template v-if="dataSource1 && dataSource1.length > 0" #extra>
-            <a @click="goPage"
-              >MORE
+            <a @click="goPage">More
               <Icon icon="ant-design:double-right-outlined" />
             </a>
           </template>
@@ -51,8 +50,7 @@
           </template>
 
           <template v-if="dataSource2 && dataSource2.length > 0" #extra>
-            <a @click="goPage"
-              >MORE
+            <a @click="goPage">More
               <Icon icon="ant-design:double-right-outlined" />
             </a>
           </template>
@@ -197,7 +195,7 @@
   const tempSs2 = [
     {
       id: '001',
-      orderTitle: 'I'm going to complain about this big supermarket',
+      orderTitle: 'I\'m going to complain about this big supermarket',
       orderNo: '电[1]10299456',
       restDay: 6,
     },
@@ -209,7 +207,7 @@
     },
     {
       id: '003',
-      orderTitle: 'I d like to ask what this shop is all about',
+      orderTitle: 'I\'d like to ask what this shop is all about',
       orderNo: '电[3]495867322',
       restDay: 7,
     },
@@ -252,24 +250,24 @@
       slots: { customRender: 'dayWarnning' },
     },
     {
-      title: '剩余天数',
+      title: 'Number of days remaining',
       align: 'center',
       dataIndex: 'restDay',
       width: 80,
     },
     {
-      title: '工单标题',
+      title: 'Ticket title',
       align: 'center',
       dataIndex: 'orderTitle',
       slots: { customRender: 'ellipsisText' },
     },
     {
-      title: '工单编号',
+      title: 'The ticket number',
       align: 'center',
       dataIndex: 'orderNo',
     },
     {
-      title: '操作',
+      title: 'OPERATION',
       dataIndex: 'action',
       align: 'center',
       slots: { customRender: 'action' },
@@ -307,11 +305,11 @@
   }
 
   function handleData() {
-    $message.createMessage.success('办理完成');
+    $message.createMessage.success('The process is complete');
   }
 
   function goPage() {
-    $message.createMessage.success('请根据具体业务跳转页面');
+    $message.createMessage.success('Please redirect to the page according to your specific business');
   }
 
   mock();

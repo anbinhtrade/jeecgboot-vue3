@@ -1,4 +1,4 @@
-<!--部门选择框-->
+<!--Department selection box-->
 <template>
   <div>
     <BasicModal v-bind="$attrs" @register="register" :title="modalTitle" width="500px" @ok="handleOk" destroyOnClose @visible-change="visibleChange">
@@ -14,18 +14,18 @@
         :multiple="multiple"
         :checkStrictly="getCheckStrictly"
       />
-      <!--树操作部分-->
+      <!--Tree Manipulation Section-->
       <template #insertFooter>
         <a-dropdown placement="top">
           <template #overlay>
             <a-menu>
-              <a-menu-item v-if="multiple" key="1" @click="checkALL(true)">全部勾选</a-menu-item>
-              <a-menu-item v-if="multiple" key="2" @click="checkALL(false)">取消全选</a-menu-item>
-              <a-menu-item key="3" @click="expandAll(true)">展开全部</a-menu-item>
-              <a-menu-item key="4" @click="expandAll(false)">折叠全部</a-menu-item>
+              <a-menu-item v-if="multiple" key="1" @click="checkALL(true)">Select All</a-menu-item>
+              <a-menu-item v-if="multiple" key="2" @click="checkALL(false)">Unselect All</a-menu-item>
+              <a-menu-item key="3" @click="expandAll(true)">Expand All</a-menu-item>
+              <a-menu-item key="4" @click="expandAll(false)">Collapse All</a-menu-item>
             </a-menu>
           </template>
-          <a-button style="float: left"> 树操作 <Icon icon="ant-design:up-outlined" /> </a-button>
+          <a-button style="float: left"> Tree operations <Icon icon="ant-design:up-outlined" /> </a-button>
         </a-dropdown>
       </template>
     </BasicModal>
@@ -50,10 +50,10 @@
     },
     props: {
       ...treeProps,
-      //选择框标题
+      //Select the box title
       modalTitle: {
         type: String,
-        default: '部门选择',
+        default: 'Department Selection',
       },
       value: propTypes.oneOfType([propTypes.string, propTypes.array])
     },
@@ -83,7 +83,7 @@
       };
       // {children:'children', title:'title', key:'key' }
       /**
-       * 确定选择
+       * Confirm the selection
        */
       function handleOk() {
         getSelectTreeData((options, values) => {
@@ -94,7 +94,7 @@
         });
       }
 
-      /** 获取查询数据方法 */
+      /** Get the query data method */
       function getQueryUrl() {
         let queryFn = props.sync ? queryDepartTreeSync : queryTreeList;
         //update-begin-author:taoyan date:2022-7-4 for: issues/I5F3P4 online配置部门选择后编辑，查看数据应该显示部门名称，不是部门代码

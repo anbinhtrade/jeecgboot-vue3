@@ -1,5 +1,5 @@
 <template>
-  <BasicModal v-bind="$attrs" @register="registerModal" title="用户选择列表" width="1000px" @ok="handleSubmit" destroyOnClose>
+  <BasicModal v-bind="$attrs" @register="registerModal" title="User selection lists" width="1000px" @ok="handleSubmit" destroyOnClose>
     <BasicTable @register="registerTable" :rowSelection="rowSelection" />
   </BasicModal>
 </template>

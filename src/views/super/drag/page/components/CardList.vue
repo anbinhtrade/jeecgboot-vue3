@@ -221,7 +221,7 @@
       if(hasAuth()){
          commonAction = [
           {
-            text: 'EDIT',
+            text: 'Edit',
             event: '1',
             onClick: handleEdit.bind(null, record),
           },
@@ -250,7 +250,7 @@
       //非模板案例的tab下的按钮显示
       let commonAction = [
         {
-          text: 'EDIT',
+          text: 'Edit',
           event: '1',
           onClick: handleEdit.bind(null, record),
         },
@@ -285,7 +285,7 @@
       //删除按钮的逻辑判断
       if(!hasPassword(record)){
         commonAction.push({
-          text: 'DELETE',
+          text: 'Delete',
           event: '4',
           popConfirm: {
             title: 'Whether to confirm the deletion',
@@ -294,7 +294,7 @@
         })
       }else {
         commonAction.push({
-          text: 'DELETE',
+          text: 'Delete',
           event: '4',
           onClick: handleDelete.bind(null, record),
         })

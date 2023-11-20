@@ -1,21 +1,20 @@
 import { BasicColumn, FormSchema } from '/@/components/Table';
-import { rules } from '/@/utils/helper/validator';
 
 export const columns: BasicColumn[] = [
   // {
-  //   title: '职务编码',
+  //   title: 'Job title code',
   //   dataIndex: 'code',
   //   width: 200,
   //   align: 'left',
   // },
   {
-    title: '职务名称',
+    title: 'Job title',
     dataIndex: 'name',
     align: 'left'
     // width: 200,
   },
   // {
-  //   title: '职务等级',
+  //   title: 'Job Title',
   //   dataIndex: 'postRank_dictText',
   //   width: 100,
   // },
@@ -24,7 +23,7 @@ export const columns: BasicColumn[] = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'name',
-    label: '职务名称',
+    label: 'Job title',
     component: 'Input',
     colProps: { span: 8 },
   },
@@ -32,13 +31,13 @@ export const searchFormSchema: FormSchema[] = [
 
 export const formSchema: FormSchema[] = [
   {
-    label: '主键',
+    label: 'Primary key',
     field: 'id',
     component: 'Input',
     show: false,
   },
   // {
-  //   label: '职级',
+  //   label: 'RANK',
   //   field: 'postRank',
   //   component: 'JDictSelectTag',
   //   required: true,
@@ -52,13 +51,13 @@ export const formSchema: FormSchema[] = [
   // },
   {
     field: 'name',
-    label: '职务名称',
+    label: 'Job title',
     component: 'Input',
     required: true,
   },
   // {
   //   field: 'code',
-  //   label: '职务编码',
+  //   label: 'Job title code',
   //   component: 'Input',
   //   required: true,
   //   dynamicDisabled: ({ values }) => {

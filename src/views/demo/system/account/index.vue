@@ -3,7 +3,7 @@
     <DeptTree class="w-1/4 xl:w-1/5" @select="handleSelect" />
     <BasicTable @register="registerTable" class="w-3/4 xl:w-4/5" :searchInfo="searchInfo">
       <template #toolbar>
-        <a-button type="primary" @click="handleCreate">新增账号</a-button>
+        <a-button type="primary" @click="handleCreate">Add an account</a-button>
       </template>
       <template #bodyCell="{ column, record }">
         <template v-if="column.key === 'action'">
@@ -11,20 +11,20 @@
             :actions="[
               {
                 icon: 'clarity:info-standard-line',
-                tooltip: '查看用户详情',
+                tooltip: 'View user details',
                 onClick: handleView.bind(null, record),
               },
               {
                 icon: 'clarity:note-edit-line',
-                tooltip: '编辑用户资料',
+                tooltip: 'Edit the user profile',
                 onClick: handleEdit.bind(null, record),
               },
               {
                 icon: 'ant-design:delete-outlined',
                 color: 'error',
-                tooltip: '删除此账号',
+                tooltip: 'Delete the account',
                 popConfirm: {
-                  title: '是否确认删除',
+                  title: 'Whether to confirm the deletion',
                   placement: 'left',
                   confirm: handleDelete.bind(null, record),
                 },
@@ -59,7 +59,7 @@
       const [registerModal, { openModal }] = useModal();
       const searchInfo = reactive<Recordable>({});
       const [registerTable, { reload, updateTableDataRecord }] = useTable({
-        title: '账号列表',
+        title: 'List of accounts',
         api: getAccountList,
         rowKey: 'id',
         columns,

@@ -56,7 +56,7 @@
   function getActions(record) {
     return [
       {
-        label: 'VIEW',
+        label: 'View',
         onClick: handleDetail.bind(null, record),
       },
     ];

@@ -42,7 +42,7 @@
         });
       });
 
-      const getTitle = computed(() => (!unref(isUpdate) ? '新增菜单' : '编辑菜单'));
+      const getTitle = computed(() => (!unref(isUpdate) ? 'New Menu' : 'Edit Menu'));
 
       async function handleSubmit() {
         try {

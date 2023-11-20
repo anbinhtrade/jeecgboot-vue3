@@ -94,7 +94,7 @@
           align: 'left',
         },
         {
-          title: 'ROLE CODING',
+          title: 'Role Code',
           dataIndex: 'roleCode',
           // width: 40,
         },

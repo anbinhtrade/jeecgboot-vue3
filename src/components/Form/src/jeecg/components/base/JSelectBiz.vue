@@ -2,8 +2,8 @@
   <div>
     <a-row class="j-select-row" type="flex" :gutter="8">
       <a-col class="left" :class="{ full: !showButton }">
-        <!-- 显示加载效果 -->
-        <a-input v-if="loading" readOnly placeholder="加载中…">
+        <!-- Displays the loading effect -->
+        <a-input v-if="loading" readOnly placeholder="Loading...">
           <template #prefix>
             <LoadingOutlined />
           </template>
@@ -25,14 +25,14 @@
         ></a-select>
       </a-col>
       <a-col v-if="showButton" class="right">
-        <a-button v-if="buttonIcon" :preIcon="buttonIcon" type="primary" @click="openModal(true)" :disabled="disabled">选择</a-button>
-        <a-button v-else type="primary" @click="openModal(true)" :disabled="disabled">选择</a-button>
+        <a-button v-if="buttonIcon" :preIcon="buttonIcon" type="primary" @click="openModal(true)" :disabled="disabled">Choose</a-button>
+        <a-button v-else type="primary" @click="openModal(true)" :disabled="disabled">Choose</a-button>
       </a-col>
     </a-row>
   </div>
 </template>
 <script lang="ts">
-  import { defineComponent, ref, inject, reactive } from 'vue';
+  import { defineComponent, ref, inject } from 'vue';
   import { propTypes } from '/@/utils/propTypes';
   import { useAttrs } from '/@/hooks/core/useAttrs';
   import { LoadingOutlined } from '@ant-design/icons-vue';
@@ -46,7 +46,7 @@
       disabled: propTypes.bool.def(false),
       placeholder: {
         type: String,
-        default: '请选择',
+        default: 'Please Select',
       },
       // 是否支持多选，默认 true
       multiple: {

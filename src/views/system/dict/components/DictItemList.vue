@@ -2,7 +2,7 @@
   <BasicDrawer v-bind="$attrs" @register="registerDrawer" title="Dictionary list" width="800px">
     <BasicTable @register="registerTable" :rowClassName="getRowClassName">
       <template #tableTitle>
-        <a-button type="primary" @click="handleCreate"> NEW</a-button>
+        <a-button type="primary" @click="handleCreate"> New</a-button>
       </template>
       <template v-slot:bodyCell="{column, record, index}">
         <template v-if="column.dataIndex ==='action'">
@@ -72,7 +72,7 @@
     immediate: false,
     actionColumn: {
       width: 100,
-      title: 'OPERATE',
+      title: 'Action',
       dataIndex: 'action',
       //slots: { customRender: 'action' },
       fixed: undefined,
@@ -80,7 +80,7 @@
   });
 
   /**
-   * NEW
+   * New
    */
   function handleCreate() {
     openModal(true, {
@@ -89,7 +89,7 @@
   }
 
   /**
-   * EDIT
+   * Edit
    */
   function handleEdit(record) {
     openModal(true, {
@@ -99,7 +99,7 @@
   }
 
   /**
-   * DELETE
+   * Delete
    */
   async function handleDelete(record) {
     await deleteItem({ id: record.id }, reload);
@@ -111,11 +111,11 @@
   function getTableAction(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),

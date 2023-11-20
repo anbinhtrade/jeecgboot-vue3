@@ -2,7 +2,7 @@
   <div>
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button preIcon="ant-design:user-add-outlined" type="primary" @click="handleAdd">NEW</a-button>
+        <a-button preIcon="ant-design:user-add-outlined" type="primary" @click="handleAdd">New</a-button>
         <a-button
           v-if="selectedRowKeys.length > 0"
           preIcon="ant-design:delete-outlined"
@@ -60,11 +60,11 @@
   function getActions(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion of the tenant package',
           confirm: handleDelete.bind(null, record.id),
@@ -92,7 +92,7 @@
     await deletePackPermissions({ ids: id }, handleSuccess);
   }
   /**
-   * EDIT
+   * Edit
    */
   function handleEdit(record) {
     packModal(true, {     

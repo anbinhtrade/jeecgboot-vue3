@@ -22,7 +22,7 @@ export const columns: BasicColumn[] = [
     width: 50,
   },
   {
-    title: 'STATE',
+    title: 'Status',
     dataIndex: 'status',
     width: 120,
     customRender: ({ record }) => {
@@ -73,7 +73,7 @@ export const searchFormSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'Select',
     componentProps: {
       options: [
@@ -100,7 +100,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'RadioButtonGroup',
     defaultValue: '0',
     componentProps: {

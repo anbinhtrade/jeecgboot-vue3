@@ -1,13 +1,13 @@
 <template>
   <BasicTable @register="registerTable">
     <template #tableTitle>
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> NEW</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> New</a-button>
       <a-dropdown v-if="selectedRowKeys.length > 0">
         <template #overlay>
           <a-menu>
             <a-menu-item key="1" @click="batchHandleDelete">
               <Icon icon="ant-design:delete-outlined"></Icon>
-              DELETE
+              Delete
             </a-menu-item>
           </a-menu>
         </template>
@@ -78,7 +78,7 @@
   const [registerTable, { reload }, { rowSelection, selectedRowKeys }] = tableContext;
 
   /**
-   * NEW
+   * New
    */
   function handleCreate() {
     showFooter.value = true;
@@ -87,7 +87,7 @@
     });
   }
   /**
-   * EDIT
+   * Edit
    */
   function handleEdit(record: Recordable) {
     showFooter.value = true;
@@ -131,7 +131,7 @@
   function getTableAction(record) {
     return [
       {
-        label: 'USER',
+        label: 'User',
         onClick: handleUser.bind(null, record),
       },
     ];
@@ -143,7 +143,7 @@
   function getDropDownAction(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
       {
@@ -151,7 +151,7 @@
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),

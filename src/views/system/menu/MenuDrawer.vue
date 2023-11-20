@@ -45,7 +45,7 @@
       },
       {
         field: 'name',
-        label: isButton(unref(menuType)) ? '按钮/权限' : '菜单名称',
+        label: isButton(unref(menuType)) ? 'Buttons/Permissions' : 'Menu Name',
       },
       {
         field: 'url',
@@ -70,7 +70,7 @@
     setProps({ disabled: !attrs.showFooter });
   });
   //获取弹窗标题
-  const getTitle = computed(() => (!unref(isUpdate) ? '新增菜单' : '编辑菜单'));
+  const getTitle = computed(() => (!unref(isUpdate) ? 'New Menu' : 'Edit Menu'));
   //提交事件
   async function handleSubmit() {
     try {
@@ -102,7 +102,7 @@
       url = url.replaceAll(':', '@');
       placeholder = `${url}`;
     } else {
-      placeholder = '请输入组件名称';
+      placeholder = 'Please enter a component name';
     }
     updateSchema([{ field: 'componentName', componentProps: { placeholder } }]);
     //update-begin---author:wangshuai ---date:20230204  for：[QQYUN-4058]菜单添加智能化处理------------

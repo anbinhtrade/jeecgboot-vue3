@@ -2,11 +2,11 @@
   <div class="p-4">
     <BasicTable @register="registerTable" :indexColumnProps="indexColumnProps">
       <template #tableTitle>
-        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">NEW</a-button>
+        <a-button preIcon="ant-design:plus-outlined" type="primary" @click="handleAdd" style="margin-right: 5px">New</a-button>
       </template>
       <template #status="{ record, text }">
-        <a-tag color="pink" v-if="text == 0">DISABLE</a-tag>
-        <a-tag color="#87d068" v-if="text == 1">NORMAL</a-tag>
+        <a-tag color="pink" v-if="text == 0">Disable</a-tag>
+        <a-tag color="#87d068" v-if="text == 1">Normal</a-tag>
       </template>
       <template #action="{ record }">
         <TableAction :actions="getActions(record)" />
@@ -56,11 +56,11 @@
   function getActions(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         popConfirm: {
           title: 'Whether to confirm the deletion',
           confirm: handleDelete.bind(null, record),

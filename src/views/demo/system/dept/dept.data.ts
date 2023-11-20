@@ -16,14 +16,14 @@ export const columns: BasicColumn[] = [
     width: 50,
   },
   {
-    title: 'STATE',
+    title: 'Status',
     dataIndex: 'status',
     width: 80,
     customRender: ({ record }) => {
       const status = record.status;
       const enable = ~~status === 0;
       const color = enable ? 'green' : 'red';
-      const text = enable ? '启用' : '停用';
+      const text = enable ? 'ENABLE' : 'DEACTIVATED';
       return h(Tag, { color: color }, () => text);
     },
   },
@@ -47,7 +47,7 @@ export const searchFormSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'Select',
     componentProps: {
       options: [
@@ -89,7 +89,7 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'status',
-    label: 'STATE',
+    label: 'Status',
     component: 'RadioButtonGroup',
     defaultValue: '0',
     componentProps: {

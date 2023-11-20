@@ -12,7 +12,7 @@
   import { saveFillRule, updateFillRule } from './fill.rule.api';
 
   //Set the title
-  const title = computed(() => (!unref(isUpdate) ? 'NEW' : 'EDIT'));
+  const title = computed(() => (!unref(isUpdate) ? 'New' : 'Edit'));
 
   // 声明Emits
   const emit = defineEmits(['register', 'success']);

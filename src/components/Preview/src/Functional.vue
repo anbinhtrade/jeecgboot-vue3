@@ -92,7 +92,7 @@
         handleIChangeImage(imageList[index]);
       }
 
-      // 重置
+      // RESET
       function initState() {
         imgState.imgScale = 1;
         imgState.imgRotate = 0;

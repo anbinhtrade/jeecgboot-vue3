@@ -30,7 +30,7 @@ export const getFillRuleList = (params) => {
 };
 
 /**
- * DELETE
+ * Delete
  * @param params
  * @param handleSuccess
  */

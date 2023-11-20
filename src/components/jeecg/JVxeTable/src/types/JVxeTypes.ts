@@ -20,13 +20,13 @@ export enum JVxeTypes {
   time = 'time',
   checkbox = 'checkbox',
   upload = 'upload',
-  // 下拉搜索
+  // Drop-down search
   selectSearch = 'select-search',
-  // 下拉多选
+  // Drop down to select more
   selectMultiple = 'select-multiple',
-  // 进度条
+  // Progress bar
   progress = 'progress',
-  //部门选择
+  //Department selection
   departSelect = 'depart-select',
   //用户选择
   userSelect = 'user-select',
@@ -38,13 +38,13 @@ export enum JVxeTypes {
   normal = 'normal',
   hidden = 'hidden',
 
-  // 以下为自定义组件
+  // The following are custom components
   popup = 'popup',
   selectDictSearch = 'selectDictSearch',
   radio = 'radio',
   image = 'image',
   file = 'file',
-  // 省市区
+  // Provinces and municipalities
   pca = 'pca',
 }
 

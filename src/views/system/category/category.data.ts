@@ -16,7 +16,7 @@ export const columns: BasicColumn[] = [
 
 export const searchFormSchema: FormSchema[] = [
   {
-    label: 'NAME',
+    label: 'Name',
     field: 'name',
     component: 'Input',
     colProps: { span: 6 },

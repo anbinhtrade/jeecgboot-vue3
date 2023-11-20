@@ -2,7 +2,7 @@
   <div class="p-4">
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
       <template #tableTitle>
-        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> New menu</a-button>
+        <a-button type="primary" preIcon="ant-design:plus-outlined" @click="handleCreate"> New Menu</a-button>
         <a-button type="primary" preIcon="ic:round-expand" @click="expandAll">Expand All</a-button>
         <a-button type="primary" preIcon="ic:round-compress" @click="collapseAll">Collapse all</a-button>
 
@@ -11,7 +11,7 @@
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined" />
-                DELETE
+                Delete
               </a-menu-item>
             </a-menu>
           </template>
@@ -73,7 +73,7 @@
       },
     },
   });
-  //注册table数据
+  //Register table data
   const [registerTable, { reload, expandAll, collapseAll }] = tableContext;
 
   /**
@@ -87,14 +87,14 @@
   };
 
   /**
-   * 选择事件
+   * Select the event
    */
   function onSelectChange(selectedRowKeys: (string | number)[]) {
     checkedKeys.value = selectedRowKeys;
   }
 
   /**
-   * NEW
+   * New
    */
   function handleCreate() {
     showFooter.value = true;
@@ -104,7 +104,7 @@
   }
 
   /**
-   * EDIT
+   * Edit
    */
   function handleEdit(record) {
     showFooter.value = true;
@@ -140,7 +140,7 @@
   }
 
   /**
-   * DELETE
+   * Delete
    */
   async function handleDelete(record) {
     await deleteMenu({ id: record.id }, reload);
@@ -169,7 +169,7 @@
   function getTableAction(record) {
     return [
       {
-        label: 'EDIT',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
     ];
@@ -193,7 +193,7 @@
         onClick: handleDataRule.bind(null, record),
       },
       {
-        label: 'DELETE',
+        label: 'Delete',
         color: 'error',
         popConfirm: {
           title: 'Whether to confirm the deletion',

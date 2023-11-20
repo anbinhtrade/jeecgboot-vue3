@@ -34,6 +34,6 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
     uploadUrl: VITE_GLOB_DOMAIN_URL,
     viewUrl: VITE_GLOB_ONLINE_VIEW_URL,
   };
-  window._CONFIG['domainURL'] = VITE_GLOB_DOMAIN_URL;
+  window._CONFIG['domainUrl'] = VITE_GLOB_DOMAIN_URL;
   return glob as Readonly<GlobConfig>;
 };

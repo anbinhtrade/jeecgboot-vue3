@@ -12,7 +12,7 @@
           stopButtonPropagation
           :actions="[
             {
-              label: 'DELETE',
+              label: 'Delete',
               icon: 'ic:outline-delete-outline',
               onClick: handleDelete.bind(null, record),
             },
