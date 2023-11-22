@@ -129,9 +129,9 @@
   async function handlePackBatch() {
     Modal.confirm({
       title: 'Delete the tenant package',
-      content: 'Whether to delete the tenant package',
-      okText: 'CONFIRM',
-      cancelText: 'CANCEL',
+      content: 'Are you sure you want to delete the tenant package?',
+      okText: 'Confirm',
+      cancelText: 'Cancel',
       onOk: async () => {
         await deletePackPermissions({ ids: selectedRowKeys.value.join(',')}, handleSuccess);
       }

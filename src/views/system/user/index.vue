@@ -250,11 +250,11 @@
   function getDropDownAction(record): ActionItem[] {
     return [
       {
-        label: 'DETAIL',
+        label: 'Detail',
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: 'PASSWORD',
+        label: 'Password',
         //auth: 'user:changepwd',
         onClick: handleChangePassword.bind(null, record.username),
       },

@@ -61,8 +61,8 @@ export const batchDeleteRole = (params, handleSuccess) => {
   Modal.confirm({
     title: 'Confirm the deletion',
     content: 'Specifies whether to delete the selected data',
-    okText: 'CONFIRM',
-    cancelText: 'CANCEL',
+    okText: 'Confirm',
+    cancelText: 'Cancel',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatch, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();
@@ -139,8 +139,8 @@ export const batchDeleteUserRole = (params, handleSuccess) => {
   Modal.confirm({
     title: 'Confirm the deletion',
     content: 'Specifies whether to delete the selected data',
-    okText: 'CONFIRM',
-    cancelText: 'CANCEL',
+    okText: 'Confirm',
+    cancelText: 'Cancel',
     onOk: () => {
       return defHttp.delete({ url: Api.batchDeleteUserRole, params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();

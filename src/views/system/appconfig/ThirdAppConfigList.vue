@@ -2,15 +2,15 @@
   <div class="ding-ding-container" :class="[`${prefixCls}`]">
     <div class="ding-header">
       <ul class="ding-menu-tab">
-        <li :class="activeKey === 'ding' ? 'active' : ''" @click="dingLiClick('ding')"><a>钉钉集成</a></li>
-        <li :class="activeKey === 'wechat' ? 'active' : ''" @click="dingLiClick('wechat')"><a>企业微信集成?</a></li>
+        <li :class="activeKey === 'ding' ? 'active' : ''" @click="dingLiClick('ding')"><a>DingTalk integration</a></li>
+        <li :class="activeKey === 'wechat' ? 'active' : ''" @click="dingLiClick('wechat')"><a>WeCom integration?</a></li>
       </ul>
     </div>
     <div v-show="activeKey === 'ding'" class="base-collapse">
       <ThirdAppDingTalkConfigForm />
     </div>
     <div v-show="activeKey === 'wechat'" class="p-5 empty-image"> 
-      <a-empty description="暂不支持" :image-style="{ margin: '0 auto', height: '160px' }" />
+      <a-empty description="Not at this time" :image-style="{ margin: '0 auto', height: '160px' }" />
     </div>
   </div>
 </template>

@@ -39,10 +39,10 @@ export const deleteOne = (params, handleSuccess) => {
  */
 export const batchDelete = (params, handleSuccess) => {
   Modal.confirm({
-    title: '确认删除',
-    content: '是否删除选中数据',
-    okText: '确认',
-    cancelText: '取消',
+    title: 'Confirm deletion',
+    content: 'Please confirm to delete selected data',
+    okText: 'Confirm',
+    cancelText: 'Cancel',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatch, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();
@@ -79,10 +79,10 @@ export const deleteCustomer = (params, handleSuccess) => {
  */
 export const deleteBatchCustomer = (params, handleSuccess) => {
   Modal.confirm({
-    title: '确认删除',
-    content: '是否删除选中数据',
-    okText: '确认',
-    cancelText: '取消',
+    title: 'Confirm deletion',
+    content: 'Please confirm to delete selected data',
+    okText: 'Confirm',
+    cancelText: 'Cancel',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatchCustomer, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();
@@ -118,10 +118,10 @@ export const deleteTicket = (params, handleSuccess) => {
  */
 export const deleteBatchTicket = (params, handleSuccess) => {
   Modal.confirm({
-    title: '确认删除',
-    content: '是否删除选中数据',
-    okText: '确认',
-    cancelText: '取消',
+    title: 'Confirm deletion',
+    content: 'Please confirm to delete selected data',
+    okText: 'Confirm',
+    cancelText: 'Cancel',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatchTicket, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();

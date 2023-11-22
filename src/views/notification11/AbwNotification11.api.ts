@@ -4,34 +4,34 @@ import { useMessage } from "/@/hooks/web/useMessage";
 const { createConfirm } = useMessage();
 
 enum Api {
-  list = '/notification9/abwNotification9/list',
-  save='/notification9/abwNotification9/add',
-  edit='/notification9/abwNotification9/edit',
-  deleteOne = '/notification9/abwNotification9/delete',
-  deleteBatch = '/notification9/abwNotification9/deleteBatch',
-  importExcel = '/notification9/abwNotification9/importExcel',
-  exportXls = '/notification9/abwNotification9/exportXls',
+  list = '/notification11/abwNotification11/list',
+  save='/notification11/abwNotification11/add',
+  edit='/notification11/abwNotification11/edit',
+  deleteOne = '/notification11/abwNotification11/delete',
+  deleteBatch = '/notification11/abwNotification11/deleteBatch',
+  importExcel = '/notification11/abwNotification11/importExcel',
+  exportXls = '/notification11/abwNotification11/exportXls',
 }
 
 /**
- * 导出api
+ * Export API
  * @param params
  */
 export const getExportUrl = Api.exportXls;
 
 /**
- * 导入api
+ * Import APIs
  */
 export const getImportUrl = Api.importExcel;
 
 /**
- * 列表接口
+ * List interface
  * @param params
  */
 export const list = (params) => defHttp.get({ url: Api.list, params });
 
 /**
- * 删除单个
+ * Delete a single
  * @param params
  * @param handleSuccess
  */
@@ -42,15 +42,15 @@ export const deleteOne = (params,handleSuccess) => {
 }
 
 /**
- * 批量删除
+ * Delete in bulk
  * @param params
  * @param handleSuccess
  */
 export const batchDelete = (params, handleSuccess) => {
   createConfirm({
     iconType: 'warning',
-    title: 'Confirm deletion',
-    content: 'Please confirm to delete selected data',
+    title: 'Confirm deleting',
+    content: 'Are you sure want to delete the selected data',
     okText: 'Confirm',
     cancelText: 'Cancel',
     onOk: () => {
@@ -62,7 +62,7 @@ export const batchDelete = (params, handleSuccess) => {
 }
 
 /**
- * 保存或者更新
+ * Save or update
  * @param params
  * @param isUpdate
  */

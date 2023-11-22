@@ -8,7 +8,7 @@
 
     <template #footer>
       <a-tabs default-active-key="1">
-        <a-tab-pane key="1" tab="DETAIL" />
+        <a-tab-pane key="1" tab="Detail" />
         <a-tab-pane key="2" tab="RULES" />
       </a-tabs>
     </template>

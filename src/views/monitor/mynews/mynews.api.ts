@@ -33,8 +33,8 @@ export const readAllMsg = (params, handleSuccess) => {
   Modal.confirm({
     title: 'Confirm the action',
     content: 'Whether all of them are marked as read?',
-    okText: 'CONFIRM',
-    cancelText: 'CANCEL',
+    okText: 'Confirm',
+    cancelText: 'Cancel',
     onOk: () => {
       return defHttp.put({ url: Api.readAllMsg, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();

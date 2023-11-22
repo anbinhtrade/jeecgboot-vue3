@@ -139,7 +139,7 @@ const setting: ProjectConfig = {
     showRedo: true,
     // 是否显示折叠按钮
     showFold: true,
-    // 标签页样式
+    //Tab page style
     theme: TabsThemeEnum.CARD,
   },
 

@@ -326,8 +326,8 @@ const userDetail = ref({
     Modal.confirm({
       title: 'Cancel your application',
       content: 'Whether or not to cancel the application',
-      okText: 'CONFIRM',
-      cancelText: 'CANCEL',
+      okText: 'Confirm',
+      cancelText: 'Cancel',
       onOk: () => {
         cancelApplyTenant({ tenantId: id }).then((res) => {
           if (res.success) {
@@ -443,7 +443,7 @@ const userDetail = ref({
             content: 'There are no other members of the organization and you will need to go to cancel it',
             okText: 'Go to Sign out',
             okType: 'danger',
-            cancelText: 'CANCEL',
+            cancelText: 'Cancel',
             onOk: () => {
               if(fullPath === '/system/usersetting'){
                 return;

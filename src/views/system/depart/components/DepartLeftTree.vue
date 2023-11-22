@@ -2,7 +2,7 @@
   <a-card :bordered="false" style="height: 100%">
     <div class="j-table-operator" style="width: 100%">
       <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddDepart">New</a-button>
-      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddChildDepart()">Add subordinates</a-button>
+      <a-button type="primary" preIcon="ant-design:plus-outlined" @click="onAddChildDepart()">Add Sub-Depart</a-button>
       <a-upload name="file" :showUploadList="false" :customRequest="onImportXls">
         <a-button type="primary" preIcon="ant-design:import-outlined">Import</a-button>
       </a-upload>

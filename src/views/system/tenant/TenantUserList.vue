@@ -152,11 +152,11 @@
   function getDropDownAction(record): ActionItem[] {
     return [
       {
-        label: 'DETAIL',
+        label: 'Detail',
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: 'DIMISSION',
+        label: 'Dismiss',
         onClick: handleQuit.bind(null, record.username),
         //update-begin---author:wangshuai ---date:20230130  for：[QQYUN-3974]租户的创建人 不应该有离职按钮------------
         ifShow: () =>{
@@ -165,21 +165,21 @@
         //update-end---author:wangshuai ---date:20230130  for：[QQYUN-3974]租户的创建人 不应该有离职按钮------------
       },
       {
-        label: 'CONNECT',
+        label: 'Connect',
         onClick: handleHandover.bind(null, record),
         ifShow: () =>{
           return record.username === record.createBy;
         }
       },
       {
-        label: 'AGREE',
+        label: 'Agree',
         onClick: updateStatus.bind(null, record.id, '1'),
         ifShow: () => {
           return (record.status === '3' || record.status === '4') && record.createBy === createBy;
         },
       },
       {
-        label: 'REFUSE',
+        label: 'Reject',
         popConfirm: {
           title: 'Whether to confirm the rejection',
           confirm: updateStatus.bind(null, record.id, '4'),

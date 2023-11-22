@@ -60,10 +60,10 @@ export const deleteDemo = (params, handleSuccess) => {
  */
 export const batchDeleteDemo = (params, handleSuccess) => {
   Modal.confirm({
-    title: 'Confirm the deletion',
-    content: 'Specifies whether to delete the selected data',
-    okText: 'CONFIRM',
-    cancelText: 'CANCEL',
+    title: 'Confirm deletion',
+    content: 'Are you sure to delete the selected data',
+    okText: 'Confirm',
+    cancelText: 'Cancel',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatch, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();

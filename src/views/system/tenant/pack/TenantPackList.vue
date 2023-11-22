@@ -149,8 +149,8 @@
     Modal.confirm({
       title: 'Delete the tenant package',
       content: 'Whether to delete the tenant package',
-      okText: 'CONFIRM',
-      cancelText: 'CANCEL',
+      okText: 'Confirm',
+      cancelText: 'Cancel',
       onOk: async () => {
         await deletePackPermissions({ ids: selectedRowKeys.value.join(',')}, success);
       }
@@ -187,7 +187,7 @@
   function getDropDownAction(record) {
     return [
       {
-        label: 'DETAIL',
+        label: 'Detail',
         onClick: handleDetail.bind(null, record),
       },
       {
@@ -201,7 +201,7 @@
   }
 
   /**
-   * DETAIL
+   * Detail
    * @param record
    */
   function handleDetail(record) {

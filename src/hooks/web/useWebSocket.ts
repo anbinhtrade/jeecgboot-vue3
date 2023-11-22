@@ -8,19 +8,19 @@ let result: WebSocketResult<any>;
 const listeners = new Map();
 
 /**
- * 开启 WebSocket 链接，全局只需执行一次
+ * Enable the WebSocket link, which only needs to be executed once globally
  * @param url
  */
 export function connectWebSocket(url: string) {
-  //update-begin-author:taoyan date:2022-4-24 for: v2.4.6 的 websocket 服务端，存在性能和安全问题。 #3278
+  //update-begin-author:taoyan date:2022-4-24 for: The websocket server of v2.4.6 has performance and security issues. #3278
   let token = (getToken() || '') as string;
   result = useWebSocket(url, {
-    // 自动重连 (遇到错误最多重复连接10次)
+    // Automatically reconnect (reconnect up to 10 times when an error occurs)
     autoReconnect: {
       retries : 10,
       delay : 5000
     },
-    // 心跳检测
+    // Heartbeat detection
     heartbeat: {
       message: "ping",
       interval: 55000
@@ -41,19 +41,19 @@ export function connectWebSocket(url: string) {
 }
 
 function onOpen() {
-  console.log('[WebSocket] 连接成功');
+  console.log('[WebSocket] Connection successful');
 }
 
 function onClose(e) {
-  console.log('[WebSocket] 连接断开：', e);
+  console.log('[WebSocket] Connection lost: ', e);
 }
 
 function onError(e) {
-  console.log('[WebSocket] 连接发生错误: ', e);
+  console.log('[WebSocket] Connection error: ', e);
 }
 
 function onMessage(e) {
-  console.debug('[WebSocket] -----接收消息-------', e.data);
+  console.debug('[WebSocket] -----Receive message-------', e.data);
   try {
     const data = JSON.parse(e.data);
     for (const callback of listeners.keys()) {
@@ -64,13 +64,13 @@ function onMessage(e) {
       }
     }
   } catch (err) {
-    console.error('[WebSocket] data解析失败：', err);
+    console.error('[WebSocket] data parsing failed: ', err);
   }
 }
 
 
 /**
- * 添加 WebSocket 消息监听
+ * Add WebSocket message listening
  * @param callback
  */
 export function onWebSocket(callback: (data: object) => any) {
@@ -78,13 +78,13 @@ export function onWebSocket(callback: (data: object) => any) {
     if (typeof callback === 'function') {
       listeners.set(callback, null);
     } else {
-      console.debug('[WebSocket] 添加 WebSocket 消息监听失败：传入的参数不是一个方法');
+      console.debug('[WebSocket] Failed to add WebSocket message listening: The parameter passed in is not a method');
     }
   }
 }
 
 /**
- * 解除 WebSocket 消息监听
+ * Disable WebSocket message listening
  *
  * @param callback
  */

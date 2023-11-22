@@ -34,7 +34,7 @@
   }
 
   function edit(record) {
-    title.value = disableSubmit.value ? 'DETAIL' : 'Edit';
+    title.value = disableSubmit.value ? 'Detail' : 'Edit';
     visible.value = true;
     nextTick(() => {
       realForm.value.edit(record);

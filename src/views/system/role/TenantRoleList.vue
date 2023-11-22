@@ -97,7 +97,7 @@
     });
   }
   /**
-   * DETAIL
+   * Detail
    */
   function handleDetail(record) {
     showFooter.value = false;
@@ -147,7 +147,7 @@
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'DETAIL',
+        label: 'Detail',
         onClick: handleDetail.bind(null, record),
       },
       {

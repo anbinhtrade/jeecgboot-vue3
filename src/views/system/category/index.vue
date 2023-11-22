@@ -102,7 +102,7 @@
   }
 
   /**
-   * DETAIL
+   * Detail
    */
   async function handleDetail(record) {
     openModal(true, {
@@ -135,7 +135,7 @@
     //update-end---author:wangshuai ---date:20220530  for：[issues/54]树字典，勾选，然后批量删除，系统错误--------------
   }
   /**
-   * Add subordinates
+   * Add Sub
    */
   function handleAddSub(record) {
     openModal(true, {
@@ -286,7 +286,7 @@
         },
       },
       {
-        label: 'Add subordinates',
+        label: 'Add Sub',
         onClick: handleAddSub.bind(null, { pid: record.id }),
       },
     ];

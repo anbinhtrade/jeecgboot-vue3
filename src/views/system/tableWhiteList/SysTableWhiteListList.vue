@@ -102,7 +102,7 @@ function handleEdit(record: Recordable) {
 }
 
 /**
- * DETAIL
+ * Detail
  */
 function handleDetail(record: Recordable) {
   openModal(true, {
@@ -151,7 +151,7 @@ function getTableAction(record) {
 function getDropDownAction(record) {
   return [
     {
-      label: 'DETAIL',
+      label: 'Detail',
       onClick: handleDetail.bind(null, record),
     }, {
       label: 'Delete',

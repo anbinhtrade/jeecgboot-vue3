@@ -63,7 +63,7 @@ const compList = [AntButton.Group, Icon, AIcon, JUploadButton];
 //敲敲云—仪表盘设计器（拖拽设计）
 import DragEngine from '@qiaoqiaoyun/drag-free';
 import('@qiaoqiaoyun/drag-free/lib/index.css');
-console.log('---初始化---， 全局注册仪表盘--------------');
+console.log('---initialize---， Globally Registered Dashboards--------------');
 
 export function registerGlobComp(app: App) {
   compList.forEach((comp) => {

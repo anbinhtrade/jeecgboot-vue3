@@ -114,7 +114,7 @@
     });
   }
   /**
-   * DETAIL
+   * Detail
    */
   function handleDetail(record) {
     showFooter.value = false;
@@ -124,7 +124,7 @@
     });
   }
   /**
-   * Add subordinates
+   * Add Sub
    */
   function handleAddSub(record) {
     openDrawer(true, {
@@ -181,11 +181,11 @@
   function getDropDownAction(record) {
     return [
       // {
-      //   label: 'DETAIL',
+      //   label: 'Detail',
       //   onClick: handleDetail.bind(null, record),
       // },
       {
-        label: 'Add subordinates',
+        label: 'Add Sub',
         onClick: handleAddSub.bind(null, record),
       },
       {

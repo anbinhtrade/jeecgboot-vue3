@@ -75,8 +75,8 @@ export const batchDeleteTenant = (params, handleSuccess) => {
   Modal.confirm({
     title: 'Confirm the deletion',
     content: 'Specifies whether to delete the selected data',
-    okText: 'CONFIRM',
-    cancelText: 'CANCEL',
+    okText: 'Confirm',
+    cancelText: 'Cancel',
     onOk: () => {
       return defHttp.delete({ url: Api.deleteBatch, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();
@@ -112,8 +112,8 @@ export const leaveTenant = (params, handleSuccess) => {
   Modal.confirm({
     title: 'Please leave',
     content: 'Whether to leave the user',
-    okText: 'CONFIRM',
-    cancelText: 'CANCEL',
+    okText: 'Confirm',
+    cancelText: 'Cancel',
     onOk: () => {
       return defHttp.put({ url: Api.leaveTenant, data: params }, { joinParamsToUrl: true }).then(() => {
         handleSuccess();

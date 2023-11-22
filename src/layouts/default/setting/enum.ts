@@ -54,7 +54,7 @@ export enum HandlerEnum {
   OPEN_ROUTE_TRANSITION,
 }
 
-// 标签页样式
+//Tab page style
 export const tabsThemeOptions = [
   {
     value: TabsThemeEnum.SMOOTH,

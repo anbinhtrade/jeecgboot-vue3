@@ -23,11 +23,11 @@ export function useMethods() {
   async function exportXls(name, url, params, isXlsx = false) {
     const data = await defHttp.get({ url: url, params: params, responseType: 'blob' }, { isTransformResponse: false });
     if (!data) {
-      createMessage.warning('文件下载失败');
+      createMessage.warning('File download failed');
       return;
     }
     if (!name || typeof name != 'string') {
-      name = '导出文件';
+      name = 'Export file';
     }
     let blobOptions = { type: 'application/vnd.ms-excel' };
     let fileSuffix = '.xls';
@@ -70,18 +70,18 @@ export function useMethods() {
             centered: false,
             content: `<div>
                                 <span>${msg}</span><br/> 
-                                <span>具体详情请<a href = ${href} download = ${fileName}> 点击下载 </a> </span> 
+                                <span>For specific details please<a href = ${href} download = ${fileName}> click to download </a> </span> 
                               </div>`,
           });
           //update-begin---author:wangshuai ---date:20221121  for：[VUEN-2827]导入无权限，提示图标错误------------
         } else if (fileInfo.code === 500 || fileInfo.code === 510) {
-          createMessage.error(fileInfo.message || `${data.file.name} 导入失败`);
+          createMessage.error(fileInfo.message || `${data.file.name} Import failed`);
           //update-end---author:wangshuai ---date:20221121  for：[VUEN-2827]导入无权限，提示图标错误------------
         } else {
-          createMessage.success(fileInfo.message || `${data.file.name} 文件上传成功`);
+          createMessage.success(fileInfo.message || `${data.file.name} File uploaded successfully`);
         }
       } catch (error) {
-        console.log('导入的数据异常', error);
+        console.log('Imported data is abnormal', error);
       } finally {
         typeof success === 'function' ? success(fileInfo) : '';
       }

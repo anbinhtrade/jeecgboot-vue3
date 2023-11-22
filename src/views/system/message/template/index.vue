@@ -158,8 +158,8 @@
    */
   function getDropDownAction(record): ActionItem[] {
     return [
-      { label: 'APPLY', onClick: handleUse.bind(null, record) },
-      { label: 'DEACTIVATED', onClick: handleNotUse.bind(null, record) },
+      { label: 'Apply', onClick: handleUse.bind(null, record) },
+      { label: 'Deactivated', onClick: handleNotUse.bind(null, record) },
       { label: 'Send a test', onClick: onSendTest.bind(null, record) },
       {
         label: 'Delete',

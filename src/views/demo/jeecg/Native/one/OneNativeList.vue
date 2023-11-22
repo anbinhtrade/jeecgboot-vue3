@@ -62,7 +62,7 @@
               <template #overlay>
                 <a-menu class="antd-more">
                   <a-menu-item>
-                    <a @click="handleDetail(record)">DETAIL</a>
+                    <a @click="handleDetail(record)">Detail</a>
                   </a-menu-item>
                   <a-menu-item>
                     <Popconfirm title="Are you sure to delete it?" @confirm="() => handleDelete(record.id)">
@@ -248,8 +248,8 @@
     Modal.confirm({
       title: 'Confirm the deletion',
       content: 'Specifies whether to delete the selected data',
-      okText: 'CONFIRM',
-      cancelText: 'CANCEL',
+      okText: 'Confirm',
+      cancelText: 'Cancel',
       onOk: () => {
         defHttp.delete({ url: Api.delete, data: { ids: selectedRowKeys.value } }, { joinParamsToUrl: true }).then(() => {
           handleSuccess();
@@ -370,7 +370,7 @@
   }
 
   /**
-   * DETAIL
+   * Detail
    * @param record
    */
   function handleDetail(record) {

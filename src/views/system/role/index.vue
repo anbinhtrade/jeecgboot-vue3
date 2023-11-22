@@ -109,7 +109,7 @@
     });
   }
   /**
-   * DETAIL
+   * Detail
    */
   function handleDetail(record) {
     showFooter.value = false;
@@ -160,7 +160,7 @@
         onClick: handleUser.bind(null, record),
       },
       {
-        label: 'AUTHORIZATION',
+        label: 'Permission',
         onClick: handlePerssion.bind(null, record),
       },
     ];
@@ -176,7 +176,7 @@
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'DETAIL',
+        label: 'Detail',
         onClick: handleDetail.bind(null, record),
       },
       {

@@ -23,9 +23,9 @@ function createCopyModal(options: Partial<IOptions>) {
     ...options,
     iconType: options.iconType ?? 'info',
     width: options.width ?? 500,
-    title: options.title ?? '复制',
+    title: options.title ?? 'Copy',
     maskClosable: options.maskClosable ?? true,
-    okText: options.okText ?? '复制',
+    okText: options.okText ?? 'Copy',
     okButtonProps: {
       ...options.okButtonProps,
       class: COPY_CLASS,
@@ -36,11 +36,11 @@ function createCopyModal(options: Partial<IOptions>) {
         const clipboard = new Clipboard('.' + COPY_CLASS);
         clipboard.on('success', () => {
           clipboard.destroy();
-          createMessage.success('复制成功');
+          createMessage.success('Copied successfully');
           resolve();
         });
         clipboard.on('error', () => {
-          createMessage.error('该浏览器不支持自动复制');
+          createMessage.error('This browser does not support automatic copying');
           clipboard.destroy();
           resolve();
         });

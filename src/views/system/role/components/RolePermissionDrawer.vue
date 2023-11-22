@@ -27,7 +27,7 @@
       :selectedKeys="selectedKeys"
       :checkStrictly="checkStrictly"
       :clickRowToExpand="false"
-      title="PERMISSIONS"
+      title="Permissions"
       @check="onCheck"
       @select="onTreeNodeSelect"
     >
@@ -38,7 +38,7 @@
     </BasicTree>
     <!--右下角按钮-->
     <template #footer>
-      <PopConfirmButton title="Are you sure to abandon editing?" @confirm="closeDrawer" okText="Are you sure" cancelText="CANCEL">CANCEL</PopConfirmButton>
+      <PopConfirmButton title="Data not saved yet. Are you sure to quit editing?" @confirm="closeDrawer" okText="OK" cancelText="Cancel">Cancel</PopConfirmButton>
       <a-button @click="handleSubmit(false)" type="primary" :loading="loading" ghost style="margin-right: 0.8rem">Save only</a-button>
       <a-button @click="handleSubmit(true)" type="primary" :loading="loading">Save and close</a-button>
     </template>

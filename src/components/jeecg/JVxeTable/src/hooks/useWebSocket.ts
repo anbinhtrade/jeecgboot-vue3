@@ -23,7 +23,7 @@ const vs = {
     // 消息类型：更新vxe table数据
     TYPE_UVT: 'update_vxe_table',
   },
-  // 心跳检测
+  // Heartbeat detection
   heartCheck: {
     // 间隔时间，间隔多久发送一次心跳消息
     interval: 10000,
@@ -56,7 +56,7 @@ const vs = {
       const domainUrl = useGlobSetting().uploadUrl!;
       const domain = domainUrl.replace('https://', 'wss://').replace('http://', 'ws://');
       const url = `${domain}/vxeSocket/${userId}/${this.pageId}`;
-      //update-begin-author:taoyan date:2022-4-24 for: v2.4.6 的 websocket 服务端，存在性能和安全问题。 #3278
+      //update-begin-author:taoyan date:2022-4-24 for: The websocket server of v2.4.6 has performance and security issues. #3278
       let token = (getToken() || '') as string;
       this.ws = new WebSocket(url, [token]);
       //update-end-author:taoyan date:2022-4-24 for: v2.4.6 的 websocket 服务端，存在性能和安全问题。 #3278
@@ -80,7 +80,7 @@ const vs = {
         );
       }
     } catch (err: any) {
-      console.warn('【JVxeWebSocket】发送消息失败：(' + err.code + ')');
+      console.warn('【JVxeWebSocket】Failed to send message:(' + err.code + ')');
     }
   },
 
@@ -122,7 +122,7 @@ const vs = {
   },
 
   lockReconnect: false,
-  /** 尝试重连 */
+  /** Try to reconnect */
   reconnect() {
     if (this.lockReconnect) return;
     this.lockReconnect = true;
@@ -131,7 +131,7 @@ const vs = {
         this.ws.close();
       }
       this.ws = null;
-      console.info('【JVxeWebSocket】尝试重连...');
+      console.info('【JVxeWebSocket】Try to reconnect...');
       this.initialWebSocket();
       this.lockReconnect = false;
     }, 5000);
@@ -139,11 +139,11 @@ const vs = {
 
   on: {
     open() {
-      console.info('【JVxeWebSocket】连接成功');
+      console.info('[JVxeWebSocket] Connection successful');
       this.heartCheck.start();
     },
     error(e) {
-      console.warn('【JVxeWebSocket】连接发生错误:', e);
+      console.warn('[JVxeWebSocket] Connection error:', e);
       this.reconnect();
     },
     message(e) {
@@ -152,13 +152,13 @@ const vs = {
       try {
         json = JSON.parse(e.data);
       } catch (e: any) {
-        console.warn('【JVxeWebSocket】收到无法解析的消息:', e.data);
+        console.warn('[JVxeWebSocket] Received an unparsable message:', e.data);
         return;
       }
       let type = json[this.constants.TYPE];
       let data = json[this.constants.DATA];
       switch (type) {
-        // 心跳检测
+        // Heartbeat detection
         case this.constants.TYPE_HB:
           this.heartCheck.back();
           break;
