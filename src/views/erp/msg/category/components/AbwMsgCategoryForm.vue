@@ -3,13 +3,13 @@
     <a-form ref="formRef" class="antd-modal-form" :labelCol="labelCol" :wrapperCol="wrapperCol">
       <a-row>
         <a-col :span="24">
-          <a-form-item label="Subjects" v-bind="validateInfos.msgSubject">
-            <a-input v-model:value="formData.msgSubject" placeholder="请输入Subjects" :disabled="disabled"></a-input>
+          <a-form-item label="Code" v-bind="validateInfos.msgCatCode">
+            <a-input v-model:value="formData.msgCatCode" placeholder="Please enter Code" :disabled="disabled"></a-input>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="Message" v-bind="validateInfos.msgBody">
-            <a-input v-model:value="formData.msgBody" placeholder="请输入Message" :disabled="disabled"></a-input>
+          <a-form-item label="Text" v-bind="validateInfos.msgCatText">
+            <a-input v-model:value="formData.msgCatText" placeholder="Please enter Text" :disabled="disabled"></a-input>
           </a-form-item>
         </a-col>
       </a-row>
@@ -22,7 +22,7 @@
   import { defHttp } from '/@/utils/http/axios';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { getValueType } from '/@/utils';
-  import { saveOrUpdate } from '../AbwNotification9.api';
+  import { saveOrUpdate } from '../AbwMsgCategory.api';
   import { Form } from 'ant-design-vue';
   
   const props = defineProps({
@@ -35,19 +35,19 @@
   const emit = defineEmits(['register', 'ok']);
   const formData = reactive<Record<string, any>>({
     id: '',
-    msgSubject: '',   
-    msgBody: '',   
+    msgCatCode: '',   
+    msgCatText: '',   
   });
   const { createMessage } = useMessage();
   const labelCol = ref<any>({ xs: { span: 24 }, sm: { span: 5 } });
   const wrapperCol = ref<any>({ xs: { span: 24 }, sm: { span: 16 } });
   const confirmLoading = ref<boolean>(false);
-  //表单验证
+  //Form validation
   const validatorRules = {
   };
   const { resetFields, validate, validateInfos } = useForm(formData, validatorRules, { immediate: true });
 
-  // 表单禁用
+  // Form disabled
   const disabled = computed(()=>{
     if(props.formBpm === true){
       if(props.formData.disabled === false){
@@ -61,42 +61,42 @@
 
   
   /**
-   * 新增
+   * New
    */
   function add() {
     edit({});
   }
 
   /**
-   * 编辑
+   * Edit
    */
   function edit(record) {
     nextTick(() => {
       resetFields();
-      //赋值
+      //Assignment
       Object.assign(formData, record);
     });
   }
 
   /**
-   * 提交数据
+   * Submit data
    */
   async function submitForm() {
-    // 触发表单验证
+    // Trigger form validation
     await validate();
     confirmLoading.value = true;
     const isUpdate = ref<boolean>(false);
-    //时间格式化
+    //Time formatting
     let model = formData;
     if (model.id) {
       isUpdate.value = true;
     }
-    //循环数据
+    //Loop data
     for (let data in model) {
-      //如果该数据是数组并且是字符串类型
+      //If the data is an array and is of type string
       if (model[data] instanceof Array) {
         let valueType = getValueType(formRef.value.getProps, data);
-        //如果是字符串类型的需要变成以逗号分割的字符串
+        //If it is a string type, it needs to be converted into a comma-separated string.
         if (valueType === 'string') {
           model[data] = model[data].join(',');
         }

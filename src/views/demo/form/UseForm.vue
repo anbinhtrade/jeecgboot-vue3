@@ -1,5 +1,5 @@
 <template>
-  <PageWrapper title="UseForm操作示例">
+  <PageWrapper title="Example of the Use Form operation">
     <div class="mb-4">
       <a-button @click="setProps({ labelWidth: 150 })" class="mr-2"> CHANGE labelWidth </a-button>
       <a-button @click="setProps({ labelWidth: 120 })" class="mr-2"> RESTORE labelWidth </a-button>

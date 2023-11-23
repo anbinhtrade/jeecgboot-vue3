@@ -1,11 +1,9 @@
-import {BasicColumn} from '/@/components/Table';
-import {FormSchema} from '/@/components/Table';
-import { rules} from '/@/utils/helper/validator';
-import { render } from '/@/utils/common/renderUtils';
-//列表数据
+import {BasicColumn} from '/src/components/Table';
+import {FormSchema} from '/src/components/Table';
+//List data
 export const columns: BasicColumn[] = [
   {
-    title: 'Subjects',
+    title: 'Subject',
     align: "center",
     dataIndex: 'msgSubject'
   },
@@ -16,14 +14,14 @@ export const columns: BasicColumn[] = [
   },
 ];
 
-//查询数据
+//Query data
 export const searchFormSchema: FormSchema[] = [
 ];
 
-//表单数据
+//Form data
 export const formSchema: FormSchema[] = [
   {
-    label: 'Subjects',
+    label: 'Subject',
     field: 'msgSubject',
     component: 'Input',
   },
@@ -32,7 +30,7 @@ export const formSchema: FormSchema[] = [
     field: 'msgBody',
     component: 'Input',
   },
-	// TODO 主键隐藏字段，目前写死为ID
+	// TODO The primary key hidden field is currently hard-coded as ID.
   {
     label: '',
     field: 'id',

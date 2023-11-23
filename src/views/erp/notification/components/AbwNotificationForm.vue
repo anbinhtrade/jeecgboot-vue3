@@ -3,13 +3,43 @@
     <a-form ref="formRef" class="antd-modal-form" :labelCol="labelCol" :wrapperCol="wrapperCol">
       <a-row>
         <a-col :span="24">
-          <a-form-item label="Subject" v-bind="validateInfos.msgSubject">
-            <a-input v-model:value="formData.msgSubject" placeholder="Please enter Subject" :disabled="disabled"></a-input>
+          <a-form-item label="Người nhận" v-bind="validateInfos.msgUserIds">
+            <a-input v-model:value="formData.msgUserIds" placeholder="Please enter Người nhận" :disabled="disabled"></a-input>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="Message" v-bind="validateInfos.msgBody">
-            <a-input v-model:value="formData.msgBody" placeholder="Please enter Message" :disabled="disabled"></a-input>
+          <a-form-item label="Loại thông báo" v-bind="validateInfos.msgCategory">
+            <a-input v-model:value="formData.msgCategory" placeholder="Please enter Loại thông báo" :disabled="disabled"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="Tiêu đề" v-bind="validateInfos.msgTitle">
+            <a-input v-model:value="formData.msgTitle" placeholder="Please enter Tiêu đề" :disabled="disabled"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="Nội dung rút gọn" v-bind="validateInfos.msgContent">
+            <a-input v-model:value="formData.msgContent" placeholder="Please enter Nội dung rút gọn" :disabled="disabled"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="Nội dung" v-bind="validateInfos.msgBody">
+            <a-input v-model:value="formData.msgBody" placeholder="Please enter Nội dung" :disabled="disabled"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="Thumbnail" v-bind="validateInfos.msgThumbnailImage">
+            <a-input v-model:value="formData.msgThumbnailImage" placeholder="Please enter Thumbnail" :disabled="disabled"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="Banner" v-bind="validateInfos.msgBannerImage">
+            <a-input v-model:value="formData.msgBannerImage" placeholder="Please enter Banner" :disabled="disabled"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="Hẹn giờ" v-bind="validateInfos.msgPlan">
+		        <a-date-picker placeholder="Please select Hẹn giờ"  v-model:value="formData.msgPlan" showTime value-format="YYYY-MM-DD HH:mm:ss" style="width: 100%" :disabled="disabled"/>
           </a-form-item>
         </a-col>
       </a-row>
@@ -22,7 +52,7 @@
   import { defHttp } from '/@/utils/http/axios';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { getValueType } from '/@/utils';
-  import { saveOrUpdate } from '../AbwNotification11.api';
+  import { saveOrUpdate } from '../AbwNotification.api';
   import { Form } from 'ant-design-vue';
   
   const props = defineProps({
@@ -35,8 +65,14 @@
   const emit = defineEmits(['register', 'ok']);
   const formData = reactive<Record<string, any>>({
     id: '',
-    msgSubject: '',   
+    msgUserIds: '',   
+    msgCategory: '',   
+    msgTitle: '',   
+    msgContent: '',   
     msgBody: '',   
+    msgThumbnailImage: '',   
+    msgBannerImage: '',   
+    msgPlan: '',   
   });
   const { createMessage } = useMessage();
   const labelCol = ref<any>({ xs: { span: 24 }, sm: { span: 5 } });

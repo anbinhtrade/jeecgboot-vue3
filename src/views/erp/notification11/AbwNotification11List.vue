@@ -1,64 +1,64 @@
 <template>
   <div class="p-2">
-    <!--查询区域-->
+    <!--Query area-->
     <div class="jeecg-basic-table-form-container">
       <a-form ref="formRef" @keyup.enter.native="searchQuery" :model="queryParam" :label-col="labelCol" :wrapper-col="wrapperCol">
         <a-row :gutter="24">
         </a-row>
       </a-form>
     </div>
-    <!--引用表格-->
+    <!--Reference table-->
     <BasicTable @register="registerTable" :rowSelection="rowSelection">
-      <!--插槽:table标题-->
+      <!--Slot: table title-->
       <template #tableTitle>
-        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> 新增</a-button>
-        <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出</a-button>
-        <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">导入</j-upload-button>
+        <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> New</a-button>
+        <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> Export</a-button>
+        <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">Import</j-upload-button>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
               <a-menu-item key="1" @click="batchHandleDelete">
                 <Icon icon="ant-design:delete-outlined"></Icon>
-                删除
+                Delete
               </a-menu-item>
             </a-menu>
           </template>
-          <a-button>批量操作
+          <a-button>Delete
             <Icon icon="mdi:chevron-down"></Icon>
           </a-button>
         </a-dropdown>
       </template>
-      <!--操作栏-->
+      <!--Action bar-->
       <template #action="{ record }">
         <TableAction :actions="getTableAction(record)" :dropDownActions="getDropDownAction(record)"/>
       </template>
       <template v-slot:bodyCell="{ column, record, index, text }">
       </template>
     </BasicTable>
-    <!-- 表单区域 -->
-    <AbwNotification8Modal ref="registerModal" @success="handleSuccess"></AbwNotification8Modal>
+    <!-- Form area -->
+    <AbwNotification11Modal ref="registerModal" @success="handleSuccess"></AbwNotification11Modal>
   </div>
 </template>
 
-<script lang="ts" name="notification8-abwNotification8" setup>
+<script lang="ts" name="notification11-abwNotification11" setup>
   import { ref, reactive } from 'vue';
-  import { BasicTable, useTable, TableAction } from '/@/components/Table';
-  import { useListPage } from '/@/hooks/system/useListPage';
-  import { columns } from './AbwNotification8.data';
-  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl } from './AbwNotification8.api';
-  import { downloadFile } from '/@/utils/common/renderUtils';
-  import AbwNotification8Modal from './components/AbwNotification8Modal.vue'
-  import { useUserStore } from '/@/store/modules/user';
+  import { BasicTable, useTable, TableAction } from '/src/components/Table';
+  import { useListPage } from '/src/hooks/system/useListPage';
+  import { columns } from './AbwNotification11.data';
+  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl } from './AbwNotification11.api';
+  import { downloadFile } from '/src/utils/common/renderUtils';
+  import AbwNotification11Modal from './components/AbwNotification11Modal.vue'
+  import { useUserStore } from '/src/store/modules/user';
 
   const formRef = ref();
   const queryParam = reactive<any>({});
   const toggleSearchStatus = ref<boolean>(false);
   const registerModal = ref();
   const userStore = useUserStore();
-  //注册table数据
+  //Register table data
   const { prefixCls, tableContext, onExportXls, onImportXls } = useListPage({
     tableProps: {
-      title: 'Notification 8',
+      title: 'Notification 11',
       api: list,
       columns,
       canResize:false,
@@ -72,7 +72,7 @@
       },
     },
     exportConfig: {
-      name: "Notification 8",
+      name: "Notification 11",
       url: getExportUrl,
       params: queryParam,
     },
@@ -94,7 +94,7 @@
   });
 
   /**
-   * 新增事件
+   * New event
    */
   function handleAdd() {
     registerModal.value.disableSubmit = false;
@@ -102,7 +102,7 @@
   }
   
   /**
-   * 编辑事件
+   * Edit event
    */
   function handleEdit(record: Recordable) {
     registerModal.value.disableSubmit = false;
@@ -110,7 +110,7 @@
   }
    
   /**
-   * 详情
+   * Details
    */
   function handleDetail(record: Recordable) {
     registerModal.value.disableSubmit = true;
@@ -118,50 +118,50 @@
   }
    
   /**
-   * 删除事件
+   * Delete event
    */
   async function handleDelete(record) {
     await deleteOne({ id: record.id }, handleSuccess);
   }
    
   /**
-   * 批量删除事件
+   * Batch delete events
    */
   async function batchHandleDelete() {
     await batchDelete({ ids: selectedRowKeys.value }, handleSuccess);
   }
    
   /**
-   * 成功回调
+   * Successful callback
    */
   function handleSuccess() {
     (selectedRowKeys.value = []) && reload();
   }
    
   /**
-   * 操作栏
+   * Action bar
    */
   function getTableAction(record) {
     return [
       {
-        label: '编辑',
+        label: 'Edit',
         onClick: handleEdit.bind(null, record),
       },
     ];
   }
    
   /**
-   * 下拉操作栏
+   * Drop-down action bar
    */
   function getDropDownAction(record) {
     return [
       {
-        label: '详情',
+        label: 'Detail',
         onClick: handleDetail.bind(null, record),
       }, {
-        label: '删除',
+        label: 'Delete',
         popConfirm: {
-          title: '是否确认删除',
+          title: 'Confirm to delete',
           confirm: handleDelete.bind(null, record),
           placement: 'topLeft',
         }
@@ -170,19 +170,19 @@
   }
 
   /**
-   * 查询
+   * Search
    */
   function searchQuery() {
     reload();
   }
   
   /**
-   * 重置
+   * Reset
    */
   function searchReset() {
     formRef.value.resetFields();
     selectedRowKeys.value = [];
-    //刷新数据
+    //Refresh data
     reload();
   }
   

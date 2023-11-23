@@ -1,12 +1,12 @@
 <template>
-  <a-modal :title="title" :width="width" :visible="visible" @ok="handleOk" :okButtonProps="{ class: { 'jee-hidden': disableSubmit } }" @cancel="handleCancel" cancelText="关闭">
-    <AbwNotification9Form ref="registerForm" @ok="submitCallback" :formDisabled="disableSubmit" :formBpm="false"></AbwNotification9Form>
+  <a-modal :title="title" :width="width" :visible="visible" @ok="handleOk" :okButtonProps="{ class: { 'jee-hidden': disableSubmit } }" @cancel="handleCancel" cancelText="Close">
+    <AbwNotificationForm ref="registerForm" @ok="submitCallback" :formDisabled="disableSubmit" :formBpm="false"></AbwNotificationForm>
   </a-modal>
 </template>
 
 <script lang="ts" setup>
   import { ref, nextTick, defineExpose } from 'vue';
-  import AbwNotification9Form from './AbwNotification9Form.vue'
+  import AbwNotificationForm from './AbwNotificationForm.vue'
   
   const title = ref<string>('');
   const width = ref<number>(800);
@@ -16,10 +16,10 @@
   const emit = defineEmits(['register', 'success']);
 
   /**
-   * 新增
+   * New
    */
   function add() {
-    title.value = '新增';
+    title.value = 'New';
     visible.value = true;
     nextTick(() => {
       registerForm.value.add();
@@ -27,11 +27,11 @@
   }
   
   /**
-   * 编辑
+   * Edit
    * @param record
    */
   function edit(record) {
-    title.value = disableSubmit.value ? '详情' : '编辑';
+    title.value = disableSubmit.value ? 'Detail' : 'Edit';
     visible.value = true;
     nextTick(() => {
       registerForm.value.edit(record);
@@ -39,14 +39,14 @@
   }
   
   /**
-   * 确定按钮点击事件
+   * OK button click event
    */
   function handleOk() {
     registerForm.value.submitForm();
   }
 
   /**
-   * form保存回调事件
+   * form save callback event
    */
   function submitCallback() {
     handleCancel();
@@ -54,7 +54,7 @@
   }
 
   /**
-   * 取消按钮回调事件
+   * Cancel button callback event
    */
   function handleCancel() {
     visible.value = false;
@@ -68,7 +68,7 @@
 </script>
 
 <style>
-  /**隐藏样式-modal确定按钮 */
+  /**Hidden style-modal OK button */
   .jee-hidden {
     display: none !important;
   }

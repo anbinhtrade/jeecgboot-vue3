@@ -5,14 +5,14 @@ import { render } from '/@/utils/common/renderUtils';
 //List data
 export const columns: BasicColumn[] = [
   {
-    title: 'Subject',
+    title: 'Code',
     align: "center",
-    dataIndex: 'msgSubject'
+    dataIndex: 'msgCatCode'
   },
   {
-    title: 'Message',
+    title: 'Text',
     align: "center",
-    dataIndex: 'msgBody'
+    dataIndex: 'msgCatText'
   },
 ];
 
@@ -23,13 +23,13 @@ export const searchFormSchema: FormSchema[] = [
 //Form data
 export const formSchema: FormSchema[] = [
   {
-    label: 'Subject',
-    field: 'msgSubject',
+    label: 'Code',
+    field: 'msgCatCode',
     component: 'Input',
   },
   {
-    label: 'Message',
-    field: 'msgBody',
+    label: 'Text',
+    field: 'msgCatText',
     component: 'Input',
   },
 	// TODO The primary key hidden field is currently hard-coded as ID.

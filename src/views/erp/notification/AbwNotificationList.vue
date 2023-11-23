@@ -36,18 +36,18 @@
       </template>
     </BasicTable>
     <!-- Form area -->
-    <AbwNotification11Modal ref="registerModal" @success="handleSuccess"></AbwNotification11Modal>
+    <AbwNotificationModal ref="registerModal" @success="handleSuccess"></AbwNotificationModal>
   </div>
 </template>
 
-<script lang="ts" name="notification11-abwNotification11" setup>
+<script lang="ts" name="notification-abwNotification" setup>
   import { ref, reactive } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { useListPage } from '/@/hooks/system/useListPage';
-  import { columns } from './AbwNotification11.data';
-  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl } from './AbwNotification11.api';
+  import { columns } from './AbwNotification.data';
+  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl } from './AbwNotification.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
-  import AbwNotification11Modal from './components/AbwNotification11Modal.vue'
+  import AbwNotificationModal from './components/AbwNotificationModal.vue'
   import { useUserStore } from '/@/store/modules/user';
 
   const formRef = ref();
@@ -58,7 +58,7 @@
   //Register table data
   const { prefixCls, tableContext, onExportXls, onImportXls } = useListPage({
     tableProps: {
-      title: 'Notification 11',
+      title: 'Notification ABS',
       api: list,
       columns,
       canResize:false,
@@ -72,7 +72,7 @@
       },
     },
     exportConfig: {
-      name: "Notification 11",
+      name: "Notification ABS",
       url: getExportUrl,
       params: queryParam,
     },
