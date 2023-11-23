@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts" name="notification-abwNotification" setup>
-  import { ref, reactive } from 'vue';
+import {ref, reactive, onMounted} from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { useListPage } from '/@/hooks/system/useListPage';
   import { columns } from './AbwNotification.data';
@@ -49,6 +49,7 @@
   import { downloadFile } from '/@/utils/common/renderUtils';
   import AbwNotificationModal from './components/AbwNotificationModal.vue'
   import { useUserStore } from '/@/store/modules/user';
+  import { list as categoryList } from '../msg/category/AbwMsgCategory.api';
 
   const formRef = ref();
   const queryParam = reactive<any>({});
@@ -92,6 +93,7 @@
     xs: 24,
     sm: 20,
   });
+
 
   /**
    * New event
@@ -144,7 +146,8 @@
   function getTableAction(record) {
     return [
       {
-        label: 'Edit',
+        label: '',
+        icon: 'ic:outline-edit',
         onClick: handleEdit.bind(null, record),
       },
     ];
@@ -157,9 +160,11 @@
     return [
       {
         label: 'Detail',
+        icon: 'ic:outline-visibility',
         onClick: handleDetail.bind(null, record),
       }, {
         label: 'Delete',
+        icon: 'ic:outline-delete-outline',
         popConfirm: {
           title: 'Confirm to delete',
           confirm: handleDelete.bind(null, record),

@@ -3,13 +3,23 @@
     <a-form ref="formRef" class="antd-modal-form" :labelCol="labelCol" :wrapperCol="wrapperCol">
       <a-row>
         <a-col :span="24">
+          <a-form-item label="Hẹn giờ" v-bind="validateInfos.msgPlan">
+            <a-date-picker placeholder="Please select Hẹn giờ"  v-model:value="formData.msgPlan" showTime value-format="YYYY-MM-DD HH:mm:ss" style="width: 100%" :disabled="disabled"/>
+          </a-form-item>
+        </a-col>
+
+        <a-col :span="24">
           <a-form-item label="Người nhận" v-bind="validateInfos.msgUserIds">
             <a-input v-model:value="formData.msgUserIds" placeholder="Please enter Người nhận" :disabled="disabled"></a-input>
           </a-form-item>
         </a-col>
         <a-col :span="24">
           <a-form-item label="Loại thông báo" v-bind="validateInfos.msgCategory">
-            <a-input v-model:value="formData.msgCategory" placeholder="Please enter Loại thông báo" :disabled="disabled"></a-input>
+            <a-select v-model:value="formData.msgCategory" placeholder="Please enter Loại thông báo" :disabled="disabled">
+              <a-select-option v-for="category in categoryListData" :key="category.msgCatCode" :value="category.msgCatCode">
+                {{ category.msgCatText }}
+              </a-select-option>
+            </a-select>
           </a-form-item>
         </a-col>
         <a-col :span="24">
@@ -24,9 +34,10 @@
         </a-col>
         <a-col :span="24">
           <a-form-item label="Nội dung" v-bind="validateInfos.msgBody">
-            <a-input v-model:value="formData.msgBody" placeholder="Please enter Nội dung" :disabled="disabled"></a-input>
+            <j-editor :row="10" v-model:value="formData.msgBody" placeholder="Please enter Nội dung" :disabled="disabled"></j-editor>
           </a-form-item>
         </a-col>
+
         <a-col :span="24">
           <a-form-item label="Thumbnail" v-bind="validateInfos.msgThumbnailImage">
             <a-input v-model:value="formData.msgThumbnailImage" placeholder="Please enter Thumbnail" :disabled="disabled"></a-input>
@@ -35,11 +46,6 @@
         <a-col :span="24">
           <a-form-item label="Banner" v-bind="validateInfos.msgBannerImage">
             <a-input v-model:value="formData.msgBannerImage" placeholder="Please enter Banner" :disabled="disabled"></a-input>
-          </a-form-item>
-        </a-col>
-        <a-col :span="24">
-          <a-form-item label="Hẹn giờ" v-bind="validateInfos.msgPlan">
-		        <a-date-picker placeholder="Please select Hẹn giờ"  v-model:value="formData.msgPlan" showTime value-format="YYYY-MM-DD HH:mm:ss" style="width: 100%" :disabled="disabled"/>
           </a-form-item>
         </a-col>
       </a-row>
@@ -54,6 +60,9 @@
   import { getValueType } from '/@/utils';
   import { saveOrUpdate } from '../AbwNotification.api';
   import { Form } from 'ant-design-vue';
+  import Editor from "@/views/demo/editor/tinymce/Editor.vue";
+  import JEditor from "@/components/Form/src/jeecg/components/JEditor.vue";
+  import {list as categoryList} from "@/views/erp/msg/category/AbwMsgCategory.api";
   
   const props = defineProps({
     formDisabled: { type: Boolean, default: false },
@@ -94,8 +103,30 @@
     }
     return props.formDisabled;
   });
+  // load category data via api categoryList
+  const categoryListData = ref([] as any[]);
+  const categoryListLoading = ref(false);
+  const categoryListParams = reactive({
+    current: 1,
+    pageSize: 1000,
+    sort: 'id',
+    order: 'desc',
+  });
 
-  
+  onMounted(async () => {
+    try {
+      // Fetch category list data
+      categoryListLoading.value = true;
+      const response = await categoryList(categoryListParams);
+      categoryListLoading.value = false;
+      categoryListData.value = response.records || [];
+    } catch (error) {
+      console.error('Error fetching category list:', error);
+    }
+  });
+
+
+
   /**
    * New
    */

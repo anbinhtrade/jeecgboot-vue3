@@ -9,7 +9,7 @@
   import AbwNotificationForm from './AbwNotificationForm.vue'
   
   const title = ref<string>('');
-  const width = ref<number>(800);
+  const width = ref<number>(1000);
   const visible = ref<boolean>(false);
   const disableSubmit = ref<boolean>(false);
   const registerForm = ref();
@@ -19,7 +19,7 @@
    * New
    */
   function add() {
-    title.value = 'New';
+    title.value = 'Soạn thông báo mới';
     visible.value = true;
     nextTick(() => {
       registerForm.value.add();
@@ -31,7 +31,7 @@
    * @param record
    */
   function edit(record) {
-    title.value = disableSubmit.value ? 'Detail' : 'Edit';
+    title.value = disableSubmit.value ? 'Chi tiết thông báo đã gửi' : 'Sửa thông báo đã gửi';
     visible.value = true;
     nextTick(() => {
       registerForm.value.edit(record);
