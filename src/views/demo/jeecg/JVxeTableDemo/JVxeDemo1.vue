@@ -363,7 +363,7 @@
   function doDelete(deleteRows) {
     return new Promise((resolve) => {
       let rowId = deleteRows.filter((row) => row.id);
-      console.log('Delete rowId.': ', rowId);
+      console.log('Delete rowId: ', rowId);
       setTimeout(() => resolve(true), 1500);
     });
   }

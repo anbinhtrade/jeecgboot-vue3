@@ -70,3 +70,9 @@ export const saveOrUpdate = (params, isUpdate) => {
   let url = isUpdate ? Api.edit : Api.save;
   return defHttp.post({ url: url, params }, { isTransformResponse: false });
 }
+
+/**
+ * Search user list
+ * @param params
+ * */
+export const searchUser = (params) => defHttp.get({ url: '/users/search', params }, { isTransformResponse: false });
