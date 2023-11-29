@@ -40,6 +40,11 @@ export const columns: BasicColumn[] = [
     dataIndex: 'msgBannerImage'
   },
   {
+    title: 'Trạng thái',
+    align: "center",
+    dataIndex: 'msgStatus'
+  },
+  {
     title: 'Hẹn giờ',
     align: "center",
     dataIndex: 'msgPlan'
@@ -85,6 +90,11 @@ export const formSchema: FormSchema[] = [
   {
     label: 'Banner',
     field: 'msgBannerImage',
+    component: 'Input',
+  },
+  {
+    label: 'Trạng thái',
+    field: 'msgStatus',
     component: 'Input',
   },
   {

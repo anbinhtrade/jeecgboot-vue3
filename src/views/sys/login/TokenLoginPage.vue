@@ -5,7 +5,7 @@
             <div class="app-loading-dots">
                 <span class="dot dot-spin"><i></i><i></i><i></i><i></i></span>
             </div>
-            <div class="app-loading-title">JEECGBOOT Low-code Platform</div>
+            <div class="app-loading-title">Công ty cổ phần chứng khoán ABS</div>
         </div>
     </div>
 </template>

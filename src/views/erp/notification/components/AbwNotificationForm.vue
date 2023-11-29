@@ -12,8 +12,9 @@
 
         <a-col :span="24">
           <a-form-item label="Người nhận" v-bind="validateInfos.msgUserIds">
-            <!-- a-input v-model:value="formData.msgUserIds" placeholder="Please enter Người nhận" :disabled="disabled"></a-input -->
-            <AbwUserSelectSearch v-model:value="formData.msgUserIds" placeholder="Please enter Người nhận" :disabled="disabled"></AbwUserSelectSearch>
+            <AbwUserSelectSearch :value="formData.msgUserIds"
+                                 @update="handleUserSelectionUpdate"
+                                 placeholder="Please enter Người nhận" :disabled="disabled"></AbwUserSelectSearch>
         </a-form-item>
         </a-col>
         <a-col :span="24">
@@ -56,6 +57,11 @@
           <a-form-item label="Banner" v-bind="validateInfos.msgBannerImage">
             <a-input v-model:value="formData.msgBannerImage" placeholder="Please enter Banner"
                      :disabled="disabled"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="Trạng thái" v-bind="validateInfos.msgStatus">
+            <a-input v-model:value="formData.msgStatus" placeholder="Please enter Trạng thái" :disabled="disabled"></a-input>
           </a-form-item>
         </a-col>
       </a-row>
@@ -178,6 +184,10 @@ function edit(record) {
     //Assignment
     Object.assign(formData, record);
   });
+}
+
+function handleUserSelectionUpdate(value) {
+  formData.msgUserIds = value;
 }
 
 /**

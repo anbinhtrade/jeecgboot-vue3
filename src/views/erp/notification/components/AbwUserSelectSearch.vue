@@ -1,44 +1,61 @@
 <template>
   <a-select
-    v-model="selectedOption"
+    :value="selectedOption"
     show-search
     placeholder="Type to search"
     mode="multiple"
     :filter-option="false"
-    @search="debouncedSearch"
-  >
+    @change="handleChange"
+    @search="debouncedSearch">
     <a-select-option v-for="item in itemList" :key="item?.id" :value="item?.id">
-      {{ item?.id }} - {{ item?.fullName }}
+      {{ item?.id }} - {{ item?.fullName }} - {{ item?.stockAccount }}
     </a-select-option>
   </a-select>
 </template>
 
 <script>
-import {debounce} from 'lodash';
+import {debounce, split, map} from 'lodash';
 import {defHttp} from '/@/utils/http/axios';
 
 
 export default {
+  props: {
+    value: Array,
+  },
   data() {
     return {
       selectedOption: null,
       itemList: [],
+      updatingFromComponent: false
     };
   },
-  created() {
-    // Initial fetch
-    this.fetchItemList('');
+  watch: {
+      value(newValue) {
+          console.log('watch: ', newValue)
+          if (!this.updatingFromComponent) {
+              this.fetchItemList('', newValue);
+              this.selectedOption = split(newValue, ',');
+              // parse to int
+              this.selectedOption = map(this.selectedOption, (item) => parseInt(item));
+          }
+      },
   },
+
   methods: {
+    handleChange(value) {
+      this.selectedOption = value;
+      this.updatingFromComponent = true;
+      this.$emit('update', value);
+      this.updatingFromComponent = false;
+
+    },
     debouncedSearch: debounce(function (searchTerm) {
-      this.fetchItemList(searchTerm);
+      this.fetchItemList(searchTerm, '');
     }, 300),
-    async fetchItemList(searchTerm) {
+    async fetchItemList(searchTerm, ids) {
       try {
-        // Adjust the API endpoint and query parameters based on your API
-        const params = { 'searchTerm': searchTerm};
+        const params = { 'searchTerm': searchTerm, 'ids': ids};
         const response = await defHttp.get({url: '/users/search', params}, {isTransformResponse: false});
-        // check if response is valid, no code number here.
         if (response && !response.code) {
           this.itemList = response;
         } else {
