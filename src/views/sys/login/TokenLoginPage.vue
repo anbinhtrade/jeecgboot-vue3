@@ -1,11 +1,11 @@
 <template>
     <div class="app-loading">
         <div class="app-loading-wrap">
-            <img src="/resource/img/logo.png" class="app-loading-logo" alt="Logo">
+            <img src="/resource/img/icon-loader_light.svg" class="app-loading-logo" alt="Logo">
             <div class="app-loading-dots">
                 <span class="dot dot-spin"><i></i><i></i><i></i><i></i></span>
             </div>
-            <div class="app-loading-title">Công ty cổ phần chứng khoán ABS</div>
+            <div class="app-loading-title">CÔNG TY CỔ PHẦN CHỨNG KHOÁN ABS</div>
         </div>
     </div>
 </template>
@@ -29,12 +29,12 @@
       const {t} = useI18n();
       const routeQuery:any = route.query;
       if(!routeQuery){
-        createMessage.warning('参数无效')
+        createMessage.warning('The parameter is invalid')
       }
      
       const token = routeQuery['loginToken'];
       if(!token){
-        createMessage.warning('token无效')
+        createMessage.warning('The token is invalid')
       }
       const userStore = useUserStore();
       userStore.ThirdLogin({ token, thirdType:'email', goHome: false }).then(res => {
@@ -48,8 +48,8 @@
 
       function requestFailed (err) {
         notification.error({
-          message: '登录失败',
-          description: ((err.response || {}).data || {}).message || err.message || "请求出现错误，请稍后再试",
+          message: 'Login failed',
+          description: ((err.response || {}).data || {}).message || err.message || "There was an error on the request, please try again later",
           duration: 4,
         });
       }
@@ -77,8 +77,8 @@
           });
         }else{
           notification.error({
-            message: '参数失效',
-            description: "页面跳转参数丢失，请查看日志",
+            message: 'The parameter is invalid',
+            description: "The page redirection parameter is missing, check the logs",
             duration: 4,
           });
         }
