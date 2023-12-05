@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      selectedOption: null,
+      selectedOption: [],
       itemList: [],
       updatingFromComponent: false
     };
