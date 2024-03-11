@@ -1,7 +1,5 @@
 import {BasicColumn} from '/@/components/Table';
 import {FormSchema} from '/@/components/Table';
-import { rules} from '/@/utils/helper/validator';
-import { render } from '/@/utils/common/renderUtils';
 //List data
 export const columns: BasicColumn[] = [
   {
@@ -13,6 +11,16 @@ export const columns: BasicColumn[] = [
     title: 'SQL Excution Result',
     align: "center",
     dataIndex: 'sqlResult'
+  },
+  {
+    title: 'Sql status',
+    align: "center",
+    dataIndex: 'sqlStatus'
+  },
+  {
+    title: 'Sql datasource',
+    align: "center",
+    dataIndex: 'sqlDatasource'
   },
   {
     title: 'Excution time',
@@ -35,6 +43,16 @@ export const formSchema: FormSchema[] = [
   {
     label: 'SQL Excution Result',
     field: 'sqlResult',
+    component: 'Input',
+  },
+  {
+    label: 'Sql status',
+    field: 'sqlStatus',
+    component: 'Input',
+  },
+  {
+    label: 'Sql datasource',
+    field: 'sqlDatasource',
     component: 'Input',
   },
   {

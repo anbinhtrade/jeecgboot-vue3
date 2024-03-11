@@ -13,7 +13,20 @@
       <template #tableTitle>
         <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> New</a-button>
         <a-button  type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> Export</a-button>
-        <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">Import</j-upload-button>
+<!--        <j-upload-button  type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">Import</j-upload-button>-->
+        <a-dropdown v-if="selectedRowKeys.length == 1">
+          <template #overlay>
+            <a-menu>
+              <a-menu-item key="1" @click="handleDownloadSelectedResult">
+                <Icon icon="ant-design:download-outlined"></Icon>
+                Download XLS
+              </a-menu-item>
+            </a-menu>
+          </template>
+          <a-button>Download XLS
+            <Icon icon="mdi:chevron-down"></Icon>
+          </a-button>
+        </a-dropdown>
         <a-dropdown v-if="selectedRowKeys.length > 0">
           <template #overlay>
             <a-menu>
@@ -130,7 +143,13 @@
   async function batchHandleDelete() {
     await batchDelete({ ids: selectedRowKeys.value }, handleSuccess);
   }
-   
+  /**
+   * Batch delete events
+   */
+  async function handleDownloadSelectedResult() {
+    await batchDelete({ ids: selectedRowKeys.value }, handleSuccess);
+  }
+
   /**
    * Successful callback
    */
@@ -158,7 +177,12 @@
       {
         label: 'Detail',
         onClick: handleDetail.bind(null, record),
-      }, {
+      },
+      {
+        label: 'Download XLS',
+        onClick: handleDetail.bind(null, record),
+      },
+      {
         label: 'Delete',
         popConfirm: {
           title: 'Confirm to delete',

@@ -13,6 +13,16 @@
           </a-form-item>
         </a-col>
         <a-col :span="24">
+          <a-form-item label="Sql status" v-bind="validateInfos.sqlStatus">
+            <a-input v-model:value="formData.sqlStatus" placeholder="Please enter Sql status" :disabled="disabled"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="Sql datasource" v-bind="validateInfos.sqlDatasource">
+            <a-input v-model:value="formData.sqlDatasource" placeholder="Please enter Sql datasource" :disabled="disabled"></a-input>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
           <a-form-item label="Excution time" v-bind="validateInfos.excutionTime">
 	          <a-input-number v-model:value="formData.excutionTime" placeholder="Please enter Excution time" style="width: 100%" :disabled="disabled"/>
           </a-form-item>
@@ -42,6 +52,8 @@
     id: '',
     sqlStatement: '',   
     sqlResult: '',   
+    sqlStatus: '',   
+    sqlDatasource: '',   
     excutionTime: undefined,
   });
   const { createMessage } = useMessage();
