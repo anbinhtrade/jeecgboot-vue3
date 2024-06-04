@@ -1,12 +1,12 @@
 <template>
   <a-modal :title="title" :width="width" :visible="visible" @ok="handleOk" :okButtonProps="{ class: { 'jee-hidden': disableSubmit } }" @cancel="handleCancel" cancelText="Close">
-    <AbsDatabaseForm ref="registerForm" @ok="submitCallback" :formDisabled="disableSubmit" :formBpm="false"></AbsDatabaseForm>
+    <TbletfForm ref="registerForm" @ok="submitCallback" :formDisabled="disableSubmit" :formBpm="false"></TbletfForm>
   </a-modal>
 </template>
 
 <script lang="ts" setup>
   import { ref, nextTick, defineExpose } from 'vue';
-  import AbsDatabaseForm from './AbsDatabaseForm.vue'
+  import TbletfForm from './TbletfForm.vue'
   
   const title = ref<string>('');
   const width = ref<number>(800);

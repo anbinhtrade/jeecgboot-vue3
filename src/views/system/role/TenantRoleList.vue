@@ -51,7 +51,7 @@
   const { prefixCls, tableContext, onImportXls, onExportXls } = useListPage({
     designScope: 'role-template',
     tableProps: {
-      title: 'List of tenant roles',
+      title: 'List of roles',
       api: listByTenant,
       columns: columns,
       formConfig: {

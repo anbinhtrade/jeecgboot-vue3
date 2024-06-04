@@ -156,11 +156,11 @@
   function getTableAction(record) {
     return [
       {
-        label: 'User',
+        label: 'Người dùng',
         onClick: handleUser.bind(null, record),
       },
       {
-        label: 'Permission',
+        label: 'Phân quyền',
         onClick: handlePerssion.bind(null, record),
       },
     ];
@@ -172,22 +172,22 @@
   function getDropDownAction(record) {
     return [
       {
-        label: 'Edit',
+        label: 'Sửa',
         onClick: handleEdit.bind(null, record),
       },
       {
-        label: 'Detail',
+        label: 'Chi tiết',
         onClick: handleDetail.bind(null, record),
       },
       {
-        label: 'Delete',
+        label: 'Xóa',
         popConfirm: {
-          title: 'Whether to confirm the deletion',
+          title: 'Xác nhận xóa',
           confirm: handleDelete.bind(null, record),
         },
       },
       {
-        label: 'Home page configuration',
+        label: 'Trang chủ',
         onClick: handleIndexConfig.bind(null, record.roleCode),
       },
     ];

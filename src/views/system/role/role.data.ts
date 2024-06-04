@@ -2,17 +2,17 @@ import { FormSchema } from '/@/components/Table';
 import { isRoleExist } from './role.api';
 export const columns = [
   {
-    title: 'Role Name',
+    title: 'Tên',
     dataIndex: 'roleName',
     width: 100,
   },
   {
-    title: 'Role Code',
+    title: 'Mã',
     dataIndex: 'roleCode',
     width: 100,
   },
   {
-    title: 'Creation Time',
+    title: 'Ngày tạo',
     dataIndex: 'createTime',
     width: 100,
   },
@@ -22,15 +22,15 @@ export const columns = [
  */
 export const userColumns = [
   {
-    title: 'User Name',
+    title: 'Tên đăng nhập',
     dataIndex: 'username',
   },
   {
-    title: 'Real Name',
+    title: 'Họ tên',
     dataIndex: 'realname',
   },
   {
-    title: 'Status',
+    title: 'Trạng thái',
     dataIndex: 'status_dictText',
     width: 80,
   },
@@ -38,13 +38,13 @@ export const userColumns = [
 export const searchFormSchema: FormSchema[] = [
   {
     field: 'roleName',
-    label: 'Role Name',
+    label: 'Tên',
     component: 'Input',
     colProps: { span: 6 },
   },
   {
     field: 'roleCode',
-    label: 'Role Code',
+    label: 'Mã',
     component: 'Input',
     colProps: { span: 6 },
   },
@@ -55,7 +55,7 @@ export const searchFormSchema: FormSchema[] = [
 export const searchUserFormSchema: FormSchema[] = [
   {
     field: 'username',
-    label: 'User Name',
+    label: 'Tên đăng nhập',
     component: 'Input',
     colProps: { span: 12 },
   },
@@ -70,13 +70,13 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'roleName',
-    label: 'Role Name',
+    label: 'Tên',
     required: true,
     component: 'Input',
   },
   {
     field: 'roleCode',
-    label: 'Role Code',
+    label: 'Mã',
     required: true,
     component: 'Input',
     dynamicDisabled: ({ values }) => {
@@ -89,16 +89,16 @@ export const formSchema: FormSchema[] = [
           required: true,
           validator: (_, value) => {
             if (!value) {
-              return Promise.reject('Please enter the role code');
+              return Promise.reject('Hãy nhập mã vai trò');
             }
             if (values) {
               return new Promise((resolve, reject) => {
                 isRoleExist({ id: model.id, roleCode: value })
                   .then((res) => {
-                    res.success ? resolve() : reject(res.message || 'Verification failed');
+                    res.success ? resolve() : reject(res.message || 'Mã vai trò đã tồn tại');
                   })
                   .catch((err) => {
-                    reject(err.message || 'VERIFICATION FAILED');
+                    reject(err.message || 'Mã vai trò đã tồn tại');
                   });
               });
             }
@@ -109,7 +109,7 @@ export const formSchema: FormSchema[] = [
     },
   },
   {
-    label: 'REMARK',
+    label: 'Mô tả',
     field: 'description',
     component: 'InputTextArea',
   },
@@ -118,14 +118,14 @@ export const formSchema: FormSchema[] = [
 export const formDescSchema = [
   {
     field: 'roleName',
-    label: 'Role Name',
+    label: 'Tên',
   },
   {
     field: 'roleCode',
-    label: 'Role Code',
+    label: 'Mã',
   },
   {
-    label: 'REMARK',
+    label: 'Mô tả',
     field: 'description',
   },
 ];
@@ -138,20 +138,20 @@ export const roleIndexFormSchema: FormSchema[] = [
     show: false,
   },
   {
-    label: 'Role Code',
+    label: 'Mã',
     field: 'roleCode',
     component: 'Input',
     dynamicDisabled: true,
   },
   {
-    label: 'Home page routing',
+    label: 'Đường dẫn trang chủ',
     field: 'url',
     component: 'Input',
     required: true,
-    helpMessage: 'Access address of home page routing',
+    helpMessage: 'Đường dẫn trang chủ',
   },
   {
-    label: 'Component address',
+    label: 'Component',
     field: 'component',
     component: 'Input',
     helpMessage: 'Component address of home page routing',

@@ -36,18 +36,18 @@
       </template>
     </BasicTable>
     <!-- Form area -->
-    <AbsDatabaseModal ref="registerModal" @success="handleSuccess"></AbsDatabaseModal>
+    <FundHistoryModal ref="registerModal" @success="handleSuccess"></FundHistoryModal>
   </div>
 </template>
 
-<script lang="ts" name="absdatasources-absDatabase" setup>
+<script lang="ts" name="fundhistory-fundHistory" setup>
   import { ref, reactive } from 'vue';
   import { BasicTable, useTable, TableAction } from '/@/components/Table';
   import { useListPage } from '/@/hooks/system/useListPage';
-  import { columns } from './AbsDatabase.data';
-  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl } from './AbsDatabase.api';
+  import { columns } from './FundHistory.data';
+  import { list, deleteOne, batchDelete, getImportUrl, getExportUrl } from './FundHistory.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
-  import AbsDatabaseModal from './components/AbsDatabaseModal.vue'
+  import FundHistoryModal from './components/FundHistoryModal.vue'
   import { useUserStore } from '/@/store/modules/user';
 
   const formRef = ref();
@@ -58,7 +58,7 @@
   //Register table data
   const { prefixCls, tableContext, onExportXls, onImportXls } = useListPage({
     tableProps: {
-      title: 'Abs Database Management',
+      title: 'Bảng lưu lịch sử quỹ',
       api: list,
       columns,
       canResize:false,
@@ -72,7 +72,7 @@
       },
     },
     exportConfig: {
-      name: "Abs Database Management",
+      name: "Bảng lưu lịch sử quỹ",
       url: getExportUrl,
       params: queryParam,
     },

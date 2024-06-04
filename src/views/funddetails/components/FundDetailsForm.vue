@@ -3,18 +3,23 @@
     <a-form ref="formRef" class="antd-modal-form" :labelCol="labelCol" :wrapperCol="wrapperCol">
       <a-row>
         <a-col :span="24">
-          <a-form-item label="SQL Statement" v-bind="validateInfos.sqlStatement">
-            <a-input v-model:value="formData.sqlStatement" placeholder="Please enter SQL Statement" :disabled="disabled"></a-input>
+          <a-form-item label="Mã Quỹ" v-bind="validateInfos.fundId">
+	          <a-input-number v-model:value="formData.fundId" placeholder="Please enter Mã Quỹ" style="width: 100%" :disabled="disabled"/>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="SQL Excution Result" v-bind="validateInfos.sqlResult">
-            <a-input v-model:value="formData.sqlResult" placeholder="Please enter SQL Excution Result" :disabled="disabled"></a-input>
+          <a-form-item label="Symbol" v-bind="validateInfos.symbol">
+            <a-input v-model:value="formData.symbol" placeholder="Please enter Symbol" :disabled="disabled"></a-input>
           </a-form-item>
         </a-col>
         <a-col :span="24">
-          <a-form-item label="Excution time" v-bind="validateInfos.excutionTime">
-	          <a-input-number v-model:value="formData.excutionTime" placeholder="Please enter Excution time" style="width: 100%" :disabled="disabled"/>
+          <a-form-item label="Tỉ lệ" v-bind="validateInfos.ratio">
+	          <a-input-number v-model:value="formData.ratio" placeholder="Please enter Tỉ lệ" style="width: 100%" :disabled="disabled"/>
+          </a-form-item>
+        </a-col>
+        <a-col :span="24">
+          <a-form-item label="Khối lượng" v-bind="validateInfos.volume">
+	          <a-input-number v-model:value="formData.volume" placeholder="Please enter Khối lượng" style="width: 100%" :disabled="disabled"/>
           </a-form-item>
         </a-col>
       </a-row>
@@ -27,7 +32,7 @@
   import { defHttp } from '/@/utils/http/axios';
   import { useMessage } from '/@/hooks/web/useMessage';
   import { getValueType } from '/@/utils';
-  import { saveOrUpdate } from '../AbsDatabase.api';
+  import { saveOrUpdate } from '../FundDetails.api';
   import { Form } from 'ant-design-vue';
   
   const props = defineProps({
@@ -40,9 +45,10 @@
   const emit = defineEmits(['register', 'ok']);
   const formData = reactive<Record<string, any>>({
     id: '',
-    sqlStatement: '',   
-    sqlResult: '',   
-    excutionTime: undefined,
+    fundId: undefined,
+    symbol: '',   
+    ratio: undefined,
+    volume: undefined,
   });
   const { createMessage } = useMessage();
   const labelCol = ref<any>({ xs: { span: 24 }, sm: { span: 5 } });
@@ -50,6 +56,7 @@
   const confirmLoading = ref<boolean>(false);
   //Form validation
   const validatorRules = {
+    fundId: [{ required: true, message: 'Please enter Mã Quỹ!'},],
   };
   const { resetFields, validate, validateInfos } = useForm(formData, validatorRules, { immediate: true });
 

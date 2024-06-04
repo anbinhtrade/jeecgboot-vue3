@@ -5,19 +5,24 @@ import { render } from '/@/utils/common/renderUtils';
 //List data
 export const columns: BasicColumn[] = [
   {
-    title: 'SQL Statement',
+    title: 'Mã Quỹ',
     align: "center",
-    dataIndex: 'sqlStatement'
+    dataIndex: 'fundId'
   },
   {
-    title: 'SQL Excution Result',
+    title: 'Symbol',
     align: "center",
-    dataIndex: 'sqlResult'
+    dataIndex: 'symbol'
   },
   {
-    title: 'Excution time',
+    title: 'Tỉ lệ',
     align: "center",
-    dataIndex: 'excutionTime'
+    dataIndex: 'ratio'
+  },
+  {
+    title: 'Khối lượng',
+    align: "center",
+    dataIndex: 'volume'
   },
 ];
 
@@ -28,18 +33,28 @@ export const searchFormSchema: FormSchema[] = [
 //Form data
 export const formSchema: FormSchema[] = [
   {
-    label: 'SQL Statement',
-    field: 'sqlStatement',
+    label: 'Mã Quỹ',
+    field: 'fundId',
+    component: 'InputNumber',
+    dynamicRules: ({model,schema}) => {
+      return [
+              { required: true, message: 'Please enter Mã Quỹ!'},
+             ];
+    },
+  },
+  {
+    label: 'Symbol',
+    field: 'symbol',
     component: 'Input',
   },
   {
-    label: 'SQL Excution Result',
-    field: 'sqlResult',
-    component: 'Input',
+    label: 'Tỉ lệ',
+    field: 'ratio',
+    component: 'InputNumber',
   },
   {
-    label: 'Excution time',
-    field: 'excutionTime',
+    label: 'Khối lượng',
+    field: 'volume',
     component: 'InputNumber',
   },
 	// TODO The primary key hidden field is currently hard-coded as ID.

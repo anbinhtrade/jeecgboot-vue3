@@ -251,13 +251,13 @@ export const formSchema: FormSchema[] = [
   },
   {
     field: 'icon',
-    label: 'MENU ICON',
+    label: 'Biểu tượng',
     component: 'IconPicker',
     ifShow: ({ values }) => !isButton(values.menuType),
   },
   {
     field: 'sortNo',
-    label: 'SORT',
+    label: 'Sắp xếp',
     component: 'InputNumber',
     defaultValue: 1,
     ifShow: ({ values }) => !isButton(values.menuType),
